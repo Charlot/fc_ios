@@ -1,4 +1,5 @@
 fc_ios
+Charlot Test
 ======
 企业版ios发布要注意的事项：
 *   在code signing中release的地方要选择合适的ios provisioning证书，再打包
