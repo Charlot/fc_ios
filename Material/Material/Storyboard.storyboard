@@ -2884,6 +2884,22 @@
                     <view key="view" contentMode="scaleToFill" id="8g4-x8-jfT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8vS-g3-gC2">
+                                <rect key="frame" x="52" y="414" width="217" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.38431376218795776" blue="0.40784317255020142" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="退出账户">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="5NL-Sw-CAt" eventType="touchUpInside" id="9EI-FR-EFZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="个人设置" id="Q4a-ae-Qpz" customClass="I"/>
@@ -4480,7 +4496,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vn1-4D-58W">
                                 <rect key="frame" x="44" y="489" width="232" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.97084263390000003" green="0.3670137342" blue="0.39047720740000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.9960784912109375" green="0.45098042488098145" blue="0.47058826684951782" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="拒绝收货">
@@ -4706,7 +4722,7 @@
         <scene sceneID="7Bc-BM-wwU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qba-Ci-PA7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="盘点" id="uFe-Sk-kzb"/>
+                    <tabBarItem key="tabBarItem" title="盘点" image="xiang-tarbar" id="uFe-Sk-kzb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IjR-du-Vqd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -4725,7 +4741,7 @@
         <scene sceneID="xku-qr-qqw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HRU-5C-Dcn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="设置" id="S6Y-10-RMS"/>
+                    <tabBarItem key="tabBarItem" title="设置" image="setting-tarbar" id="S6Y-10-RMS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ufc-7A-lrb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
