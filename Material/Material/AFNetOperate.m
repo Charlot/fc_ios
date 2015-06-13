@@ -689,7 +689,7 @@
 
 -(NSString *)inventory_processing{
     NSString *base = [ self baseURL];
-    NSString *inventory_processing = [[self URLDictionary] objectForKey:@"processing"];
+    NSString *inventory_processing = [[self URLDictionary] objectForKey:@"inventory_processing"];
     return [base stringByAppendingString:inventory_processing];
                                     
 }

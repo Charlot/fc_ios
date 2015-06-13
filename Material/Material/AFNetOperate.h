@@ -110,4 +110,5 @@
 -(NSString *)movables;
 
 -(NSString *)locations_warehosues;
+-(NSString *)inventory_processing;
 @end
