@@ -10,6 +10,8 @@
 
 @interface InventoryViewController ()
 
+@property (strong, nonatomic) IBOutlet UIPickerView *processingPicker;
+
 @end
 
 @implementation InventoryViewController
@@ -27,6 +29,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+//    self.processingPicker.dataSource = self;
+//    self.processingPicker.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning

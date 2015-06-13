@@ -686,4 +686,11 @@
     NSString *locations_warehosues=[[self URLDictionary] objectForKey:@"locations_warehosues"];
     return [base stringByAppendingString:locations_warehosues];
 }
+
+-(NSString *)inventory_processing{
+    NSString *base = [ self baseURL];
+    NSString *inventory_processing = [[self URLDictionary] objectForKey:@"processing"];
+    return [base stringByAppendingString:inventory_processing];
+                                    
+}
 @end
