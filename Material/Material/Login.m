@@ -124,6 +124,9 @@
                           else if([requestCode isEqualToString:@"500"]){
                               [self loginSameAction:@"require"];
                           }
+                          else if ([requestCode isEqualToString:@"600"]){
+                              [self loginSameAction:@"inventory"];
+                          }
                           [UserPreference generateUserPreference:responseObject[@"content"]];
                           [ScanStandard sharedScanStandard];
                       }

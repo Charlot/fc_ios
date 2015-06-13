@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		219671991B2C2AEB00779491 /* InventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 219671981B2C2AEB00779491 /* InventoryViewController.m */; };
+		2196719C1B2C2BAD00779491 /* InventorySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2196719B1B2C2BAD00779491 /* InventorySettingViewController.m */; };
 		B001BEFF19A58A88000800AD /* RequireTraceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001BEFE19A58A88000800AD /* RequireTraceViewController.m */; };
 		B001BF0219A58A97000800AD /* RequireTraceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001BF0119A58A97000800AD /* RequireTraceDetailViewController.m */; };
 		B001BF0519A59A90000800AD /* DrawLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B001BF0419A59A90000800AD /* DrawLight.m */; };
@@ -156,6 +158,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		219671971B2C2AEB00779491 /* InventoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryViewController.h; sourceTree = "<group>"; };
+		219671981B2C2AEB00779491 /* InventoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryViewController.m; sourceTree = "<group>"; };
+		2196719A1B2C2BAD00779491 /* InventorySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventorySettingViewController.h; sourceTree = "<group>"; };
+		2196719B1B2C2BAD00779491 /* InventorySettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventorySettingViewController.m; sourceTree = "<group>"; };
 		B001BEFD19A58A88000800AD /* RequireTraceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireTraceViewController.h; sourceTree = "<group>"; };
 		B001BEFE19A58A88000800AD /* RequireTraceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireTraceViewController.m; sourceTree = "<group>"; };
 		B001BF0019A58A97000800AD /* RequireTraceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireTraceDetailViewController.h; sourceTree = "<group>"; };
@@ -436,6 +442,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		219671961B2C294400779491 /* SHIFTING */ = {
+			isa = PBXGroup;
+			children = (
+				219671971B2C2AEB00779491 /* InventoryViewController.h */,
+				219671981B2C2AEB00779491 /* InventoryViewController.m */,
+				2196719A1B2C2BAD00779491 /* InventorySettingViewController.h */,
+				2196719B1B2C2BAD00779491 /* InventorySettingViewController.m */,
+			);
+			name = SHIFTING;
+			sourceTree = "<group>";
+		};
 		B001BEFC19A58A67000800AD /* trace */ = {
 			isa = PBXGroup;
 			children = (
@@ -900,6 +917,7 @@
 		B096C63D194291FB00271AE4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				219671961B2C294400779491 /* SHIFTING */,
 				B0454CCE1976024E001476F4 /* REQUIRE */,
 				B0454CCD19760244001476F4 /* DELIVERY */,
 				B04244E21A1F3A7700AAFD24 /* PRODUCT */,
@@ -1144,6 +1162,7 @@
 				B0BE29301949921900061E67 /* XiangTableViewCell.m in Sources */,
 				B085F6571940184E001F01F3 /* SettingViewController.m in Sources */,
 				B04EF1EF1946DE1C00A95D7A /* HistoryTuoTableViewController.m in Sources */,
+				219671991B2C2AEB00779491 /* InventoryViewController.m in Sources */,
 				B0FDC96C19453EF7008E4B72 /* YunHaveTuoTableViewController.m in Sources */,
 				B04EF1D41946888900A95D7A /* ShopTuoTableViewCell.m in Sources */,
 				B09ECD7219AAD36500783B6A /* LED.m in Sources */,
@@ -1156,6 +1175,7 @@
 				B00EA1371A26F65700D95594 /* HistoryChooseViewController.m in Sources */,
 				B09ECD7519AAD8C500783B6A /* LEDcolor.m in Sources */,
 				B085F64C1940119E001F01F3 /* TuoTableViewController.m in Sources */,
+				2196719C1B2C2BAD00779491 /* InventorySettingViewController.m in Sources */,
 				B04244D71A1F0E7F00AAFD24 /* ProductCheckViewController.m in Sources */,
 				B04EF20B1946E60D00A95D7A /* AFHTTPRequestOperationManager.m in Sources */,
 				B001BF0219A58A97000800AD /* RequireTraceDetailViewController.m in Sources */,
