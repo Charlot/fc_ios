@@ -9,6 +9,7 @@
 #import "InventoryViewController.h"
 #import "AFNetOperate.h"
 #import "Inventory.h"
+#import "InventoryConfirmViewController.h"
 
 @interface InventoryViewController ()<UIPickerViewDataSource, UIPickerViewDelegate>
 {
@@ -123,6 +124,15 @@
 
     _inventoryId = inventory.ID;
     NSLog(@"the inventory id is %d", _inventoryId);
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"confirm"]){
+        InventoryConfirmViewController *ic=segue.destinationViewController;
+        ic.inventroy_id= _inventoryId;
+    }
 }
 
 

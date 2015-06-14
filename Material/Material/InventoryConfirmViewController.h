@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface InventoryConfirmViewController : UIViewController
+@property(strong,nonatomic)NSString *inventroy_id;
 
 @end

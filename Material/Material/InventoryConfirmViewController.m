@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    NSLog(@"pass inventory id is %d", self.inventroy_id);
 }
 
 - (void)didReceiveMemoryWarning

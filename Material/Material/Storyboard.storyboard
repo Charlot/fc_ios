@@ -2001,10 +2001,10 @@
             </objects>
             <point key="canvasLocation" x="2518" y="6268"/>
         </scene>
-        <!--View Controller - 确认信息-->
+        <!--Inventory Confirm View Controller - 确认信息-->
         <scene sceneID="ZmX-el-ml2">
             <objects>
-                <viewController id="5nL-Gh-cfL" sceneMemberID="viewController">
+                <viewController id="5nL-Gh-cfL" customClass="InventoryConfirmViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oTn-5d-S3P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -4874,6 +4874,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="5nL-Gh-cfL" kind="push" identifier="confirm" id="ymp-81-CJa"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择盘点单：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ttx-FR-qMs">
                                 <rect key="frame" x="55" y="149" width="103" height="21"/>
