@@ -2079,10 +2079,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="确认信息" id="WUq-1A-jQR"/>
+                    <connections>
+                        <outlet property="scanTextField" destination="bcy-Mc-dym" id="QiN-jc-EiR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VyD-gX-ktK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2515" y="7108"/>
+            <point key="canvasLocation" x="2320" y="7086"/>
         </scene>
         <!--Storages Move View Controller-->
         <scene sceneID="YKi-Gr-VZP">
@@ -4960,14 +4963,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="222-NY-YhT"/>
-        <segue reference="joq-VG-3De"/>
-        <segue reference="Hyz-uv-cpc"/>
-        <segue reference="Xpt-zp-Oio"/>
-        <segue reference="yJ1-Ae-Eed"/>
-        <segue reference="Kxl-Rh-nWd"/>
-        <segue reference="UAK-rn-23P"/>
-        <segue reference="aya-mQ-TZi"/>
         <segue reference="2c4-Zh-zKC"/>
         <segue reference="mEd-et-lyR"/>
         <segue reference="FcC-pN-TYA"/>
@@ -4975,5 +4970,13 @@
         <segue reference="hQ5-Fe-tiF"/>
         <segue reference="WHI-RS-rUG"/>
         <segue reference="hy6-vM-msP"/>
+        <segue reference="joq-VG-3De"/>
+        <segue reference="tP9-hz-80H"/>
+        <segue reference="Xpt-zp-Oio"/>
+        <segue reference="222-NY-YhT"/>
+        <segue reference="yJ1-Ae-Eed"/>
+        <segue reference="UAK-rn-23P"/>
+        <segue reference="aya-mQ-TZi"/>
+        <segue reference="Kxl-Rh-nWd"/>
     </inferredMetricsTieBreakers>
 </document>

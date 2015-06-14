@@ -111,4 +111,5 @@
 
 -(NSString *)locations_warehosues;
 -(NSString *)inventory_processing;
+-(NSString *)check_stock;
 @end

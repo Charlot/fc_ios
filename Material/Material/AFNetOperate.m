@@ -693,4 +693,11 @@
     return [base stringByAppendingString:inventory_processing];
                                     
 }
+
+-(NSString *)check_stock
+{
+    NSString *base = [self baseURL];
+    NSString *_check_stock = [[self URLDictionary] objectForKey:@"check_stock"];
+    return [base stringByAppendingString:_check_stock];
+}
 @end
