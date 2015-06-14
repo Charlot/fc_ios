@@ -105,6 +105,11 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    if ((textField == self.scanTextField) || (textField == self.partTextField)
+            || (textField == self.qtyTextField)
+            || (textField == self.positionTextField)) {
+        [textField resignFirstResponder];
+    }
     return YES;
 }
 
@@ -133,13 +138,16 @@
               success:^(AFHTTPRequestOperation *operation, id responseObject) {
                   [AFNet.activeView stopAnimating];
                   if([responseObject[@"result"] integerValue]==1){
-                      [AFNet alert: @"生成成功，且唯一码已入库"];
+                      
+                      [AFNet alert: [NSString stringWithFormat:@"生成成功，且唯一码已入库"]];
+
                                         }
                   else if([responseObject[@"result"] integerValue] == 2){
-                      [AFNet alert: @"生成成功，且唯一码未入库"];
+                      [AFNet alert: [NSString stringWithFormat:@"生成成功，且唯一码未入库"]];
+                      
                   }
                   else{
-                      [AFNet alert: @"生成失败"];
+                      [AFNet alert: [NSString stringWithFormat:@"生成失败"]];
 
                   }
                   NSLog(@"the result is %@", responseObject[@"result"]);
