@@ -14,6 +14,7 @@
 {
     NSMutableArray *_dataList;
     NSArray *_pickerData;
+    NSString *_inventoryId;
 }
 @property (strong, nonatomic) IBOutlet UIPickerView *processingPicker;
 
@@ -39,6 +40,7 @@
 	// Do any additional setup after loading the view.
     self.processingPicker.dataSource =self;
     self.processingPicker.delegate = self;
+
     
 }
 
@@ -46,6 +48,8 @@
 - (void)getProcessingData
 {
     _dataList = [[NSMutableArray alloc] init];
+    _inventoryId = @"";
+    
     AFNetOperate *AFNet=[[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
     [manager GET:[AFNet inventory_processing]
@@ -58,7 +62,10 @@
                       
                       for (int i=0; i<inventoryArray.count; i++) {
                           Inventory *inventory = [[Inventory alloc] initWithObject:inventoryArray[i]];
-                          
+                          if (i == 0) {
+                              _inventoryId = inventory.ID;
+                              NSLog(@"the id is %d", _inventoryId);
+                          }
                           [_dataList addObject: inventory];
                           
                       }
@@ -103,10 +110,19 @@
 //    return _pickerData[row];
     Inventory *inventory = [[Inventory alloc] init];
     inventory = _dataList[row];
-    NSString *strFromInt = [NSString stringWithFormat:@"%d",[_dataList count]];
-    NSLog(strFromInt);
-    
+//    NSString *strFromInt = [NSString stringWithFormat:@"%d",[_dataList count]];
+//    NSLog(strFromInt);
+//    
     return inventory.name;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    Inventory *inventory = [[Inventory alloc] init];
+    inventory = _dataList[row];
+
+    _inventoryId = inventory.ID;
+    NSLog(@"the inventory id is %d", _inventoryId);
 }
 
 

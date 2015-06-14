@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		213FD7B51B2D0FEE00BD4211 /* InventoryConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */; };
 		219671991B2C2AEB00779491 /* InventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 219671981B2C2AEB00779491 /* InventoryViewController.m */; };
 		2196719C1B2C2BAD00779491 /* InventorySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2196719B1B2C2BAD00779491 /* InventorySettingViewController.m */; };
 		2196719F1B2C79C100779491 /* Inventory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2196719E1B2C79C100779491 /* Inventory.m */; };
@@ -159,6 +160,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		213FD7B31B2D0FEE00BD4211 /* InventoryConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryConfirmViewController.h; sourceTree = "<group>"; };
+		213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryConfirmViewController.m; sourceTree = "<group>"; };
 		219671971B2C2AEB00779491 /* InventoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryViewController.h; sourceTree = "<group>"; };
 		219671981B2C2AEB00779491 /* InventoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryViewController.m; sourceTree = "<group>"; };
 		2196719A1B2C2BAD00779491 /* InventorySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventorySettingViewController.h; sourceTree = "<group>"; };
@@ -452,6 +455,8 @@
 				219671981B2C2AEB00779491 /* InventoryViewController.m */,
 				2196719A1B2C2BAD00779491 /* InventorySettingViewController.h */,
 				2196719B1B2C2BAD00779491 /* InventorySettingViewController.m */,
+				213FD7B31B2D0FEE00BD4211 /* InventoryConfirmViewController.h */,
+				213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */,
 			);
 			name = SHIFTING;
 			sourceTree = "<group>";
@@ -1186,6 +1191,7 @@
 				B04EF20B1946E60D00A95D7A /* AFHTTPRequestOperationManager.m in Sources */,
 				B001BF0219A58A97000800AD /* RequireTraceDetailViewController.m in Sources */,
 				B058550A19A2F840000C85E5 /* TuoCheckDetailViewController.m in Sources */,
+				213FD7B51B2D0FEE00BD4211 /* InventoryConfirmViewController.m in Sources */,
 				B0643D66197DF40D0036AADA /* RequireDetailViewController.m in Sources */,
 				B04EF2121946E60D00A95D7A /* AFURLSessionManager.m in Sources */,
 				B0DF644219446E5B002D044B /* TuoPrintViewController.m in Sources */,
