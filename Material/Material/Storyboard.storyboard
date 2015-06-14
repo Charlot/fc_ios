@@ -2080,7 +2080,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="确认信息" id="WUq-1A-jQR"/>
                     <connections>
-                        <outlet property="partTextField" destination="sh4-M9-Fyp" id="8OJ-ry-djD"/>
+                        <outlet property="partTextField" destination="y71-K8-mhG" id="A4H-6D-rFv"/>
                         <outlet property="positionTextField" destination="xw9-Hx-WhB" id="YMc-bd-UtS"/>
                         <outlet property="qtyTextField" destination="sh4-M9-Fyp" id="D1j-7V-YrN"/>
                         <outlet property="scanTextField" destination="bcy-Mc-dym" id="QiN-jc-EiR"/>

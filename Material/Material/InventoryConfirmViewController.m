@@ -11,9 +11,9 @@
 #import <AudioToolbox/AudioToolbox.h>
 
 @interface InventoryConfirmViewController ()<CaptuvoEventsProtocol, UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *partTextField;
 @property (weak, nonatomic) IBOutlet UITextField *positionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *qtyTextField;
-@property (weak, nonatomic) IBOutlet UITextField *partTextField;
 @property (weak, nonatomic) IBOutlet UITextField *scanTextField;
 - (IBAction)confirm:(id)sender;
 
@@ -127,6 +127,7 @@
 {
     NSString *package_id = self.scanTextField.text;
     NSString *part_id = self.partTextField.text;
+    NSLog([NSString stringWithFormat:@"the part id is %@", part_id]);
     NSString *qty = self.qtyTextField.text;
     NSString *position = self.positionTextField.text;
     
