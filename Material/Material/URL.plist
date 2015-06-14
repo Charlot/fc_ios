@@ -26,6 +26,8 @@
 	<string>/api/v3/inventory_list/processing</string>
 	<key>check_stock</key>
 	<string>/api/v3/whouse/check_stock</string>
+	<key>inventory_list_item</key>
+	<string>/api/v3/inventory_list_item</string>
 	<key>order_led</key>
 	<dict>
 		<key>state_list</key>

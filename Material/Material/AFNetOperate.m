@@ -700,4 +700,12 @@
     NSString *_check_stock = [[self URLDictionary] objectForKey:@"check_stock"];
     return [base stringByAppendingString:_check_stock];
 }
+
+-(NSString *)inventory_list_item
+{
+    NSString *base = [self baseURL];
+    NSString *_inventory_list_item = [[self URLDictionary] objectForKey:@"inventory_list_item"];
+    return [base stringByAppendingString: _inventory_list_item];
+}
+
 @end

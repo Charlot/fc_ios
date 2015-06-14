@@ -11,7 +11,11 @@
 #import <AudioToolbox/AudioToolbox.h>
 
 @interface InventoryConfirmViewController ()<CaptuvoEventsProtocol, UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *positionTextField;
+@property (weak, nonatomic) IBOutlet UITextField *qtyTextField;
+@property (weak, nonatomic) IBOutlet UITextField *partTextField;
 @property (weak, nonatomic) IBOutlet UITextField *scanTextField;
+- (IBAction)confirm:(id)sender;
 
 @end
 
@@ -33,7 +37,23 @@
 //    NSLog(@"pass inventory id is %d", self.inventroy_id);
     self.scanTextField.delegate=self;
     [self.scanTextField becomeFirstResponder];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]   initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
 }
+
+-(void)dismissKeyboard {
+    NSArray *subviews = [self.view subviews];
+    for (id objInput in subviews) {
+        if ([objInput isKindOfClass:[UITextField class]]) {
+            UITextField *theTextField = objInput;
+            if ([objInput isFirstResponder]) {
+                [theTextField resignFirstResponder];
+            }
+        }
+    }
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -83,4 +103,53 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return YES;
+}
+
+- (IBAction)confirm:(id)sender {
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
+                                              message:@"确认提交？"
+                                             delegate:self
+                                    cancelButtonTitle:@"取消"
+                                    otherButtonTitles:@"确定", nil];
+    [alert show];
+}
+
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *package_id = self.scanTextField.text;
+    NSString *part_id = self.partTextField.text;
+    NSString *qty = self.qtyTextField.text;
+    NSString *position = self.positionTextField.text;
+    
+    if(buttonIndex==1){
+        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+        [manager POST:[AFNet inventory_list_item]
+           parameters:@{@"package_id": package_id, @"part_id": part_id, @"qty": qty, @"position": position, @"inventory_list_id": self.inventroy_id}
+              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                  [AFNet.activeView stopAnimating];
+                  if([responseObject[@"result"] integerValue]==1){
+                      [AFNet alert: @"生成成功，且唯一码已入库"];
+                                        }
+                  else if([responseObject[@"result"] integerValue] == 2){
+                      [AFNet alert: @"生成成功，且唯一码未入库"];
+                  }
+                  else{
+                      [AFNet alert: @"生成失败"];
+
+                  }
+                  NSLog(@"the result is %@", responseObject[@"result"]);
+
+              }
+              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  [AFNet.activeView stopAnimating];
+                  [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+              }
+         ];
+    }
+}
 @end

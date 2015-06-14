@@ -2048,7 +2048,7 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="confirm:" destination="SlF-7X-mtn" eventType="touchUpInside" id="kSK-Zi-mGy"/>
+                                    <action selector="confirm:" destination="5nL-Gh-cfL" eventType="touchUpInside" id="xPQ-2x-5tG"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="bcy-Mc-dym">
@@ -2080,6 +2080,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="确认信息" id="WUq-1A-jQR"/>
                     <connections>
+                        <outlet property="partTextField" destination="sh4-M9-Fyp" id="8OJ-ry-djD"/>
+                        <outlet property="positionTextField" destination="xw9-Hx-WhB" id="YMc-bd-UtS"/>
+                        <outlet property="qtyTextField" destination="sh4-M9-Fyp" id="D1j-7V-YrN"/>
                         <outlet property="scanTextField" destination="bcy-Mc-dym" id="QiN-jc-EiR"/>
                     </connections>
                 </viewController>
