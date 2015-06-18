@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		213FD7B51B2D0FEE00BD4211 /* InventoryConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */; };
 		21942D731B325E8C001D5B53 /* YikuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21942D721B325E8C001D5B53 /* YikuViewController.m */; };
+		21942D771B329DFA001D5B53 /* UITextField+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 21942D761B329DFA001D5B53 /* UITextField+Extended.m */; };
 		219671991B2C2AEB00779491 /* InventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 219671981B2C2AEB00779491 /* InventoryViewController.m */; };
 		2196719C1B2C2BAD00779491 /* InventorySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2196719B1B2C2BAD00779491 /* InventorySettingViewController.m */; };
 		2196719F1B2C79C100779491 /* Inventory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2196719E1B2C79C100779491 /* Inventory.m */; };
@@ -165,6 +166,8 @@
 		213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryConfirmViewController.m; sourceTree = "<group>"; };
 		21942D711B325E8C001D5B53 /* YikuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YikuViewController.h; sourceTree = "<group>"; };
 		21942D721B325E8C001D5B53 /* YikuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YikuViewController.m; sourceTree = "<group>"; };
+		21942D751B329DFA001D5B53 /* UITextField+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Extended.h"; sourceTree = "<group>"; };
+		21942D761B329DFA001D5B53 /* UITextField+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Extended.m"; sourceTree = "<group>"; };
 		219671971B2C2AEB00779491 /* InventoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryViewController.h; sourceTree = "<group>"; };
 		219671981B2C2AEB00779491 /* InventoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryViewController.m; sourceTree = "<group>"; };
 		2196719A1B2C2BAD00779491 /* InventorySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventorySettingViewController.h; sourceTree = "<group>"; };
@@ -691,6 +694,8 @@
 				B0454CC9197600D1001476F4 /* DELIVERY */,
 				2196719D1B2C79C100779491 /* Inventory.h */,
 				2196719E1B2C79C100779491 /* Inventory.m */,
+				21942D751B329DFA001D5B53 /* UITextField+Extended.h */,
+				21942D761B329DFA001D5B53 /* UITextField+Extended.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1106,6 +1111,7 @@
 				B04EF20C1946E60D00A95D7A /* AFHTTPSessionManager.m in Sources */,
 				B01011BD1A2AC7A800F1E6EB /* SettingRemarkTableViewController.m in Sources */,
 				B066FE33194EBDB300C0019D /* LoginSETTINGViewController.m in Sources */,
+				21942D771B329DFA001D5B53 /* UITextField+Extended.m in Sources */,
 				B04EF1DB19469CBA00A95D7A /* ReceiveXiangViewController.m in Sources */,
 				B09E4CD01A303C7C0041083D /* XiangChooseDepartmentViewController.m in Sources */,
 				B0DF64351943E1D1002D044B /* PrintViewController.m in Sources */,

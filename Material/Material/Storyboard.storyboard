@@ -5038,12 +5038,22 @@
                                 </state>
                                 <connections>
                                     <action selector="confirm:" destination="5nL-Gh-cfL" eventType="touchUpInside" id="gQX-h6-sdH"/>
+                                    <action selector="confirmAction:" destination="aEA-U9-cO0" eventType="touchUpInside" id="iAU-pa-6Xo"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ER3-WZ-hSH"/>
+                    <connections>
+                        <outlet property="fromPositionTextField" destination="6h9-fh-iJ7" id="x3D-Xr-Feb"/>
+                        <outlet property="fromWhTextField" destination="2d8-S4-QEA" id="6if-Yq-r7d"/>
+                        <outlet property="packageTextField" destination="PcV-hf-IKr" id="DUX-V8-Z5J"/>
+                        <outlet property="partNrTextField" destination="Fmb-gh-ngW" id="chZ-Th-o86"/>
+                        <outlet property="qtyTextField" destination="Dxc-lv-jVY" id="j1z-D6-w0r"/>
+                        <outlet property="toPositionTextField" destination="QZZ-nm-dQn" id="sQH-d5-Kvd"/>
+                        <outlet property="toWhTextField" destination="Iyu-66-p6r" id="YlY-h2-vrK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odj-BW-xEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

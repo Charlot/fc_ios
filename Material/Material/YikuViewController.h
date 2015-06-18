@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Captuvo.h"
+#import "AFNetOperate.h"
+#import <AudioToolbox/AudioToolbox.h>
 
-@interface YikuViewController : UIViewController
+
+@interface YikuViewController : UIViewController<CaptuvoEventsProtocol, UITextFieldDelegate>
+
 
 @end
