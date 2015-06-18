@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		213FD7B51B2D0FEE00BD4211 /* InventoryConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */; };
+		21942D731B325E8C001D5B53 /* YikuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21942D721B325E8C001D5B53 /* YikuViewController.m */; };
 		219671991B2C2AEB00779491 /* InventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 219671981B2C2AEB00779491 /* InventoryViewController.m */; };
 		2196719C1B2C2BAD00779491 /* InventorySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2196719B1B2C2BAD00779491 /* InventorySettingViewController.m */; };
 		2196719F1B2C79C100779491 /* Inventory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2196719E1B2C79C100779491 /* Inventory.m */; };
@@ -162,6 +163,8 @@
 /* Begin PBXFileReference section */
 		213FD7B31B2D0FEE00BD4211 /* InventoryConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryConfirmViewController.h; sourceTree = "<group>"; };
 		213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryConfirmViewController.m; sourceTree = "<group>"; };
+		21942D711B325E8C001D5B53 /* YikuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YikuViewController.h; sourceTree = "<group>"; };
+		21942D721B325E8C001D5B53 /* YikuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YikuViewController.m; sourceTree = "<group>"; };
 		219671971B2C2AEB00779491 /* InventoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryViewController.h; sourceTree = "<group>"; };
 		219671981B2C2AEB00779491 /* InventoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryViewController.m; sourceTree = "<group>"; };
 		2196719A1B2C2BAD00779491 /* InventorySettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventorySettingViewController.h; sourceTree = "<group>"; };
@@ -457,6 +460,8 @@
 				2196719B1B2C2BAD00779491 /* InventorySettingViewController.m */,
 				213FD7B31B2D0FEE00BD4211 /* InventoryConfirmViewController.h */,
 				213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */,
+				21942D711B325E8C001D5B53 /* YikuViewController.h */,
+				21942D721B325E8C001D5B53 /* YikuViewController.m */,
 			);
 			name = SHIFTING;
 			sourceTree = "<group>";
@@ -1127,6 +1132,7 @@
 				B0FDC97219458B6F008E4B72 /* YunEditViewController.m in Sources */,
 				B04EF1DF1946A49500A95D7A /* ShopXiangTableViewCell.m in Sources */,
 				B0B468C61980FF3F00D88047 /* RequireXiangDetailViewController.m in Sources */,
+				21942D731B325E8C001D5B53 /* YikuViewController.m in Sources */,
 				B0275FD8197E443A00E579C5 /* RequireHistoryListTableViewController.m in Sources */,
 				B0FDC96919453D63008E4B72 /* YunChooseTuoViewController.m in Sources */,
 				B085F6531940183D001F01F3 /* YunTableViewController.m in Sources */,
