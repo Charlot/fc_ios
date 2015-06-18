@@ -4927,7 +4927,7 @@
             </objects>
             <point key="canvasLocation" x="736" y="9211"/>
         </scene>
-        <!--Yiku View Controller-->
+        <!--Yiku View Controller - 移库-->
         <scene sceneID="56B-Mz-hje">
             <objects>
                 <viewController id="aEA-U9-cO0" customClass="YikuViewController" sceneMemberID="viewController">
@@ -4956,7 +4956,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进入未知：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CYN-pm-Km5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进入位置：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CYN-pm-Km5">
                                 <rect key="frame" x="38" y="136" width="82" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -5044,7 +5044,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ER3-WZ-hSH"/>
+                    <navigationItem key="navigationItem" title="移库" id="ER3-WZ-hSH"/>
                     <connections>
                         <outlet property="fromPositionTextField" destination="6h9-fh-iJ7" id="x3D-Xr-Feb"/>
                         <outlet property="fromWhTextField" destination="2d8-S4-QEA" id="6if-Yq-r7d"/>
