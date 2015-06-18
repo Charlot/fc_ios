@@ -176,6 +176,7 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    
     NSString *strToWh = self.toWhTextField.text;
     NSString *strToPosition = self.toPositionTextField.text;
     NSString *strPackage = self.packageTextField.text;
@@ -184,7 +185,24 @@
     NSString *strFromWh = self.fromWhTextField.text;
     NSString *strFromPosition = self.fromPositionTextField.text;
     
+    
+    NSLog(@"CONFIRM");
             if(buttonIndex==1){
+                
+                NSArray *subviews = [self.view subviews];
+//                int i =0 ;
+                for (id objInput in subviews) {
+                    if ([objInput isKindOfClass:[UITextField class]]) {
+                        UITextField *theTextField = objInput;
+                        theTextField.text = @"";
+//                        NSLog(@"time is %d", i);
+//                        i++;
+                        
+                    }
+                }
+                [self.toWhTextField becomeFirstResponder];
+                
+
                 AFNetOperate *AFNet=[[AFNetOperate alloc] init];
                 AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
                 [manager POST:[AFNet move]
@@ -207,8 +225,9 @@
                       }
                  ];
             }
+    
 
-
+    
 }
 
 @end

@@ -151,8 +151,7 @@
                       [AFNet alert: [NSString stringWithFormat:@"生成失败"]];
 
                   }
-                  NSLog(@"the result is %@", responseObject[@"result"]);
-
+                  
               }
               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                   [AFNet.activeView stopAnimating];
