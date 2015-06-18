@@ -56,7 +56,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]   initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+
+    
     [self initController];
+}
+
+-(void)dismissKeyboard {
+    NSArray *subviews = [self.view subviews];
+    for (id objInput in subviews) {
+        if ([objInput isKindOfClass:[UITextField class]]) {
+            UITextField *theTextField = objInput;
+            if ([objInput isFirstResponder]) {
+                [theTextField resignFirstResponder];
+            }
+        }
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -111,6 +128,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)confirmAction:(id)sender {
+- (IBAction)confirmAction:(id)sender
+{
+    
+    
 }
 @end
