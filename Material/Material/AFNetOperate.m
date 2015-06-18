@@ -708,4 +708,15 @@
     return [base stringByAppendingString: _inventory_list_item];
 }
 
+/*
+ *
+ * url：/v3/whouse/move
+ */
+- (NSString *)move
+{
+    NSString *base = [self baseURL];
+    NSString *moveString = [[self URLDictionary] objectForKey:@"move"];
+    return [base stringByAppendingString: moveString];
+}
+
 @end
