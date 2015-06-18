@@ -1977,7 +1977,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMK-O6-TXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zll-gK-mGa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6148" y="7169"/>
+            <point key="canvasLocation" x="6674" y="7169"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rsE-JU-4Oz">
@@ -2088,7 +2088,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VyD-gX-ktK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2320" y="7086"/>
+            <point key="canvasLocation" x="1888" y="8462"/>
         </scene>
         <!--Storages Move View Controller-->
         <scene sceneID="YKi-Gr-VZP">
@@ -2289,7 +2289,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgq-rJ-fAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4996" y="7537"/>
+            <point key="canvasLocation" x="5522" y="7537"/>
         </scene>
         <!--History Tuo Table View Controller-->
         <scene sceneID="G3A-3a-qKW">
@@ -3013,13 +3013,14 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="f7c-He-waL" kind="relationship" relationship="viewControllers" id="UJu-J8-VaX"/>
                         <segue destination="7IZ-dF-nyM" kind="relationship" relationship="viewControllers" id="Brw-aQ-KWY"/>
                         <segue destination="HRU-5C-Dcn" kind="relationship" relationship="viewControllers" id="w7x-eL-tbw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ksS-cC-6vi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="540" y="7093"/>
+            <point key="canvasLocation" x="108" y="8469"/>
         </scene>
         <!--Inventory Setting View Controller - 个人设置-->
         <scene sceneID="ef6-V0-ezn">
@@ -3050,7 +3051,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7iZ-If-db2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1694" y="7835"/>
+            <point key="canvasLocation" x="1262" y="9211"/>
         </scene>
         <!--Navigation Controller - 收货历史-->
         <scene sceneID="bBi-6c-MDc">
@@ -4905,7 +4906,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y60-gh-DL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1822" y="6867"/>
+            <point key="canvasLocation" x="1390" y="8243"/>
         </scene>
         <!--Navigation Controller - 设置-->
         <scene sceneID="xku-qr-qqw">
@@ -4924,7 +4925,22 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4OB-7f-J08" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1168" y="7835"/>
+            <point key="canvasLocation" x="736" y="9211"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="56B-Mz-hje">
+            <objects>
+                <viewController id="aEA-U9-cO0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fYJ-1O-gLw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ER3-WZ-hSH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="odj-BW-xEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1860" y="7331"/>
         </scene>
         <!--Navigation Controller - 盘点-->
         <scene sceneID="NIq-Vl-aIh">
@@ -4943,7 +4959,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFy-Ce-cwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1296" y="6867"/>
+            <point key="canvasLocation" x="864" y="8243"/>
+        </scene>
+        <!--Navigation Controller - 移库-->
+        <scene sceneID="W3A-Wm-Kd2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f7c-He-waL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="移库" id="Wkr-iw-4BS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b1N-MD-OkP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aEA-U9-cO0" kind="relationship" relationship="rootViewController" id="QVX-cI-pkm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="93o-f3-5rd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1334" y="7331"/>
         </scene>
     </scenes>
     <resources>
@@ -4966,20 +5001,20 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2c4-Zh-zKC"/>
         <segue reference="mEd-et-lyR"/>
-        <segue reference="FcC-pN-TYA"/>
         <segue reference="SkA-08-PWt"/>
+        <segue reference="FcC-pN-TYA"/>
         <segue reference="hQ5-Fe-tiF"/>
         <segue reference="WHI-RS-rUG"/>
         <segue reference="hy6-vM-msP"/>
-        <segue reference="joq-VG-3De"/>
+        <segue reference="2c4-Zh-zKC"/>
+        <segue reference="aya-mQ-TZi"/>
+        <segue reference="UAK-rn-23P"/>
+        <segue reference="Kxl-Rh-nWd"/>
         <segue reference="tP9-hz-80H"/>
         <segue reference="Xpt-zp-Oio"/>
         <segue reference="222-NY-YhT"/>
+        <segue reference="joq-VG-3De"/>
         <segue reference="yJ1-Ae-Eed"/>
-        <segue reference="UAK-rn-23P"/>
-        <segue reference="aya-mQ-TZi"/>
-        <segue reference="Kxl-Rh-nWd"/>
     </inferredMetricsTieBreakers>
 </document>

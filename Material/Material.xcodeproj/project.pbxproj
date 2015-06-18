@@ -1030,7 +1030,7 @@
 				ORGANIZATIONNAME = brilliantech;
 				TargetAttributes = {
 					B085F60B194004CC001F01F3 = {
-						DevelopmentTeam = 58FSFGRL4P;
+						DevelopmentTeam = 49N8P8S9XE;
 					};
 					B085F626194004CC001F01F3 = {
 						TestTargetID = B085F60B194004CC001F01F3;
@@ -1351,7 +1351,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Shanghai Cai Zhuo Information Technology Co., Ltd";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Cai Zhuo Information Technology Co., Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Material/Material-Prefix.pch";
 				INFOPLIST_FILE = "Material/Material-Info.plist";
