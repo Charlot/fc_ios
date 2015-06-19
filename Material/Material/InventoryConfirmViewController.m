@@ -141,23 +141,39 @@
     return NO;
 }
 
-- (IBAction)confirm:(id)sender {
+- (IBAction)confirm:(id)sender
+{
+    if (self.positionTextField.text.length > 0)
+    {
+
+    
 //    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
 //                                              message:@"确认提交？"
 //                                             delegate:self
 //                                    cancelButtonTitle:@"取消"
 //                                    otherButtonTitles:@"确定", nil];
 //    [alert show];
-    NSArray *subviews = [self.view subviews];
-    for (id objInput in subviews) {
-        if ([objInput isKindOfClass:[UITextField class]]) {
-            UITextField *theTextField = objInput;
-            if ([objInput isFirstResponder]) {
-                NSString *value = theTextField.text;
-                NSLog(@"current value is %@", value);
+        NSArray *subviews = [self.view subviews];
+        for (id objInput in subviews) {
+            if ([objInput isKindOfClass:[UITextField class]]) {
+                UITextField *theTextField = objInput;
+                if ([objInput isFirstResponder]) {
+                    NSString *value = theTextField.text;
+                    NSLog(@"current value is %@", value);
+                }
             }
         }
     }
+    else
+    {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
+                                                      message:@"请填写库位"
+                                                     delegate:self
+                                            cancelButtonTitle:@"确定"
+                                            otherButtonTitles:nil];
+        [alert show];
+    }
+    
     
 
 }
