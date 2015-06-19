@@ -9,6 +9,7 @@
 #import "InventoryConfirmViewController.h"
 #import "AFNetOperate.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "UITextField+Extended.h"
 
 @interface InventoryConfirmViewController ()<CaptuvoEventsProtocol, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *partTextField;
@@ -30,13 +31,25 @@
     return self;
 }
 
+- (void)initController
+{
+	// Do any additional setup after loading the view.
+    //    NSLog(@"pass inventory id is %d", self.inventroy_id);
+    self.scanTextField.delegate=self;
+    [self.scanTextField becomeFirstResponder];
+    
+    self.scanTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.partTextField.delegate = self;
+    self.partTextField.nextTextField = self.qtyTextField;
+    self.qtyTextField.delegate = self;
+    self.qtyTextField.nextTextField = self.positionTextField;
+    self.positionTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-//    NSLog(@"pass inventory id is %d", self.inventroy_id);
-    self.scanTextField.delegate=self;
-    [self.scanTextField becomeFirstResponder];
+    [self initController];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]   initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
@@ -78,7 +91,7 @@
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               [AFNet.activeView stopAnimating];
               if([responseObject[@"result"] integerValue]==1){
-                  
+                  [self.positionTextField becomeFirstResponder];
               }
               else{
                   UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"系统提示"
@@ -103,23 +116,50 @@
     // Dispose of any resources that can be recreated.
 }
 
+//-(BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+//    if ((textField == self.scanTextField) || (textField == self.partTextField)
+//            || (textField == self.qtyTextField)
+//            || (textField == self.positionTextField)) {
+//        [textField resignFirstResponder];
+//    }
+//    return YES;
+//}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if ((textField == self.scanTextField) || (textField == self.partTextField)
-            || (textField == self.qtyTextField)
-            || (textField == self.positionTextField)) {
+
+    UITextField *next = textField.nextTextField;
+    if (next)
+    {
+        [next becomeFirstResponder];
+    }
+    else
+    {
         [textField resignFirstResponder];
     }
-    return YES;
+    return NO;
 }
 
 - (IBAction)confirm:(id)sender {
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
-                                              message:@"确认提交？"
-                                             delegate:self
-                                    cancelButtonTitle:@"取消"
-                                    otherButtonTitles:@"确定", nil];
-    [alert show];
+//    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
+//                                              message:@"确认提交？"
+//                                             delegate:self
+//                                    cancelButtonTitle:@"取消"
+//                                    otherButtonTitles:@"确定", nil];
+//    [alert show];
+    NSArray *subviews = [self.view subviews];
+    for (id objInput in subviews) {
+        if ([objInput isKindOfClass:[UITextField class]]) {
+            UITextField *theTextField = objInput;
+            if ([objInput isFirstResponder]) {
+                NSString *value = theTextField.text;
+                NSLog(@"current value is %@", value);
+            }
+        }
+    }
+    
+
 }
 
 
