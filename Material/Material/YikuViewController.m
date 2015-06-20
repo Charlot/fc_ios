@@ -215,10 +215,8 @@
     NSString *strFromWh = self.fromWhTextField.text;
     NSString *strFromPosition = self.fromPositionTextField.text;
     
-    
     NSLog(@"CONFIRM");
             if(buttonIndex==1){
-                
                 NSArray *subviews = [self.view subviews];
 //                int i =0 ;
                 for (id objInput in subviews) {
@@ -232,7 +230,6 @@
                 }
                 [self.toWhTextField becomeFirstResponder];
                 
-
                 AFNetOperate *AFNet=[[AFNetOperate alloc] init];
                 AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
                 [manager POST:[AFNet move]

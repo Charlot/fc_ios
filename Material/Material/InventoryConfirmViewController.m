@@ -44,6 +44,8 @@
     self.qtyTextField.delegate = self;
     self.qtyTextField.nextTextField = self.positionTextField;
     self.positionTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    self.partTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewDidLoad
@@ -83,6 +85,8 @@
 -(void)decoderDataReceived:(NSString *)data
 {
     self.scanTextField.text=data;
+    if([self.scanTextField isFirstResponder])
+    {
     //扫描到对应的号码时应该去触发receive
     AFNetOperate *AFNet=[[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
@@ -92,6 +96,7 @@
               
               [AFNet.activeView stopAnimating];
               if([responseObject[@"result"] integerValue]==1){
+                  [self.scanTextField resignFirstResponder];
                   [self.positionTextField becomeFirstResponder];
                   
               }
@@ -110,6 +115,18 @@
               [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
           }
      ];
+    }
+    
+    if ([self.partTextField isFirstResponder]) {
+        self.partTextField.text = data;
+        [self.partTextField resignFirstResponder];
+        [self.partTextField.nextTextField becomeFirstResponder];
+    }
+    
+    if ([self.positionTextField isFirstResponder]) {
+        self.positionTextField.text = data;
+        [self postData];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -169,51 +186,60 @@
 }
 
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)postData
 {
     NSString *package_id = self.scanTextField.text;
     NSString *part_id = self.partTextField.text;
-    NSLog([NSString stringWithFormat:@"the part id is %@", part_id]);
+//    NSLog([NSString stringWithFormat:@"the part id is %@", part_id]);
     NSString *qty = self.qtyTextField.text;
     NSString *position = self.positionTextField.text;
-    
-    if(buttonIndex==1){
-        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
-        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-        [manager POST:[AFNet inventory_list_item]
-           parameters:@{@"package_id": package_id, @"part_id": part_id, @"qty": qty, @"position": position, @"inventory_list_id": self.inventroy_id}
-              success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                  
-                  NSArray *subviews = [self.view subviews];
-                  for (id objInput in subviews) {
-                      if ([objInput isKindOfClass:[UITextField class]]) {
-                          UITextField *theTextField = objInput;
-                          theTextField.text = @"";
-                      }
-                  }
-                  [self.scanTextField becomeFirstResponder];
-                  
-                  [AFNet.activeView stopAnimating];
-                  if([responseObject[@"result"] integerValue]==1){
-                      
-                      [AFNet alert: [NSString stringWithFormat:@"生成成功，且唯一码已入库"]];
-                      
-                  }
-                  else if([responseObject[@"result"] integerValue] == 2){
-                      [AFNet alert: [NSString stringWithFormat:@"生成成功，且唯一码未入库"]];
-                      
-                  }
-                  else{
-                      [AFNet alert: [NSString stringWithFormat:@"生成失败"]];
 
+    
+    AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+    AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+    [manager POST:[AFNet inventory_list_item]
+       parameters:@{@"package_id": package_id, @"part_id": part_id, @"qty": qty, @"position": position, @"inventory_list_id": self.inventroy_id}
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              
+              NSArray *subviews = [self.view subviews];
+              for (id objInput in subviews) {
+                  if ([objInput isKindOfClass:[UITextField class]]) {
+                      UITextField *theTextField = objInput;
+                      theTextField.text = @"";
                   }
+              }
+              [self.scanTextField becomeFirstResponder];
+              
+              [AFNet.activeView stopAnimating];
+              if([responseObject[@"result"] integerValue]==1){
                   
+//                  [AFNet alert: [NSString stringWithFormat:@"生成成功，且唯一码已入库"]];
+                  [AFNet alertSuccess:responseObject[@"content"]];
+
               }
-              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                  [AFNet.activeView stopAnimating];
-                  [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+              else if([responseObject[@"result"] integerValue] == 2){
+//                  [AFNet alert: [NSString stringWithFormat:@"生成成功，且唯一码未入库"]];
+                  [AFNet alertSuccess:responseObject[@"content"]];
+
               }
-         ];
+              else{
+//                  [AFNet alert: [NSString stringWithFormat:@"生成失败"]];
+                  [AFNet alert:responseObject[@"content"]];
+
+              }
+              
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              [AFNet.activeView stopAnimating];
+              [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+          }
+     ];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex==1){
+        [self postData];
     }
 }
 @end
