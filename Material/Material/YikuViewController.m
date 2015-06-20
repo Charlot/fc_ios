@@ -56,6 +56,8 @@
     self.toPositionTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
     self.fromWhTextField.inputView = [[UIView alloc] initWithFrame: CGRectZero];
     self.fromPositionTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.packageTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.partNrTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
     
 //    [self.toWhTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventAllEditingEvents];
 //    
@@ -149,17 +151,18 @@
 
 -(void)decoderDataReceived:(NSString *)data
 {
-    UITextField *tmpTextFile;
     NSArray *subviews = [self.view subviews];
     for (id objInput in subviews) {
         if ([objInput isKindOfClass:[UITextField class]]) {
-            tmpTextFile = objInput;
+            UITextField *tmpTextFile = objInput;
             if ([objInput isFirstResponder]) {
                 tmpTextFile.text = data;
+                [tmpTextFile resignFirstResponder];
+                [tmpTextFile.nextTextField becomeFirstResponder];
+                break;
             }
         }
     }
-    [tmpTextFile.nextTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
