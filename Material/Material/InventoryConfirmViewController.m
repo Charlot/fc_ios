@@ -89,9 +89,11 @@
     [manager POST:[AFNet check_stock]
        parameters:@{@"package_id":data}
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              
               [AFNet.activeView stopAnimating];
               if([responseObject[@"result"] integerValue]==1){
                   [self.positionTextField becomeFirstResponder];
+                  
               }
               else{
                   UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"系统提示"
@@ -147,22 +149,22 @@
     {
 
     
-//    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
-//                                              message:@"确认提交？"
-//                                             delegate:self
-//                                    cancelButtonTitle:@"取消"
-//                                    otherButtonTitles:@"确定", nil];
-//    [alert show];
-        NSArray *subviews = [self.view subviews];
-        for (id objInput in subviews) {
-            if ([objInput isKindOfClass:[UITextField class]]) {
-                UITextField *theTextField = objInput;
-                if ([objInput isFirstResponder]) {
-                    NSString *value = theTextField.text;
-                    NSLog(@"current value is %@", value);
-                }
-            }
-        }
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
+                                              message:@"确认提交？"
+                                             delegate:self
+                                    cancelButtonTitle:@"取消"
+                                    otherButtonTitles:@"确定", nil];
+    [alert show];
+//        NSArray *subviews = [self.view subviews];
+//        for (id objInput in subviews) {
+//            if ([objInput isKindOfClass:[UITextField class]]) {
+//                UITextField *theTextField = objInput;
+//                if ([objInput isFirstResponder]) {
+//                    NSString *value = theTextField.text;
+//                    NSLog(@"current value is %@", value);
+//                }
+//            }
+//        }
     }
     else
     {
@@ -193,12 +195,22 @@
         [manager POST:[AFNet inventory_list_item]
            parameters:@{@"package_id": package_id, @"part_id": part_id, @"qty": qty, @"position": position, @"inventory_list_id": self.inventroy_id}
               success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                  
+                  NSArray *subviews = [self.view subviews];
+                  for (id objInput in subviews) {
+                      if ([objInput isKindOfClass:[UITextField class]]) {
+                          UITextField *theTextField = objInput;
+                          theTextField.text = @"";
+                      }
+                  }
+                  [self.scanTextField becomeFirstResponder];
+                  
                   [AFNet.activeView stopAnimating];
                   if([responseObject[@"result"] integerValue]==1){
                       
                       [AFNet alert: [NSString stringWithFormat:@"生成成功，且唯一码已入库"]];
-
-                                        }
+                      
+                  }
                   else if([responseObject[@"result"] integerValue] == 2){
                       [AFNet alert: [NSString stringWithFormat:@"生成成功，且唯一码未入库"]];
                       
