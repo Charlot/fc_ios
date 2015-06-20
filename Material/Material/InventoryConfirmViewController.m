@@ -166,9 +166,6 @@
                                             otherButtonTitles:nil];
         [alert show];
     }
-    
-    
-
 }
 
 

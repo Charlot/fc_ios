@@ -57,7 +57,31 @@
     self.fromWhTextField.inputView = [[UIView alloc] initWithFrame: CGRectZero];
     self.fromPositionTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
     
+//    [self.toWhTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventAllEditingEvents];
+//    
+//    [self.toPositionTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventAllEditingEvents];
+//    
+//    [self.packageTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventAllEditingEvents];}
 }
+//Just For testing
+//- (void)textFieldDidChange:(UITextField *)theTextField
+//{
+//    
+//    
+//    NSArray *subviews = [self.view subviews];
+//    for (id objInput in subviews) {
+//        if ([objInput isKindOfClass:[UITextField class]]) {
+//            UITextField *tmpTextFile = objInput;
+//            if ([objInput isFirstResponder]) {
+////                tmpTextFile.text = data;
+//                [tmpTextFile.nextTextField becomeFirstResponder];
+//
+//                NSLog( @"text changed: %@", theTextField.text);
+//                break;
+//            }
+//        }
+//    }
+//}
 
 - (void)viewDidLoad
 {
@@ -125,17 +149,17 @@
 
 -(void)decoderDataReceived:(NSString *)data
 {
+    UITextField *tmpTextFile;
     NSArray *subviews = [self.view subviews];
     for (id objInput in subviews) {
         if ([objInput isKindOfClass:[UITextField class]]) {
-            UITextField *theTextField = objInput;
+            tmpTextFile = objInput;
             if ([objInput isFirstResponder]) {
-                theTextField.text = data;
-                [theTextField.nextTextField becomeFirstResponder];
+                tmpTextFile.text = data;
             }
         }
     }
-
+    [tmpTextFile.nextTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
