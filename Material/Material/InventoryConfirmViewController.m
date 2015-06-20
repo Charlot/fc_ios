@@ -84,8 +84,9 @@
 
 -(void)decoderDataReceived:(NSString *)data
 {
-    self.scanTextField.text=data;
+    
     if([self.scanTextField isFirstResponder])
+        self.scanTextField.text=data;
     {
     //扫描到对应的号码时应该去触发receive
     AFNetOperate *AFNet=[[AFNetOperate alloc] init];
@@ -126,6 +127,11 @@
     if ([self.positionTextField isFirstResponder]) {
         self.positionTextField.text = data;
         [self postData];
+    }
+    if ([self.qtyTextField isFirstResponder]) {
+        self.qtyTextField.text = data;
+        [self.qtyTextField.nextTextField becomeFirstResponder];
+        [self.qtyTextField resignFirstResponder];
     }
 }
 
