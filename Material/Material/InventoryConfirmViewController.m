@@ -149,22 +149,13 @@
     {
 
     
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
                                               message:@"确认提交？"
                                              delegate:self
                                     cancelButtonTitle:@"取消"
                                     otherButtonTitles:@"确定", nil];
-    [alert show];
-//        NSArray *subviews = [self.view subviews];
-//        for (id objInput in subviews) {
-//            if ([objInput isKindOfClass:[UITextField class]]) {
-//                UITextField *theTextField = objInput;
-//                if ([objInput isFirstResponder]) {
-//                    NSString *value = theTextField.text;
-//                    NSLog(@"current value is %@", value);
-//                }
-//            }
-//        }
+        [alert show];
+
     }
     else
     {

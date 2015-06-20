@@ -51,6 +51,12 @@
     self.partNrTextField.nextTextField = self.fromWhTextField;
     self.fromWhTextField.nextTextField = self.fromPositionTextField;
     
+    
+    self.toWhTextField.inputView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.toPositionTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.fromWhTextField.inputView = [[UIView alloc] initWithFrame: CGRectZero];
+    self.fromPositionTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+    
 }
 
 - (void)viewDidLoad
