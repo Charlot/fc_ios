@@ -37,15 +37,19 @@
     //    NSLog(@"pass inventory id is %d", self.inventroy_id);
     self.scanTextField.delegate=self;
     [self.scanTextField becomeFirstResponder];
-    
     self.scanTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.scanTextField.nextTextField = self.positionTextField;
+    
     self.partTextField.delegate = self;
     self.partTextField.nextTextField = self.qtyTextField;
+    self.partTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     self.qtyTextField.delegate = self;
     self.qtyTextField.nextTextField = self.positionTextField;
+    
     self.positionTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    self.partTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+    
 }
 
 - (void)viewDidLoad
@@ -63,6 +67,9 @@
         if ([objInput isKindOfClass:[UITextField class]]) {
             UITextField *theTextField = objInput;
             if ([objInput isFirstResponder]) {
+//                if (theTextField == self.scanTextField) {
+//                    NSLog(@"this is scanTextField");
+//                }
                 [theTextField resignFirstResponder];
             }
         }
@@ -82,12 +89,8 @@
 }
 
 
--(void)decoderDataReceived:(NSString *)data
+- (void)postCheckStock:(NSString *)data
 {
-    
-    if([self.scanTextField isFirstResponder])
-        self.scanTextField.text=data;
-    {
     //扫描到对应的号码时应该去触发receive
     AFNetOperate *AFNet=[[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
@@ -116,22 +119,43 @@
               [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
           }
      ];
-    }
+}
+
+-(void)decoderDataReceived:(NSString *)data
+{
+//    if([self.scanTextField isFirstResponder])
+//    {
+//        self.scanTextField.text=data;
+//        [self postCheckStock:data];
+//    }
+//    
+//    if ([self.positionTextField isFirstResponder]) {
+//       [self postData];
+//    }
     
-    if ([self.partTextField isFirstResponder]) {
-        self.partTextField.text = data;
-        [self.partTextField resignFirstResponder];
-        [self.partTextField.nextTextField becomeFirstResponder];
-    }
-    
-    if ([self.positionTextField isFirstResponder]) {
-        self.positionTextField.text = data;
-        [self postData];
-    }
-    if ([self.qtyTextField isFirstResponder]) {
-        self.qtyTextField.text = data;
-        [self.qtyTextField.nextTextField becomeFirstResponder];
-        [self.qtyTextField resignFirstResponder];
+    NSArray *subviews = [self.view subviews];
+    for (id objInput in subviews) {
+        if ([objInput isKindOfClass:[UITextField class]]) {
+            UITextField *tmpTextFile = objInput;
+            if ([objInput isFirstResponder]) {
+                tmpTextFile.text = data;
+                if (tmpTextFile == self.scanTextField) {
+                    NSLog(@"this is scanTextField");
+                    [self postCheckStock:data];
+                    break;
+                }
+                
+                if (tmpTextFile == self.positionTextField) {
+                    NSLog(@"this is positionTextField");
+                    [self postData];
+                    break;
+                }
+
+                [tmpTextFile resignFirstResponder];
+                [tmpTextFile.nextTextField becomeFirstResponder];
+                break;
+            }
+        }
     }
 }
 
