@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="bRR-Yf-CoJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="bRR-Yf-CoJ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--Login-->
@@ -98,7 +99,7 @@
             </objects>
             <point key="canvasLocation" x="561" y="6268"/>
         </scene>
-        <!--LoginSETTING View Controller - 端口设置-->
+        <!--端口设置-->
         <scene sceneID="H3u-q6-McN">
             <objects>
                 <viewController id="E1U-g6-xhq" customClass="LoginSETTINGViewController" sceneMemberID="viewController">
@@ -188,7 +189,7 @@
             </objects>
             <point key="canvasLocation" x="1942" y="1892"/>
         </scene>
-        <!--Xiang Table View Controller - 已绑定箱-->
+        <!--已绑定箱-->
         <scene sceneID="mP2-FX-zyz">
             <objects>
                 <tableViewController id="OlX-Od-rDc" customClass="XiangTableViewController" sceneMemberID="viewController">
@@ -216,7 +217,7 @@
             </objects>
             <point key="canvasLocation" x="3309" y="730"/>
         </scene>
-        <!--Xiang Edit View Controller - 包装箱信息-->
+        <!--包装箱信息-->
         <scene sceneID="Gaf-Vu-tfB">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="3Vh-Uj-d9G" customClass="XiangEditViewController" sceneMemberID="viewController">
@@ -310,7 +311,7 @@
             </objects>
             <point key="canvasLocation" x="4458" y="730"/>
         </scene>
-        <!--Xiang Send View Controller - 发送箱-->
+        <!--发送箱-->
         <scene sceneID="GH4-aV-F5U">
             <objects>
                 <viewController id="Awj-vQ-PdY" customClass="XiangSendViewController" sceneMemberID="viewController">
@@ -480,7 +481,7 @@
             </objects>
             <point key="canvasLocation" x="5061" y="730"/>
         </scene>
-        <!--Xiang Choose Department View Controller - 选择部门-->
+        <!--选择部门-->
         <scene sceneID="fcv-Zl-heR">
             <objects>
                 <viewController id="v8a-iV-zYf" customClass="XiangChooseDepartmentViewController" sceneMemberID="viewController">
@@ -538,7 +539,7 @@
             </objects>
             <point key="canvasLocation" x="5575" y="730"/>
         </scene>
-        <!--Tuo Table View Controller - 已有托清单-->
+        <!--已有托清单-->
         <scene sceneID="2QD-I4-Nlu">
             <objects>
                 <tableViewController id="E6A-DL-SwZ" customClass="TuoTableViewController" sceneMemberID="viewController">
@@ -566,7 +567,7 @@
             </objects>
             <point key="canvasLocation" x="2951" y="1485"/>
         </scene>
-        <!--Tuo Base View Controller - 基础信息-->
+        <!--基础信息-->
         <scene sceneID="Ac0-0A-CIS">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="yoi-dG-8Cf" customClass="TuoBaseViewController" sceneMemberID="viewController">
@@ -621,7 +622,7 @@
             </objects>
             <point key="canvasLocation" x="3399" y="1485"/>
         </scene>
-        <!--Tuo Scan View Controller - 扫描货物-->
+        <!--扫描货物-->
         <scene sceneID="ebG-fU-fzu">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="Zq0-sm-J8a" customClass="TuoScanViewController" sceneMemberID="viewController">
@@ -914,7 +915,7 @@
             </objects>
             <point key="canvasLocation" x="5129" y="1445"/>
         </scene>
-        <!--Default Address Table View Controller - 选择收货地址-->
+        <!--选择收货地址-->
         <scene sceneID="7a8-Kn-R60">
             <objects>
                 <tableViewController id="auM-tp-hPM" customClass="DefaultAddressTableViewController" sceneMemberID="viewController">
@@ -933,7 +934,7 @@
             </objects>
             <point key="canvasLocation" x="6262" y="2239"/>
         </scene>
-        <!--Setting View Controller - 设置-->
+        <!--设置-->
         <scene sceneID="wzg-7P-S2h">
             <objects>
                 <viewController id="FJr-dh-3oV" customClass="SettingViewController" sceneMemberID="viewController">
@@ -1042,7 +1043,7 @@
             </objects>
             <point key="canvasLocation" x="2995" y="4271"/>
         </scene>
-        <!--Setting Remark Table View Controller - 设置标签规范-->
+        <!--设置标签规范-->
         <scene sceneID="83R-Rb-yAE">
             <objects>
                 <tableViewController id="jnq-Wv-ZJi" customClass="SettingRemarkTableViewController" sceneMemberID="viewController">
@@ -1052,7 +1053,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="3D3-Ky-lxj" style="IBUITableViewCellStyleDefault" id="6H5-g0-L9J">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6H5-g0-L9J" id="XfJ-Jg-lc3">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1080,7 +1081,7 @@
             </objects>
             <point key="canvasLocation" x="3389" y="4268"/>
         </scene>
-        <!--Navigation Controller - 托清单-->
+        <!--托清单-->
         <scene sceneID="mFV-ef-ChJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aQ9-QC-YMc" sceneMemberID="viewController">
@@ -1099,7 +1100,7 @@
             </objects>
             <point key="canvasLocation" x="2490" y="1485"/>
         </scene>
-        <!--Navigation Controller - 运单-->
+        <!--运单-->
         <scene sceneID="XWI-4g-a7G">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VHM-2W-26T" sceneMemberID="viewController">
@@ -1118,7 +1119,7 @@
             </objects>
             <point key="canvasLocation" x="2484" y="2862"/>
         </scene>
-        <!--Yun Table View Controller - 已有运单-->
+        <!--已有运单-->
         <scene sceneID="MvT-dG-HbV">
             <objects>
                 <tableViewController id="1kM-we-q0g" customClass="YunTableViewController" sceneMemberID="viewController">
@@ -1298,7 +1299,7 @@
             </objects>
             <point key="canvasLocation" x="3855" y="3575"/>
         </scene>
-        <!--Yun Choose Tuo View Controller - 选择托清单-->
+        <!--选择托清单-->
         <scene sceneID="vw5-dl-MVg">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="12S-J5-CbN" customClass="YunChooseTuoViewController" sceneMemberID="viewController">
@@ -1358,7 +1359,7 @@
             </objects>
             <point key="canvasLocation" x="3399" y="2862"/>
         </scene>
-        <!--Yun Info View Controller - 运单信息-->
+        <!--运单信息-->
         <scene sceneID="7bf-bm-Fvb">
             <objects>
                 <viewController id="DRM-wl-jYH" customClass="YunInfoViewController" sceneMemberID="viewController">
@@ -1425,7 +1426,7 @@
             </objects>
             <point key="canvasLocation" x="3893" y="2842"/>
         </scene>
-        <!--Yun Have Tuo Table View Controller - 已有托清单-->
+        <!--已有托清单-->
         <scene sceneID="bPg-zn-JL4">
             <objects>
                 <tableViewController id="yBs-N5-Krh" customClass="YunHaveTuoTableViewController" sceneMemberID="viewController">
@@ -1454,7 +1455,7 @@
             </objects>
             <point key="canvasLocation" x="4483" y="3567"/>
         </scene>
-        <!--Yun Send View Controller - 发送运单-->
+        <!--发送运单-->
         <scene sceneID="Lhd-bv-P5g">
             <objects>
                 <viewController id="vPP-bH-nEQ" customClass="YunSendViewController" sceneMemberID="viewController">
@@ -1559,7 +1560,7 @@
             </objects>
             <point key="canvasLocation" x="5072" y="3575"/>
         </scene>
-        <!--Receive Yun View Controller - 接收运单-->
+        <!--接收运单-->
         <scene sceneID="ufc-71-gmQ">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="SlF-7X-mtn" customClass="ReceiveYunViewController" sceneMemberID="viewController">
@@ -1656,7 +1657,7 @@
             </objects>
             <point key="canvasLocation" x="4497" y="6353"/>
         </scene>
-        <!--Receive Xiang View Controller - 接收箱-->
+        <!--接收箱-->
         <scene sceneID="EhM-J6-fAq">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="nio-Rf-31p" customClass="ReceiveXiangViewController" sceneMemberID="viewController">
@@ -1963,7 +1964,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMK-O6-TXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zll-gK-mGa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6674" y="7169"/>
+            <point key="canvasLocation" x="7206" y="7169"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rsE-JU-4Oz">
@@ -1987,7 +1988,7 @@
             </objects>
             <point key="canvasLocation" x="2518" y="6268"/>
         </scene>
-        <!--Inventory Confirm View Controller - 确认信息-->
+        <!--确认信息-->
         <scene sceneID="ZmX-el-ml2">
             <objects>
                 <viewController id="5nL-Gh-cfL" customClass="InventoryConfirmViewController" sceneMemberID="viewController">
@@ -2117,7 +2118,7 @@
             </objects>
             <point key="canvasLocation" x="4058" y="6626"/>
         </scene>
-        <!--History Receive View Controller - 收货历史-->
+        <!--收货历史-->
         <scene sceneID="eAg-Nz-RXA">
             <objects>
                 <viewController id="vIY-kI-UXy" customClass="HistoryReceiveViewController" sceneMemberID="viewController">
@@ -2165,7 +2166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UvI-Br-Yhv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3493" y="7997"/>
+            <point key="canvasLocation" x="4025" y="7997"/>
         </scene>
         <!--History Choose View Controller-->
         <scene sceneID="BVK-3x-onP">
@@ -2227,7 +2228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zv-Uc-8M9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3893" y="7994"/>
+            <point key="canvasLocation" x="4425" y="7994"/>
         </scene>
         <!--History Yun Table View Controller-->
         <scene sceneID="qls-ct-3yM">
@@ -2239,7 +2240,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="yunCell" textLabel="6SW-0z-ksI" detailTextLabel="9b6-ut-hqg" style="IBUITableViewCellStyleValue1" id="PLB-G6-lJs">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PLB-G6-lJs" id="MAz-6n-Gff">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -2275,7 +2276,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgq-rJ-fAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5522" y="7537"/>
+            <point key="canvasLocation" x="6054" y="7537"/>
         </scene>
         <!--History Tuo Table View Controller-->
         <scene sceneID="G3A-3a-qKW">
@@ -2298,7 +2299,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQJ-Ve-HoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4470" y="8249"/>
+            <point key="canvasLocation" x="5002" y="8249"/>
         </scene>
         <!--History Xiang Table View Controller-->
         <scene sceneID="bXV-Wg-qda">
@@ -2405,7 +2406,7 @@
             </objects>
             <point key="canvasLocation" x="4636" y="8985"/>
         </scene>
-        <!--Shop Setting View Controller - 设置-->
+        <!--设置-->
         <scene sceneID="4mN-rj-gGJ">
             <objects>
                 <viewController id="U8G-v2-gz0" customClass="ShopSettingViewController" sceneMemberID="viewController">
@@ -2508,7 +2509,7 @@
             </objects>
             <point key="canvasLocation" x="3022" y="10077"/>
         </scene>
-        <!--Tuo Send View Controller - 发送托清单-->
+        <!--发送托清单-->
         <scene sceneID="Pzi-qz-WdE">
             <objects>
                 <viewController id="gnP-jb-iCa" customClass="TuoSendViewController" sceneMemberID="viewController">
@@ -2746,7 +2747,7 @@
             </objects>
             <point key="canvasLocation" x="3392" y="2202"/>
         </scene>
-        <!--Tuo Print View Controller - 打印托清单-->
+        <!--打印托清单-->
         <scene sceneID="uxz-Kf-Yln">
             <objects>
                 <viewController id="6dN-Vc-dLZ" customClass="TuoPrintViewController" sceneMemberID="viewController">
@@ -2799,7 +2800,7 @@
             </objects>
             <point key="canvasLocation" x="3893" y="2180"/>
         </scene>
-        <!--Navigation Controller - 包装箱-->
+        <!--包装箱-->
         <scene sceneID="9Ah-jl-QC5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MXL-Lu-Ppy" sceneMemberID="viewController">
@@ -2818,7 +2819,7 @@
             </objects>
             <point key="canvasLocation" x="2490" y="730"/>
         </scene>
-        <!--Navigation Controller - 收货-->
+        <!--收货-->
         <scene sceneID="Z2P-43-JMf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UC0-Db-0zk" sceneMemberID="viewController">
@@ -2837,7 +2838,7 @@
             </objects>
             <point key="canvasLocation" x="2465" y="5646"/>
         </scene>
-        <!--Receive View Controller - 收货-->
+        <!--收货-->
         <scene sceneID="djc-Cg-bHv">
             <objects>
                 <viewController id="xRh-Uq-hUj" customClass="ReceiveViewController" sceneMemberID="viewController">
@@ -2883,7 +2884,7 @@
             </objects>
             <point key="canvasLocation" x="2897" y="5646"/>
         </scene>
-        <!--Receive Tuo View Controller - 接收拖-->
+        <!--接收拖-->
         <scene sceneID="qXM-bW-4V1">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="bw9-iL-tDC" customClass="ReceiveTuoViewController" sceneMemberID="viewController">
@@ -2999,6 +3000,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="XiM-QY-wDn" kind="relationship" relationship="viewControllers" id="r3I-aG-j4r"/>
                         <segue destination="f7c-He-waL" kind="relationship" relationship="viewControllers" id="UJu-J8-VaX"/>
                         <segue destination="7IZ-dF-nyM" kind="relationship" relationship="viewControllers" id="Brw-aQ-KWY"/>
                         <segue destination="HRU-5C-Dcn" kind="relationship" relationship="viewControllers" id="w7x-eL-tbw"/>
@@ -3006,9 +3008,9 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ksS-cC-6vi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="108" y="8469"/>
+            <point key="canvasLocation" x="-88" y="8103"/>
         </scene>
-        <!--Inventory Setting View Controller - 个人设置-->
+        <!--个人设置-->
         <scene sceneID="ef6-V0-ezn">
             <objects>
                 <viewController id="5NL-Sw-CAt" customClass="InventorySettingViewController" sceneMemberID="viewController">
@@ -3039,7 +3041,7 @@
             </objects>
             <point key="canvasLocation" x="1262" y="9211"/>
         </scene>
-        <!--Navigation Controller - 收货历史-->
+        <!--收货历史-->
         <scene sceneID="bBi-6c-MDc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RLF-Mb-f86" sceneMemberID="viewController">
@@ -3056,9 +3058,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9s-GU-ls3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2961" y="7997"/>
+            <point key="canvasLocation" x="3493" y="7997"/>
         </scene>
-        <!--Shop Verify Move View Controller - 打印移库单-->
+        <!--打印移库单-->
         <scene sceneID="suY-Dw-a28">
             <objects>
                 <viewController id="594-FW-mLh" customClass="ShopVerifyMoveViewController" sceneMemberID="viewController">
@@ -3220,7 +3222,7 @@
             </objects>
             <point key="canvasLocation" x="3006" y="9381"/>
         </scene>
-        <!--Navigation Controller - 设置-->
+        <!--设置-->
         <scene sceneID="tZd-WO-gnn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UBk-3d-d03" sceneMemberID="viewController">
@@ -3239,7 +3241,7 @@
             </objects>
             <point key="canvasLocation" x="2460" y="10077"/>
         </scene>
-        <!--Require Today View Controller - 今日已发送需求-->
+        <!--今日已发送需求-->
         <scene sceneID="QD2-F7-RFL">
             <objects>
                 <viewController id="2by-RK-wnH" customClass="RequireTodayViewController" sceneMemberID="viewController">
@@ -3284,7 +3286,7 @@
             </objects>
             <point key="canvasLocation" x="3015" y="10793"/>
         </scene>
-        <!--Require Generate View Controller - 生成需求-->
+        <!--生成需求-->
         <scene sceneID="DNj-Ov-iML">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="d9m-In-y9s" customClass="RequireGenerateViewController" sceneMemberID="viewController">
@@ -3656,7 +3658,7 @@
             </objects>
             <point key="canvasLocation" x="4592" y="10183"/>
         </scene>
-        <!--Require Check General Table View Controller - 核对-->
+        <!--核对-->
         <scene sceneID="DvX-QZ-pfC">
             <objects>
                 <viewController id="PfK-jM-7wC" customClass="RequireCheckGeneralTableViewController" sceneMemberID="viewController">
@@ -3701,7 +3703,7 @@
             </objects>
             <point key="canvasLocation" x="5091" y="9666"/>
         </scene>
-        <!--Require Check Detail Table View Controller - 核对详细-->
+        <!--核对详细-->
         <scene sceneID="ZAg-kj-Qxi">
             <objects>
                 <tableViewController id="jLj-hh-Vd2" customClass="RequireCheckDetailTableViewController" sceneMemberID="viewController">
@@ -3816,7 +3818,7 @@
             </objects>
             <point key="canvasLocation" x="3436" y="11809"/>
         </scene>
-        <!--Require Print View Controller - 打印-->
+        <!--打印-->
         <scene sceneID="L9X-mX-YbL">
             <objects>
                 <viewController id="rcc-cJ-RHf" customClass="RequirePrintViewController" sceneMemberID="viewController">
@@ -3912,7 +3914,7 @@
             </objects>
             <point key="canvasLocation" x="1930" y="11093"/>
         </scene>
-        <!--Require History View Controller - 查看已发送需求单-->
+        <!--查看已发送需求单-->
         <scene sceneID="7zo-ln-rvH">
             <objects>
                 <viewController id="Pbv-DW-CHb" customClass="RequireHistoryViewController" sceneMemberID="viewController">
@@ -3962,7 +3964,7 @@
             </objects>
             <point key="canvasLocation" x="2995" y="11809"/>
         </scene>
-        <!--Require Setting View Controller - 设置-->
+        <!--设置-->
         <scene sceneID="wvs-87-AvZ">
             <objects>
                 <viewController id="6jc-Nm-gXY" customClass="RequireSettingViewController" sceneMemberID="viewController">
@@ -4025,7 +4027,7 @@
             </objects>
             <point key="canvasLocation" x="3015" y="13411"/>
         </scene>
-        <!--Setting Remark Table View Controller - 设置标签规范-->
+        <!--设置标签规范-->
         <scene sceneID="ekZ-4g-3Qo">
             <objects>
                 <tableViewController id="IHL-za-2Df" customClass="SettingRemarkTableViewController" sceneMemberID="viewController">
@@ -4063,7 +4065,7 @@
             </objects>
             <point key="canvasLocation" x="3439" y="13411"/>
         </scene>
-        <!--Navigation Controller - 设置-->
+        <!--设置-->
         <scene sceneID="vHe-hc-MXd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="beQ-9b-e43" sceneMemberID="viewController">
@@ -4100,7 +4102,7 @@
             </objects>
             <point key="canvasLocation" x="35" y="6268"/>
         </scene>
-        <!--Navigation Controller - 生成需求-->
+        <!--生成需求-->
         <scene sceneID="mID-Pj-fqG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZPs-p5-C15" sceneMemberID="viewController">
@@ -4119,7 +4121,7 @@
             </objects>
             <point key="canvasLocation" x="2489" y="10793"/>
         </scene>
-        <!--Navigation Controller - 需求历史-->
+        <!--需求历史-->
         <scene sceneID="CxO-qS-wgT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="I8p-AO-0Zt" sceneMemberID="viewController">
@@ -4138,7 +4140,7 @@
             </objects>
             <point key="canvasLocation" x="2489" y="11809"/>
         </scene>
-        <!--Require Trace View Controller - 状态查询-->
+        <!--状态查询-->
         <scene sceneID="1LG-PW-Ndy">
             <objects>
                 <viewController id="kCc-Ot-fDb" customClass="RequireTraceViewController" sceneMemberID="viewController">
@@ -4344,7 +4346,7 @@
             </objects>
             <point key="canvasLocation" x="3440" y="12637"/>
         </scene>
-        <!--Navigation Controller - 设置-->
+        <!--设置-->
         <scene sceneID="Q1i-ZI-yUj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Om7-OR-Xbc" sceneMemberID="viewController">
@@ -4363,7 +4365,7 @@
             </objects>
             <point key="canvasLocation" x="2489" y="13411"/>
         </scene>
-        <!--Role View Controller - 角色选择-->
+        <!--角色选择-->
         <scene sceneID="rbv-Hp-tKM">
             <objects>
                 <viewController id="Qmp-NQ-y9e" customClass="RoleViewController" sceneMemberID="viewController">
@@ -4448,7 +4450,7 @@
             </objects>
             <point key="canvasLocation" x="3434" y="19160"/>
         </scene>
-        <!--Product Setting View Controller - 设置-->
+        <!--设置-->
         <scene sceneID="NV9-LX-W46">
             <objects>
                 <viewController id="Vh6-Vf-E9H" customClass="ProductSettingViewController" sceneMemberID="viewController">
@@ -4501,7 +4503,7 @@
             </objects>
             <point key="canvasLocation" x="2314" y="18226"/>
         </scene>
-        <!--View Controller - 移库-->
+        <!--移库-->
         <scene sceneID="D2q-UK-uHI">
             <objects>
                 <viewController id="YBS-z1-vEg" sceneMemberID="viewController">
@@ -4517,7 +4519,7 @@
             </objects>
             <point key="canvasLocation" x="2902" y="14968"/>
         </scene>
-        <!--Product Receive View Controller - 收货-->
+        <!--收货-->
         <scene sceneID="cpP-x8-Gzw">
             <objects>
                 <viewController id="HQ8-ml-xEu" customClass="ProductReceiveViewController" sceneMemberID="viewController">
@@ -4667,7 +4669,7 @@
             </objects>
             <point key="canvasLocation" x="2281" y="15306"/>
         </scene>
-        <!--Navigation Controller - 移库单-->
+        <!--移库单-->
         <scene sceneID="qnW-6c-nlf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OhD-mD-1hB" sceneMemberID="viewController">
@@ -4686,7 +4688,7 @@
             </objects>
             <point key="canvasLocation" x="2480" y="9381"/>
         </scene>
-        <!--Navigation Controller - 状态查询-->
+        <!--状态查询-->
         <scene sceneID="8Vn-2E-dDZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IeN-Qn-DOt" sceneMemberID="viewController">
@@ -4705,7 +4707,7 @@
             </objects>
             <point key="canvasLocation" x="2496" y="12637"/>
         </scene>
-        <!--Product Check View Controller - 盘点-->
+        <!--盘点-->
         <scene sceneID="KOk-e4-FAt">
             <objects>
                 <viewController id="MJ7-uo-M58" customClass="ProductCheckViewController" sceneMemberID="viewController">
@@ -4739,7 +4741,7 @@
             </objects>
             <point key="canvasLocation" x="1199" y="16638"/>
         </scene>
-        <!--Navigation Controller - 发货-->
+        <!--发货-->
         <scene sceneID="2IN-Rz-TsV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pVp-uD-3ae" sceneMemberID="viewController">
@@ -4758,7 +4760,7 @@
             </objects>
             <point key="canvasLocation" x="2902" y="17090"/>
         </scene>
-        <!--Navigation Controller - 查询-->
+        <!--查询-->
         <scene sceneID="fyw-Qn-0u8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rad-6g-hJS" sceneMemberID="viewController">
@@ -4792,7 +4794,7 @@
             </objects>
             <point key="canvasLocation" x="3429" y="18484"/>
         </scene>
-        <!--Navigation Controller - 盘点-->
+        <!--盘点-->
         <scene sceneID="zBW-2V-vvX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ub8-Sp-Xsu" sceneMemberID="viewController">
@@ -4811,7 +4813,7 @@
             </objects>
             <point key="canvasLocation" x="2897" y="18484"/>
         </scene>
-        <!--Navigation Controller - 设置-->
+        <!--设置-->
         <scene sceneID="tga-9Z-md4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X7l-o3-UdB" sceneMemberID="viewController">
@@ -4830,7 +4832,7 @@
             </objects>
             <point key="canvasLocation" x="2897" y="19160"/>
         </scene>
-        <!--Navigation Controller - 托盘入库-->
+        <!--托盘入库-->
         <scene sceneID="Pam-bM-Fsl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fUf-8Y-5Xp" sceneMemberID="viewController">
@@ -4849,7 +4851,7 @@
             </objects>
             <point key="canvasLocation" x="3526" y="6626"/>
         </scene>
-        <!--Inventory View Controller - 盘点-->
+        <!--盘点-->
         <scene sceneID="oHQ-r8-WE0">
             <objects>
                 <viewController id="aTO-6r-F9K" customClass="InventoryViewController" sceneMemberID="viewController">
@@ -4892,9 +4894,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y60-gh-DL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1390" y="8243"/>
+            <point key="canvasLocation" x="1922" y="8243"/>
         </scene>
-        <!--Navigation Controller - 设置-->
+        <!--设置-->
         <scene sceneID="xku-qr-qqw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HRU-5C-Dcn" sceneMemberID="viewController">
@@ -4913,7 +4915,7 @@
             </objects>
             <point key="canvasLocation" x="736" y="9211"/>
         </scene>
-        <!--Yiku View Controller - 移库-->
+        <!--移库-->
         <scene sceneID="56B-Mz-hje">
             <objects>
                 <viewController id="aEA-U9-cO0" customClass="YikuViewController" sceneMemberID="viewController">
@@ -5043,9 +5045,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odj-BW-xEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1860" y="7331"/>
+            <point key="canvasLocation" x="2392" y="7331"/>
         </scene>
-        <!--Navigation Controller - 盘点-->
+        <!--View Controller-->
+        <scene sceneID="5iz-b6-4kO">
+            <objects>
+                <viewController id="8kF-ob-7De" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yRF-F9-tHQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mC5-bh-HDp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YhR-Mp-Fv0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1160" y="7636"/>
+        </scene>
+        <!--盘点-->
         <scene sceneID="NIq-Vl-aIh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7IZ-dF-nyM" sceneMemberID="viewController">
@@ -5062,9 +5079,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFy-Ce-cwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="864" y="8243"/>
+            <point key="canvasLocation" x="1396" y="8243"/>
         </scene>
-        <!--Navigation Controller - 移库-->
+        <!--移库-->
         <scene sceneID="W3A-Wm-Kd2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f7c-He-waL" sceneMemberID="viewController">
@@ -5081,7 +5098,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="93o-f3-5rd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1334" y="7331"/>
+            <point key="canvasLocation" x="1866" y="7331"/>
+        </scene>
+        <!--查库-->
+        <scene sceneID="c3T-ac-Oni">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XiM-QY-wDn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="查库" image="find" id="3Hv-UW-TW3"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hGV-h5-uae">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8kF-ob-7De" kind="relationship" relationship="rootViewController" id="fpW-ti-Ajv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b4E-7n-akl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="628" y="7636"/>
         </scene>
     </scenes>
     <resources>

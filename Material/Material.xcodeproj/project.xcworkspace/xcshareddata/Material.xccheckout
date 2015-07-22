@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>FA0738D122065BCACA2B5BB12E98F1B62CCC578E</key>
-		<string>https://github.com/pptalent/fc_ios.git</string>
+		<string>https://github.com/Charlot/fc_ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Material/Material.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/pptalent/fc_ios.git</string>
+	<string>https://github.com/Charlot/fc_ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
