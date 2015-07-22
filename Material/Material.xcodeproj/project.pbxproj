@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182905691B5F936B0092386A /* ChaKuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182905681B5F936B0092386A /* ChaKuViewController.m */; };
 		213FD7B51B2D0FEE00BD4211 /* InventoryConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */; };
 		21942D731B325E8C001D5B53 /* YikuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21942D721B325E8C001D5B53 /* YikuViewController.m */; };
 		21942D771B329DFA001D5B53 /* UITextField+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 21942D761B329DFA001D5B53 /* UITextField+Extended.m */; };
@@ -162,6 +163,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		182905671B5F936B0092386A /* ChaKuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChaKuViewController.h; sourceTree = "<group>"; };
+		182905681B5F936B0092386A /* ChaKuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChaKuViewController.m; sourceTree = "<group>"; };
 		213FD7B31B2D0FEE00BD4211 /* InventoryConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryConfirmViewController.h; sourceTree = "<group>"; };
 		213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryConfirmViewController.m; sourceTree = "<group>"; };
 		21942D711B325E8C001D5B53 /* YikuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YikuViewController.h; sourceTree = "<group>"; };
@@ -465,6 +468,8 @@
 				213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */,
 				21942D711B325E8C001D5B53 /* YikuViewController.h */,
 				21942D721B325E8C001D5B53 /* YikuViewController.m */,
+				182905671B5F936B0092386A /* ChaKuViewController.h */,
+				182905681B5F936B0092386A /* ChaKuViewController.m */,
 			);
 			name = SHIFTING;
 			sourceTree = "<group>";
@@ -1210,6 +1215,7 @@
 				B085F64F194014A8001F01F3 /* KeychainItemWrapper.m in Sources */,
 				B04244D01A1EDEEC00AAFD24 /* RoleViewController.m in Sources */,
 				B0CC6AEA1A4D12020047FF7F /* RequireCheckGeneralTableViewCell.m in Sources */,
+				182905691B5F936B0092386A /* ChaKuViewController.m in Sources */,
 				B04EF20E1946E60D00A95D7A /* AFSecurityPolicy.m in Sources */,
 				B07292181A25AE4C009483D8 /* ReceiveYunViewController.m in Sources */,
 				B04244E61A1F3ABA00AAFD24 /* ProductXiangTableViewCell.m in Sources */,

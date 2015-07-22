@@ -4037,7 +4037,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="ybg-TL-7Ek" style="IBUITableViewCellStyleDefault" id="dy5-lS-j9m">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dy5-lS-j9m" id="swN-XN-rft">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -4894,7 +4894,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y60-gh-DL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1922" y="8243"/>
+            <point key="canvasLocation" x="1508" y="8239"/>
         </scene>
         <!--设置-->
         <scene sceneID="xku-qr-qqw">
@@ -5047,10 +5047,10 @@
             </objects>
             <point key="canvasLocation" x="2392" y="7331"/>
         </scene>
-        <!--View Controller-->
+        <!--Cha Ku View Controller-->
         <scene sceneID="5iz-b6-4kO">
             <objects>
-                <viewController id="8kF-ob-7De" sceneMemberID="viewController">
+                <viewController id="8kF-ob-7De" customClass="ChaKuViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yRF-F9-tHQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5069,12 +5069,6 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="vfY-i4-W1b">
-                                <rect key="frame" x="19" y="166" width="244" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="OLD-c9-SjY">
                                 <rect key="frame" x="19" y="260" width="244" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -5091,12 +5085,23 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="confirmAction:" destination="8kF-ob-7De" eventType="touchUpInside" id="iar-Ag-oQV"/>
+                                </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="vfY-i4-W1b">
+                                <rect key="frame" x="16" y="174" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="mC5-bh-HDp"/>
                     <connections>
+                        <outlet property="partTextField" destination="vfY-i4-W1b" id="TvJ-FX-gNy"/>
+                        <outlet property="whTextField" destination="OLD-c9-SjY" id="8jA-sa-i1Y"/>
                         <segue destination="gN6-St-Txc" kind="push" id="kht-S9-KFJ"/>
                     </connections>
                 </viewController>
@@ -5150,7 +5155,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFy-Ce-cwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1396" y="8243"/>
+            <point key="canvasLocation" x="744" y="8309"/>
         </scene>
         <!--移库-->
         <scene sceneID="W3A-Wm-Kd2">

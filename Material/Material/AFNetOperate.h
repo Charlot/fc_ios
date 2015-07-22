@@ -114,4 +114,6 @@
 -(NSString *)check_stock;
 -(NSString *)inventory_list_item;
 -(NSString *)move;
+
+-(NSString *)get_positions;
 @end

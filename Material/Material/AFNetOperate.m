@@ -719,4 +719,16 @@
     return [base stringByAppendingString: moveString];
 }
 
+
+/*
+ url: /v1/parts/get_positions
+ */
+- (NSString *)get_positions
+{
+    NSString *base = [self baseURL];
+    NSString *get_positionsString = [[self URLDictionary] objectForKey: @"get_positions"];
+    return [base stringByAppendingString: get_positionsString];
+}
+
+
 @end
