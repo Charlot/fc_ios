@@ -9,6 +9,7 @@
 #import "ChaKuViewController.h"
 
 #import "UITextField+Extended.h"
+#import "QueryPositionTableViewController.h"
 
 
 @interface ChaKuViewController ()
@@ -104,7 +105,7 @@
                           NSDictionary *dic= resultArray[i];
                           [dataList addObject: dic];
                       }
-//                      [self performSegueWithIdentifier:@"queryRequire" sender:@{@"billArray": [billList copy]}];
+                      [self performSegueWithIdentifier:@"getPosition" sender:@{@"positionArray": [dataList copy]}];
                   }
                   else
                   {
@@ -119,6 +120,17 @@
          ];
     }
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"getPosition"]){
+        QueryPositionTableViewController *qpTV=segue.destinationViewController;
+        qpTV.positionArray=[sender objectForKey:@"positionArray"];
+    }
+}
+
 
 
 @end

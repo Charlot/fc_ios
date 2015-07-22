@@ -5102,24 +5102,24 @@
                     <connections>
                         <outlet property="partTextField" destination="vfY-i4-W1b" id="TvJ-FX-gNy"/>
                         <outlet property="whTextField" destination="OLD-c9-SjY" id="8jA-sa-i1Y"/>
-                        <segue destination="gN6-St-Txc" kind="push" id="kht-S9-KFJ"/>
+                        <segue destination="gN6-St-Txc" kind="push" identifier="getPosition" id="kht-S9-KFJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YhR-Mp-Fv0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="754" y="7477"/>
+            <point key="canvasLocation" x="768" y="7217"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Query Position Table View Controller-->
         <scene sceneID="xzE-Wd-7Cb">
             <objects>
-                <tableViewController id="gN6-St-Txc" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IBa-2h-Yc0">
+                <tableViewController id="gN6-St-Txc" customClass="QueryPositionTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="IBa-2h-Yc0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mNz-NV-qGZ">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="114" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mNz-NV-qGZ" id="tB6-Cg-T0m">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -5136,7 +5136,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mIg-xh-25v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1135" y="7477"/>
+            <point key="canvasLocation" x="1205" y="7217"/>
         </scene>
         <!--盘点-->
         <scene sceneID="NIq-Vl-aIh">

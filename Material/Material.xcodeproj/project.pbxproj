@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1820CE551B5FDD3B004EB49D /* QueryPositionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820CE541B5FDD3B004EB49D /* QueryPositionTableViewController.m */; };
 		182905691B5F936B0092386A /* ChaKuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182905681B5F936B0092386A /* ChaKuViewController.m */; };
 		213FD7B51B2D0FEE00BD4211 /* InventoryConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */; };
 		21942D731B325E8C001D5B53 /* YikuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21942D721B325E8C001D5B53 /* YikuViewController.m */; };
@@ -163,6 +164,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1820CE531B5FDD3B004EB49D /* QueryPositionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryPositionTableViewController.h; sourceTree = "<group>"; };
+		1820CE541B5FDD3B004EB49D /* QueryPositionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryPositionTableViewController.m; sourceTree = "<group>"; };
 		182905671B5F936B0092386A /* ChaKuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChaKuViewController.h; sourceTree = "<group>"; };
 		182905681B5F936B0092386A /* ChaKuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChaKuViewController.m; sourceTree = "<group>"; };
 		213FD7B31B2D0FEE00BD4211 /* InventoryConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryConfirmViewController.h; sourceTree = "<group>"; };
@@ -470,6 +473,8 @@
 				21942D721B325E8C001D5B53 /* YikuViewController.m */,
 				182905671B5F936B0092386A /* ChaKuViewController.h */,
 				182905681B5F936B0092386A /* ChaKuViewController.m */,
+				1820CE531B5FDD3B004EB49D /* QueryPositionTableViewController.h */,
+				1820CE541B5FDD3B004EB49D /* QueryPositionTableViewController.m */,
 			);
 			name = SHIFTING;
 			sourceTree = "<group>";
@@ -1165,6 +1170,7 @@
 				B037ECFA194BDC50008C456E /* YunTableViewCell.m in Sources */,
 				B07CE571198B8CAA000FD578 /* RequireCheckBill.m in Sources */,
 				B0CC6AE01A4CFBC00047FF7F /* RequireCheckGeneralTableViewController.m in Sources */,
+				1820CE551B5FDD3B004EB49D /* QueryPositionTableViewController.m in Sources */,
 				B0DF644519448B67002D044B /* Yun.m in Sources */,
 				B06139811941680C00A0CF62 /* Xiang.m in Sources */,
 				B04244E11A1F289800AAFD24 /* ProductReceiveTuoViewController.m in Sources */,
