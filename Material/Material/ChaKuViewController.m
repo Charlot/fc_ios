@@ -25,12 +25,58 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self initTextField];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[Captuvo sharedCaptuvoDevice] removeCaptuvoDelegate:self];
+}
+
+- (void)initTextField
+{
+    // Do any additional setup after loading the view.
+    self.partTextField.delegate = self;
+    [self.partTextField becomeFirstResponder];
+    
+    
+    self.whTextField.delegate = self;
+//    [self.whTextField setKeyboardAppearance:UIKeyboardAppearanceAlert];
+//    self.whTextField.keyboardAppearance = (SYSTEM_VERSION_LESS_THAN(@"7.0") ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDark);
+    
+    self.partTextField.inputView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.whTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+
+-(void)decoderDataReceived:(NSString *)data
+{
+    NSArray *subviews = [self.view subviews];
+    for (id objInput in subviews) {
+        if ([objInput isKindOfClass:[UITextField class]]) {
+            UITextField *tmpTextFile = objInput;
+            if ([objInput isFirstResponder]) {
+                tmpTextFile.text = data;
+                [tmpTextFile resignFirstResponder];
+                [tmpTextFile.nextTextField becomeFirstResponder];
+                break;
+            }
+        }
+    }
+}
+
 
 /*
 #pragma mark - Navigation
