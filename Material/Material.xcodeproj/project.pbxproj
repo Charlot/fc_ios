@@ -15,6 +15,7 @@
 		219671991B2C2AEB00779491 /* InventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 219671981B2C2AEB00779491 /* InventoryViewController.m */; };
 		2196719C1B2C2BAD00779491 /* InventorySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2196719B1B2C2BAD00779491 /* InventorySettingViewController.m */; };
 		2196719F1B2C79C100779491 /* Inventory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2196719E1B2C79C100779491 /* Inventory.m */; };
+		94E033101BFBFE6600372E70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E0330F1BFBFE6600372E70 /* LaunchScreen.storyboard */; };
 		B001BEFF19A58A88000800AD /* RequireTraceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001BEFE19A58A88000800AD /* RequireTraceViewController.m */; };
 		B001BF0219A58A97000800AD /* RequireTraceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B001BF0119A58A97000800AD /* RequireTraceDetailViewController.m */; };
 		B001BF0519A59A90000800AD /* DrawLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B001BF0419A59A90000800AD /* DrawLight.m */; };
@@ -180,6 +181,7 @@
 		2196719B1B2C2BAD00779491 /* InventorySettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventorySettingViewController.m; sourceTree = "<group>"; };
 		2196719D1B2C79C100779491 /* Inventory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Inventory.h; sourceTree = "<group>"; };
 		2196719E1B2C79C100779491 /* Inventory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Inventory.m; sourceTree = "<group>"; };
+		94E0330F1BFBFE6600372E70 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B001BEFD19A58A88000800AD /* RequireTraceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireTraceViewController.h; sourceTree = "<group>"; };
 		B001BEFE19A58A88000800AD /* RequireTraceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireTraceViewController.m; sourceTree = "<group>"; };
 		B001BF0019A58A97000800AD /* RequireTraceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireTraceDetailViewController.h; sourceTree = "<group>"; };
@@ -879,6 +881,7 @@
 				B0BB1D8B1A2DBB5E0036AF61 /* Images.xcassets */,
 				B085F616194004CC001F01F3 /* Supporting Files */,
 				B06E027419403D3D001B7899 /* Storyboard.storyboard */,
+				94E0330F1BFBFE6600372E70 /* LaunchScreen.storyboard */,
 			);
 			path = Material;
 			sourceTree = "<group>";
@@ -1088,6 +1091,7 @@
 				B037ECFB194BDC50008C456E /* YunTableViewCell.xib in Resources */,
 				B08B8F0E1953D39E009739DB /* TuoTableViewCell.xib in Resources */,
 				B04EF1E01946A49500A95D7A /* ShopXiangTableViewCell.xib in Resources */,
+				94E033101BFBFE6600372E70 /* LaunchScreen.storyboard in Resources */,
 				B058550419A2F800000C85E5 /* TuoCheckTableViewCell.xib in Resources */,
 				B04EF1D51946888900A95D7A /* ShopTuoTableViewCell.xib in Resources */,
 				B04244E71A1F3ABA00AAFD24 /* ProductXiangTableViewCell.xib in Resources */,
