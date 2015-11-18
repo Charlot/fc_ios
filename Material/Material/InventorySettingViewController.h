@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InventorySettingViewController : UIViewController
+@interface InventorySettingViewController
+    : UIViewController <UITextFieldDelegate, UIPickerViewDataSource,
+                        UIPickerViewDelegate>
 
 @end
