@@ -46,6 +46,18 @@
 	<string>/api/v3/movement/movement_detail</string>
 	<key>delete_movement_list</key>
 	<string>/api/v3/movement_list</string>
+	<key>create_inventory_list_item</key>
+	<string>/api/v3/inventory_list_item/inventory_item_list</string>
+	<key>inventory_list_position</key>
+	<string>/api/v3/inventory_list/inventory_list_position</string>
+	<key>inventory_list_condition_item</key>
+	<string>/api/v3/inventory_list_item/inventory_item_list</string>
+	<key>update_inventory_list_items</key>
+	<string>/api/v3/inventory_list_item/data_update</string>
+	<key>delete_inventory_list_items</key>
+	<string>/api/v3/inventory_list_item</string>
+	<key>get_package_info</key>
+	<string>/api/v1/packages</string>
 	<key>order_led</key>
 	<dict>
 		<key>state_list</key>

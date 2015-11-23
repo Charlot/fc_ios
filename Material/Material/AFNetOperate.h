@@ -180,4 +180,46 @@
  *  @return <#return value description#>
  */
 - (NSString *)DeleteMovementList;
+
+/**
+ *  给某个盘点单生成一个盘点项
+ *
+ *  @return <#return value description#>
+ */
+- (NSString *)CreateInventoryListItem;
+
+/**
+ *  返回的是一个盘点单锁盘点的库位LIST
+ *
+ *  @return <#return value description#>
+ */
+- (NSString *)InventoryListPosition;
+
+/**
+ *  返回一个盘点单里已经盘点的记录详细
+ *
+ *  @return <#return value description#>
+ */
+- (NSString *)InventoryListConditionItem;
+
+/**
+ *  更新一个盘点项的内容
+
+ *
+ *  @return <#return value description#>
+ */
+- (NSString *)UpdateInventoryListItems;
+/**
+ *  删除一个盘点项
+ *
+ *  @return <#return value description#>
+ */
+- (NSString *)DeleteInventoryListItems;
+
+/**
+ *  获取一个唯一码的详细信息
+ *
+ *  @return <#return value description#>
+ */
+- (NSString *)GetPackageInfo;
 @end

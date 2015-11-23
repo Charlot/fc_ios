@@ -832,4 +832,46 @@
   return [base stringByAppendingString:delete_movement_list];
 }
 
+- (NSString *)CreateInventoryListItem {
+  NSString *base = [self baseURL];
+  NSString *create_inventory_list_item =
+      [[self URLDictionary] objectForKey:@"create_inventory_list_item"];
+  return [base stringByAppendingString:create_inventory_list_item];
+}
+
+- (NSString *)InventoryListPosition {
+  NSString *base = [self baseURL];
+  NSString *inventory_list_position =
+      [[self URLDictionary] objectForKey:@"inventory_list_position"];
+  return [base stringByAppendingString:inventory_list_position];
+}
+
+- (NSString *)InventoryListConditionItem {
+  NSString *base = [self baseURL];
+  NSString *inventory_list_condition_item =
+      [[self URLDictionary] objectForKey:@"inventory_list_condition_item"];
+  return [base stringByAppendingString:inventory_list_condition_item];
+}
+
+- (NSString *)UpdateInventoryListItems {
+  NSString *base = [self baseURL];
+  NSString *update_inventory_list_items =
+      [[self URLDictionary] objectForKey:@"update_inventory_list_items"];
+  return [base stringByAppendingString:update_inventory_list_items];
+}
+
+- (NSString *)DeleteInventoryListItems {
+  NSString *base = [self baseURL];
+  NSString *delete_inventory_list_items =
+      [[self URLDictionary] objectForKey:@"delete_inventory_list_items"];
+  return [base stringByAppendingString:delete_inventory_list_items];
+}
+
+- (NSString *)GetPackageInfo {
+  NSString *base = [self baseURL];
+  NSString *get_package_info =
+      [[self URLDictionary] objectForKey:@"get_package_info"];
+  return [base stringByAppendingString:get_package_info];
+}
+
 @end
