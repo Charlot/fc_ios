@@ -2205,6 +2205,25 @@
             </objects>
             <point key="canvasLocation" x="2686" y="7399"/>
         </scene>
+        <!--Inventory Histroy View Controller-->
+        <scene sceneID="o6q-7e-Rv6">
+            <objects>
+                <viewController id="f5D-QB-TRU" customClass="InventoryHistroyViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HaH-la-Vwl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YbV-4F-g9q"/>
+                    <connections>
+                        <segue destination="RgY-9t-SPx" kind="push" id="qcd-dL-ysH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zo8-4P-zi4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1585" y="8791"/>
+        </scene>
         <!--确认信息-->
         <scene sceneID="ZmX-el-ml2">
             <objects>
@@ -2302,7 +2321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VyD-gX-ktK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1888" y="8462"/>
+            <point key="canvasLocation" x="2290" y="8628"/>
         </scene>
         <!--Storages Move View Controller-->
         <scene sceneID="YKi-Gr-VZP">
@@ -5218,6 +5237,25 @@
             </objects>
             <point key="canvasLocation" x="2281" y="15306"/>
         </scene>
+        <!--Inventory Position View Controller-->
+        <scene sceneID="il6-h5-nBD">
+            <objects>
+                <viewController id="RgY-9t-SPx" customClass="InventoryPositionViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cwn-Se-aT9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dlA-P1-m36"/>
+                    <connections>
+                        <segue destination="5nL-Gh-cfL" kind="push" id="X6d-Qi-jCw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nRN-qk-tWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1942" y="8731"/>
+        </scene>
         <!--移库单-->
         <scene sceneID="qnW-6c-nlf">
             <objects>
@@ -5430,7 +5468,7 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="5nL-Gh-cfL" kind="push" identifier="confirm" id="ymp-81-CJa"/>
+                                    <segue destination="f5D-QB-TRU" kind="push" id="ksf-EC-vHd"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择盘点单：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ttx-FR-qMs">
@@ -5457,7 +5495,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y60-gh-DL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508" y="8239"/>
+            <point key="canvasLocation" x="1130" y="8545"/>
         </scene>
         <!--设置-->
         <scene sceneID="xku-qr-qqw">
@@ -5750,7 +5788,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mNz-NV-qGZ">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mNz-NV-qGZ" id="tB6-Cg-T0m">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>

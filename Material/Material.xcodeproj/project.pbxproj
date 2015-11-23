@@ -19,6 +19,8 @@
 		940E8C651C00B57E000CCA71 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 940E8C641C00B57E000CCA71 /* libsqlite3.dylib */; };
 		940E8C671C00B879000CCA71 /* wmsdb.sql in Resources */ = {isa = PBXBuildFile; fileRef = 940E8C661C00B879000CCA71 /* wmsdb.sql */; };
 		940E8C6A1C00B930000CCA71 /* Movement.m in Sources */ = {isa = PBXBuildFile; fileRef = 940E8C691C00B930000CCA71 /* Movement.m */; };
+		9420D5191C02BD4E00AA1CB5 /* InventoryHistroyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D5181C02BD4E00AA1CB5 /* InventoryHistroyViewController.m */; };
+		9420D51C1C02BD7200AA1CB5 /* InventoryPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D51B1C02BD7200AA1CB5 /* InventoryPositionViewController.m */; };
 		943701391BFCC84E002EDDEC /* ShiftingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 943701381BFCC84E002EDDEC /* ShiftingViewController.m */; };
 		94CB3DEB1BFD63DE00FBCB86 /* ShiftingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB3DEA1BFD63DE00FBCB86 /* ShiftingDetailViewController.m */; };
 		94E033101BFBFE6600372E70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E0330F1BFBFE6600372E70 /* LaunchScreen.storyboard */; };
@@ -193,6 +195,10 @@
 		940E8C661C00B879000CCA71 /* wmsdb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = wmsdb.sql; sourceTree = "<group>"; };
 		940E8C681C00B930000CCA71 /* Movement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movement.h; sourceTree = "<group>"; };
 		940E8C691C00B930000CCA71 /* Movement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movement.m; sourceTree = "<group>"; };
+		9420D5171C02BD4E00AA1CB5 /* InventoryHistroyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryHistroyViewController.h; sourceTree = "<group>"; };
+		9420D5181C02BD4E00AA1CB5 /* InventoryHistroyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryHistroyViewController.m; sourceTree = "<group>"; };
+		9420D51A1C02BD7200AA1CB5 /* InventoryPositionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryPositionViewController.h; sourceTree = "<group>"; };
+		9420D51B1C02BD7200AA1CB5 /* InventoryPositionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryPositionViewController.m; sourceTree = "<group>"; };
 		943701371BFCC84E002EDDEC /* ShiftingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftingViewController.h; sourceTree = "<group>"; };
 		943701381BFCC84E002EDDEC /* ShiftingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftingViewController.m; sourceTree = "<group>"; };
 		94CB3DE91BFD63DE00FBCB86 /* ShiftingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftingDetailViewController.h; sourceTree = "<group>"; };
@@ -498,6 +504,10 @@
 				943701381BFCC84E002EDDEC /* ShiftingViewController.m */,
 				94CB3DE91BFD63DE00FBCB86 /* ShiftingDetailViewController.h */,
 				94CB3DEA1BFD63DE00FBCB86 /* ShiftingDetailViewController.m */,
+				9420D5171C02BD4E00AA1CB5 /* InventoryHistroyViewController.h */,
+				9420D5181C02BD4E00AA1CB5 /* InventoryHistroyViewController.m */,
+				9420D51A1C02BD7200AA1CB5 /* InventoryPositionViewController.h */,
+				9420D51B1C02BD7200AA1CB5 /* InventoryPositionViewController.m */,
 			);
 			name = SHIFTING;
 			sourceTree = "<group>";
@@ -1191,6 +1201,7 @@
 				B0DF643C19440FCA002D044B /* XiangEditViewController.m in Sources */,
 				B05FDFAE1985E99500608CBA /* NewValidate.m in Sources */,
 				B0E1D4F21952CD3500105D4D /* ReceivePrintViewController.m in Sources */,
+				9420D51C1C02BD7200AA1CB5 /* InventoryPositionViewController.m in Sources */,
 				B0CC6AE31A4CFBD10047FF7F /* RequireCheckDetailTableViewController.m in Sources */,
 				B0619E45197CB044000C1C69 /* RequireListTableViewCell.m in Sources */,
 				B04EF1F21946DE2900A95D7A /* HistoryXiangTableViewController.m in Sources */,
@@ -1223,6 +1234,7 @@
 				B0643D6A197E041B0036AADA /* RequireHistoryViewController.m in Sources */,
 				B04244DB1A1F286B00AAFD24 /* ProductReceiveViewController.m in Sources */,
 				B08B8F0D1953D39E009739DB /* TuoTableViewCell.m in Sources */,
+				9420D5191C02BD4E00AA1CB5 /* InventoryHistroyViewController.m in Sources */,
 				B099FD1A199C90C30049586E /* SimplePingHelper.m in Sources */,
 				B085F620194004CC001F01F3 /* MAppDelegate.m in Sources */,
 				B06139901941BD1300A0CF62 /* TuoScanViewController.m in Sources */,
