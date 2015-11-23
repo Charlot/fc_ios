@@ -8,6 +8,9 @@
 
 #import "YikuViewController.h"
 #import "UITextField+Extended.h"
+#import "KeychainItemWrapper.h"
+#import "Movement.h"
+#import "DBManager.h"
 
 @interface YikuViewController ()
 @property(weak, nonatomic) IBOutlet UITextField *fromPositionTextField;
@@ -17,6 +20,10 @@
 @property(weak, nonatomic) IBOutlet UITextField *packageTextField;
 @property(weak, nonatomic) IBOutlet UITextField *toPositionTextField;
 @property(weak, nonatomic) IBOutlet UITextField *toWhTextField;
+@property(nonatomic, strong) UIAlertView *backAlertView;
+@property NSString *MovementID;
+@property(nonatomic, strong) Movement *movement;
+@property NSString *userName;
 - (IBAction)confirmAction:(id)sender;
 
 @end
@@ -69,6 +76,7 @@
   //    [self.packageTextField addTarget:self
   //    action:@selector(textFieldDidChange:)
   //    forControlEvents:UIControlEventAllEditingEvents];}
+
   self.navigationItem.hidesBackButton = YES;
   UIBarButtonItem *cancelShifting =
       [[UIBarButtonItem alloc] initWithTitle:@"取消"
@@ -76,27 +84,16 @@
                                       target:self
                                       action:@selector(popBack)];
   self.navigationItem.leftBarButtonItem = cancelShifting;
+  self.MovementID = @"";
 }
 
 - (void)popBack {
   NSLog(@"this is back");
-  UIAlertView *alert =
-      [[UIAlertView alloc] initWithTitle:@"系统提示"
-                                 message:@"确定退出系统吗？"
-                                delegate:self
-                       cancelButtonTitle:@"确定"
-                       otherButtonTitles:@"取消", nil];
-  [alert show];
+
+  [self.backAlertView show];
   //  [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)alertView:(UIAlertView *)alertView
-    didDismissWithButtonIndex:(NSInteger)buttonIndex {
-  if (buttonIndex == 0) {
-    [self.navigationController popViewControllerAnimated:NO];
-  } else {
-  }
-}
 // Just For testing
 //- (void)textFieldDidChange:(UITextField *)theTextField
 //{
@@ -138,6 +135,27 @@
       }
     }
   }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  self.backAlertView =
+      [[UIAlertView alloc] initWithTitle:@"系统提示"
+                                 message:@"确定退出系统吗？"
+                                delegate:self
+                       cancelButtonTitle:@"确定"
+                       otherButtonTitles:@"取消", nil];
+  self.userName = @"";
+  KeychainItemWrapper *keyChain =
+      [[KeychainItemWrapper alloc] initWithIdentifier:@"material"
+                                          accessGroup:nil];
+  if ([keyChain objectForKey:(__bridge id)kSecAttrAccount]) {
+    self.userName = [NSString
+        stringWithFormat:@"%@",
+                         [keyChain objectForKey:(__bridge id)kSecAttrAccount]];
+  }
+  self.movement = [[Movement alloc] init];
+  [self createIDMovement];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -226,58 +244,164 @@
 
 - (void)alertView:(UIAlertView *)alertView
     clickedButtonAtIndex:(NSInteger)buttonIndex {
-
-  NSString *strToWh = self.toWhTextField.text;
-  NSString *strToPosition = self.toPositionTextField.text;
-  NSString *strPackage = self.packageTextField.text;
-  NSString *strQty = self.qtyTextField.text;
-  NSString *strPartNr = self.partNrTextField.text;
-  NSString *strFromWh = self.fromWhTextField.text;
-  NSString *strFromPosition = self.fromPositionTextField.text;
-
-  NSLog(@"CONFIRM");
-  if (buttonIndex == 1) {
-    NSArray *subviews = [self.view subviews];
-    //                int i =0 ;
-    for (id objInput in subviews) {
-      if ([objInput isKindOfClass:[UITextField class]]) {
-        UITextField *theTextField = objInput;
-        theTextField.text = @"";
-        //                        NSLog(@"time is %d", i);
-        //                        i++;
-      }
+  if (alertView == self.backAlertView) {
+    if (buttonIndex == 0) {
+      [self.navigationController popViewControllerAnimated:NO];
     }
-    [self.toWhTextField becomeFirstResponder];
+  } else {
+    NSString *strToWh = self.toWhTextField.text;
+    NSString *strToPosition = self.toPositionTextField.text;
+    NSString *strPackage = self.packageTextField.text;
+    NSString *strQty = self.qtyTextField.text;
+    NSString *strPartNr = self.partNrTextField.text;
+    NSString *strFromWh = self.fromWhTextField.text;
+    NSString *strFromPosition = self.fromPositionTextField.text;
 
-    AFNetOperate *AFNet = [[AFNetOperate alloc] init];
-    AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
-    [manager POST:[AFNet move]
-        parameters:@{
-          @"toWh" : strToWh,
-          @"toPosition" : strToPosition,
-          @"fromWh" : strFromWh,
-          @"fromPosition" : strFromPosition,
-          @"qty" : strQty,
-          @"partNr" : strPartNr,
-          @"uniqueId" : @"",
-          @"packageId" : strPackage,
-          @"fifo" : @""
+    if (buttonIndex == 1) {
+      NSArray *subviews = [self.view subviews];
+      //                int i =0 ;
+      for (id objInput in subviews) {
+        if ([objInput isKindOfClass:[UITextField class]]) {
+          UITextField *theTextField = objInput;
+          theTextField.text = @"";
+          //                        NSLog(@"time is %d", i);
+          //                        i++;
         }
-        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-          [AFNet.activeView stopAnimating];
-          if ([responseObject[@"result"] integerValue] == 1) {
-            [AFNet alertSuccess:responseObject[@"content"]];
-          } else {
-            [AFNet alert:responseObject[@"content"]];
+      }
+      [self.toWhTextField becomeFirstResponder];
+
+      NSDictionary *dict = [[NSDictionary alloc]
+          initWithObjectsAndKeys:self.MovementID, @"movement_list_id", strToWh,
+                                 @"toWh", strToPosition, @"toPosition",
+                                 strFromWh, @"fromWh", strFromPosition,
+                                 @"fromPosition", strQty, @"qty", strPartNr,
+                                 @"partNr", strPackage, @"packageId", nil];
+      AFNetOperate *AFNet = [[AFNetOperate alloc] init];
+      AFHTTPRequestOperationManager *manager =
+          [AFNet generateManager:self.view];
+      [manager POST:[AFNet ValidateMovement]
+          parameters:dict
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [AFNet.activeView stopAnimating];
+            if ([responseObject[@"result"] integerValue] == 1) {
+              //              [AFNet alertSuccess:responseObject[@"content"]];
+              [dict setValue:self.userName forKey:@"user"];
+              self.movement = [[Movement alloc] initWithObject:dict];
+              [self createMovement:self.movement];
+            } else {
+              [AFNet alert:responseObject[@"content"]];
+            }
+
           }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [AFNet.activeView stopAnimating];
+            [AFNet
+                alert:[NSString stringWithFormat:@"%@",
+                                                 [error localizedDescription]]];
+          }];
 
+      /*
+       1.0 原来代码
+       */
+
+      //      AFNetOperate *AFNet = [[AFNetOperate alloc] init];
+      //      AFHTTPRequestOperationManager *manager =
+      //          [AFNet generateManager:self.view];
+      //      [manager POST:[AFNet move]
+      //          parameters:@{
+      //            @"movement_list_id": self.MovementID,
+      //            @"toWh" : strToWh,
+      //            @"toPosition" : strToPosition,
+      //            @"fromWh" : strFromWh,
+      //            @"fromPosition" : strFromPosition,
+      //            @"qty" : strQty,
+      //            @"partNr" : strPartNr,
+      //            @"uniqueId" : @"",
+      //            @"packageId" : strPackage,
+      //            @"fifo" : @""
+      //          }
+      //          success:^(AFHTTPRequestOperation *operation, id
+      //          responseObject) {
+      //            [AFNet.activeView stopAnimating];
+      //            if ([responseObject[@"result"] integerValue] == 1) {
+      //              [AFNet alertSuccess:responseObject[@"content"]];
+      //            } else {
+      //              [AFNet alert:responseObject[@"content"]];
+      //            }
+      //
+      //          }
+      //          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+      //            [AFNet.activeView stopAnimating];
+      //            [AFNet
+      //                alert:[NSString stringWithFormat:@"%@",
+      //                                                 [error
+      //                                                 localizedDescription]]];
+      //          }];
+    }
+  }
+}
+
+/**
+ *  获取移库清单号
+ */
+- (void)createIDMovement {
+
+  AFNetOperate *AFNet = [[AFNetOperate alloc] init];
+  AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
+  [manager POST:[AFNet CreateMovementList]
+      parameters:@{
+        @"user_id" : self.userName,
+        @"remarks" : @""
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"the request %@", responseObject);
+        [AFNet.activeView stopAnimating];
+        if ([responseObject[@"result"] integerValue] == 1) {
+
+          NSDictionary *dic = responseObject[@"content"];
+          self.MovementID = [dic objectForKey:@"id"];
+          NSLog(@"the movement id is %@", self.MovementID);
+        } else {
+          [AFNet alert:responseObject[@"content"]];
         }
-        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-          [AFNet.activeView stopAnimating];
-          [AFNet
-              alert:[NSString
-                        stringWithFormat:@"%@", [error localizedDescription]]];
-        }];
+
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [AFNet.activeView stopAnimating];
+        NSLog(@"%@", error.description);
+        [AFNet alert:[NSString
+                         stringWithFormat:@"%@", [error localizedDescription]]];
+      }];
+}
+
+/**
+ *  sqlite3 存储 movenment
+ *
+ *  @param m <#m description#>
+ */
+- (void)createMovement:(Movement *)m {
+
+  NSString *query;
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+  NSString *created_at = [NSString
+      stringWithFormat:@"%@", [dateFormatter stringFromDate:[NSDate date]]];
+
+  query = [NSString
+      stringWithFormat:
+          @"insert into movenments (toWh, "
+          @"toPosition, fromWh, fromPosition, packageId, partNr, "
+          @"qty, movement_list_id, user, "
+          @"created_at) values('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', "
+          @"'%@', '%@')",
+          m.toWh, m.toPosition, m.fromWh, m.fromPosition, m.packageId, m.partNr,
+          m.qty, m.movement_list_id, m.user, created_at];
+  NSLog(@"===== query is %@", query);
+  DBManager *db = [[DBManager alloc] initWithDatabaseFilename:@"wmsdb.sql"];
+  [db executeQuery:query];
+  if (db.affectedRows != 0) {
+    //            NSLog(@"======== success =========");
+    NSLog(@"操作成功");
   }
 }
 

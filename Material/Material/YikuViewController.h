@@ -11,6 +11,9 @@
 #import "AFNetOperate.h"
 #import <AudioToolbox/AudioToolbox.h>
 
+/**
+ *  移库vc
+ */
 @interface YikuViewController
     : UIViewController <CaptuvoEventsProtocol, UITextFieldDelegate,
                         UIAlertViewDelegate>

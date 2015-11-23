@@ -7,6 +7,7 @@
 //
 
 #import "ShiftingViewController.h"
+#import "AFNetOperate.h"
 
 @interface ShiftingViewController ()
 
@@ -36,9 +37,42 @@ preparation before navigation
 }
 */
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+  [formatter setDateFormat:@"yyyy-MM-dd'T'00:00:00ZZZZZ"];
+  NSString *startDate = [formatter stringFromDate:[NSDate date]];
+  [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+  NSString *endDate = [formatter stringFromDate:[NSDate date]];
 
+  AFNetOperate *AFNet = [[AFNetOperate alloc] init];
+  [AFNet.activeView stopAnimating];
+  AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
+  [AFNet.activeView stopAnimating];
+  [manager GET:[AFNet order_history]
+      parameters:@{
+        @"start" : startDate,
+        @"end" : endDate
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [AFNet.activeView stopAnimating];
+        if ([responseObject[@"result"] integerValue] == 1) {
+          NSMutableArray *billList = [[NSMutableArray alloc] init];
+          NSArray *resultArray = responseObject[@"content"][@"orders"];
+          for (int i = 0; i < resultArray.count; i++) {
+            NSDictionary *dic = resultArray[i];
+          }
 
-
+        } else {
+          [AFNet alert:responseObject[@"content"]];
+        }
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [AFNet.activeView stopAnimating];
+        [AFNet alert:[NSString
+                         stringWithFormat:@"%@", [error localizedDescription]]];
+      }];
+}
 
 - (void)customController {
 
