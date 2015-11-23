@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ShiftingDetailViewController : UIViewController
-
+@property(nonatomic, strong) NSString *movement_list_id;
 @end

@@ -11,6 +11,7 @@
 #import "KeychainItemWrapper.h"
 #import "Movement.h"
 #import "DBManager.h"
+#import "ShiftingDetailViewController.h"
 
 @interface YikuViewController ()
 @property(weak, nonatomic) IBOutlet UITextField *fromPositionTextField;
@@ -258,19 +259,8 @@
     NSString *strFromPosition = self.fromPositionTextField.text;
 
     if (buttonIndex == 1) {
-      NSArray *subviews = [self.view subviews];
-      //                int i =0 ;
-      for (id objInput in subviews) {
-        if ([objInput isKindOfClass:[UITextField class]]) {
-          UITextField *theTextField = objInput;
-          theTextField.text = @"";
-          //                        NSLog(@"time is %d", i);
-          //                        i++;
-        }
-      }
-      [self.toWhTextField becomeFirstResponder];
 
-      NSDictionary *dict = [[NSDictionary alloc]
+      NSMutableDictionary *dict = [[NSMutableDictionary alloc]
           initWithObjectsAndKeys:self.MovementID, @"movement_list_id", strToWh,
                                  @"toWh", strToPosition, @"toPosition",
                                  strFromWh, @"fromWh", strFromPosition,
@@ -290,6 +280,7 @@
               [self createMovement:self.movement];
             } else {
               [AFNet alert:responseObject[@"content"]];
+              NSLog(@"%@", responseObject[@"content"]);
             }
 
           }
@@ -341,6 +332,20 @@
   }
 }
 
+- (void)clearData {
+  NSArray *subviews = [self.view subviews];
+  //                int i =0 ;
+  for (id objInput in subviews) {
+    if ([objInput isKindOfClass:[UITextField class]]) {
+      UITextField *theTextField = objInput;
+      theTextField.text = @"";
+      //                        NSLog(@"time is %d", i);
+      //                        i++;
+    }
+  }
+  [self.toWhTextField becomeFirstResponder];
+}
+
 /**
  *  获取移库清单号
  */
@@ -389,7 +394,7 @@
 
   query = [NSString
       stringWithFormat:
-          @"insert into movenments (toWh, "
+          @"insert into movements (toWh, "
           @"toPosition, fromWh, fromPosition, packageId, partNr, "
           @"qty, movement_list_id, user, "
           @"created_at) values('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', "
@@ -400,8 +405,15 @@
   DBManager *db = [[DBManager alloc] initWithDatabaseFilename:@"wmsdb.sql"];
   [db executeQuery:query];
   if (db.affectedRows != 0) {
-    //            NSLog(@"======== success =========");
+    [self clearData];
     NSLog(@"操作成功");
+  }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  if ([segue.identifier isEqualToString:@"confirm"]) {
+    ShiftingDetailViewController *detail = segue.destinationViewController;
+    detail.movement_list_id = self.MovementID;
   }
 }
 
