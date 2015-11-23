@@ -9,7 +9,7 @@
 #import "InventoryHistroyViewController.h"
 
 @interface InventoryHistroyViewController ()
-
+@property(strong, nonatomic) NSMutableArray *dataArray;
 @end
 
 @implementation InventoryHistroyViewController

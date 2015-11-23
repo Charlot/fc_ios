@@ -21,7 +21,17 @@
 @property(nonatomic, strong) NSString *user;
 @property(nonatomic, strong) NSString *movement_list_id;
 - (instancetype)initWithObject:(NSDictionary *)dictionary;
-
+- (instancetype)initWithID:(NSString *)movementID
+                  withToWh:(NSString *)toWh
+            withToPosition:(NSString *)toPosition
+                withFromWh:(NSString *)fromWh
+          withFromPosition:(NSString *)fromPosition
+             withCreatedAt:(NSString *)created_at
+             withPackageId:(NSString *)pacaageId
+                withPartNr:(NSString *)partNr
+                   withQty:(NSString *)qty
+                  withUser:(NSString *)user
+        withMovementListID:(NSString *)movement_list_id;
 //- (void)createMovement:(Movement *)m;
 
 @end

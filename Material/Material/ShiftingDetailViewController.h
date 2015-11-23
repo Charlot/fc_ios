@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ShiftingDetailViewController : UIViewController
+@interface ShiftingDetailViewController
+    : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong) NSString *movement_list_id;
 @end

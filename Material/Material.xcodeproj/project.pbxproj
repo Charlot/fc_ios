@@ -22,6 +22,8 @@
 		9420D5191C02BD4E00AA1CB5 /* InventoryHistroyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D5181C02BD4E00AA1CB5 /* InventoryHistroyViewController.m */; };
 		9420D51C1C02BD7200AA1CB5 /* InventoryPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D51B1C02BD7200AA1CB5 /* InventoryPositionViewController.m */; };
 		9420D51F1C02DFAF00AA1CB5 /* MovementList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D51E1C02DFAF00AA1CB5 /* MovementList.m */; };
+		9420D5221C030C4C00AA1CB5 /* MovementAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D5211C030C4C00AA1CB5 /* MovementAPI.m */; };
+		9420D5251C031C2000AA1CB5 /* MovementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D5241C031C2000AA1CB5 /* MovementDetailViewController.m */; };
 		943701391BFCC84E002EDDEC /* ShiftingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 943701381BFCC84E002EDDEC /* ShiftingViewController.m */; };
 		94CB3DEB1BFD63DE00FBCB86 /* ShiftingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB3DEA1BFD63DE00FBCB86 /* ShiftingDetailViewController.m */; };
 		94E033101BFBFE6600372E70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E0330F1BFBFE6600372E70 /* LaunchScreen.storyboard */; };
@@ -202,6 +204,10 @@
 		9420D51B1C02BD7200AA1CB5 /* InventoryPositionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryPositionViewController.m; sourceTree = "<group>"; };
 		9420D51D1C02DFAF00AA1CB5 /* MovementList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovementList.h; sourceTree = "<group>"; };
 		9420D51E1C02DFAF00AA1CB5 /* MovementList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovementList.m; sourceTree = "<group>"; };
+		9420D5201C030C4C00AA1CB5 /* MovementAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovementAPI.h; sourceTree = "<group>"; };
+		9420D5211C030C4C00AA1CB5 /* MovementAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovementAPI.m; sourceTree = "<group>"; };
+		9420D5231C031C2000AA1CB5 /* MovementDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovementDetailViewController.h; sourceTree = "<group>"; };
+		9420D5241C031C2000AA1CB5 /* MovementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovementDetailViewController.m; sourceTree = "<group>"; };
 		943701371BFCC84E002EDDEC /* ShiftingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftingViewController.h; sourceTree = "<group>"; };
 		943701381BFCC84E002EDDEC /* ShiftingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftingViewController.m; sourceTree = "<group>"; };
 		94CB3DE91BFD63DE00FBCB86 /* ShiftingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftingDetailViewController.h; sourceTree = "<group>"; };
@@ -511,6 +517,8 @@
 				9420D5181C02BD4E00AA1CB5 /* InventoryHistroyViewController.m */,
 				9420D51A1C02BD7200AA1CB5 /* InventoryPositionViewController.h */,
 				9420D51B1C02BD7200AA1CB5 /* InventoryPositionViewController.m */,
+				9420D5231C031C2000AA1CB5 /* MovementDetailViewController.h */,
+				9420D5241C031C2000AA1CB5 /* MovementDetailViewController.m */,
 			);
 			name = SHIFTING;
 			sourceTree = "<group>";
@@ -746,6 +754,8 @@
 				940E8C691C00B930000CCA71 /* Movement.m */,
 				9420D51D1C02DFAF00AA1CB5 /* MovementList.h */,
 				9420D51E1C02DFAF00AA1CB5 /* MovementList.m */,
+				9420D5201C030C4C00AA1CB5 /* MovementAPI.h */,
+				9420D5211C030C4C00AA1CB5 /* MovementAPI.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1198,6 +1208,7 @@
 				B04EF1DF1946A49500A95D7A /* ShopXiangTableViewCell.m in Sources */,
 				B0B468C61980FF3F00D88047 /* RequireXiangDetailViewController.m in Sources */,
 				21942D731B325E8C001D5B53 /* YikuViewController.m in Sources */,
+				9420D5221C030C4C00AA1CB5 /* MovementAPI.m in Sources */,
 				B0275FD8197E443A00E579C5 /* RequireHistoryListTableViewController.m in Sources */,
 				B0FDC96919453D63008E4B72 /* YunChooseTuoViewController.m in Sources */,
 				B085F6531940183D001F01F3 /* YunTableViewController.m in Sources */,
@@ -1239,6 +1250,7 @@
 				B058550319A2F800000C85E5 /* TuoCheckTableViewCell.m in Sources */,
 				B0643D6A197E041B0036AADA /* RequireHistoryViewController.m in Sources */,
 				B04244DB1A1F286B00AAFD24 /* ProductReceiveViewController.m in Sources */,
+				9420D5251C031C2000AA1CB5 /* MovementDetailViewController.m in Sources */,
 				B08B8F0D1953D39E009739DB /* TuoTableViewCell.m in Sources */,
 				9420D5191C02BD4E00AA1CB5 /* InventoryHistroyViewController.m in Sources */,
 				B099FD1A199C90C30049586E /* SimplePingHelper.m in Sources */,

@@ -257,7 +257,11 @@
     NSString *strPartNr = self.partNrTextField.text;
     NSString *strFromWh = self.fromWhTextField.text;
     NSString *strFromPosition = self.fromPositionTextField.text;
-
+    strToWh = @"3EX";
+    strToPosition = @"SCT 28 03 01";
+    strPackage = @"rwwe";
+    strQty = @"33";
+    strPartNr = @"411000895";
     if (buttonIndex == 1) {
 
       NSMutableDictionary *dict = [[NSMutableDictionary alloc]
@@ -411,7 +415,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  if ([segue.identifier isEqualToString:@"confirm"]) {
+  if ([segue.identifier isEqualToString:@"toMovementListDetailVC"]) {
     ShiftingDetailViewController *detail = segue.destinationViewController;
     detail.movement_list_id = self.MovementID;
   }
