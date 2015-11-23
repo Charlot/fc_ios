@@ -140,8 +140,8 @@
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   self.backAlertView =
-      [[UIAlertView alloc] initWithTitle:@"系统提示"
-                                 message:@"确定退出系统吗？"
+      [[UIAlertView alloc] initWithTitle:@""
+                                 message:@"是否取消此次移库？"
                                 delegate:self
                        cancelButtonTitle:@"确定"
                        otherButtonTitles:@"取消", nil];

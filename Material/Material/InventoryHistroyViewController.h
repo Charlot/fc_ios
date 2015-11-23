@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Inventory.h"
 
-@interface InventoryHistroyViewController : UIViewController
-
+@interface InventoryHistroyViewController
+    : UIViewController <UITableViewDelegate, UITableViewDataSource,
+                        CaptuvoEventsProtocol, UITextFieldDelegate>
+@property(strong, nonatomic) NSString *inventroy_id;
 @end

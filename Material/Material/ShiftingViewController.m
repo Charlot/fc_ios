@@ -45,15 +45,6 @@ preparation before navigation
 
   [super viewWillAppear:animated];
 
-  self.userName = @"";
-  KeychainItemWrapper *keyChain =
-      [[KeychainItemWrapper alloc] initWithIdentifier:@"material"
-                                          accessGroup:nil];
-  if ([keyChain objectForKey:(__bridge id)kSecAttrAccount]) {
-    self.userName = [NSString
-        stringWithFormat:@"%@",
-                         [keyChain objectForKey:(__bridge id)kSecAttrAccount]];
-  }
   //
   //  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
   //  [formatter setDateFormat:@"yyyy-MM-dd'T'00:00:00ZZZZZ"];
@@ -71,20 +62,18 @@ preparation before navigation
       parameters:@{
         @"user_id" : self.userName
       }
-   
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"the request GetMovementList is %@", responseObject);
         [AFNet.activeView stopAnimating];
         if ([responseObject[@"result"] integerValue] == 1) {
 
-          //          NSArray *resultArray = responseObject[@"content"];
-          //          for (int i = 0; i < resultArray.count; i++) {
-          //            MovementList *ml =
-          //                [[MovementList alloc]
-          //                initWithObject:resultArray[i]];
-          //            [self.dataArray addObject:ml];
-          //            [self.historyTableView reloadData];
-          //          }
+          NSArray *resultArray = responseObject[@"content"];
+          for (int i = 0; i < resultArray.count; i++) {
+            MovementList *ml =
+                [[MovementList alloc] initWithObject:resultArray[i]];
+            [self.dataArray addObject:ml];
+            [self.historyTableView reloadData];
+          }
 
         } else {
           [AFNet alert:responseObject[@"content"]];
@@ -105,6 +94,16 @@ preparation before navigation
   self.dataArray = [[NSMutableArray alloc] init];
   self.historyTableView.delegate = self;
   self.historyTableView.dataSource = self;
+  self.userName = @"";
+  KeychainItemWrapper *keyChain =
+      [[KeychainItemWrapper alloc] initWithIdentifier:@"material"
+                                          accessGroup:nil];
+  if ([keyChain objectForKey:(__bridge id)kSecAttrAccount]) {
+    self.userName = [NSString
+        stringWithFormat:@"%@",
+                         [keyChain objectForKey:(__bridge id)kSecAttrAccount]];
+  }
+
   [self loadData];
 }
 
@@ -124,25 +123,26 @@ preparation before navigation
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  static NSString *topicAppraiseTableCellReuseIdentifier =
+  static NSString *TableCellReuseIdentifier =
       @"historyTableCellReuseIdentifier";
-  UITableViewCell *cell = [tableView
-      dequeueReusableCellWithIdentifier:topicAppraiseTableCellReuseIdentifier
-                           forIndexPath:indexPath];
+  UITableViewCell *cell =
+      [tableView dequeueReusableCellWithIdentifier:TableCellReuseIdentifier
+                                      forIndexPath:indexPath];
   [self configureCell:cell forIndexPath:indexPath];
+
   return cell;
 }
 
 - (void)configureCell:(UITableViewCell *)cell
          forIndexPath:(NSIndexPath *)indexPath {
 
-  MovementList *movementList = self.dataArray[indexPath.row];
+  MovementList *movementList = (MovementList *)self.dataArray[indexPath.row];
   UILabel *IDLabel = [cell.contentView viewWithTag:100];
   UILabel *countLabel = [cell.contentView viewWithTag:200];
   UILabel *stateLabel = [cell.contentView viewWithTag:300];
 
   IDLabel.text = movementList.ID;
-  countLabel.text = movementList.count;
+  countLabel.text = [NSString stringWithFormat:@"%@", movementList.count];
   stateLabel.text = movementList.state;
 }
 
