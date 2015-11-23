@@ -11,6 +11,7 @@
 /**
  *  历史移库vc
  */
-@interface ShiftingViewController : UIViewController
+@interface ShiftingViewController
+    : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

@@ -33,7 +33,7 @@
 	<key>get_positions</key>
 	<string>/api/v1/parts/get_positions</string>
 	<key>get_movement_list</key>
-	<string>/api/v3/movement</string>
+	<string>/api/v3/movement_list</string>
 	<key>create_movement_list</key>
 	<string>/api/v3/movement_list</string>
 	<key>validate_movement</key>

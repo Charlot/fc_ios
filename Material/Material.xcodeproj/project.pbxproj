@@ -21,6 +21,7 @@
 		940E8C6A1C00B930000CCA71 /* Movement.m in Sources */ = {isa = PBXBuildFile; fileRef = 940E8C691C00B930000CCA71 /* Movement.m */; };
 		9420D5191C02BD4E00AA1CB5 /* InventoryHistroyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D5181C02BD4E00AA1CB5 /* InventoryHistroyViewController.m */; };
 		9420D51C1C02BD7200AA1CB5 /* InventoryPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D51B1C02BD7200AA1CB5 /* InventoryPositionViewController.m */; };
+		9420D51F1C02DFAF00AA1CB5 /* MovementList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D51E1C02DFAF00AA1CB5 /* MovementList.m */; };
 		943701391BFCC84E002EDDEC /* ShiftingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 943701381BFCC84E002EDDEC /* ShiftingViewController.m */; };
 		94CB3DEB1BFD63DE00FBCB86 /* ShiftingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB3DEA1BFD63DE00FBCB86 /* ShiftingDetailViewController.m */; };
 		94E033101BFBFE6600372E70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E0330F1BFBFE6600372E70 /* LaunchScreen.storyboard */; };
@@ -199,6 +200,8 @@
 		9420D5181C02BD4E00AA1CB5 /* InventoryHistroyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryHistroyViewController.m; sourceTree = "<group>"; };
 		9420D51A1C02BD7200AA1CB5 /* InventoryPositionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryPositionViewController.h; sourceTree = "<group>"; };
 		9420D51B1C02BD7200AA1CB5 /* InventoryPositionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryPositionViewController.m; sourceTree = "<group>"; };
+		9420D51D1C02DFAF00AA1CB5 /* MovementList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovementList.h; sourceTree = "<group>"; };
+		9420D51E1C02DFAF00AA1CB5 /* MovementList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovementList.m; sourceTree = "<group>"; };
 		943701371BFCC84E002EDDEC /* ShiftingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftingViewController.h; sourceTree = "<group>"; };
 		943701381BFCC84E002EDDEC /* ShiftingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftingViewController.m; sourceTree = "<group>"; };
 		94CB3DE91BFD63DE00FBCB86 /* ShiftingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftingDetailViewController.h; sourceTree = "<group>"; };
@@ -741,6 +744,8 @@
 				21942D761B329DFA001D5B53 /* UITextField+Extended.m */,
 				940E8C681C00B930000CCA71 /* Movement.h */,
 				940E8C691C00B930000CCA71 /* Movement.m */,
+				9420D51D1C02DFAF00AA1CB5 /* MovementList.h */,
+				9420D51E1C02DFAF00AA1CB5 /* MovementList.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1185,6 +1190,7 @@
 				B0619E5F197D0D32000C1C69 /* RequireGenerateViewController.m in Sources */,
 				B0619E58197CBE17000C1C69 /* RequireXiangTableViewCell.m in Sources */,
 				B0619E4C197CB35C000C1C69 /* RequireXiang.m in Sources */,
+				9420D51F1C02DFAF00AA1CB5 /* MovementList.m in Sources */,
 				B0613987194173B600A0CF62 /* XiangStore.m in Sources */,
 				B0CC6AE61A4D08440047FF7F /* RequireSort.m in Sources */,
 				94CB3DEB1BFD63DE00FBCB86 /* ShiftingDetailViewController.m in Sources */,

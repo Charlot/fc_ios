@@ -793,6 +793,13 @@
   return [base stringByAppendingString:create_movement_list];
 }
 
+- (NSString *)GetMovementList {
+  NSString *base = [self baseURL];
+  NSString *get_movement_list =
+      [[self URLDictionary] objectForKey:@"get_movement_list"];
+  return [base stringByAppendingString:get_movement_list];
+}
+
 /**
  *  验证移库参数
  *

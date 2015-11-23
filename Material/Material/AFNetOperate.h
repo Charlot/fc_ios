@@ -140,7 +140,9 @@
 
 /**
  *  盘点， 移库改造
- */
+ *
+ /
+
 
 /**
  *  创建移库清单id
@@ -148,6 +150,8 @@
  *  @return <#return value description#>
  */
 - (NSString *)CreateMovementList;
+
+- (NSString *)GetMovementList;
 
 /**
  *  验证移库参数
