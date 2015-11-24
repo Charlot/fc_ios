@@ -51,7 +51,8 @@ preparation before navigation
   self.detailTableView.allowsMultipleSelectionDuringEditing = NO;
   self.dataArray = [[NSMutableArray alloc] init];
   MovementAPI *api = [[MovementAPI alloc] init];
-  self.dataArray = [api queryByMovementListID:self.movement_list_id];
+  self.dataArray =
+      [api queryByMovementListID:self.movement_list_id ObjectDictionary:0];
   [self.detailTableView reloadData];
   self.api = [[MovementAPI alloc] init];
 }
@@ -157,4 +158,23 @@ preparation before navigation
   }
 }
 
+- (IBAction)MovementAction:(id)sender {
+  [self.api
+      movementAction:self.movement_list_id
+            employee:self.userName
+             optview:self.view
+               block:^(NSString *content, NSError *error) {
+                 if (error == nil) {
+                   if ([content isEqualToString:@"1"]) {
+                     [self performSegueWithIdentifier:@"toPrintVC" sender:self];
+
+                   } else {
+                     //                     [self
+                     //                     performSegueWithIdentifier:@"toHistoryVC"
+                     //                                               sender:self];
+                     [self.delegate failureToMain:self];
+                   }
+                 }
+               }];
+}
 @end

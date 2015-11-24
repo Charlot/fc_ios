@@ -11,6 +11,7 @@
 #import "KeychainItemWrapper.h"
 #import "MovementList.h"
 #import "YikuViewController.h"
+#import "MJRefresh.h"
 
 @interface ShiftingViewController ()
 @property NSString *userName;
@@ -74,8 +75,8 @@ preparation before navigation
             MovementList *ml =
                 [[MovementList alloc] initWithObject:resultArray[i]];
             [self.dataArray addObject:ml];
-            [self.historyTableView reloadData];
           }
+          [self.historyTableView reloadData];
 
         } else {
           [AFNet alert:responseObject[@"content"]];
@@ -96,6 +97,7 @@ preparation before navigation
   self.dataArray = [[NSMutableArray alloc] init];
   self.historyTableView.delegate = self;
   self.historyTableView.dataSource = self;
+
   self.userName = @"";
   KeychainItemWrapper *keyChain =
       [[KeychainItemWrapper alloc] initWithIdentifier:@"material"
@@ -105,8 +107,13 @@ preparation before navigation
         stringWithFormat:@"%@",
                          [keyChain objectForKey:(__bridge id)kSecAttrAccount]];
   }
-
-  [self loadData];
+  self.historyTableView.header =
+      [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadData];
+        [self.historyTableView.header endRefreshing];
+      }];
+  [self.historyTableView.header beginRefreshing];
+  self.navigationItem.hidesBackButton = TRUE;
 }
 
 - (void)back:(UIBarButtonItem *)sender {

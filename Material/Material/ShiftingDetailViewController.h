@@ -13,7 +13,7 @@
 @protocol ShiftingDetailViewControllerDelegate <NSObject>
 - (void)backToYikuVC:(ShiftingDetailViewController *)viewController
       MovementListID:(NSString *)mlid;
-
+- (void)failureToMain:(ShiftingDetailViewController *)viewController;
 @end
 
 @interface ShiftingDetailViewController
@@ -21,4 +21,5 @@
 @property(nonatomic, weak) id<ShiftingDetailViewControllerDelegate> delegate;
 
 @property(nonatomic, strong) NSString *movement_list_id;
+- (IBAction)MovementAction:(id)sender;
 @end

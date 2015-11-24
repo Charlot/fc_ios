@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface MovementAPI : NSObject
-- (NSMutableArray *)queryByMovementListID:(NSString *)mlid;
+- (NSMutableArray *)queryByMovementListID:(NSString *)mlid
+                         ObjectDictionary:(NSInteger)type;
 - (void)deleteAction:(NSString *)movementID;
+- (void)movementAction:(NSString *)movement_list_id
+              employee:(NSString *)employee_id
+               optview:(UIView *)optView
+                 block:(void (^)(NSString *content, NSError *error))block;
 @end
