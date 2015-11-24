@@ -26,6 +26,19 @@
   return self;
 }
 
+/**
+ *  按照movementid 删除本地纪录
+ *
+ *  @param movementID <#movementID description#>
+ */
+- (void)deleteAction:(NSString *)movementID {
+  NSString *query;
+  query =
+      [NSString stringWithFormat:@"delete from movements where " @"id = '%@'",
+                                 movementID];
+  [self.db executeQuery:query];
+}
+
 - (NSMutableArray *)queryByMovementListID:(NSString *)mlid {
   NSString *query;
   query = [NSString stringWithFormat:@"select * from movements where "

@@ -15,6 +15,7 @@
 @interface ShiftingDetailViewController ()
 @property(strong, nonatomic) NSMutableArray *dataArray;
 @property(strong, nonatomic) IBOutlet UITableView *detailTableView;
+@property(nonatomic, strong) MovementAPI *api;
 @end
 
 @implementation ShiftingDetailViewController
@@ -43,10 +44,12 @@ preparation before navigation
 - (void)loadData {
   self.detailTableView.delegate = self;
   self.detailTableView.dataSource = self;
+  self.detailTableView.allowsMultipleSelectionDuringEditing = NO;
   self.dataArray = [[NSMutableArray alloc] init];
   MovementAPI *api = [[MovementAPI alloc] init];
   self.dataArray = [api queryByMovementListID:self.movement_list_id];
   [self.detailTableView reloadData];
+  self.api = [[MovementAPI alloc] init];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -97,6 +100,22 @@ preparation before navigation
 - (CGFloat)tableView:(UITableView *)tableView
     heightForHeaderInSection:(NSInteger)section {
   return 30;
+}
+
+- (BOOL)tableView:(UITableView *)tableView
+    canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+  return YES;
+}
+
+- (void)tableView:(UITableView *)tableView
+    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+     forRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (editingStyle == UITableViewCellEditingStyleDelete) {
+    Movement *movement =
+        (Movement *)[self.dataArray objectAtIndex:indexPath.row];
+    [self.api delete:movement.ID];
+    [self.detailTableView reloadData];
+  }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
