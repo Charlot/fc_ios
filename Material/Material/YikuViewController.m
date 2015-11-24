@@ -22,7 +22,7 @@
 @property(weak, nonatomic) IBOutlet UITextField *toPositionTextField;
 @property(weak, nonatomic) IBOutlet UITextField *toWhTextField;
 @property(nonatomic, strong) UIAlertView *backAlertView;
-@property NSString *MovementID;
+
 @property(nonatomic, strong) Movement *movement;
 @property NSString *userName;
 - (IBAction)confirmAction:(id)sender;
@@ -85,7 +85,6 @@
                                       target:self
                                       action:@selector(popBack)];
   self.navigationItem.leftBarButtonItem = cancelShifting;
-  self.MovementID = @"";
 }
 
 - (void)popBack {
@@ -156,7 +155,10 @@
                          [keyChain objectForKey:(__bridge id)kSecAttrAccount]];
   }
   self.movement = [[Movement alloc] init];
-  [self createIDMovement];
+
+  //  if (self.MovementID.length == 0) {
+  //    [self createIDMovement];
+  //  }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -260,13 +262,13 @@
     strToWh = @"3EX";
     strToPosition = @"SCT 28 03 01";
     strPackage = @"rwwe";
-    strQty = @"33";
+
     strPartNr = @"411000895";
     if (buttonIndex == 1) {
 
       NSMutableDictionary *dict = [[NSMutableDictionary alloc]
-          initWithObjectsAndKeys:self.MovementID, @"movement_list_id", strToWh,
-                                 @"toWh", strToPosition, @"toPosition",
+          initWithObjectsAndKeys:self.movementListID, @"movement_list_id",
+                                 strToWh, @"toWh", strToPosition, @"toPosition",
                                  strFromWh, @"fromWh", strFromPosition,
                                  @"fromPosition", strQty, @"qty", strPartNr,
                                  @"partNr", strPackage, @"packageId", nil];
@@ -350,38 +352,39 @@
   [self.toWhTextField becomeFirstResponder];
 }
 
-/**
- *  获取移库清单号
- */
-- (void)createIDMovement {
-
-  AFNetOperate *AFNet = [[AFNetOperate alloc] init];
-  AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
-  [manager POST:[AFNet CreateMovementList]
-      parameters:@{
-        @"user_id" : self.userName,
-        @"remarks" : @""
-      }
-      success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"the request %@", responseObject);
-        [AFNet.activeView stopAnimating];
-        if ([responseObject[@"result"] integerValue] == 1) {
-
-          NSDictionary *dic = responseObject[@"content"];
-          self.MovementID = [dic objectForKey:@"id"];
-          NSLog(@"the movement id is %@", self.MovementID);
-        } else {
-          [AFNet alert:responseObject[@"content"]];
-        }
-
-      }
-      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [AFNet.activeView stopAnimating];
-        NSLog(@"%@", error.description);
-        [AFNet alert:[NSString
-                         stringWithFormat:@"%@", [error localizedDescription]]];
-      }];
-}
+///**
+// *  获取移库清单号
+// */
+//- (void)createIDMovement {
+//
+//  AFNetOperate *AFNet = [[AFNetOperate alloc] init];
+//  AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
+//  [manager POST:[AFNet CreateMovementList]
+//      parameters:@{
+//        @"user_id" : self.userName,
+//        @"remarks" : @""
+//      }
+//      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSLog(@"the request %@", responseObject);
+//        [AFNet.activeView stopAnimating];
+//        if ([responseObject[@"result"] integerValue] == 1) {
+//
+//          NSDictionary *dic = responseObject[@"content"];
+//          self.MovementID = [dic objectForKey:@"id"];
+//          NSLog(@"the movement id is %@", self.MovementID);
+//        } else {
+//          [AFNet alert:responseObject[@"content"]];
+//        }
+//
+//      }
+//      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        [AFNet.activeView stopAnimating];
+//        NSLog(@"%@", error.description);
+//        [AFNet alert:[NSString
+//                         stringWithFormat:@"%@", [error
+//                         localizedDescription]]];
+//      }];
+//}
 
 /**
  *  sqlite3 存储 movenment
@@ -416,9 +419,29 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   if ([segue.identifier isEqualToString:@"toMovementListDetailVC"]) {
-    ShiftingDetailViewController *detail = segue.destinationViewController;
-    detail.movement_list_id = self.MovementID;
+    //    for push
+    //    ShiftingDetailViewController *detail =
+    //    segue.destinationViewController;
+    //    detail.movement_list_id = self.MovementID;
+
+    //    for modal
+    UINavigationController *navigationController =
+        segue.destinationViewController;
+    ShiftingDetailViewController *detailController =
+        [[navigationController viewControllers] objectAtIndex:0];
+
+    detailController.movement_list_id = self.movementListID;
+    detailController.delegate = self;
+    NSLog(@"the send movement list id %@", self.movementListID);
   }
+}
+
+#pragma mark shiftingdetail delegate
+- (void)backToYikuVC:(ShiftingDetailViewController *)viewController
+      MovementListID:(NSString *)mlid {
+  self.movementListID = mlid;
+  NSLog(@"the back movement list id %@", mlid);
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

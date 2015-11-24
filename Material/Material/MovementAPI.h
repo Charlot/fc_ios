@@ -10,4 +10,5 @@
 
 @interface MovementAPI : NSObject
 - (NSMutableArray *)queryByMovementListID:(NSString *)mlid;
+- (void)deleteAction:(NSString *)movementID;
 @end

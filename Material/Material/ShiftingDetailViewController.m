@@ -11,11 +11,13 @@
 #import "Movement.h"
 #import "MovementAPI.h"
 #import "MovementDetailViewController.h"
+#import "KeychainItemWrapper.h"
 
 @interface ShiftingDetailViewController ()
 @property(strong, nonatomic) NSMutableArray *dataArray;
 @property(strong, nonatomic) IBOutlet UITableView *detailTableView;
 @property(nonatomic, strong) MovementAPI *api;
+@property NSString *userName;
 @end
 
 @implementation ShiftingDetailViewController
@@ -23,6 +25,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self loadData];
+  [self customUI];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +45,7 @@ preparation before navigation
 */
 
 - (void)loadData {
+  [self getUser];
   self.detailTableView.delegate = self;
   self.detailTableView.dataSource = self;
   self.detailTableView.allowsMultipleSelectionDuringEditing = NO;
@@ -50,6 +54,19 @@ preparation before navigation
   self.dataArray = [api queryByMovementListID:self.movement_list_id];
   [self.detailTableView reloadData];
   self.api = [[MovementAPI alloc] init];
+}
+
+- (void)customUI {
+  self.navigationItem.leftBarButtonItem =
+      [[UIBarButtonItem alloc] initWithTitle:@"继续移库"
+                                       style:UIBarButtonItemStylePlain
+                                      target:self
+                                      action:@selector(done:)];
+}
+
+- (void)done:(id)sender {
+  //  [self dismissViewControllerAnimated:YES completion:nil];
+  [self.delegate backToYikuVC:self MovementListID:self.movement_list_id];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -113,7 +130,7 @@ preparation before navigation
   if (editingStyle == UITableViewCellEditingStyleDelete) {
     Movement *movement =
         (Movement *)[self.dataArray objectAtIndex:indexPath.row];
-    [self.api delete:movement.ID];
+    [self.api deleteAction:movement.ID];
     [self.detailTableView reloadData];
   }
 }
@@ -125,6 +142,18 @@ preparation before navigation
     movementdetail.movement =
         (Movement *)
             self.dataArray[self.detailTableView.indexPathForSelectedRow.row];
+  }
+}
+
+- (void)getUser {
+  self.userName = @"";
+  KeychainItemWrapper *keyChain =
+      [[KeychainItemWrapper alloc] initWithIdentifier:@"material"
+                                          accessGroup:nil];
+  if ([keyChain objectForKey:(__bridge id)kSecAttrAccount]) {
+    self.userName = [NSString
+        stringWithFormat:@"%@",
+                         [keyChain objectForKey:(__bridge id)kSecAttrAccount]];
   }
 }
 

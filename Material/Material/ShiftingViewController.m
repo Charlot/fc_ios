@@ -10,11 +10,13 @@
 #import "AFNetOperate.h"
 #import "KeychainItemWrapper.h"
 #import "MovementList.h"
+#import "YikuViewController.h"
 
 @interface ShiftingViewController ()
 @property NSString *userName;
 @property(strong, nonatomic) IBOutlet UITableView *historyTableView;
 @property(strong, nonatomic) NSMutableArray *dataArray;
+@property NSString *movementListID;
 @end
 
 @implementation ShiftingViewController
@@ -63,7 +65,7 @@ preparation before navigation
         @"user_id" : self.userName
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"the request GetMovementList is %@", responseObject);
+        //        NSLog(@"the request GetMovementList is %@", responseObject);
         [AFNet.activeView stopAnimating];
         if ([responseObject[@"result"] integerValue] == 1) {
 
@@ -144,6 +146,59 @@ preparation before navigation
   IDLabel.text = movementList.ID;
   countLabel.text = [NSString stringWithFormat:@"%@", movementList.count];
   stateLabel.text = movementList.state;
+}
+
+- (void)tableView:(UITableView *)tableView
+    didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  MovementList *movement_list =
+      (MovementList *)[self.dataArray objectAtIndex:indexPath.row];
+  self.movementListID = movement_list.ID;
+  [self performSegueWithIdentifier:@"toYikuVC" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  if ([segue.identifier isEqualToString:@"toYikuVC"]) {
+    YikuViewController *yk = segue.destinationViewController;
+    yk.movementListID = self.movementListID;
+  }
+}
+
+- (IBAction)createMovementList:(id)sender {
+  [self createIDMovement];
+}
+
+/**
+ *  获取移库清单号
+ */
+- (void)createIDMovement {
+
+  AFNetOperate *AFNet = [[AFNetOperate alloc] init];
+  AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
+  [manager POST:[AFNet CreateMovementList]
+      parameters:@{
+        @"user_id" : self.userName,
+        @"remarks" : @""
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"the request %@", responseObject);
+        [AFNet.activeView stopAnimating];
+        if ([responseObject[@"result"] integerValue] == 1) {
+
+          NSDictionary *dic = responseObject[@"content"];
+          self.movementListID = [dic objectForKey:@"id"];
+          NSLog(@"the movement id is %@", self.movementListID);
+          [self performSegueWithIdentifier:@"toYikuVC" sender:self];
+        } else {
+          [AFNet alert:responseObject[@"content"]];
+        }
+
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [AFNet.activeView stopAnimating];
+        NSLog(@"%@", error.description);
+        [AFNet alert:[NSString
+                         stringWithFormat:@"%@", [error localizedDescription]]];
+      }];
 }
 
 @end

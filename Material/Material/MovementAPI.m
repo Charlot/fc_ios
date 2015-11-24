@@ -100,7 +100,7 @@
                                               withQty:qty
                                              withUser:user
                                    withMovementListID:movement_list_id];
-
+    NSLog(@"local movement id %@", movement.ID);
     [dataArray addObject:movement];
   }
 

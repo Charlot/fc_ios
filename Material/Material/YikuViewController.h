@@ -10,12 +10,14 @@
 #import "Captuvo.h"
 #import "AFNetOperate.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "ShiftingDetailViewController.h"
 
 /**
  *  移库vc
  */
 @interface YikuViewController
     : UIViewController <CaptuvoEventsProtocol, UITextFieldDelegate,
-                        UIAlertViewDelegate>
-
+                        UIAlertViewDelegate,
+                        ShiftingDetailViewControllerDelegate>
+@property NSString *movementListID;
 @end
