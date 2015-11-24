@@ -27,21 +27,60 @@
   return self;
 }
 
-- (void)printAction:(
+/**
+ *  打印api
+ *
+ *  @param copies <#copies description#>
+ *  @param block  <#block description#>
+ */
+- (void)printAction:(NSString *)movement_list_id
+             copies:(NSString *)copies
+            optView:(UIView *)optView
+              block:(void (^)(NSString *, NSError *))block {
+  NSLog(@"the request is %@",
+        [[self.afnet print_movenment_list_receive:movement_list_id
+                                     printer_name:@"P009/"
+                                           copies:copies]
+            stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
+  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+  [manager
+      GET:[[self.afnet print_movenment_list_receive:movement_list_id
+                                       printer_name:@"P009/"
+                                             copies:copies]
+              stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+      parameters:nil
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet alert:responseObject[@"Content"]];
+        if (block) {
+          block([NSString stringWithFormat:@"%@", responseObject[@"Code"]],
+                nil);
+        }
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet
+            alert:[NSString
+                      stringWithFormat:@"%@", [error localizedDescription]]];
+        if (block) {
+          block([NSString stringWithFormat:@"%@", error.localizedDescription],
+                nil);
+        }
+      }];
+}
 
-    /**
-     *  移库
-     *
-     *  @param movement_list_id <#movement_list_id description#>
-     *  @param employee_id      <#employee_id description#>
-     *  @param remarks          <#remarks description#>
-     *  @param movements        <#movements description#>
-     */
-    -
-    (void)movementAction:(NSString *)movement_list_id
-                employee:(NSString *)employee_id
-                 optview:(UIView *)optView
-                   block:(void (^)(NSString *, NSError *))block {
+/**
+ *  移库
+ *
+ *  @param movement_list_id <#movement_list_id description#>
+ *  @param employee_id      <#employee_id description#>
+ *  @param remarks          <#remarks description#>
+ *  @param movements        <#movements description#>
+ */
+- (void)movementAction:(NSString *)movement_list_id
+              employee:(NSString *)employee_id
+               optview:(UIView *)optView
+                 block:(void (^)(NSString *, NSError *))block {
   NSMutableArray *movementArray =
       [self queryByMovementListID:movement_list_id ObjectDictionary:1];
 

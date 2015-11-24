@@ -109,6 +109,8 @@
 		<string>P001/</string>
 		<key>stock_xiang</key>
 		<string>P001/</string>
+		<key>movement_list</key>
+		<string>P009/</string>
 		<key>file</key>
 		<string>/printer/print/</string>
 		<key>port</key>

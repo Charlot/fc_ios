@@ -12,6 +12,7 @@
 #import "MovementAPI.h"
 #import "MovementDetailViewController.h"
 #import "KeychainItemWrapper.h"
+#import "ShiftingPrintViewController.h"
 
 @interface ShiftingDetailViewController ()
 @property(strong, nonatomic) NSMutableArray *dataArray;
@@ -143,6 +144,10 @@ preparation before navigation
     movementdetail.movement =
         (Movement *)
             self.dataArray[self.detailTableView.indexPathForSelectedRow.row];
+  }
+  if ([segue.identifier isEqualToString:@"toPrintVC"]) {
+    ShiftingPrintViewController *printVC = segue.destinationViewController;
+    printVC.movement_list_id = self.movement_list_id;
   }
 }
 

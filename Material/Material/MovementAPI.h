@@ -16,4 +16,8 @@
               employee:(NSString *)employee_id
                optview:(UIView *)optView
                  block:(void (^)(NSString *content, NSError *error))block;
+- (void)printAction:(NSString *)movement_list_id
+             copies:(NSString *)copies
+            optView:(UIView *)optView
+              block:(void (^)(NSString *content, NSError *error))block;
 @end

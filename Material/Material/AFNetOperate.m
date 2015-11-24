@@ -881,4 +881,30 @@
   return [base stringByAppendingString:get_package_info];
 }
 
+//- (NSString *)print_movenment_list_receive:(NSString *)ID
+//                              printer_name:(NSString *)printer
+//                                    copies:(NSString *)copies {
+//  NSString *joint = [self base_for_print:@"movement_list"];
+//  NSString *after = [NSString string];
+//  if (copies.length > 0) {
+//    after = [[ID stringByAppendingPathComponent:printer]
+//        stringByAppendingPathComponent:copies];
+//  } else {
+//    after = [ID stringByAppendingPathComponent:printer];
+//  }
+//  return [NSString stringWithFormat:@"%@%@", joint, after];
+//}
+- (NSString *)print_movenment_list_receive:(NSString *)ID
+                              printer_name:(NSString *)printer
+                                    copies:(NSString *)copies {
+  NSString *joint = [self base_for_print:@"movement_list"];
+  NSString *after = [NSString string];
+  if (copies.length > 0) {
+    after = [ID stringByAppendingPathComponent:copies];
+  } else {
+    after = ID;
+  }
+  return [NSString stringWithFormat:@"%@%@", joint, after];
+}
+
 @end

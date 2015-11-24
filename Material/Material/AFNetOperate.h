@@ -226,4 +226,18 @@
  *  @return <#return value description#>
  */
 - (NSString *)GetPackageInfo;
+
+/**
+ *  移库单打印
+ *
+ *  @param ID      <#ID description#>
+ *  @param printer <#printer description#>
+ *  @param copies  <#copies description#>
+ *
+ *  @return <#return value description#>
+ */
+- (NSString *)print_movenment_list_receive:(NSString *)ID
+                              printer_name:(NSString *)printer
+                                    copies:(NSString *)copies;
+
 @end

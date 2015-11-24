@@ -5813,7 +5813,6 @@
                     <connections>
                         <outlet property="detailTableView" destination="ugR-I2-vhA" id="uvv-zx-ZgO"/>
                         <segue destination="lAR-O6-Gvx" kind="push" identifier="toPrintVC" id="UnZ-wN-WXV"/>
-                        <segue destination="m6S-u8-rjw" kind="push" identifier="toHistoryVC" id="70q-ab-uj6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVS-os-dGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5856,11 +5855,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="numberTextField" destination="7kK-Ig-cO8" id="PUQ-0a-Rfp"/>
+                        <segue destination="m6S-u8-rjw" kind="push" identifier="toHistoryVC" id="xUu-VW-Prs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xy9-db-jNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3510" y="7430"/>
+            <point key="canvasLocation" x="3440" y="7353"/>
         </scene>
         <!--移库详情-->
         <scene sceneID="hge-kT-dgr">
@@ -6211,6 +6211,6 @@
         <segue reference="U3W-2k-BOU"/>
         <segue reference="zbp-Dd-2O5"/>
         <segue reference="yJ1-Ae-Eed"/>
-        <segue reference="70q-ab-uj6"/>
+        <segue reference="xUu-VW-Prs"/>
     </inferredMetricsTieBreakers>
 </document>

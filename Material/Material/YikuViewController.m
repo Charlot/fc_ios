@@ -447,6 +447,8 @@
 - (void)failureToMain:(ShiftingDetailViewController *)viewController {
   //    self dismissViewControllerAnimated:<#(BOOL)#>
   //    completion:<#^(void)completion#>
+  [self dismissViewControllerAnimated:YES completion:nil];
+
   [self.navigationController popViewControllerAnimated:YES];
 }
 

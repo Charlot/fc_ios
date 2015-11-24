@@ -76,6 +76,8 @@ preparation before navigation
                 [[MovementList alloc] initWithObject:resultArray[i]];
             [self.dataArray addObject:ml];
           }
+          [self.historyTableView.header endRefreshing];
+
           [self.historyTableView reloadData];
 
         } else {
@@ -95,8 +97,6 @@ preparation before navigation
   //  [backButton setTitle:@"取消" forState:UIControlStateNormal];
   //  [backButton addTarget:self
   self.dataArray = [[NSMutableArray alloc] init];
-  self.historyTableView.delegate = self;
-  self.historyTableView.dataSource = self;
 
   self.userName = @"";
   KeychainItemWrapper *keyChain =
@@ -110,10 +110,11 @@ preparation before navigation
   self.historyTableView.header =
       [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self loadData];
-        [self.historyTableView.header endRefreshing];
       }];
   [self.historyTableView.header beginRefreshing];
   self.navigationItem.hidesBackButton = TRUE;
+  self.historyTableView.delegate = self;
+  self.historyTableView.dataSource = self;
 }
 
 - (void)back:(UIBarButtonItem *)sender {
