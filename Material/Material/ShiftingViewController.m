@@ -12,6 +12,7 @@
 #import "MovementList.h"
 #import "YikuViewController.h"
 #import "MJRefresh.h"
+#import "MovementListFinishViewController.h"
 
 @interface ShiftingViewController ()
 @property NSString *userName;
@@ -161,13 +162,22 @@ preparation before navigation
   MovementList *movement_list =
       (MovementList *)[self.dataArray objectAtIndex:indexPath.row];
   self.movementListID = movement_list.ID;
-  [self performSegueWithIdentifier:@"toYikuVC" sender:self];
+  if ([movement_list.state isEqualToString:@"结束"]) {
+    [self performSegueWithIdentifier:@"toCompleteMovementListVC" sender:self];
+  } else {
+    [self performSegueWithIdentifier:@"toYikuVC" sender:self];
+  }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   if ([segue.identifier isEqualToString:@"toYikuVC"]) {
     YikuViewController *yk = segue.destinationViewController;
     yk.movementListID = self.movementListID;
+  }
+  if ([segue.identifier isEqualToString:@"toCompleteMovementListVC"]) {
+    MovementListFinishViewController *mlFinishVC =
+        segue.destinationViewController;
+    mlFinishVC.movement_list_id = self.movementListID;
   }
 }
 

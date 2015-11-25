@@ -25,6 +25,7 @@
 		9420D5221C030C4C00AA1CB5 /* MovementAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D5211C030C4C00AA1CB5 /* MovementAPI.m */; };
 		9420D5251C031C2000AA1CB5 /* MovementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D5241C031C2000AA1CB5 /* MovementDetailViewController.m */; };
 		943701391BFCC84E002EDDEC /* ShiftingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 943701381BFCC84E002EDDEC /* ShiftingViewController.m */; };
+		9492B76B1C054209007DD8A0 /* MovementListFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9492B76A1C054209007DD8A0 /* MovementListFinishViewController.m */; };
 		9493599A1C0491E4003D2B25 /* ShiftingPrintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949359991C0491E4003D2B25 /* ShiftingPrintViewController.m */; };
 		949359C81C04A993003D2B25 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9493599E1C04A993003D2B25 /* MJRefreshAutoFooter.m */; };
 		949359C91C04A993003D2B25 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 949359A01C04A993003D2B25 /* MJRefreshBackFooter.m */; };
@@ -230,6 +231,8 @@
 		9420D5241C031C2000AA1CB5 /* MovementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovementDetailViewController.m; sourceTree = "<group>"; };
 		943701371BFCC84E002EDDEC /* ShiftingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftingViewController.h; sourceTree = "<group>"; };
 		943701381BFCC84E002EDDEC /* ShiftingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftingViewController.m; sourceTree = "<group>"; };
+		9492B7691C054209007DD8A0 /* MovementListFinishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovementListFinishViewController.h; sourceTree = "<group>"; };
+		9492B76A1C054209007DD8A0 /* MovementListFinishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovementListFinishViewController.m; sourceTree = "<group>"; };
 		949359981C0491E4003D2B25 /* ShiftingPrintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftingPrintViewController.h; sourceTree = "<group>"; };
 		949359991C0491E4003D2B25 /* ShiftingPrintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftingPrintViewController.m; sourceTree = "<group>"; };
 		9493599D1C04A993003D2B25 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
@@ -581,6 +584,8 @@
 				9420D5241C031C2000AA1CB5 /* MovementDetailViewController.m */,
 				949359981C0491E4003D2B25 /* ShiftingPrintViewController.h */,
 				949359991C0491E4003D2B25 /* ShiftingPrintViewController.m */,
+				9492B7691C054209007DD8A0 /* MovementListFinishViewController.h */,
+				9492B76A1C054209007DD8A0 /* MovementListFinishViewController.m */,
 			);
 			name = SHIFTING;
 			sourceTree = "<group>";
@@ -1397,6 +1402,7 @@
 				B037ECFA194BDC50008C456E /* YunTableViewCell.m in Sources */,
 				949359CD1C04A993003D2B25 /* MJRefreshAutoGifFooter.m in Sources */,
 				B07CE571198B8CAA000FD578 /* RequireCheckBill.m in Sources */,
+				9492B76B1C054209007DD8A0 /* MovementListFinishViewController.m in Sources */,
 				B0CC6AE01A4CFBC00047FF7F /* RequireCheckGeneralTableViewController.m in Sources */,
 				1820CE551B5FDD3B004EB49D /* QueryPositionTableViewController.m in Sources */,
 				B0DF644519448B67002D044B /* Yun.m in Sources */,

@@ -419,20 +419,20 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   if ([segue.identifier isEqualToString:@"toMovementListDetailVC"]) {
-    //    for push
-    //    ShiftingDetailViewController *detail =
-    //    segue.destinationViewController;
-    //    detail.movement_list_id = self.MovementID;
+    //        for push
+    ShiftingDetailViewController *detail = segue.destinationViewController;
+    detail.movement_list_id = self.self.movementListID;
+    detail.delegate = self;
 
     //    for modal
-    UINavigationController *navigationController =
-        segue.destinationViewController;
-    ShiftingDetailViewController *detailController =
-        [[navigationController viewControllers] objectAtIndex:0];
-
-    detailController.movement_list_id = self.movementListID;
-    detailController.delegate = self;
-    NSLog(@"the send movement list id %@", self.movementListID);
+    //    UINavigationController *navigationController =
+    //        segue.destinationViewController;
+    //    ShiftingDetailViewController *detailController =
+    //        [[navigationController viewControllers] objectAtIndex:0];
+    //
+    //    detailController.movement_list_id = self.movementListID;
+    //    detailController.delegate = self;
+    //    NSLog(@"the send movement list id %@", self.movementListID);
   }
 }
 
@@ -441,7 +441,8 @@
       MovementListID:(NSString *)mlid {
   self.movementListID = mlid;
   NSLog(@"the back movement list id %@", mlid);
-  [self dismissViewControllerAnimated:YES completion:nil];
+  //  [self dismissViewControllerAnimated:YES completion:nil];
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)failureToMain:(ShiftingDetailViewController *)viewController {
@@ -452,4 +453,7 @@
   [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)MovementListReviewAction:(id)sender {
+  [self performSegueWithIdentifier:@"toMovementListDetailVC" sender:self];
+}
 @end

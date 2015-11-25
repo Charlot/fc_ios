@@ -19,5 +19,6 @@
     : UIViewController <CaptuvoEventsProtocol, UITextFieldDelegate,
                         UIAlertViewDelegate,
                         ShiftingDetailViewControllerDelegate>
+- (IBAction)MovementListReviewAction:(id)sender;
 @property NSString *movementListID;
 @end

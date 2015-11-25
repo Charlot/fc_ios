@@ -174,10 +174,9 @@ preparation before navigation
                      [self performSegueWithIdentifier:@"toPrintVC" sender:self];
 
                    } else {
-                     //                     [self
-                     //                     performSegueWithIdentifier:@"toHistoryVC"
-                     //                                               sender:self];
-                     [self.delegate failureToMain:self];
+                     [self performSegueWithIdentifier:@"toCompleteHistoryVC"
+                                               sender:self];
+                     //                     [self.delegate failureToMain:self];
                    }
                  }
                }];
