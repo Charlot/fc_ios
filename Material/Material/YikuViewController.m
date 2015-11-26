@@ -12,6 +12,7 @@
 #import "Movement.h"
 #import "DBManager.h"
 #import "ShiftingDetailViewController.h"
+#import "MovementAPI.h"
 
 @interface YikuViewController ()
 @property(weak, nonatomic) IBOutlet UITextField *fromPositionTextField;
@@ -190,7 +191,6 @@
     NSLog(@"next resonder");
   } else {
     [textField resignFirstResponder];
-    NSLog(@"current textfield %d", textField.tag);
   }
   return NO;
 }
@@ -249,7 +249,18 @@
     clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (alertView == self.backAlertView) {
     if (buttonIndex == 0) {
-      [self.navigationController popViewControllerAnimated:NO];
+      MovementAPI *api = [[MovementAPI alloc] init];
+      [api deleteMovementList:self.movementListID
+                     withView:self.view
+                        block:^(NSString *contentString, NSError *error) {
+                          if (error == nil) {
+                            [self.navigationController
+                                popViewControllerAnimated:NO];
+                          } else {
+                            [self.navigationController
+                                popViewControllerAnimated:NO];
+                          }
+                        }];
     }
   } else {
     NSString *strToWh = self.toWhTextField.text;
@@ -259,7 +270,11 @@
     NSString *strPartNr = self.partNrTextField.text;
     NSString *strFromWh = self.fromWhTextField.text;
     NSString *strFromPosition = self.fromPositionTextField.text;
+    strToWh = @"3EX";
+    strToPosition = @"SCT 28 03 01";
+    strPackage = @"rwwe";
 
+    strPartNr = @"411000895";
     if (buttonIndex == 1) {
 
       NSMutableDictionary *dict = [[NSMutableDictionary alloc]

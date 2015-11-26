@@ -20,4 +20,8 @@
              copies:(NSString *)copies
             optView:(UIView *)optView
               block:(void (^)(NSString *content, NSError *error))block;
+- (void)deleteMovementList:(NSString *)movement_list_id
+                  withView:(UIView *)optView
+                     block:(void (^)(NSString *contentString,
+                                     NSError *error))block;
 @end

@@ -112,7 +112,7 @@ preparation before navigation
   movementCountLabel.textColor = [UIColor redColor];
   movementCountLabel.textAlignment = NSTextAlignmentLeft;
   movementCountLabel.text = [NSString
-      stringWithFormat:@"已扫描%d个零件", [self.dataArray count]];
+      stringWithFormat:@"已扫描%ld个零件", [self.dataArray count]];
   return movementCountLabel;
 }
 
@@ -133,7 +133,12 @@ preparation before navigation
     Movement *movement =
         (Movement *)[self.dataArray objectAtIndex:indexPath.row];
     [self.api deleteAction:movement.ID];
-    [self.detailTableView reloadData];
+    [self.dataArray removeObjectAtIndex:indexPath.row];
+
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                       [self.detailTableView reloadData];
+                     }];
   }
 }
 
@@ -164,21 +169,43 @@ preparation before navigation
 }
 
 - (IBAction)MovementAction:(id)sender {
-  [self.api
-      movementAction:self.movement_list_id
-            employee:self.userName
-             optview:self.view
-               block:^(NSString *content, NSError *error) {
-                 if (error == nil) {
-                   if ([content isEqualToString:@"1"]) {
-                     [self performSegueWithIdentifier:@"toPrintVC" sender:self];
+  /**
+   *  判断移库零件大大于0
+   */
+  if ([self.dataArray count] > 0) {
+    [self.api
+        movementAction:self.movement_list_id
+              employee:self.userName
+               optview:self.view
+                 block:^(NSString *content, NSError *error) {
+                   if (error == nil) {
+                     if ([content isEqualToString:@"1"]) {
+                       [self performSegueWithIdentifier:@"toPrintVC"
+                                                 sender:self];
 
-                   } else {
-                     [self performSegueWithIdentifier:@"toCompleteHistoryVC"
-                                               sender:self];
-                     //                     [self.delegate failureToMain:self];
+                     } else {
+                       [self performSegueWithIdentifier:@"toCompleteHistoryVC"
+                                                 sender:self];
+                       //                     [self.delegate
+                       //                     failureToMain:self];
+                     }
                    }
-                 }
-               }];
+                 }];
+
+  }
+  /**
+   *  小于0做删除单处理
+   */
+  else {
+    [self.api
+        deleteMovementList:self.movement_list_id
+                  withView:self.view
+                     block:^(NSString *contentString, NSError *error) {
+
+                       [self performSegueWithIdentifier:@"toCompleteHistoryVC"
+                                                 sender:self];
+
+                     }];
+  }
 }
 @end

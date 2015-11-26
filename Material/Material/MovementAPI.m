@@ -28,6 +28,130 @@
 }
 
 /**
+ *  获取移库
+ *
+ *  @param movement_list_id <#movement_list_id description#>
+ *  @param optView          <#optView description#>
+ *  @param block            <#block description#>
+ */
+- (void)getMovements:(NSString *)movement_list_id
+            withView:(UIView *)optView
+               block:(void (^)(NSMutableArray *, NSError *))block {
+  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+  [manager DELETE:[self.afnet GetMovement]
+      parameters:@{
+        @"movement_list_id" : movement_list_id
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.afnet.activeView stopAnimating];
+        NSMutableArray *dataArray = [[NSMutableArray alloc] init];
+
+        if ([responseObject[@"result"] intValue] == 1) {
+          NSArray *requestArray = responseObject[@"content"];
+          for (int i = 0; i < [requestArray count]; i++) {
+            Movement *movement = (Movement *)requestArray[i];
+            [dataArray addObject:movement];
+          }
+
+          if (block) {
+            block(dataArray, nil);
+          }
+        } else {
+
+          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
+                                                                  @"content"]]];
+        }
+
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet
+            alert:[NSString
+                      stringWithFormat:@"%@", [error localizedDescription]]];
+        if (block) {
+          block(nil, error);
+        }
+      }];
+}
+
+/**
+ *  根据唯一码查询
+ *
+ *  @param package_id <#package_id description#>
+ *  @param optView    <#optView description#>
+ *  @param block      <#block description#>
+ */
+- (void)getPackageInfo:(NSString *)package_id
+              withView:(UIView *)optView
+                 block:(void (^)(NSArray *, NSError *))block {
+  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+  [manager DELETE:[self.afnet GetPackageInfo]
+      parameters:@{
+        @"package_id" : package_id
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.afnet.activeView stopAnimating];
+        NSArray *dataArray = [[NSArray alloc] init];
+
+        if ([responseObject[@"result"] intValue] == 1) {
+          if (block) {
+            dataArray = responseObject[@"content"];
+          }
+        } else {
+
+          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
+                                                                  @"content"]]];
+        }
+
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet
+            alert:[NSString
+                      stringWithFormat:@"%@", [error localizedDescription]]];
+        if (block) {
+          block(nil, error);
+        }
+      }];
+}
+
+/**
+ *  删除移库单
+ *
+ *  @param movement_list_id <#movement_list_id description#>
+ *  @param optView          <#optView description#>
+ *  @param block            <#block description#>
+ */
+- (void)deleteMovementList:(NSString *)movement_list_id
+                  withView:(id)optView
+                     block:(void (^)(NSString *, NSError *))block {
+  NSLog(@"delete id %@", movement_list_id);
+  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+  [manager DELETE:[self.afnet DeleteMovementList]
+      parameters:@{
+        @"movement_list_id" : movement_list_id
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.afnet.activeView stopAnimating];
+        NSString *msg =
+            [NSString stringWithFormat:@"%@", responseObject[@"Content"]];
+        [self.afnet alert:msg];
+        if (block) {
+          block(msg, nil);
+        }
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet
+            alert:[NSString
+                      stringWithFormat:@"%@", [error localizedDescription]]];
+        if (block) {
+          block(@"", error);
+        }
+      }];
+}
+
+/**
  *  打印api
  *
  *  @param copies <#copies description#>

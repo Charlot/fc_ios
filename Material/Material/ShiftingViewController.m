@@ -13,6 +13,7 @@
 #import "YikuViewController.h"
 #import "MJRefresh.h"
 #import "MovementListFinishViewController.h"
+#import "MovementDetailViewController.h"
 
 @interface ShiftingViewController ()
 @property NSString *userName;
@@ -154,7 +155,11 @@ preparation before navigation
 
   IDLabel.text = movementList.ID;
   countLabel.text = [NSString stringWithFormat:@"%@", movementList.count];
-  stateLabel.text = movementList.state;
+  if ([movementList.state isEqualToString:@"成功"]) {
+    stateLabel.text = @"移库成功";
+  } else {
+    stateLabel.text = @"移库失败";
+  }
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -162,10 +167,10 @@ preparation before navigation
   MovementList *movement_list =
       (MovementList *)[self.dataArray objectAtIndex:indexPath.row];
   self.movementListID = movement_list.ID;
-  if ([movement_list.state isEqualToString:@"结束"]) {
+  if ([movement_list.state isEqualToString:@"成功"]) {
     [self performSegueWithIdentifier:@"toCompleteMovementListVC" sender:self];
   } else {
-    [self performSegueWithIdentifier:@"toYikuVC" sender:self];
+    [self performSegueWithIdentifier:@"toMovementListForFailure" sender:self];
   }
 }
 
@@ -178,6 +183,10 @@ preparation before navigation
     MovementListFinishViewController *mlFinishVC =
         segue.destinationViewController;
     mlFinishVC.movement_list_id = self.movementListID;
+  }
+  if ([segue.identifier isEqualToString:@"toMovementListForFailure"]) {
+    ShiftingDetailViewController *detailVC = segue.destinationViewController;
+    detailVC.movement_list_id = self.movementListID;
   }
 }
 

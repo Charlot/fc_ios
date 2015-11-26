@@ -2233,7 +2233,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="移库清单" id="2lz-TS-lpx">
-                        <barButtonItem key="rightBarButtonItem" title="生存移库单" id="GyV-l0-l1n">
+                        <barButtonItem key="rightBarButtonItem" title="生成移库单" id="GyV-l0-l1n">
                             <connections>
                                 <action selector="createMovementList:" destination="m6S-u8-rjw" id="Vqz-Gh-iDr"/>
                             </connections>
@@ -2243,6 +2243,7 @@
                         <outlet property="historyTableView" destination="z4J-a5-oUX" id="NCV-hl-FQR"/>
                         <segue destination="aEA-U9-cO0" kind="push" identifier="toYikuVC" id="1xT-br-Q0W"/>
                         <segue destination="iVC-SF-TaV" kind="push" identifier="toCompleteMovementListVC" id="9Gl-Jk-iZM"/>
+                        <segue destination="1b3-7w-ZEG" kind="push" identifier="toMovementListForFailure" id="YxU-C8-xI9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="je4-DM-Dic" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5591,7 +5592,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进入仓库：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uDf-fi-gBy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目的仓库：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uDf-fi-gBy">
                                 <rect key="frame" x="38" y="81" width="82" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
@@ -5608,14 +5609,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数量：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g3y-Iu-sur">
-                                <rect key="frame" x="39" y="247" width="62" height="21"/>
+                                <rect key="frame" x="39" y="306" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进入位置：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CYN-pm-Km5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目的库位号：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CYN-pm-Km5">
                                 <rect key="frame" x="38" y="136" width="82" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
@@ -5645,21 +5646,21 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Dxc-lv-jVY">
-                                <rect key="frame" x="39" y="267" width="244" height="30"/>
+                                <rect key="frame" x="39" y="326" width="244" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="零件号：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y7W-Cc-fmL">
-                                <rect key="frame" x="39" y="303" width="62" height="21"/>
+                                <rect key="frame" x="39" y="247" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本仓库：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xox-e0-UeA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="源仓库：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xox-e0-UeA">
                                 <rect key="frame" x="40" y="358" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
@@ -5668,7 +5669,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Fmb-gh-ngW">
-                                <rect key="frame" x="40" y="323" width="244" height="30"/>
+                                <rect key="frame" x="40" y="267" width="244" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -5681,7 +5682,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本位置：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wPD-FN-74F">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="源位置：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wPD-FN-74F">
                                 <rect key="frame" x="41" y="413" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
@@ -6258,23 +6259,24 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yJ1-Ae-Eed"/>
-        <segue reference="2nV-DT-24h"/>
-        <segue reference="Dng-DQ-LOk"/>
-        <segue reference="Neh-iJ-Fpe"/>
-        <segue reference="Do4-uK-Dun"/>
         <segue reference="GDE-C3-Tx4"/>
+        <segue reference="Do4-uK-Dun"/>
+        <segue reference="Neh-iJ-Fpe"/>
         <segue reference="oOw-in-AQO"/>
         <segue reference="SyV-YF-bxb"/>
-        <segue reference="JT4-AV-Rjg"/>
-        <segue reference="Hg3-N0-v7Z"/>
-        <segue reference="QU2-zR-Ew2"/>
+        <segue reference="Dng-DQ-LOk"/>
+        <segue reference="2nV-DT-24h"/>
         <segue reference="Kxl-Rh-nWd"/>
         <segue reference="Get-Zr-2fp"/>
         <segue reference="veK-WU-skj"/>
-        <segue reference="U3W-2k-BOU"/>
+        <segue reference="YxU-C8-xI9"/>
+        <segue reference="JT4-AV-Rjg"/>
+        <segue reference="zjP-oP-VXq"/>
+        <segue reference="UnZ-wN-WXV"/>
+        <segue reference="yJ1-Ae-Eed"/>
         <segue reference="tP9-hz-80H"/>
         <segue reference="fTA-Xe-KDm"/>
+        <segue reference="U3W-2k-BOU"/>
         <segue reference="zbp-Dd-2O5"/>
     </inferredMetricsTieBreakers>
 </document>
