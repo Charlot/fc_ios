@@ -259,11 +259,7 @@
     NSString *strPartNr = self.partNrTextField.text;
     NSString *strFromWh = self.fromWhTextField.text;
     NSString *strFromPosition = self.fromPositionTextField.text;
-    //    strToWh = @"3EX";
-    //    strToPosition = @"SCT 28 03 01";
-    //    strPackage = @"rwwe";
-    //
-    //    strPartNr = @"411000895";
+
     if (buttonIndex == 1) {
 
       NSMutableDictionary *dict = [[NSMutableDictionary alloc]
