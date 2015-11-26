@@ -135,6 +135,7 @@
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [AFNet.activeView stopAnimating];
+            NSLog(@"login error %@", [error description]);
             [AFNet
                 alert:[NSString stringWithFormat:@"%@",
                                                  [error localizedDescription]]];

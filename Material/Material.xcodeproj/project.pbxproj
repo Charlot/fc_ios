@@ -19,6 +19,8 @@
 		940E8C651C00B57E000CCA71 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 940E8C641C00B57E000CCA71 /* libsqlite3.dylib */; };
 		940E8C671C00B879000CCA71 /* wmsdb.sql in Resources */ = {isa = PBXBuildFile; fileRef = 940E8C661C00B879000CCA71 /* wmsdb.sql */; };
 		940E8C6A1C00B930000CCA71 /* Movement.m in Sources */ = {isa = PBXBuildFile; fileRef = 940E8C691C00B930000CCA71 /* Movement.m */; };
+		94134DD01C05EF6800F5C0BD /* InventoryAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 94134DCF1C05EF6800F5C0BD /* InventoryAPI.m */; };
+		94134DD31C05FE4D00F5C0BD /* InventoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 94134DD21C05FE4D00F5C0BD /* InventoryList.m */; };
 		9420D5191C02BD4E00AA1CB5 /* InventoryHistroyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D5181C02BD4E00AA1CB5 /* InventoryHistroyViewController.m */; };
 		9420D51C1C02BD7200AA1CB5 /* InventoryPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D51B1C02BD7200AA1CB5 /* InventoryPositionViewController.m */; };
 		9420D51F1C02DFAF00AA1CB5 /* MovementList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D51E1C02DFAF00AA1CB5 /* MovementList.m */; };
@@ -219,6 +221,10 @@
 		940E8C661C00B879000CCA71 /* wmsdb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = wmsdb.sql; sourceTree = "<group>"; };
 		940E8C681C00B930000CCA71 /* Movement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movement.h; sourceTree = "<group>"; };
 		940E8C691C00B930000CCA71 /* Movement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movement.m; sourceTree = "<group>"; };
+		94134DCE1C05EF6800F5C0BD /* InventoryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryAPI.h; sourceTree = "<group>"; };
+		94134DCF1C05EF6800F5C0BD /* InventoryAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryAPI.m; sourceTree = "<group>"; };
+		94134DD11C05FE4D00F5C0BD /* InventoryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryList.h; sourceTree = "<group>"; };
+		94134DD21C05FE4D00F5C0BD /* InventoryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryList.m; sourceTree = "<group>"; };
 		9420D5171C02BD4E00AA1CB5 /* InventoryHistroyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryHistroyViewController.h; sourceTree = "<group>"; };
 		9420D5181C02BD4E00AA1CB5 /* InventoryHistroyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryHistroyViewController.m; sourceTree = "<group>"; };
 		9420D51A1C02BD7200AA1CB5 /* InventoryPositionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryPositionViewController.h; sourceTree = "<group>"; };
@@ -916,6 +922,10 @@
 				9420D51E1C02DFAF00AA1CB5 /* MovementList.m */,
 				9420D5201C030C4C00AA1CB5 /* MovementAPI.h */,
 				9420D5211C030C4C00AA1CB5 /* MovementAPI.m */,
+				94134DCE1C05EF6800F5C0BD /* InventoryAPI.h */,
+				94134DCF1C05EF6800F5C0BD /* InventoryAPI.m */,
+				94134DD11C05FE4D00F5C0BD /* InventoryList.h */,
+				94134DD21C05FE4D00F5C0BD /* InventoryList.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1456,9 +1466,11 @@
 				B04EF20B1946E60D00A95D7A /* AFHTTPRequestOperationManager.m in Sources */,
 				B001BF0219A58A97000800AD /* RequireTraceDetailViewController.m in Sources */,
 				949359C81C04A993003D2B25 /* MJRefreshAutoFooter.m in Sources */,
+				94134DD01C05EF6800F5C0BD /* InventoryAPI.m in Sources */,
 				B058550A19A2F840000C85E5 /* TuoCheckDetailViewController.m in Sources */,
 				949359C91C04A993003D2B25 /* MJRefreshBackFooter.m in Sources */,
 				213FD7B51B2D0FEE00BD4211 /* InventoryConfirmViewController.m in Sources */,
+				94134DD31C05FE4D00F5C0BD /* InventoryList.m in Sources */,
 				B0643D66197DF40D0036AADA /* RequireDetailViewController.m in Sources */,
 				B04EF2121946E60D00A95D7A /* AFURLSessionManager.m in Sources */,
 				B0DF644219446E5B002D044B /* TuoPrintViewController.m in Sources */,
