@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InventoryListItem.h"
 
 @interface InventoryConfirmViewController : UIViewController
-@property(strong,nonatomic)NSString *inventroy_id;
-
+@property(strong, nonatomic) NSString *inventroy_id;
+@property(strong, nonatomic) InventoryListItem *inventory_list_item;
 @end

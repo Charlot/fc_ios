@@ -28,6 +28,49 @@
 }
 
 /**
+ *  获取唯一码信息
+ *
+ *  @param package_id <#package_id description#>
+ *  @param optView    <#optView description#>
+ *  @param block      <#block description#>
+ */
+- (void)getPackageInfo:(NSString *)package_id
+              withView:(UIView *)optView
+                 block:(void (^)(NSMutableArray *, NSError *))block {
+  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+  [manager GET:[self.afnet GetPackageInfo]
+      parameters:@{
+        @"package_id" : package_id
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.afnet.activeView stopAnimating];
+        NSLog(@"the request getPackageInfo %@", responseObject);
+        NSMutableArray *dataArray = [[NSMutableArray alloc] init];
+
+        if ([responseObject[@"result"] intValue] == 1) {
+          dataArray = responseObject[@"content"];
+          if (block) {
+            block(dataArray, nil);
+          }
+        } else {
+
+          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
+                                                                  @"content"]]];
+        }
+
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet
+            alert:[NSString
+                      stringWithFormat:@"%@", [error localizedDescription]]];
+        if (block) {
+          block(nil, error);
+        }
+      }];
+}
+
+/**
  *  获取移库
  *
  *  @param movement_list_id <#movement_list_id description#>
@@ -75,47 +118,6 @@
 }
 
 /**
- *  根据唯一码查询
- *
- *  @param package_id <#package_id description#>
- *  @param optView    <#optView description#>
- *  @param block      <#block description#>
- */
-- (void)getPackageInfo:(NSString *)package_id
-              withView:(UIView *)optView
-                 block:(void (^)(NSArray *, NSError *))block {
-  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
-  [manager DELETE:[self.afnet GetPackageInfo]
-      parameters:@{
-        @"package_id" : package_id
-      }
-      success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.afnet.activeView stopAnimating];
-        NSArray *dataArray = [[NSArray alloc] init];
-
-        if ([responseObject[@"result"] intValue] == 1) {
-          if (block) {
-            dataArray = responseObject[@"content"];
-          }
-        } else {
-
-          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
-                                                                  @"content"]]];
-        }
-
-      }
-      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.afnet.activeView stopAnimating];
-        [self.afnet
-            alert:[NSString
-                      stringWithFormat:@"%@", [error localizedDescription]]];
-        if (block) {
-          block(nil, error);
-        }
-      }];
-}
-
-/**
  *  删除移库单
  *
  *  @param movement_list_id <#movement_list_id description#>
@@ -134,7 +136,7 @@
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.afnet.activeView stopAnimating];
         NSString *msg =
-            [NSString stringWithFormat:@"%@", responseObject[@"Content"]];
+            [NSString stringWithFormat:@"%@", responseObject[@"content"]];
         [self.afnet alert:msg];
         if (block) {
           block(msg, nil);

@@ -62,7 +62,7 @@
                   [[Inventory alloc] initWithObject:inventoryArray[i]];
               if (i == 0) {
                 _inventoryId = inventory.ID;
-                NSLog(@"the id is %d", _inventoryId);
+                NSLog(@"the id is %@", _inventoryId);
               }
               [_dataList addObject:inventory];
             }
@@ -84,13 +84,13 @@
   // Dispose of any resources that can be recreated.
 }
 
-- (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
   return 1;
 }
 
 // The number of rows of data
-- (int)pickerView:(UIPickerView *)pickerView
-    numberOfRowsInComponent:(NSInteger)component {
+- (NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component {
   //   return _pickerData.count;
   return [_dataList count];
 }
@@ -120,12 +120,13 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   // Get the new view controller using [segue destinationViewController].
   // Pass the selected object to the new view controller.
-  if ([segue.identifier isEqualToString:@"confirm"]) {
+  if ([segue.identifier isEqualToString:@"toHistoryVC"]) {
     //        InventoryConfirmViewController
     //        *ic=segue.destinationViewController;
     //        ic.inventroy_id= _inventoryId;
     InventoryHistroyViewController *history = segue.destinationViewController;
-    history.inventroy_id = _inventoryId;
+    history.inventory_list_id = _inventoryId;
+    NSLog(@"the pass inventory id is %@", _inventoryId);
   }
 }
 

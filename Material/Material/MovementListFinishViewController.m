@@ -97,7 +97,7 @@
   movementCountLabel.textColor = [UIColor redColor];
   movementCountLabel.textAlignment = NSTextAlignmentLeft;
   movementCountLabel.text = [NSString
-      stringWithFormat:@"已扫描%d个零件", [self.dataArray count]];
+      stringWithFormat:@"已扫描%ld个零件", [self.dataArray count]];
   return movementCountLabel;
 }
 

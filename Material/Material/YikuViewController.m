@@ -13,6 +13,7 @@
 #import "DBManager.h"
 #import "ShiftingDetailViewController.h"
 #import "MovementAPI.h"
+#import "MovementAPI.h"
 
 @interface YikuViewController ()
 @property(weak, nonatomic) IBOutlet UITextField *fromPositionTextField;
@@ -122,7 +123,7 @@
       initWithTarget:self
               action:@selector(dismissKeyboard)];
   [self.view addGestureRecognizer:tap];
-
+  //  [self getPackageInfo:@"WI311501127113"];
   [self initController];
 }
 
@@ -202,12 +203,31 @@
       UITextField *tmpTextFile = objInput;
       if ([objInput isFirstResponder]) {
         tmpTextFile.text = data;
+        if (tmpTextFile == self.packageTextField) {
+          [self getPackageInfo:tmpTextFile.text];
+        }
         [tmpTextFile resignFirstResponder];
         [tmpTextFile.nextTextField becomeFirstResponder];
         break;
       }
     }
   }
+}
+
+- (void)getPackageInfo:(NSString *)package_id {
+  MovementAPI *api = [[MovementAPI alloc] init];
+  [api getPackageInfo:package_id
+             withView:self.view
+                block:^(NSMutableArray *dataArray, NSError *error) {
+                  if (error == nil) {
+                    NSDictionary *dictData = [dataArray mutableCopy];
+                    self.partNrTextField.text = [NSString
+                        stringWithFormat:@"%@",
+                                         [dictData objectForKey:@"part_id"]];
+                    self.qtyTextField.text = [NSString
+                        stringWithFormat:@"%@", [dictData objectForKey:@"qty"]];
+                  }
+                }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -218,13 +238,25 @@
 - (IBAction)confirmAction:(id)sender {
   if (self.toWhTextField.text.length > 0) {
     if (self.toPositionTextField.text.length > 0) {
+      if (self.fromWhTextField.text.length > 0) {
 
-      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                      message:@"确认提交？"
-                                                     delegate:self
-                                            cancelButtonTitle:@"取消"
-                                            otherButtonTitles:@"确定", nil];
-      [alert show];
+        UIAlertView *alert =
+            [[UIAlertView alloc] initWithTitle:@""
+                                       message:@"确认提交？"
+                                      delegate:self
+                             cancelButtonTitle:@"取消"
+                             otherButtonTitles:@"确定", nil];
+        [alert show];
+      } else {
+        UIAlertView *alert =
+            [[UIAlertView alloc] initWithTitle:@""
+                                       message:@"请填写源仓库"
+                                      delegate:self
+                             cancelButtonTitle:@"确定"
+                             otherButtonTitles:nil];
+        [alert show];
+      }
+
     } else {
       UIAlertView *alert =
           [[UIAlertView alloc] initWithTitle:@""
@@ -291,7 +323,7 @@
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [AFNet.activeView stopAnimating];
             if ([responseObject[@"result"] integerValue] == 1) {
-              //              [AFNet alertSuccess:responseObject[@"content"]];
+              [AFNet alertSuccess:responseObject[@"content"]];
               [dict setValue:self.userName forKey:@"user"];
               self.movement = [[Movement alloc] initWithObject:dict];
               [self createMovement:self.movement];

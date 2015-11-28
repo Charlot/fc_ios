@@ -27,6 +27,7 @@
 		9420D5221C030C4C00AA1CB5 /* MovementAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D5211C030C4C00AA1CB5 /* MovementAPI.m */; };
 		9420D5251C031C2000AA1CB5 /* MovementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D5241C031C2000AA1CB5 /* MovementDetailViewController.m */; };
 		943701391BFCC84E002EDDEC /* ShiftingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 943701381BFCC84E002EDDEC /* ShiftingViewController.m */; };
+		94648A891C09C47800EFC504 /* InventoryListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 94648A881C09C47800EFC504 /* InventoryListItem.m */; };
 		9492B76B1C054209007DD8A0 /* MovementListFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9492B76A1C054209007DD8A0 /* MovementListFinishViewController.m */; };
 		9493599A1C0491E4003D2B25 /* ShiftingPrintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949359991C0491E4003D2B25 /* ShiftingPrintViewController.m */; };
 		949359C81C04A993003D2B25 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9493599E1C04A993003D2B25 /* MJRefreshAutoFooter.m */; };
@@ -237,6 +238,8 @@
 		9420D5241C031C2000AA1CB5 /* MovementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovementDetailViewController.m; sourceTree = "<group>"; };
 		943701371BFCC84E002EDDEC /* ShiftingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftingViewController.h; sourceTree = "<group>"; };
 		943701381BFCC84E002EDDEC /* ShiftingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftingViewController.m; sourceTree = "<group>"; };
+		94648A871C09C47800EFC504 /* InventoryListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryListItem.h; sourceTree = "<group>"; };
+		94648A881C09C47800EFC504 /* InventoryListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryListItem.m; sourceTree = "<group>"; };
 		9492B7691C054209007DD8A0 /* MovementListFinishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovementListFinishViewController.h; sourceTree = "<group>"; };
 		9492B76A1C054209007DD8A0 /* MovementListFinishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovementListFinishViewController.m; sourceTree = "<group>"; };
 		949359981C0491E4003D2B25 /* ShiftingPrintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftingPrintViewController.h; sourceTree = "<group>"; };
@@ -926,6 +929,8 @@
 				94134DCF1C05EF6800F5C0BD /* InventoryAPI.m */,
 				94134DD11C05FE4D00F5C0BD /* InventoryList.h */,
 				94134DD21C05FE4D00F5C0BD /* InventoryList.m */,
+				94648A871C09C47800EFC504 /* InventoryListItem.h */,
+				94648A881C09C47800EFC504 /* InventoryListItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1354,6 +1359,7 @@
 				21942D771B329DFA001D5B53 /* UITextField+Extended.m in Sources */,
 				B04EF1DB19469CBA00A95D7A /* ReceiveXiangViewController.m in Sources */,
 				949359DA1C04A993003D2B25 /* UIView+MJExtension.m in Sources */,
+				94648A891C09C47800EFC504 /* InventoryListItem.m in Sources */,
 				B09E4CD01A303C7C0041083D /* XiangChooseDepartmentViewController.m in Sources */,
 				B0DF64351943E1D1002D044B /* PrintViewController.m in Sources */,
 				B0FDC96F194555FE008E4B72 /* YunInfoViewController.m in Sources */,
