@@ -11,6 +11,23 @@
 @interface InventoryAPI : NSObject
 
 /**
+ *  根据盘点清单 和库位 搜索历史纪录
+
+ *
+ *  @param inventory_list_id <#inventory_list_id description#>
+ *  @param position          <#position description#>
+ *  @param user_id           <#user_id description#>
+ *  @param optView           <#optView description#>
+ *  @param block             <#block description#>
+ */
+- (void)getInventoryListByPosition:(NSString *)inventory_list_id
+                      withPosition:(NSString *)position
+                          withUser:(NSString *)user_id
+                          withView:(UIView *)optView
+                             block:(void (^)(NSMutableArray *dataArray,
+                                             NSError *error))block;
+
+/**
  *  创建盘点项
  *
  *  @param inventory_list_id <#inventory_list_id description#>

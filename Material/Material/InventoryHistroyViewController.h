@@ -11,6 +11,7 @@
 
 @interface InventoryHistroyViewController
     : UIViewController <UITableViewDelegate, UITableViewDataSource,
-                        CaptuvoEventsProtocol, UITextFieldDelegate>
+                        CaptuvoEventsProtocol, UITextFieldDelegate,
+                        UISearchBarDelegate>
 @property(strong, nonatomic) NSString *inventory_list_id;
 @end

@@ -2316,6 +2316,7 @@
                     <connections>
                         <outlet property="historyTable" destination="39u-GX-7iJ" id="x4H-wU-wTW"/>
                         <outlet property="positionTextField" destination="WTt-er-S2u" id="g1u-ZL-FQr"/>
+                        <outlet property="searchBar" destination="Oe9-wJ-cMC" id="T4b-is-4ll"/>
                         <segue destination="RgY-9t-SPx" kind="push" identifier="toPositionItemVC" id="qcd-dL-ysH"/>
                     </connections>
                 </viewController>

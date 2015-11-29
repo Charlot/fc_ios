@@ -21,6 +21,7 @@
 @property(strong, nonatomic) IBOutlet UITextField *positionTextField;
 @property(strong, nonatomic) NSMutableArray *positionDataArray;
 @property NSString *position;
+@property(strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property NSString *userName;
 @end
 
@@ -34,6 +35,32 @@
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+  [self.searchBar resignFirstResponder];
+  [self.historyTable.header beginRefreshing];
+  [self loadData];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+  [self.searchBar resignFirstResponder];
+  InventoryAPI *api = [[InventoryAPI alloc] init];
+  [api getInventoryListByPosition:self.inventory_list_id
+                     withPosition:searchBar.text
+                         withUser:self.userName
+                         withView:self.view
+                            block:^(NSMutableArray *dataArray, NSError *error) {
+                              if (error == nil) {
+                                [self.dataArray removeAllObjects];
+                                if ([dataArray count] > 0) {
+                                  for (int i = 0; i < [dataArray count]; i++) {
+                                    [self.dataArray addObject:dataArray[i]];
+                                  }
+                                  [self.historyTable reloadData];
+                                }
+                              }
+                            }];
 }
 
 /*
@@ -111,6 +138,8 @@ preparation before navigation
 
 - (void)customUI {
   [self loadUser];
+  self.searchBar.delegate = self;
+  self.searchBar.showsCancelButton = YES;
   self.historyTable.delegate = self;
   self.historyTable.dataSource = self;
   self.positionTextField.delegate = self;
