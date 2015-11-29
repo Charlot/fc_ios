@@ -21,5 +21,9 @@
 @property(nonatomic, weak) id<ShiftingDetailViewControllerDelegate> delegate;
 
 @property(nonatomic, strong) NSString *movement_list_id;
+/**
+ *  web or local
+ */
+@property(nonatomic, strong) NSString *fromState;
 - (IBAction)MovementAction:(id)sender;
 @end

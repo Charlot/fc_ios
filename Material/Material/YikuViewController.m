@@ -13,7 +13,6 @@
 #import "DBManager.h"
 #import "ShiftingDetailViewController.h"
 #import "MovementAPI.h"
-#import "MovementAPI.h"
 
 @interface YikuViewController ()
 @property(weak, nonatomic) IBOutlet UITextField *fromPositionTextField;
@@ -466,7 +465,7 @@
     ShiftingDetailViewController *detail = segue.destinationViewController;
     detail.movement_list_id = self.self.movementListID;
     detail.delegate = self;
-
+    detail.fromState = @"local";
     //    for modal
     //    UINavigationController *navigationController =
     //        segue.destinationViewController;

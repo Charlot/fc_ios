@@ -187,6 +187,7 @@ preparation before navigation
   if ([segue.identifier isEqualToString:@"toMovementListForFailure"]) {
     ShiftingDetailViewController *detailVC = segue.destinationViewController;
     detailVC.movement_list_id = self.movementListID;
+    detailVC.fromState = @"web";
   }
 }
 

@@ -6057,11 +6057,161 @@
                         <outlet property="detailTableView" destination="ugR-I2-vhA" id="uvv-zx-ZgO"/>
                         <segue destination="lAR-O6-Gvx" kind="push" identifier="toPrintVC" id="UnZ-wN-WXV"/>
                         <segue destination="m6S-u8-rjw" kind="push" identifier="toCompleteHistoryVC" id="JT4-AV-Rjg"/>
+                        <segue destination="zAH-jF-MBW" kind="push" identifier="toCreateMovementListItemVC" id="jJE-3v-HfB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVS-os-dGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2400" y="7199"/>
+            <point key="canvasLocation" x="2444" y="7360"/>
+        </scene>
+        <!--移库-->
+        <scene sceneID="X9p-3Q-Rd1">
+            <objects>
+                <viewController title="移库" id="zAH-jF-MBW" customClass="CreateMovementListItemViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4HV-Vp-1ae">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目的仓库：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BH0-ke-HWO">
+                                <rect key="frame" x="36" y="70" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="唯一码：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yVY-Mk-hoW">
+                                <rect key="frame" x="36" y="180" width="62" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数量：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qfO-oq-meQ">
+                                <rect key="frame" x="37" y="295" width="62" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目的库位号：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hMD-Gv-Y4G">
+                                <rect key="frame" x="36" y="125" width="100" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Otw-MB-zx4">
+                                <rect key="frame" x="36" y="91" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="8V6-gM-tRo">
+                                <rect key="frame" x="36" y="145" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Shw-3S-0UR">
+                                <rect key="frame" x="37" y="200" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="MB1-4C-GES">
+                                <rect key="frame" x="37" y="315" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="零件号：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aUR-xM-sj0">
+                                <rect key="frame" x="37" y="236" width="62" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="源仓库：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zc1-W7-N0Y">
+                                <rect key="frame" x="38" y="347" width="62" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="CaY-wQ-RbS">
+                                <rect key="frame" x="38" y="256" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="bw5-3T-Aeg">
+                                <rect key="frame" x="38" y="367" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="源位置：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G00-0m-sSG">
+                                <rect key="frame" x="39" y="402" width="62" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="fah-xd-spO">
+                                <rect key="frame" x="39" y="422" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q3g-Rj-ZKJ">
+                                <rect key="frame" x="53" y="460" width="217" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.34018288000000002" green="0.73630819520000002" blue="0.37557483359999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="确定">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirm:" destination="5nL-Gh-cfL" eventType="touchUpInside" id="p29-OJ-kqu"/>
+                                    <action selector="confirmAction:" destination="aEA-U9-cO0" eventType="touchUpInside" id="eZq-4H-FQg"/>
+                                    <action selector="createButtonClick:" destination="zAH-jF-MBW" eventType="touchUpInside" id="LQd-kw-4sU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SGE-qq-b5q"/>
+                    <connections>
+                        <outlet property="fromPositionTextField" destination="fah-xd-spO" id="Lat-DY-cSg"/>
+                        <outlet property="fromWhouseTextField" destination="bw5-3T-Aeg" id="oSx-au-Gud"/>
+                        <outlet property="packageTextField" destination="Shw-3S-0UR" id="TaE-g6-w2W"/>
+                        <outlet property="partIDTextField" destination="CaY-wQ-RbS" id="vKl-PI-sbI"/>
+                        <outlet property="qtyTextField" destination="MB1-4C-GES" id="Z4v-ID-sNZ"/>
+                        <outlet property="toPositionTextField" destination="8V6-gM-tRo" id="eNN-TL-gFo"/>
+                        <outlet property="toWhouseTextField" destination="Otw-MB-zx4" id="fl3-3u-zsQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ep6-qH-j7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2521" y="6704"/>
         </scene>
         <!--Shifting Print View Controller-->
         <scene sceneID="YAe-gP-azO">
@@ -6324,7 +6474,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mNz-NV-qGZ">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mNz-NV-qGZ" id="tB6-Cg-T0m">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -6421,24 +6571,24 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tP9-hz-80H"/>
-        <segue reference="fTA-Xe-KDm"/>
-        <segue reference="U3W-2k-BOU"/>
-        <segue reference="zbp-Dd-2O5"/>
         <segue reference="Kxl-Rh-nWd"/>
         <segue reference="Get-Zr-2fp"/>
         <segue reference="veK-WU-skj"/>
-        <segue reference="oOw-in-AQO"/>
         <segue reference="Neh-iJ-Fpe"/>
         <segue reference="Do4-uK-Dun"/>
         <segue reference="GDE-C3-Tx4"/>
         <segue reference="Dng-DQ-LOk"/>
         <segue reference="SyV-YF-bxb"/>
+        <segue reference="oOw-in-AQO"/>
         <segue reference="2nV-DT-24h"/>
+        <segue reference="fTA-Xe-KDm"/>
+        <segue reference="tP9-hz-80H"/>
+        <segue reference="U3W-2k-BOU"/>
+        <segue reference="zbp-Dd-2O5"/>
         <segue reference="yJ1-Ae-Eed"/>
-        <segue reference="JT4-AV-Rjg"/>
         <segue reference="EZu-KH-oca"/>
-        <segue reference="zjP-oP-VXq"/>
+        <segue reference="JT4-AV-Rjg"/>
         <segue reference="UnZ-wN-WXV"/>
+        <segue reference="zjP-oP-VXq"/>
     </inferredMetricsTieBreakers>
 </document>

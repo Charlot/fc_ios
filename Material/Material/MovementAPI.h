@@ -7,8 +7,31 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Movement.h"
 
 @interface MovementAPI : NSObject
+
+- (BOOL)localDeleteMovementListItemByID:(NSString *)movement_list_id;
+
+/**
+ *  sqlite3 存储 movenment
+ *
+ *  @param m <#m description#>
+ */
+- (void)createMovement:(Movement *)m;
+
+/**
+ *  获取移库单 子项
+ *
+ *  @param movement_list_id <#movement_list_id description#>
+ *  @param optView          <#optView description#>
+ *  @param block            <#block description#>
+ */
+- (void)getMovement:(NSString *)movement_list_id
+           withView:(UIView *)optView
+              block:
+                  (void (^)(NSMutableArray *reqeustData, NSError *error))block;
+
 - (NSMutableArray *)queryByMovementListID:(NSString *)mlid
                          ObjectDictionary:(NSInteger)type;
 /**

@@ -27,6 +27,7 @@
 		9420D5221C030C4C00AA1CB5 /* MovementAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D5211C030C4C00AA1CB5 /* MovementAPI.m */; };
 		9420D5251C031C2000AA1CB5 /* MovementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9420D5241C031C2000AA1CB5 /* MovementDetailViewController.m */; };
 		943701391BFCC84E002EDDEC /* ShiftingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 943701381BFCC84E002EDDEC /* ShiftingViewController.m */; };
+		945E34221C0B398600C6D1E0 /* CreateMovementListItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 945E34211C0B398600C6D1E0 /* CreateMovementListItemViewController.m */; };
 		94648A891C09C47800EFC504 /* InventoryListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 94648A881C09C47800EFC504 /* InventoryListItem.m */; };
 		9492B76B1C054209007DD8A0 /* MovementListFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9492B76A1C054209007DD8A0 /* MovementListFinishViewController.m */; };
 		9493599A1C0491E4003D2B25 /* ShiftingPrintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949359991C0491E4003D2B25 /* ShiftingPrintViewController.m */; };
@@ -238,6 +239,8 @@
 		9420D5241C031C2000AA1CB5 /* MovementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovementDetailViewController.m; sourceTree = "<group>"; };
 		943701371BFCC84E002EDDEC /* ShiftingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftingViewController.h; sourceTree = "<group>"; };
 		943701381BFCC84E002EDDEC /* ShiftingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftingViewController.m; sourceTree = "<group>"; };
+		945E34201C0B398600C6D1E0 /* CreateMovementListItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMovementListItemViewController.h; sourceTree = "<group>"; };
+		945E34211C0B398600C6D1E0 /* CreateMovementListItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMovementListItemViewController.m; sourceTree = "<group>"; };
 		94648A871C09C47800EFC504 /* InventoryListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryListItem.h; sourceTree = "<group>"; };
 		94648A881C09C47800EFC504 /* InventoryListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryListItem.m; sourceTree = "<group>"; };
 		9492B7691C054209007DD8A0 /* MovementListFinishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovementListFinishViewController.h; sourceTree = "<group>"; };
@@ -595,6 +598,8 @@
 				949359991C0491E4003D2B25 /* ShiftingPrintViewController.m */,
 				9492B7691C054209007DD8A0 /* MovementListFinishViewController.h */,
 				9492B76A1C054209007DD8A0 /* MovementListFinishViewController.m */,
+				945E34201C0B398600C6D1E0 /* CreateMovementListItemViewController.h */,
+				945E34211C0B398600C6D1E0 /* CreateMovementListItemViewController.m */,
 			);
 			name = SHIFTING;
 			sourceTree = "<group>";
@@ -1363,6 +1368,7 @@
 				B09E4CD01A303C7C0041083D /* XiangChooseDepartmentViewController.m in Sources */,
 				B0DF64351943E1D1002D044B /* PrintViewController.m in Sources */,
 				B0FDC96F194555FE008E4B72 /* YunInfoViewController.m in Sources */,
+				945E34221C0B398600C6D1E0 /* CreateMovementListItemViewController.m in Sources */,
 				B04EF2151946E87800A95D7A /* AFNetOperate.m in Sources */,
 				B07CE56D198B8890000FD578 /* RequireCheckXiangTableViewCell.m in Sources */,
 				B0643D62197DEF6F0036AADA /* RequirePrintViewController.m in Sources */,

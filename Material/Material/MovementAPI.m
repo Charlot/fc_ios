@@ -28,6 +28,101 @@
 }
 
 /**
+ *  删除本地 纪录
+ *
+ *  @param movement_list_id <#movement_list_id description#>
+ *
+ *  @return <#return value description#>
+ */
+- (BOOL)localDeleteMovementListItemByID:(NSString *)movement_list_id {
+  NSString *query;
+  query = [NSString
+      stringWithFormat:@"delete from movements where movement_list_id = '%@'",
+                       movement_list_id];
+  NSLog(@"===== query is %@", query);
+  DBManager *db = [[DBManager alloc] initWithDatabaseFilename:@"wmsdb.sql"];
+  [db executeQuery:query];
+  if (db.affectedRows != 0) {
+    NSLog(@"操作成功");
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+/**
+ *  sqlite3 存储 movenment
+ *
+ *  @param m <#m description#>
+ */
+- (void)createMovement:(Movement *)m {
+
+  NSString *query;
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+  NSString *created_at = [NSString
+      stringWithFormat:@"%@", [dateFormatter stringFromDate:[NSDate date]]];
+
+  query = [NSString
+      stringWithFormat:
+          @"insert into movements (toWh, "
+          @"toPosition, fromWh, fromPosition, packageId, partNr, "
+          @"qty, movement_list_id, user, "
+          @"created_at) values('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', "
+          @"'%@', '%@')",
+          m.toWh, m.toPosition, m.fromWh, m.fromPosition, m.packageId, m.partNr,
+          m.qty, m.movement_list_id, m.user, created_at];
+  NSLog(@"===== query is %@", query);
+  DBManager *db = [[DBManager alloc] initWithDatabaseFilename:@"wmsdb.sql"];
+  [db executeQuery:query];
+  if (db.affectedRows != 0) {
+    NSLog(@"操作成功");
+  }
+}
+
+- (void)getMovement:(NSString *)movement_list_id
+           withView:(UIView *)optView
+              block:(void (^)(NSMutableArray *, NSError *))block {
+  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+  [manager GET:[self.afnet GetMovement]
+      parameters:@{
+        @"movement_list_id" : movement_list_id
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.afnet.activeView stopAnimating];
+        NSLog(@"the request getPackageInfo %@", responseObject);
+        NSMutableArray *dataArray = [[NSMutableArray alloc] init];
+
+        if ([responseObject[@"result"] intValue] == 1) {
+          NSArray *tmpArray = responseObject[@"content"];
+          for (int i = 0; i < [tmpArray count]; i++) {
+            Movement *movement = [[Movement alloc] init];
+            movement = tmpArray[i];
+            [dataArray addObject:movement];
+          }
+
+        } else {
+
+          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
+                                                                  @"content"]]];
+        }
+        if (block) {
+          block(dataArray, nil);
+        }
+
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet
+            alert:[NSString
+                      stringWithFormat:@"%@", [error localizedDescription]]];
+        if (block) {
+          block(nil, error);
+        }
+      }];
+}
+
+/**
  *  获取唯一码信息
  *
  *  @param package_id <#package_id description#>

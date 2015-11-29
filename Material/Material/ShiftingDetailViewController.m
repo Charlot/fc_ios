@@ -13,6 +13,7 @@
 #import "MovementDetailViewController.h"
 #import "KeychainItemWrapper.h"
 #import "ShiftingPrintViewController.h"
+#import "CreateMovementListItemViewController.h"
 
 @interface ShiftingDetailViewController ()
 @property(strong, nonatomic) NSMutableArray *dataArray;
@@ -51,14 +52,48 @@ preparation before navigation
   self.detailTableView.dataSource = self;
   self.detailTableView.allowsMultipleSelectionDuringEditing = NO;
   self.dataArray = [[NSMutableArray alloc] init];
-  MovementAPI *api = [[MovementAPI alloc] init];
-  self.dataArray =
-      [api queryByMovementListID:self.movement_list_id ObjectDictionary:0];
-  [self.detailTableView reloadData];
   self.api = [[MovementAPI alloc] init];
+  /**
+   *  如果是修改传过来的， 那么先获取web，然后更新本地
+   */
+  if ([self.fromState isEqualToString:@"web"]) {
+    [self.api getMovement:self.movement_list_id
+                 withView:self.view
+                    block:^(NSMutableArray *reqeustData, NSError *error) {
+                      if (error == nil) {
+                        if ([reqeustData count] > 0) {
+                          /**
+                           *  删除本地纪录
+                           */
+                          if ([self.api localDeleteMovementListItemByID:
+                                            self.movement_list_id]) {
+                            /**
+                             *  获取web数据
+                             */
+                            for (int i = 0; i < [reqeustData count]; i++) {
+                              Movement *movement = (Movement *)reqeustData[i];
+                              [self.api createMovement:movement];
+                            }
+                            /**
+                             *  查询本地数据
+                             */
+                            self.dataArray = [self.api
+                                queryByMovementListID:self.movement_list_id
+                                     ObjectDictionary:0];
+                            [self.detailTableView reloadData];
+                          }
+                        }
+                      }
+                    }];
+  } else {
+    self.dataArray = [self.api queryByMovementListID:self.movement_list_id
+                                    ObjectDictionary:0];
+    [self.detailTableView reloadData];
+  }
 }
 
 - (void)customUI {
+
   self.navigationItem.leftBarButtonItem =
       [[UIBarButtonItem alloc] initWithTitle:@"继续移库"
                                        style:UIBarButtonItemStylePlain
@@ -68,7 +103,12 @@ preparation before navigation
 
 - (void)done:(id)sender {
   //  [self dismissViewControllerAnimated:YES completion:nil];
-  [self.delegate backToYikuVC:self MovementListID:self.movement_list_id];
+  if ([self.fromState isEqualToString:@"local"]) {
+    [self.delegate backToYikuVC:self MovementListID:self.movement_list_id];
+
+  } else {
+    [self performSegueWithIdentifier:@"toCreateMovementListItemVC" sender:self];
+  }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -153,6 +193,12 @@ preparation before navigation
   if ([segue.identifier isEqualToString:@"toPrintVC"]) {
     ShiftingPrintViewController *printVC = segue.destinationViewController;
     printVC.movement_list_id = self.movement_list_id;
+  }
+  if ([segue.identifier isEqualToString:@"toCreateMovementListItemVC"]) {
+    CreateMovementListItemViewController *createVC =
+        segue.destinationViewController;
+    createVC.movementListID = self.movement_list_id;
+    createVC.userName = self.userName;
   }
 }
 
