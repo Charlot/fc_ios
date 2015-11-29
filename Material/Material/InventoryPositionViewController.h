@@ -11,4 +11,6 @@
 @interface InventoryPositionViewController : UIViewController
 @property(strong, nonatomic) NSMutableArray *positionData;
 @property(strong, nonatomic) NSString *position;
+@property(strong, nonatomic) NSString *inventory_list_id;
+@property(strong, nonatomic) NSString *userName;
 @end

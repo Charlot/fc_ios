@@ -27,6 +27,7 @@
     self.inventory_list_id = dictionary[@"inventory_list_id"]
                                  ? dictionary[@"inventory_list_id"]
                                  : @"";
+    self.whouse_id = dictionary[@"whouse_id"] ? dictionary[@"whouse_id"] : @"";
   }
   return self;
 }

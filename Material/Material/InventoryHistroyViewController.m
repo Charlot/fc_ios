@@ -50,6 +50,8 @@ preparation before navigation
     //    [positionVC.positionData removeAllObjects];
     positionVC.positionData = self.positionDataArray;
     positionVC.position = self.position;
+    positionVC.inventory_list_id = self.inventory_list_id;
+    positionVC.userName = self.userName;
   }
 }
 

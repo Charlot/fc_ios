@@ -10,9 +10,11 @@
 #import "AFNetOperate.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "UITextField+Extended.h"
+#import "InventoryAPI.h"
 
 @interface InventoryConfirmViewController () <CaptuvoEventsProtocol,
                                               UITextFieldDelegate>
+@property(strong, nonatomic) IBOutlet UITextField *whouseidTextField;
 @property(weak, nonatomic) IBOutlet UITextField *partTextField;
 @property(weak, nonatomic) IBOutlet UITextField *positionTextField;
 @property(weak, nonatomic) IBOutlet UITextField *qtyTextField;
@@ -48,6 +50,8 @@
   self.qtyTextField.nextTextField = self.positionTextField;
 
   self.positionTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+
+  self.whouseidTextField.delegate = self;
 }
 
 - (void)loadData {
@@ -55,7 +59,7 @@
   self.scanTextField.text = self.inventory_list_item.package_id;
   self.qtyTextField.text = self.inventory_list_item.qty;
   self.positionTextField.text = self.inventory_list_item.position;
-  NSLog(@"package_id %@", self.inventory_list_item.package_id);
+  self.whouseidTextField.text = self.inventory_list_item.whouse_id;
 }
 
 - (void)viewDidLoad {
@@ -193,13 +197,25 @@
 
 - (IBAction)confirm:(id)sender {
   if (self.positionTextField.text.length > 0) {
+    if (self.qtyTextField.text.length > 0 &&
+        self.whouseidTextField.text.length > 0 &&
+        self.partTextField.text.length > 0) {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                      message:@"确认提交？"
+                                                     delegate:self
+                                            cancelButtonTitle:@"取消"
+                                            otherButtonTitles:@"确定", nil];
+      [alert show];
 
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                    message:@"确认提交？"
-                                                   delegate:self
-                                          cancelButtonTitle:@"取消"
-                                          otherButtonTitles:@"确定", nil];
-    [alert show];
+    } else {
+      UIAlertView *alert =
+          [[UIAlertView alloc] initWithTitle:@""
+                                     message:@"请填写相关项"
+                                    delegate:self
+                           cancelButtonTitle:@"确定"
+                           otherButtonTitles:nil];
+      [alert show];
+    }
 
   } else {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
@@ -209,6 +225,25 @@
                                           otherButtonTitles:nil];
     [alert show];
   }
+}
+
+- (void)updateInventoryListItem {
+  InventoryAPI *api = [[InventoryAPI alloc] init];
+  [api UpdateInventoryListItem:self.inventory_list_item.ID
+                  withWhouseID:self.whouseidTextField.text
+                  withPosition:self.positionTextField.text
+                       withQty:self.qtyTextField.text
+                    withPartID:self.partTextField.text
+                 withPackageID:self.scanTextField.text
+                      withView:self.view
+                         block:^(BOOL state, NSError *error) {
+                           if (error == nil) {
+                             if (state) {
+                               [self.navigationController
+                                   popViewControllerAnimated:YES];
+                             }
+                           }
+                         }];
 }
 
 - (void)postData {
@@ -269,7 +304,8 @@
     clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (buttonIndex == 1) {
     //    [self postData];
-    [self.navigationController popViewControllerAnimated:YES];
+    //    [self.navigationController popViewControllerAnimated:YES];
+    [self updateInventoryListItem];
   }
 }
 @end

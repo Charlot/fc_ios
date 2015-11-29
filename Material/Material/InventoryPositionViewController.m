@@ -69,20 +69,30 @@
 }
 
 - (void)createInventoryListItem {
-  [self.api CreateInventoryListItem:@""
-                       withPosition:self.position
-                           withUser:@""
-                            withQty:self.qtyTextField.text
-                         withPartID:self.partIDTextField.text
-                      withPackageID:self.packageTextField.text
-                           withView:self.view
-                              block:^(BOOL state, NSError *error) {
-                                if (error == nil) {
-                                  if (state) {
-#warning reload data
+  [self.api
+      CreateInventoryListItem:self.inventory_list_id
+                 withPosition:self.position
+                     withUser:self.userName
+                      withQty:self.qtyTextField.text
+                   withPartID:self.partIDTextField.text
+                withPackageID:self.packageTextField.text
+                     withView:self.view
+                        block:^(BOOL state, NSError *error) {
+                          if (error == nil) {
+                            if (state) {
+                              NSArray *subviews = [self.view subviews];
+                              for (id objInput in subviews) {
+                                if ([objInput
+                                        isKindOfClass:[UITextField class]]) {
+                                  UITextField *tmpTextFile = objInput;
+                                  if ([objInput isFirstResponder]) {
+                                    tmpTextFile.text = @"";
                                   }
                                 }
-                              }];
+                              }
+                            }
+                          }
+                        }];
 }
 
 - (void)getPackageInfo:(NSString *)package_id {

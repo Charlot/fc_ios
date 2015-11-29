@@ -2250,7 +2250,7 @@
             </objects>
             <point key="canvasLocation" x="1585" y="7824"/>
         </scene>
-        <!--盘带单详情-->
+        <!--盘点单详情-->
         <scene sceneID="o6q-7e-Rv6">
             <objects>
                 <viewController id="f5D-QB-TRU" customClass="InventoryHistroyViewController" sceneMemberID="viewController">
@@ -2312,7 +2312,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="盘带单详情" id="YbV-4F-g9q"/>
+                    <navigationItem key="navigationItem" title="盘点单详情" id="YbV-4F-g9q"/>
                     <connections>
                         <outlet property="historyTable" destination="39u-GX-7iJ" id="x4H-wU-wTW"/>
                         <outlet property="positionTextField" destination="WTt-er-S2u" id="g1u-ZL-FQr"/>
@@ -2332,7 +2332,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="唯一码：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5kH-Aw-LU9">
-                                <rect key="frame" x="37" y="115" width="62" height="21"/>
+                                <rect key="frame" x="37" y="72" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -2340,7 +2340,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数量：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yDk-81-JLW">
-                                <rect key="frame" x="37" y="229" width="62" height="21"/>
+                                <rect key="frame" x="37" y="186" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -2348,7 +2348,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="库位：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Ib-St-SAn">
-                                <rect key="frame" x="38" y="285" width="62" height="21"/>
+                                <rect key="frame" x="38" y="297" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -2356,7 +2356,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="零件号：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="odv-hF-Bvy">
-                                <rect key="frame" x="37" y="174" width="62" height="21"/>
+                                <rect key="frame" x="37" y="131" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -2379,28 +2379,43 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="bcy-Mc-dym">
-                                <rect key="frame" x="37" y="136" width="244" height="30"/>
+                                <rect key="frame" x="37" y="93" width="244" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="y71-K8-mhG">
-                                <rect key="frame" x="37" y="194" width="244" height="30"/>
+                                <rect key="frame" x="37" y="151" width="244" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="sh4-M9-Fyp">
-                                <rect key="frame" x="38" y="249" width="244" height="30"/>
+                                <rect key="frame" x="38" y="206" width="244" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="xw9-Hx-WhB">
-                                <rect key="frame" x="38" y="305" width="244" height="30"/>
+                                <rect key="frame" x="38" y="317" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仓库:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BSa-0O-Q0g">
+                                <rect key="frame" x="37" y="243" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="UDW-v6-TMB">
+                                <rect key="frame" x="37" y="266" width="245" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2416,6 +2431,7 @@
                         <outlet property="positionTextField" destination="xw9-Hx-WhB" id="YMc-bd-UtS"/>
                         <outlet property="qtyTextField" destination="sh4-M9-Fyp" id="D1j-7V-YrN"/>
                         <outlet property="scanTextField" destination="bcy-Mc-dym" id="QiN-jc-EiR"/>
+                        <outlet property="whouseidTextField" destination="UDW-v6-TMB" id="4kl-21-KaN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VyD-gX-ktK" userLabel="First Responder" sceneMemberID="firstResponder"/>
