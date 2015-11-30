@@ -63,9 +63,9 @@
 
   self.toWhouseTextField.nextTextField = self.toPositionTextField;
   self.toPositionTextField.nextTextField = self.packageTextField;
-  self.packageTextField.nextTextField = self.qtyTextField;
-  self.qtyTextField.nextTextField = self.partIDTextField;
-  self.partIDTextField.nextTextField = self.fromWhouseTextField;
+  self.packageTextField.nextTextField = self.partIDTextField;
+  self.qtyTextField.nextTextField = self.fromWhouseTextField;
+  self.partIDTextField.nextTextField = self.qtyTextField;
   self.fromWhouseTextField.nextTextField = self.fromPositionTextField;
 
   self.toWhouseTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];

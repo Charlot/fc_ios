@@ -54,9 +54,9 @@
 
   self.toWhTextField.nextTextField = self.toPositionTextField;
   self.toPositionTextField.nextTextField = self.packageTextField;
-  self.packageTextField.nextTextField = self.qtyTextField;
-  self.qtyTextField.nextTextField = self.partNrTextField;
-  self.partNrTextField.nextTextField = self.fromWhTextField;
+  self.packageTextField.nextTextField = self.partNrTextField;
+  self.partNrTextField.nextTextField = self.qtyTextField;
+  self.qtyTextField.nextTextField = self.fromWhTextField;
   self.fromWhTextField.nextTextField = self.fromPositionTextField;
 
   self.toWhTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -301,11 +301,11 @@
     NSString *strPartNr = self.partNrTextField.text;
     NSString *strFromWh = self.fromWhTextField.text;
     NSString *strFromPosition = self.fromPositionTextField.text;
-    //    strToWh = @"3EX";
-    //    strToPosition = @"SCT 28 03 01";
-    //    strPackage = @"rwwe";
-    //
-    //    strPartNr = @"411000895";
+    strToWh = @"3EX";
+    strToPosition = @"SCT 28 03 01";
+    strPackage = @"rwwe";
+
+    strPartNr = @"411000895";
     if (buttonIndex == 1) {
 
       NSMutableDictionary *dict = [[NSMutableDictionary alloc]
