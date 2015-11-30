@@ -17,6 +17,8 @@
 @interface InventoryPositionViewController () <
     UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,
     CaptuvoEventsProtocol>
+- (IBAction)createButtonClick:(id)sender;
+
 @property(strong, nonatomic) IBOutlet UITextField *partIDTextField;
 @property(strong, nonatomic) IBOutlet UITextField *fifoTextField;
 @property(strong, nonatomic) IBOutlet UITextField *qtyTextField;
@@ -248,4 +250,7 @@ preparation before navigation
   }
 }
 
+- (IBAction)createButtonClick:(id)sender {
+  [self createInventoryListItem];
+}
 @end

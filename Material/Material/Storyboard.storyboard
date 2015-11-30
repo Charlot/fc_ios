@@ -5470,7 +5470,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="库位详情" id="dlA-P1-m36">
-                        <barButtonItem key="rightBarButtonItem" title="确定" id="cQQ-Rs-INB"/>
+                        <barButtonItem key="rightBarButtonItem" title="确定" id="cQQ-Rs-INB">
+                            <connections>
+                                <action selector="createButtonClick:" destination="RgY-9t-SPx" id="ibq-gj-Cpo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="fifoTextField" destination="0Dz-6j-VB1" id="hBY-Ev-EJ3"/>
@@ -6474,7 +6478,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mNz-NV-qGZ">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mNz-NV-qGZ" id="tB6-Cg-T0m">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
