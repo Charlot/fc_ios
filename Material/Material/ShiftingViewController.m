@@ -60,6 +60,7 @@ preparation before navigation
 
 - (void)loadData {
   AFNetOperate *AFNet = [[AFNetOperate alloc] init];
+  [self.dataArray removeAllObjects];
   [AFNet.activeView stopAnimating];
   AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
   [AFNet.activeView stopAnimating];
