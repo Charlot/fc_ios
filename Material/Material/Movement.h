@@ -10,6 +10,7 @@
 
 @interface Movement : NSObject
 @property(nonatomic, strong) NSString *ID;
+@property(nonatomic, strong) NSString *SourceID;
 @property(nonatomic, strong) NSString *toWh;
 @property(nonatomic, strong) NSString *toPosition;
 @property(nonatomic, strong) NSString *fromWh;
@@ -22,6 +23,7 @@
 @property(nonatomic, strong) NSString *movement_list_id;
 - (instancetype)initWithObject:(NSDictionary *)dictionary;
 - (instancetype)initWithID:(NSString *)movementID
+              withSourceID:(NSString *)sourceID
                   withToWh:(NSString *)toWh
             withToPosition:(NSString *)toPosition
                 withFromWh:(NSString *)fromWh

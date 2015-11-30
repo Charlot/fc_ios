@@ -26,7 +26,7 @@
 - (instancetype)initWithObject:(NSDictionary *)dictionary {
   self = [super init];
   if (self) {
-    self.ID = dictionary[@"id"] ? dictionary[@"id"] : @"";
+    self.SourceID = dictionary[@"id"] ? dictionary[@"id"] : @"";
     self.toWh = dictionary[@"toWh"] ? dictionary[@"toWh"] : @"";
     self.toPosition =
         dictionary[@"toPosition"] ? dictionary[@"toPosition"] : @"";
@@ -47,6 +47,7 @@
 }
 
 - (instancetype)initWithID:(NSString *)movementID
+              withSourceID:(NSString *)sourceID
                   withToWh:(NSString *)toWh
             withToPosition:(NSString *)toPosition
                 withFromWh:(NSString *)fromWh
@@ -60,6 +61,7 @@
   self = [super init];
   if (self) {
     self.ID = movementID;
+    self.SourceID = sourceID;
     self.toWh = toWh;
     self.toPosition = toPosition;
     self.fromWh = fromWh;

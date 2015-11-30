@@ -244,4 +244,6 @@
 
 - (NSString *)getMovementResources;
 
+- (NSString *)delete_movement_source;
+
 @end

@@ -53,47 +53,47 @@ preparation before navigation
   self.detailTableView.allowsMultipleSelectionDuringEditing = NO;
   self.dataArray = [[NSMutableArray alloc] init];
   self.api = [[MovementAPI alloc] init];
-  /**
-   *  如果是修改传过来的， 那么先获取web，然后更新本地
-   */
-  if ([self.fromState isEqualToString:@"web"]) {
-    [self.api
-        webGetMovementResources:self.movement_list_id
-                       withView:self.view
-                          block:^(NSMutableArray *reqeustData, NSError *error) {
-                            if (error == nil) {
-                              if ([reqeustData count] > 0) {
-                                /**
-                                 *  删除本地纪录
-                                 */
-                                [self.api localDeleteMovementListItemByID:
-                                              self.movement_list_id];
-                                /**
-                                 *  获取web数据
-                                 */
-                                for (int i = 0; i < [reqeustData count]; i++) {
-                                  Movement *movement = [[Movement alloc] init];
-                                  movement = (Movement *)reqeustData[i];
-                                  movement.user = self.userName;
-                                  movement.movement_list_id =
-                                      self.movement_list_id;
-                                  [self.api createMovement:movement];
-                                }
-                                /**
-                                 *  查询本地数据
-                                 */
-                                self.dataArray = [self.api
-                                    queryByMovementListID:self.movement_list_id
-                                         ObjectDictionary:0];
-                                [self.detailTableView reloadData];
+  //  /**
+  //   *  如果是修改传过来的， 那么先获取web，然后更新本地
+  //   */
+  //  if ([self.fromState isEqualToString:@"web"]) {
+  [self.api
+      webGetMovementResources:self.movement_list_id
+                     withView:self.view
+                        block:^(NSMutableArray *reqeustData, NSError *error) {
+                          if (error == nil) {
+                            if ([reqeustData count] > 0) {
+                              /**
+                               *  删除本地纪录
+                               */
+                              [self.api localDeleteMovementListItemByID:
+                                            self.movement_list_id];
+                              /**
+                               *  获取web数据
+                               */
+                              for (int i = 0; i < [reqeustData count]; i++) {
+                                Movement *movement = [[Movement alloc] init];
+                                movement = (Movement *)reqeustData[i];
+                                movement.user = self.userName;
+                                movement.movement_list_id =
+                                    self.movement_list_id;
+                                [self.api createMovement:movement];
                               }
+                              /**
+                               *  查询本地数据
+                               */
+                              self.dataArray = [self.api
+                                  queryByMovementListID:self.movement_list_id
+                                       ObjectDictionary:0];
+                              [self.detailTableView reloadData];
                             }
-                          }];
-  } else {
-    self.dataArray = [self.api queryByMovementListID:self.movement_list_id
-                                    ObjectDictionary:0];
-    [self.detailTableView reloadData];
-  }
+                          }
+                        }];
+  //  } else {
+  //    self.dataArray = [self.api queryByMovementListID:self.movement_list_id
+  //                                    ObjectDictionary:0];
+  //    [self.detailTableView reloadData];
+  //  }
 }
 
 - (void)customUI {
@@ -176,13 +176,35 @@ preparation before navigation
   if (editingStyle == UITableViewCellEditingStyleDelete) {
     Movement *movement =
         (Movement *)[self.dataArray objectAtIndex:indexPath.row];
-    [self.api deleteAction:movement.ID];
-    [self.dataArray removeObjectAtIndex:indexPath.row];
+    /**
+     *  删除web端数据
+     *
+     *  @param state <#state description#>
+     *  @param error <#error description#>
+     *
+     *  @return <#return value description#>
+     */
 
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                       [self.detailTableView reloadData];
-                     }];
+    [self.api webDeleteMovementSource:movement.SourceID
+                             withView:self.view
+                                block:^(BOOL state, NSError *error) {
+                                  if (error == nil) {
+                                    if (state) {
+                                      /**
+                                       *  同步删除本地
+                                       */
+                                      [self.api deleteAction:movement.ID];
+                                      [self.dataArray
+                                          removeObjectAtIndex:indexPath.row];
+
+                                      [UIView animateWithDuration:0.5
+                                                       animations:^{
+                                                         [self.detailTableView
+                                                                 reloadData];
+                                                       }];
+                                    }
+                                  }
+                                }];
   }
 }
 
@@ -203,6 +225,7 @@ preparation before navigation
         segue.destinationViewController;
     createVC.movementListID = self.movement_list_id;
     createVC.userName = self.userName;
+    createVC.delegate = self;
   }
 }
 
@@ -257,5 +280,12 @@ preparation before navigation
 
                      }];
   }
+}
+
+- (void)backToShiftingDetail:
+            (CreateMovementListItemViewController *)viewController
+              MovementListID:(NSString *)mlid {
+  self.movement_list_id = mlid;
+  [self loadData];
 }
 @end

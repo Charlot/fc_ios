@@ -11,6 +11,10 @@
 
 @interface MovementAPI : NSObject
 
+- (void)webDeleteMovementSource:(NSString *)movement_source_id
+                       withView:(UIView *)optView
+                          block:(void (^)(BOOL state, NSError *error))block;
+
 - (void)webGetMovementResources:(NSString *)movement_list_id
                        withView:(UIView *)optView
                           block:(void (^)(NSMutableArray *dataArray,

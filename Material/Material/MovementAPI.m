@@ -27,6 +27,40 @@
   return self;
 }
 
+- (void)webDeleteMovementSource:(NSString *)movement_source_id
+                       withView:(UIView *)optView
+                          block:(void (^)(BOOL state, NSError *error))block {
+  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+  [manager DELETE:[self.afnet delete_movement_source]
+      parameters:@{
+        @"movement_source_id" : movement_source_id
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"the request data is %@", responseObject);
+        [self.afnet.activeView stopAnimating];
+        BOOL state = FALSE;
+        if ([responseObject[@"result"] intValue] == 1) {
+          state = TRUE;
+        } else {
+          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
+                                                                  @"content"]]];
+        }
+        if (block) {
+          block(state, nil);
+        }
+
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet
+            alert:[NSString
+                      stringWithFormat:@"%@", [error localizedDescription]]];
+        if (block) {
+          block(FALSE, error);
+        }
+      }];
+}
+
 - (void)webGetMovementResources:(NSString *)movement_list_id
                        withView:(UIView *)optView
                           block:(void (^)(NSMutableArray *, NSError *))block {
@@ -107,13 +141,13 @@
 
   query = [NSString
       stringWithFormat:
-          @"insert into movements (toWh, "
+          @"insert into movements (source_id, toWh, "
           @"toPosition, fromWh, fromPosition, packageId, partNr, "
           @"qty, movement_list_id, user, "
-          @"created_at) values('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', "
-          @"'%@', '%@')",
-          m.toWh, m.toPosition, m.fromWh, m.fromPosition, m.packageId, m.partNr,
-          m.qty, m.movement_list_id, m.user, created_at];
+          @"created_at) values('%@', '%@', '%@', '%@', '%@', '%@', "
+          @"'%@', '%@', '%@', " @"'%@', '%@')",
+          m.SourceID, m.toWh, m.toPosition, m.fromWh, m.fromPosition,
+          m.packageId, m.partNr, m.qty, m.movement_list_id, m.user, created_at];
   NSLog(@"===== query is %@", query);
   DBManager *db = [[DBManager alloc] initWithDatabaseFilename:@"wmsdb.sql"];
   [db executeQuery:query];
@@ -419,7 +453,8 @@
 
     NSString *moveMentId = [[arrayData objectAtIndex:i]
         objectAtIndex:[self.db.arrColumnNames indexOfObject:@"id"]];
-
+    NSString *movementSourceID = [[arrayData objectAtIndex:i]
+        objectAtIndex:[self.db.arrColumnNames indexOfObject:@"source_id"]];
     NSString *toWh = [[arrayData objectAtIndex:i]
         objectAtIndex:[self.db.arrColumnNames indexOfObject:@"toWh"]];
 
@@ -451,6 +486,7 @@
         objectAtIndex:[self.db.arrColumnNames indexOfObject:@"created_at"]];
     if (type == 0) {
       Movement *movement = [[Movement alloc] initWithID:moveMentId
+                                           withSourceID:movementSourceID
                                                withToWh:toWh
                                          withToPosition:toPosition
                                              withFromWh:fromWh

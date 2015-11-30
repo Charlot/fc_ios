@@ -914,4 +914,11 @@
   return [base stringByAppendingString:get_movement_resources];
 }
 
+- (NSString *)delete_movement_source {
+  NSString *base = [self baseURL];
+  NSString *delete_movement_source =
+      [[self URLDictionary] objectForKey:@"delete_movement_source"];
+  return [base stringByAppendingString:delete_movement_source];
+}
+
 @end

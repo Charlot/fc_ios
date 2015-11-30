@@ -301,11 +301,11 @@
     NSString *strPartNr = self.partNrTextField.text;
     NSString *strFromWh = self.fromWhTextField.text;
     NSString *strFromPosition = self.fromPositionTextField.text;
-    //    strToWh = @"3EX";
-    //    strToPosition = @"SCT 28 03 01";
-    //    strPackage = @"rwwe";
-    //
-    //    strPartNr = @"411000895";
+    strToWh = @"3EX";
+    strToPosition = @"SCT 28 03 01";
+    strPackage = @"rwwe";
+    strFromWh = @"3EX";
+    strPartNr = @"411000895";
     if (buttonIndex == 1) {
 
       NSMutableDictionary *dict = [[NSMutableDictionary alloc]
@@ -325,7 +325,8 @@
               [AFNet alertSuccess:responseObject[@"content"]];
               [dict setValue:self.userName forKey:@"user"];
               self.movement = [[Movement alloc] initWithObject:dict];
-              [self createMovement:self.movement];
+              //              [self createMovement:self.movement];
+              [self clearData];
             } else {
               [AFNet alert:responseObject[@"content"]];
               NSLog(@"%@", responseObject[@"content"]);
@@ -463,7 +464,7 @@
   if ([segue.identifier isEqualToString:@"toMovementListDetailVC"]) {
     //        for push
     ShiftingDetailViewController *detail = segue.destinationViewController;
-    detail.movement_list_id = self.self.movementListID;
+    detail.movement_list_id = self.movementListID;
     detail.delegate = self;
     detail.fromState = @"local";
     //    for modal
