@@ -37,7 +37,22 @@ preparation before navigation
 */
 
 - (IBAction)printAction:(id)sender {
-  [self verifyText];
+  [[[UIActionSheet alloc] initWithTitle:@"是否打印"
+                               delegate:self
+                      cancelButtonTitle:@"返回移库清单"
+                 destructiveButtonTitle:nil
+                      otherButtonTitles:@"确定", nil] showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet
+    clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if (buttonIndex == actionSheet.cancelButtonIndex) {
+    [self performSegueWithIdentifier:@"toHistoryVC" sender:self];
+    NSLog(@"click cancel");
+  } else {
+    [self verifyText];
+    NSLog(@"click yes");
+  }
 }
 
 - (void)verifyText {
@@ -61,4 +76,5 @@ preparation before navigation
     [alert show];
   }
 }
+
 @end

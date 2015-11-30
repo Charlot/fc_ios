@@ -6258,7 +6258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xy9-db-jNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2824" y="7149"/>
+            <point key="canvasLocation" x="3022" y="7043"/>
         </scene>
         <!--移库详情-->
         <scene sceneID="hge-kT-dgr">
@@ -6478,7 +6478,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mNz-NV-qGZ">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mNz-NV-qGZ" id="tB6-Cg-T0m">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -6575,24 +6575,24 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kxl-Rh-nWd"/>
-        <segue reference="Get-Zr-2fp"/>
-        <segue reference="veK-WU-skj"/>
+        <segue reference="xUu-VW-Prs"/>
+        <segue reference="UnZ-wN-WXV"/>
+        <segue reference="EZu-KH-oca"/>
+        <segue reference="zjP-oP-VXq"/>
+        <segue reference="Dng-DQ-LOk"/>
+        <segue reference="oOw-in-AQO"/>
+        <segue reference="SyV-YF-bxb"/>
+        <segue reference="2nV-DT-24h"/>
         <segue reference="Neh-iJ-Fpe"/>
         <segue reference="Do4-uK-Dun"/>
         <segue reference="GDE-C3-Tx4"/>
-        <segue reference="Dng-DQ-LOk"/>
-        <segue reference="SyV-YF-bxb"/>
-        <segue reference="oOw-in-AQO"/>
-        <segue reference="2nV-DT-24h"/>
-        <segue reference="fTA-Xe-KDm"/>
-        <segue reference="tP9-hz-80H"/>
+        <segue reference="Kxl-Rh-nWd"/>
+        <segue reference="Get-Zr-2fp"/>
+        <segue reference="veK-WU-skj"/>
+        <segue reference="yJ1-Ae-Eed"/>
         <segue reference="U3W-2k-BOU"/>
         <segue reference="zbp-Dd-2O5"/>
-        <segue reference="yJ1-Ae-Eed"/>
-        <segue reference="EZu-KH-oca"/>
-        <segue reference="JT4-AV-Rjg"/>
-        <segue reference="UnZ-wN-WXV"/>
-        <segue reference="zjP-oP-VXq"/>
+        <segue reference="tP9-hz-80H"/>
+        <segue reference="fTA-Xe-KDm"/>
     </inferredMetricsTieBreakers>
 </document>
