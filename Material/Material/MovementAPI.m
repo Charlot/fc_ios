@@ -27,6 +27,48 @@
   return self;
 }
 
+- (void)webGetMovementResources:(NSString *)movement_list_id
+                       withView:(UIView *)optView
+                          block:(void (^)(NSMutableArray *, NSError *))block {
+  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+  [manager GET:[self.afnet getMovementResources]
+      parameters:@{
+        @"movement_list_id" : movement_list_id
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"the request data is %@", responseObject);
+        [self.afnet.activeView stopAnimating];
+        NSMutableArray *dataArray = [[NSMutableArray alloc] init];
+
+        if ([responseObject[@"result"] intValue] == 1) {
+          NSArray *tmpArray = responseObject[@"content"];
+          for (int i = 0; i < [tmpArray count]; i++) {
+            Movement *movement = [[Movement alloc] initWithObject:tmpArray[i]];
+
+            [dataArray addObject:movement];
+          }
+
+        } else {
+
+          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
+                                                                  @"content"]]];
+        }
+        if (block) {
+          block(dataArray, nil);
+        }
+
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet
+            alert:[NSString
+                      stringWithFormat:@"%@", [error localizedDescription]]];
+        if (block) {
+          block(nil, error);
+        }
+      }];
+}
+
 /**
  *  删除本地 纪录
  *
@@ -34,7 +76,7 @@
  *
  *  @return <#return value description#>
  */
-- (BOOL)localDeleteMovementListItemByID:(NSString *)movement_list_id {
+- (void)localDeleteMovementListItemByID:(NSString *)movement_list_id {
   NSString *query;
   query = [NSString
       stringWithFormat:@"delete from movements where movement_list_id = '%@'",
@@ -42,12 +84,12 @@
   NSLog(@"===== query is %@", query);
   DBManager *db = [[DBManager alloc] initWithDatabaseFilename:@"wmsdb.sql"];
   [db executeQuery:query];
-  if (db.affectedRows != 0) {
-    NSLog(@"操作成功");
-    return TRUE;
-  } else {
-    return FALSE;
-  }
+  //  if (db.affectedRows != 0) {
+  //    NSLog(@"操作成功");
+  //    return TRUE;
+  //  } else {
+  //    return FALSE;
+  //  }
 }
 
 /**

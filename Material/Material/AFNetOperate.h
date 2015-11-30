@@ -144,6 +144,8 @@
  /
 
 
+
+
 /**
  *  创建移库清单id
  *
@@ -239,5 +241,7 @@
 - (NSString *)print_movenment_list_receive:(NSString *)ID
                               printer_name:(NSString *)printer
                                     copies:(NSString *)copies;
+
+- (NSString *)getMovementResources;
 
 @end

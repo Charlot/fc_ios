@@ -58,6 +58,8 @@
 	<string>/api/v3/inventory_list_item</string>
 	<key>get_package_info</key>
 	<string>/api/v1/packages</string>
+	<key>get_movement_resources</key>
+	<string>/api/v3/movement_source</string>
 	<key>order_led</key>
 	<dict>
 		<key>state_list</key>

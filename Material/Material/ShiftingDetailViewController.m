@@ -57,34 +57,38 @@ preparation before navigation
    *  如果是修改传过来的， 那么先获取web，然后更新本地
    */
   if ([self.fromState isEqualToString:@"web"]) {
-    [self.api getMovement:self.movement_list_id
-                 withView:self.view
-                    block:^(NSMutableArray *reqeustData, NSError *error) {
-                      if (error == nil) {
-                        if ([reqeustData count] > 0) {
-                          /**
-                           *  删除本地纪录
-                           */
-                          if ([self.api localDeleteMovementListItemByID:
-                                            self.movement_list_id]) {
-                            /**
-                             *  获取web数据
-                             */
-                            for (int i = 0; i < [reqeustData count]; i++) {
-                              Movement *movement = (Movement *)reqeustData[i];
-                              [self.api createMovement:movement];
+    [self.api
+        webGetMovementResources:self.movement_list_id
+                       withView:self.view
+                          block:^(NSMutableArray *reqeustData, NSError *error) {
+                            if (error == nil) {
+                              if ([reqeustData count] > 0) {
+                                /**
+                                 *  删除本地纪录
+                                 */
+                                [self.api localDeleteMovementListItemByID:
+                                              self.movement_list_id];
+                                /**
+                                 *  获取web数据
+                                 */
+                                for (int i = 0; i < [reqeustData count]; i++) {
+                                  Movement *movement = [[Movement alloc] init];
+                                  movement = (Movement *)reqeustData[i];
+                                  movement.user = self.userName;
+                                  movement.movement_list_id =
+                                      self.movement_list_id;
+                                  [self.api createMovement:movement];
+                                }
+                                /**
+                                 *  查询本地数据
+                                 */
+                                self.dataArray = [self.api
+                                    queryByMovementListID:self.movement_list_id
+                                         ObjectDictionary:0];
+                                [self.detailTableView reloadData];
+                              }
                             }
-                            /**
-                             *  查询本地数据
-                             */
-                            self.dataArray = [self.api
-                                queryByMovementListID:self.movement_list_id
-                                     ObjectDictionary:0];
-                            [self.detailTableView reloadData];
-                          }
-                        }
-                      }
-                    }];
+                          }];
   } else {
     self.dataArray = [self.api queryByMovementListID:self.movement_list_id
                                     ObjectDictionary:0];

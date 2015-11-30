@@ -11,7 +11,12 @@
 
 @interface MovementAPI : NSObject
 
-- (BOOL)localDeleteMovementListItemByID:(NSString *)movement_list_id;
+- (void)webGetMovementResources:(NSString *)movement_list_id
+                       withView:(UIView *)optView
+                          block:(void (^)(NSMutableArray *dataArray,
+                                          NSError *error))block;
+
+- (void)localDeleteMovementListItemByID:(NSString *)movement_list_id;
 
 /**
  *  sqlite3 存储 movenment

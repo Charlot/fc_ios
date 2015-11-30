@@ -907,4 +907,11 @@
   return [NSString stringWithFormat:@"%@%@", joint, after];
 }
 
+- (NSString *)getMovementResources {
+  NSString *base = [self baseURL];
+  NSString *get_movement_resources =
+      [[self URLDictionary] objectForKey:@"get_movement_resources"];
+  return [base stringByAppendingString:get_movement_resources];
+}
+
 @end
