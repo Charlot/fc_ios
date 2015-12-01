@@ -43,6 +43,20 @@
 
 - (NSMutableArray *)queryByMovementListID:(NSString *)mlid
                          ObjectDictionary:(NSInteger)type;
+
+/**
+ *  获取nstorage唯一码信息
+
+ *
+ *  @param package_id <#package_id description#>
+ *  @param optView    <#optView description#>
+ *  @param block      <#block description#>
+ */
+- (void)getNStoragePackageInfo:(NSString *)package_id
+                      withView:(UIView *)optView
+                         block:(void (^)(NSMutableArray *dataArray,
+                                         NSError *error))block;
+
 /**
  *  获取唯一码信息
  *

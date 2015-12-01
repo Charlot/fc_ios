@@ -138,18 +138,23 @@
 
 - (void)getPackageInfo:(NSString *)package_id {
   MovementAPI *api = [[MovementAPI alloc] init];
-  [api getPackageInfo:package_id
-             withView:self.view
-                block:^(NSMutableArray *dataArray, NSError *error) {
-                  if (error == nil) {
-                    NSDictionary *dictData = [dataArray mutableCopy];
-                    self.partIDTextField.text = [NSString
-                        stringWithFormat:@"%@",
-                                         [dictData objectForKey:@"part_id"]];
-                    self.qtyTextField.text = [NSString
-                        stringWithFormat:@"%@", [dictData objectForKey:@"qty"]];
-                  }
-                }];
+  [api
+      getNStoragePackageInfo:package_id
+                    withView:self.view
+                       block:^(NSMutableArray *dataArray, NSError *error) {
+                         if (error == nil) {
+                           NSDictionary *dictData = [dataArray mutableCopy];
+                           self.partIDTextField.text = [NSString
+                               stringWithFormat:@"%@",
+                                                [dictData
+                                                    objectForKey:@"part_id"]];
+                           self.qtyTextField.text = [NSString
+                               stringWithFormat:@"%@",
+                                                [dictData objectForKey:@"qty"]];
+                           [self.partIDTextField resignFirstResponder];
+                           [self.fromWhouseTextField becomeFirstResponder];
+                         }
+                       }];
 }
 
 /*

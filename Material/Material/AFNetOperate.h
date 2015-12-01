@@ -246,4 +246,6 @@
 
 - (NSString *)delete_movement_source;
 
+- (NSString *)getNStoragePackageInfo;
+
 @end

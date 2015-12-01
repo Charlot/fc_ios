@@ -921,4 +921,11 @@
   return [base stringByAppendingString:delete_movement_source];
 }
 
+- (NSString *)getNStoragePackageInfo {
+  NSString *base = [self baseURL];
+  NSString *get_nstorage_package_info =
+      [[self URLDictionary] objectForKey:@"get_nstorage_package_info"];
+  return [base stringByAppendingString:get_nstorage_package_info];
+}
+
 @end

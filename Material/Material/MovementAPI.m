@@ -27,6 +27,42 @@
   return self;
 }
 
+- (void)getNStoragePackageInfo:(NSString *)package_id
+                      withView:(UIView *)optView
+                         block:(void (^)(NSMutableArray *, NSError *))block {
+  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+  [manager GET:[self.afnet getNStoragePackageInfo]
+      parameters:@{
+        @"package_id" : package_id
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.afnet.activeView stopAnimating];
+        NSLog(@"the request getPackageInfo %@", responseObject);
+        NSMutableArray *dataArray = [[NSMutableArray alloc] init];
+
+        if ([responseObject[@"result"] intValue] == 1) {
+          dataArray = responseObject[@"content"];
+          if (block) {
+            block(dataArray, nil);
+          }
+        } else {
+
+          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
+                                                                  @"content"]]];
+        }
+
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet
+            alert:[NSString
+                      stringWithFormat:@"%@", [error localizedDescription]]];
+        if (block) {
+          block(nil, error);
+        }
+      }];
+}
+
 - (void)webDeleteMovementSource:(NSString *)movement_source_id
                        withView:(UIView *)optView
                           block:(void (^)(BOOL state, NSError *error))block {
