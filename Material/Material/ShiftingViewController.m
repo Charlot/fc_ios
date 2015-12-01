@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   // Do any additional setup after loading the view.
-  [self customController];
+  //  [self customController];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +49,7 @@ preparation before navigation
 - (void)viewWillAppear:(BOOL)animated {
 
   [super viewWillAppear:animated];
-
+  [self customController];
   //
   //  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
   //  [formatter setDateFormat:@"yyyy-MM-dd'T'00:00:00ZZZZZ"];
