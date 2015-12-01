@@ -47,7 +47,7 @@
 	<key>delete_movement_list</key>
 	<string>/api/v3/movement_list</string>
 	<key>create_inventory_list_item</key>
-	<string>/api/v3/inventory_list_item/inventory_item_list</string>
+	<string>/api/v3/inventory_list_item/</string>
 	<key>inventory_list_position</key>
 	<string>/api/v3/inventory_list/inventory_list_position</string>
 	<key>inventory_list_condition_item</key>

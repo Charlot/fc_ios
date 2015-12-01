@@ -64,6 +64,7 @@
 
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          NSLog(@"the request is %@", responseObject);
         [self.afnet.activeView stopAnimating];
         BOOL state = false;
         if ([responseObject[@"result"] intValue] == 1) {
