@@ -215,11 +215,11 @@ preparation before navigation
   NSString *strFromWh = self.fromWhouseTextField.text;
   NSString *strFromPosition = self.fromPositionTextField.text;
 
-  strToWh = @"3EX";
-  strToPosition = @"SCT 28 03 01";
-  strPackage = @"rwwe";
-  strFromWh = @"3EX";
-  strPartNr = @"411000895";
+  //  strToWh = @"3EX";
+  //  strToPosition = @"SCT 28 03 01";
+  //  strPackage = @"rwwe";
+  //  strFromWh = @"3EX";
+  //  strPartNr = @"411000895";
 
   if (buttonIndex == 1) {
 
