@@ -50,9 +50,18 @@
   self.movementListFinishTable.dataSource = self;
   self.dataArray = [[NSMutableArray alloc] init];
   MovementAPI *api = [[MovementAPI alloc] init];
-  self.dataArray =
-      [api queryByMovementListID:self.movement_list_id ObjectDictionary:0];
-  [self.movementListFinishTable reloadData];
+  //  self.dataArray =
+  //      [api queryByMovementListID:self.movement_list_id ObjectDictionary:0];
+  [api webGetMovementResources:self.movement_list_id
+                      withView:self.view
+                         block:^(NSMutableArray *dataArray, NSError *error) {
+                           if (error == nil) {
+                             for (int i = 0; i < [dataArray count]; i++) {
+                               [self.dataArray addObject:dataArray[i]];
+                             }
+                             [self.movementListFinishTable reloadData];
+                           }
+                         }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -87,7 +96,7 @@
   toWhLabel.text = movement.toWh;
   toPositionLabel.text = movement.toPosition;
   partNrLabel.text = movement.partNr;
-  qtyLabel.text = movement.qty;
+  qtyLabel.text = [NSString stringWithFormat:@"%@", movement.qty];
 }
 
 - (UIView *)tableView:(UITableView *)tableView

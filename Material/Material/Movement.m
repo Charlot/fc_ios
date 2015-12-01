@@ -8,6 +8,8 @@
 
 #import "Movement.h"
 #import "DBManager.h"
+#define ZGNotNull(obj)                                                         \
+  (obj && (![obj isEqual:[NSNull null]]) && (![obj isEqual:@"<null>"]))
 
 @interface Movement ()
 
@@ -33,7 +35,9 @@
     self.fromWh = dictionary[@"fromWh"] ? dictionary[@"fromWh"] : @"";
     self.fromPosition =
         dictionary[@"fromPosition"] ? dictionary[@"fromPosition"] : @"";
-    self.packageId = dictionary[@"packageId"] ? dictionary[@"packageId"] : @"";
+    self.packageId =
+        ZGNotNull(dictionary[@"packageId"]) ? dictionary[@"packageId"] : @"";
+
     self.partNr = dictionary[@"partNr"] ? dictionary[@"partNr"] : @"";
     self.qty = dictionary[@"qty"] ? dictionary[@"qty"] : @"";
     self.user = dictionary[@"user"] ? dictionary[@"user"] : @"";

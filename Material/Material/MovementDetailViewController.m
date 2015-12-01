@@ -36,7 +36,7 @@
   self.toWhLabel.text = self.movement.toWh;
   self.toPositionLabel.text = self.movement.toPosition;
   self.packageIdLabel.text = self.movement.packageId;
-  self.qtyLabel.text = self.movement.qty;
+  self.qtyLabel.text = [NSString stringWithFormat:@"%@", self.movement.qty];
   self.partNrLabel.text = self.movement.partNr;
   self.fromWhLabel.text = self.movement.fromWh;
   self.fromPositionLabel.text = self.movement.fromPosition;
