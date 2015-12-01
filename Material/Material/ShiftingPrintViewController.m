@@ -17,8 +17,22 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  // Do any additional setup after loading the view.
+  self.navigationItem.hidesBackButton = YES;
 }
+// Do any additional setup after loading the view.
+//  [self.navigationItem.backBarButtonItem setEnabled:NO];
+//  self.navigationItem.leftBarButtonItem =
+//      [[UIBarButtonItem alloc] initWithTitle:@"返回"
+//                                       style:UIBarButtonItemStylePlain
+//                                      target:self
+//                                      action:@selector(done:)];
+//  [self.navigationItem.leftBarButtonItem setEnabled:NO];
+//}
+//
+//- (void)done:(id)sender {
+//  //  [self dismissViewControllerAnimated:YES completion:nil];
+//  [self.navigationController popViewControllerAnimated:YES];
+//}
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
