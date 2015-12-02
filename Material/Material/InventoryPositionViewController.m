@@ -130,7 +130,7 @@
   self.positionTable.delegate = self;
   self.positionTable.dataSource = self;
   [self.positionTable reloadData];
-  [self getPackageInfo:@"WI311501116894"];
+  //  [self getPackageInfo:@"WI311501116894"];
 }
 
 #pragma mark UITableView Delegate
