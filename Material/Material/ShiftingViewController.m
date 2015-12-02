@@ -26,8 +26,20 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  // Do any additional setup after loading the view.
-  //  [self customController];
+  self.dataArray = [[NSMutableArray alloc] init];
+
+  self.userName = @"";
+  KeychainItemWrapper *keyChain =
+      [[KeychainItemWrapper alloc] initWithIdentifier:@"material"
+                                          accessGroup:nil];
+  if ([keyChain objectForKey:(__bridge id)kSecAttrAccount]) {
+    self.userName = [NSString
+        stringWithFormat:@"%@",
+                         [keyChain objectForKey:(__bridge id)kSecAttrAccount]];
+  }
+  self.navigationItem.hidesBackButton = TRUE;
+  self.historyTableView.delegate = self;
+  self.historyTableView.dataSource = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,25 +111,11 @@ preparation before navigation
   //    [backButton setBackgroundImage:backImage forState:UIControlStateNormal];
   //  [backButton setTitle:@"取消" forState:UIControlStateNormal];
   //  [backButton addTarget:self
-  self.dataArray = [[NSMutableArray alloc] init];
-
-  self.userName = @"";
-  KeychainItemWrapper *keyChain =
-      [[KeychainItemWrapper alloc] initWithIdentifier:@"material"
-                                          accessGroup:nil];
-  if ([keyChain objectForKey:(__bridge id)kSecAttrAccount]) {
-    self.userName = [NSString
-        stringWithFormat:@"%@",
-                         [keyChain objectForKey:(__bridge id)kSecAttrAccount]];
-  }
   self.historyTableView.header =
       [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self loadData];
       }];
   [self.historyTableView.header beginRefreshing];
-  self.navigationItem.hidesBackButton = TRUE;
-  self.historyTableView.delegate = self;
-  self.historyTableView.dataSource = self;
 }
 
 - (void)back:(UIBarButtonItem *)sender {
