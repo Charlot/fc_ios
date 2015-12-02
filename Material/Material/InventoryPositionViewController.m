@@ -14,10 +14,13 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "MovementAPI.h"
 
+#define ScreenWidth ([[UIScreen mainScreen] bounds].size.width)
+
 @interface InventoryPositionViewController () <
     UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,
     CaptuvoEventsProtocol>
 - (IBAction)createButtonClick:(id)sender;
+- (IBAction)tapViewAction:(id)sender;
 
 @property(strong, nonatomic) IBOutlet UITextField *partIDTextField;
 @property(strong, nonatomic) IBOutlet UITextField *fifoTextField;
@@ -32,7 +35,25 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self loadData];
+  //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+  //      initWithTarget:self
+  //              action:@selector(dismissKeyboard)];
+  //  UIView *tapView =
+  //      [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, 200)];
+  //  [self.view addSubview:tapView];
+  //  [tapView addGestureRecognizer:tap];
+}
+
+- (void)dismissKeyboard {
+  NSArray *subviews = [self.view subviews];
+  for (id objInput in subviews) {
+    if ([objInput isKindOfClass:[UITextField class]]) {
+      UITextField *theTextField = objInput;
+      if ([objInput isFirstResponder]) {
+        [theTextField resignFirstResponder];
+      }
+    }
+  }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,6 +69,7 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
+  [self loadData];
 }
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
@@ -254,5 +276,10 @@ preparation before navigation
 
 - (IBAction)createButtonClick:(id)sender {
   [self createInventoryListItem];
+}
+
+- (IBAction)tapViewAction:(id)sender {
+  NSLog(@"click");
+  [self dismissKeyboard];
 }
 @end

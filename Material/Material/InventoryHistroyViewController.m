@@ -16,6 +16,7 @@
 #import "MJRefresh.h"
 
 @interface InventoryHistroyViewController ()
+- (IBAction)tapViewEvent:(id)sender;
 @property(strong, nonatomic) NSMutableArray *dataArray;
 @property(strong, nonatomic) IBOutlet UITableView *historyTable;
 @property(strong, nonatomic) IBOutlet UITextField *positionTextField;
@@ -30,7 +31,23 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   //  [self customUI];
+  //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+  //      initWithTarget:self
+  //              action:@selector(dismissKeyboard)];
+  //  [self.view addGestureRecognizer:tap];
 }
+
+//- (void)dismissKeyboard {
+//  NSArray *subviews = [self.view subviews];
+//  for (id objInput in subviews) {
+//    if ([objInput isKindOfClass:[UITextField class]]) {
+//      UITextField *theTextField = objInput;
+//      if ([objInput isFirstResponder]) {
+//        [theTextField resignFirstResponder];
+//      }
+//    }
+//  }
+//}
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
@@ -226,4 +243,19 @@ preparation before navigation
   //  [self performSegueWithIdentifier:@"toPositionItemVC" sender:self];
 }
 
+- (void)dismissKeyboard {
+  NSArray *subviews = [self.view subviews];
+  for (id objInput in subviews) {
+    if ([objInput isKindOfClass:[UITextField class]]) {
+      UITextField *theTextField = objInput;
+      if ([objInput isFirstResponder]) {
+        [theTextField resignFirstResponder];
+      }
+    }
+  }
+}
+
+- (IBAction)tapViewEvent:(id)sender {
+  [self dismissKeyboard];
+}
 @end
