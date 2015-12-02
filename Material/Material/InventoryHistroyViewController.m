@@ -114,8 +114,10 @@ preparation before navigation
       if ([objInput isFirstResponder]) {
         tmpTextFile.text = data;
         if (tmpTextFile == self.positionTextField) {
-          //          [self getPositionInfo:tmpTextFile.text];
-          [self performSegueWithIdentifier:@"toPositionItemVC" sender:self];
+          self.position = self.positionTextField.text;
+          [self getPositionInfo:tmpTextFile.text];
+          //          [self performSegueWithIdentifier:@"toPositionItemVC"
+          //          sender:self];
         }
         break;
       }
@@ -130,15 +132,12 @@ preparation before navigation
   [api getInventoryListItem:self.inventory_list_id
                withPosition:position
                    withUser:self.userName
-                   withPage:@"1"
+                   withPage:@"0"
 
                    withView:self.view
                       block:^(NSMutableArray *dataArray, NSError *error) {
                         if (error == nil) {
                           if ([dataArray count] > 0) {
-                            for (int i = 0; i < [dataArray count]; i++) {
-                              [self.positionDataArray addObject:dataArray[i]];
-                            }
                             [self performSegueWithIdentifier:@"toPositionItemVC"
                                                       sender:self];
                           }
@@ -148,9 +147,10 @@ preparation before navigation
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
   [textField resignFirstResponder];
-  //  [self getPositionInfo:textField.text];
   self.position = textField.text;
-  [self performSegueWithIdentifier:@"toPositionItemVC" sender:self];
+
+  [self getPositionInfo:textField.text];
+  //  [self performSegueWithIdentifier:@"toPositionItemVC" sender:self];
   return NO;
 }
 
