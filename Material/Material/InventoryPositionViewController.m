@@ -130,6 +130,7 @@
   self.positionTable.delegate = self;
   self.positionTable.dataSource = self;
   [self.positionTable reloadData];
+  [self.packageTextField becomeFirstResponder];
   //  [self getPackageInfo:@"WI311501116894"];
 }
 
