@@ -92,7 +92,7 @@ preparation before navigation
     InventoryPositionViewController *positionVC =
         [segue destinationViewController];
     //    [positionVC.positionData removeAllObjects];
-    positionVC.positionData = self.positionDataArray;
+    //    positionVC.positionData = self.positionDataArray;
     positionVC.position = self.position;
     positionVC.inventory_list_id = self.inventory_list_id;
     positionVC.userName = self.userName;
@@ -107,7 +107,8 @@ preparation before navigation
       if ([objInput isFirstResponder]) {
         tmpTextFile.text = data;
         if (tmpTextFile == self.positionTextField) {
-          [self getPositionInfo:tmpTextFile.text];
+          //          [self getPositionInfo:tmpTextFile.text];
+          [self performSegueWithIdentifier:@"toPositionItemVC" sender:self];
         }
         break;
       }
@@ -140,7 +141,9 @@ preparation before navigation
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
   [textField resignFirstResponder];
-  [self getPositionInfo:textField.text];
+  //  [self getPositionInfo:textField.text];
+  self.position = textField.text;
+  [self performSegueWithIdentifier:@"toPositionItemVC" sender:self];
   return NO;
 }
 
@@ -174,8 +177,8 @@ preparation before navigation
   InventoryAPI *api = [[InventoryAPI alloc] init];
   [api getInventoryListPosition:self.inventory_list_id
                        withUser:self.userName
-                       withPage:@"1"
-                       withSize:@"50"
+                       withPage:@"0"
+                       withSize:@"100"
                        withView:self.view
                           block:^(NSMutableArray *requestTableArray,
                                   NSError *error) {

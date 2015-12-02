@@ -64,7 +64,7 @@
 
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-          NSLog(@"the request is %@", responseObject);
+        NSLog(@"the request is %@", responseObject);
         [self.afnet.activeView stopAnimating];
         BOOL state = false;
         if ([responseObject[@"result"] intValue] == 1) {
@@ -359,9 +359,9 @@
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.afnet.activeView stopAnimating];
-        NSLog(@"the request INVENTORY LIST POSITION %@,%@", position,
-              responseObject);
-
+        //        NSLog(@"the request INVENTORY LIST POSITION %@,%@", position,
+        //              responseObject);
+        //
         NSMutableArray *dataArray = [[NSMutableArray alloc] init];
 
         if ([responseObject[@"result"] intValue] == 1) {

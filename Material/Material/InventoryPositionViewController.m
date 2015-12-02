@@ -63,7 +63,6 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
   [super viewDidDisappear:YES];
-  [self.positionData removeAllObjects];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -149,11 +148,34 @@
 
 - (void)loadData {
   self.api = [[InventoryAPI alloc] init];
+  self.positionData = [[NSMutableArray alloc] init];
   self.positionTable.delegate = self;
   self.positionTable.dataSource = self;
-  [self.positionTable reloadData];
+
   [self.packageTextField becomeFirstResponder];
   //  [self getPackageInfo:@"WI311501116894"];
+  [self getPositionInfo];
+}
+
+- (void)getPositionInfo {
+  //  NSLog(@"%@,%@,%@", self.inventory_list_id, self.position, self.userName);
+  InventoryAPI *api = [[InventoryAPI alloc] init];
+  [api getInventoryListItem:self.inventory_list_id
+               withPosition:self.position
+                   withUser:self.userName
+                   withPage:@"0"
+                   withSize:@"50"
+                   withView:self.view
+                      block:^(NSMutableArray *dataArray, NSError *error) {
+                        if (error == nil) {
+                          if ([dataArray count] > 0) {
+                            for (int i = 0; i < [dataArray count]; i++) {
+                              [self.positionData addObject:dataArray[i]];
+                            }
+                            [self.positionTable reloadData];
+                          }
+                        }
+                      }];
 }
 
 #pragma mark UITableView Delegate
@@ -279,7 +301,6 @@ preparation before navigation
 }
 
 - (IBAction)tapViewAction:(id)sender {
-  NSLog(@"click");
   [self dismissKeyboard];
 }
 @end
