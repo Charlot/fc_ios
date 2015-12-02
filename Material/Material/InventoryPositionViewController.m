@@ -10,6 +10,7 @@
 #import "InventoryListItem.h"
 #import "InventoryConfirmViewController.h"
 #import "InventoryAPI.h"
+#import "InventoryList.h"
 #import "Captuvo.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "MovementAPI.h"
@@ -28,6 +29,7 @@
 
 @property(strong, nonatomic) IBOutlet UITextField *packageTextField;
 @property(strong, nonatomic) IBOutlet UITableView *positionTable;
+@property(strong, nonatomic) NSString *positionCount;
 @property(strong, nonatomic) InventoryAPI *api;
 @end
 
@@ -166,22 +168,43 @@
 - (void)getPositionInfo {
   //  NSLog(@"%@,%@,%@", self.inventory_list_id, self.position, self.userName);
   InventoryAPI *api = [[InventoryAPI alloc] init];
-  [api getInventoryListItem:self.inventory_list_id
-               withPosition:self.position
-                   withUser:self.userName
-                   withPage:@"0"
+  [api
+      getInventoryListItem:self.inventory_list_id
+              withPosition:self.position
+                  withUser:self.userName
+                  withPage:@"0"
 
-                   withView:self.view
-                      block:^(NSMutableArray *dataArray, NSError *error) {
-                        if (error == nil) {
-                          if ([dataArray count] > 0) {
-                            for (int i = 0; i < [dataArray count]; i++) {
-                              [self.positionData addObject:dataArray[i]];
-                            }
-                            [self.positionTable reloadData];
-                          }
-                        }
-                      }];
+                  withView:self.view
+                     block:^(NSMutableArray *dataArray, NSError *error) {
+                       if (error == nil) {
+                         if ([dataArray count] > 0) {
+                           for (int i = 0; i < [dataArray count]; i++) {
+                             [self.positionData addObject:dataArray[i]];
+                           }
+                           [api
+                               getInventoryListByPosition:self.inventory_list_id
+                                             withPosition:self.position
+                                                 withUser:self.userName
+                                                 withView:self.view
+                                                    block:^(NSMutableArray
+                                                                *dataArray,
+                                                            NSError *error) {
+                                                      if (error == nil) {
+                                                        InventoryList
+                                                            *inventoryList =
+                                                                (InventoryList
+                                                                     *)dataArray
+                                                                    [0];
+
+                                                        self.positionCount =
+                                                            inventoryList.count;
+                                                        [self.positionTable
+                                                                reloadData];
+                                                      }
+                                                    }];
+                         }
+                       }
+                     }];
 }
 
 #pragma mark UITableView Delegate
@@ -225,7 +248,7 @@
   CountLabel.textColor = [UIColor redColor];
   CountLabel.textAlignment = NSTextAlignmentLeft;
   CountLabel.text =
-      [NSString stringWithFormat:@"已盘点%ld件", [self.positionData count]];
+      [NSString stringWithFormat:@"已盘点%@件", self.positionCount];
   return CountLabel;
 }
 

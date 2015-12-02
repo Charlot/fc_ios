@@ -284,7 +284,6 @@
 - (void)getInventoryListByPosition:(NSString *)inventory_list_id
                       withPosition:(NSString *)position
                           withUser:(NSString *)user_id
-
                           withView:(UIView *)optView
                              block:
                                  (void (^)(NSMutableArray *, NSError *))block {
@@ -298,6 +297,7 @@
 
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
         [self.afnet.activeView stopAnimating];
         NSMutableArray *dataArray = [[NSMutableArray alloc] init];
 
