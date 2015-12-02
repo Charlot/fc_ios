@@ -29,7 +29,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self customUI];
+  //  [self customUI];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -130,6 +130,7 @@ preparation before navigation
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
+  [self customUI];
 }
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
