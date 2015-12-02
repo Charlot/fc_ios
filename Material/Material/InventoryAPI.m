@@ -11,7 +11,7 @@
 #import "AFNetOperate.h"
 #import "InventoryList.h"
 #import "InventoryListItem.h"
-
+#define kPageSzieKey @"100"
 @interface InventoryAPI ()
 
 @property(nonatomic, strong) DBManager *db;
@@ -223,7 +223,7 @@
 - (void)getInventoryListPosition:(NSString *)inventory_list_id
                         withUser:(NSString *)user_id
                         withPage:(NSString *)page
-                        withSize:(NSString *)size
+
                         withView:(UIView *)optView
                            block:(void (^)(NSMutableArray *, NSError *))block {
   AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
@@ -233,7 +233,7 @@
         @"inventory_list_id" : inventory_list_id,
         @"user_id" : user_id,
         @"page" : page,
-        @"size" : size
+        @"size" : kPageSzieKey
 
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -345,7 +345,7 @@
                 withPosition:(NSString *)position
                     withUser:(NSString *)user_id
                     withPage:(NSString *)page
-                    withSize:(NSString *)size
+
                     withView:(UIView *)optView
                        block:(void (^)(NSMutableArray *, NSError *))block {
   AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];

@@ -170,7 +170,7 @@
                withPosition:self.position
                    withUser:self.userName
                    withPage:@"0"
-                   withSize:@"50"
+
                    withView:self.view
                       block:^(NSMutableArray *dataArray, NSError *error) {
                         if (error == nil) {

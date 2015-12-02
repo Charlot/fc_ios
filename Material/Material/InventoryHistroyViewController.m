@@ -64,7 +64,7 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
   [self.searchBar resignFirstResponder];
   [self.historyTable.header beginRefreshing];
-  [self loadData];
+  [self loadData:@"0"];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -131,7 +131,7 @@ preparation before navigation
                withPosition:position
                    withUser:self.userName
                    withPage:@"1"
-                   withSize:@"50"
+
                    withView:self.view
                       block:^(NSMutableArray *dataArray, NSError *error) {
                         if (error == nil) {
@@ -168,17 +168,18 @@ preparation before navigation
   [self loadUser];
 
   self.historyTable.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-    [self loadData];
+    [self loadData:@"0"];
   }];
   [self.historyTable.header beginRefreshing];
 }
 
-- (void)loadData {
+- (void)loadData:(NSString *)page {
   InventoryAPI *api = [[InventoryAPI alloc] init];
+  [self.dataArray removeAllObjects];
   [api getInventoryListPosition:self.inventory_list_id
                        withUser:self.userName
-                       withPage:@"0"
-                       withSize:@"100"
+                       withPage:page
+
                        withView:self.view
                           block:^(NSMutableArray *requestTableArray,
                                   NSError *error) {

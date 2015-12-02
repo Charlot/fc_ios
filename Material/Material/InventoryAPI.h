@@ -98,7 +98,6 @@
                 withPosition:(NSString *)position
                     withUser:(NSString *)user_id
                     withPage:(NSString *)page
-                    withSize:(NSString *)size
                     withView:(UIView *)optView
                        block:(void (^)(NSMutableArray *dataArray,
                                        NSError *error))block;
@@ -106,7 +105,7 @@
 - (void)getInventoryListPosition:(NSString *)inventory_list_id
                         withUser:(NSString *)user_id
                         withPage:(NSString *)page
-                        withSize:(NSString *)size
+
                         withView:(UIView *)optView
                            block:(void (^)(NSMutableArray *dataArray,
                                            NSError *error))block;

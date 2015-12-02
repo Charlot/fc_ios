@@ -10,6 +10,7 @@
 #import "Movement.h"
 #import "DBManager.h"
 #import "AFNetOperate.h"
+#define kPageSzieKey 30
 
 @interface MovementAPI ()
 @property(nonatomic, strong) DBManager *db;
