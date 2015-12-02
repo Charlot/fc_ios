@@ -35,6 +35,13 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.api = [[InventoryAPI alloc] init];
+  self.positionData = [[NSMutableArray alloc] init];
+  self.positionTable.delegate = self;
+  self.positionTable.dataSource = self;
+
+  [self.packageTextField becomeFirstResponder];
+
   //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
   //      initWithTarget:self
   //              action:@selector(dismissKeyboard)];
@@ -92,30 +99,31 @@
 }
 
 - (void)createInventoryListItem {
-  [self.api
-      CreateInventoryListItem:self.inventory_list_id
-                 withPosition:self.position
-                     withUser:self.userName
-                      withQty:self.qtyTextField.text
-                   withPartID:self.partIDTextField.text
-                withPackageID:self.packageTextField.text
-                     withView:self.view
-                        block:^(BOOL state, NSError *error) {
-                          if (error == nil) {
-                            if (state) {
-                              NSArray *subviews = [self.view subviews];
-                              for (id objInput in subviews) {
-                                if ([objInput
-                                        isKindOfClass:[UITextField class]]) {
-                                  UITextField *tmpTextFile = objInput;
-                                  if ([objInput isFirstResponder]) {
-                                    tmpTextFile.text = @"";
+  [self.api CreateInventoryListItem:self.inventory_list_id
+                       withPosition:self.position
+                           withUser:self.userName
+                            withQty:self.qtyTextField.text
+                         withPartID:self.partIDTextField.text
+                      withPackageID:self.packageTextField.text
+                           withView:self.view
+                              block:^(BOOL state, NSError *error) {
+                                if (error == nil) {
+                                  if (state) {
+                                    [self clearData];
+                                    [self loadData];
                                   }
                                 }
-                              }
-                            }
-                          }
-                        }];
+                              }];
+}
+
+- (void)clearData {
+  NSArray *subviews = [self.view subviews];
+  for (id objInput in subviews) {
+    if ([objInput isKindOfClass:[UITextField class]]) {
+      UITextField *tmpTextFile = objInput;
+      tmpTextFile.text = @"";
+    }
+  }
 }
 
 - (void)getPackageInfo:(NSString *)package_id {
@@ -147,13 +155,8 @@
 }
 
 - (void)loadData {
-  self.api = [[InventoryAPI alloc] init];
-  self.positionData = [[NSMutableArray alloc] init];
-  self.positionTable.delegate = self;
-  self.positionTable.dataSource = self;
-
-  [self.packageTextField becomeFirstResponder];
   //  [self getPackageInfo:@"WI311501116894"];
+  [self.positionData removeAllObjects];
   [self getPositionInfo];
 }
 

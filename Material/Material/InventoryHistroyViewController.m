@@ -30,6 +30,13 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.searchBar.delegate = self;
+  self.searchBar.showsCancelButton = YES;
+  self.historyTable.delegate = self;
+  self.historyTable.dataSource = self;
+  self.positionTextField.delegate = self;
+  self.dataArray = [[NSMutableArray alloc] init];
+  self.positionDataArray = [[NSMutableArray alloc] init];
   //  [self customUI];
   //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
   //      initWithTarget:self
@@ -159,13 +166,6 @@ preparation before navigation
 
 - (void)customUI {
   [self loadUser];
-  self.searchBar.delegate = self;
-  self.searchBar.showsCancelButton = YES;
-  self.historyTable.delegate = self;
-  self.historyTable.dataSource = self;
-  self.positionTextField.delegate = self;
-  self.dataArray = [[NSMutableArray alloc] init];
-  self.positionDataArray = [[NSMutableArray alloc] init];
 
   self.historyTable.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
     [self loadData];
