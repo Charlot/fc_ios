@@ -41,6 +41,9 @@
   self.positionTable.dataSource = self;
 
   [self.packageTextField becomeFirstResponder];
+  self.packageTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+  self.partIDTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+  self.fifoTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
 
   //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
   //      initWithTarget:self
