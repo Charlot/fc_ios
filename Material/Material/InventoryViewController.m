@@ -53,6 +53,7 @@
       parameters:nil
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [AFNet.activeView stopAnimating];
+
         if ([responseObject[@"result"] integerValue] == 1) {
           if ([(NSArray *)responseObject[@"content"] count] > 0) {
             NSArray *inventoryArray = responseObject[@"content"];

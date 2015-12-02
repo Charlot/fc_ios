@@ -190,10 +190,10 @@ preparation before navigation
                                   [self.dataArray
                                       addObject:requestTableArray[i]];
                                 }
-                                [self.historyTable.header endRefreshing];
-
-                                [self.historyTable reloadData];
                               }
+                              [self.historyTable.header endRefreshing];
+
+                              [self.historyTable reloadData];
                             }
                           }];
 }
