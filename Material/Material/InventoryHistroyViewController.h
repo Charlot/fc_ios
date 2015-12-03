@@ -14,4 +14,6 @@
                         CaptuvoEventsProtocol, UITextFieldDelegate,
                         UISearchBarDelegate>
 @property(strong, nonatomic) NSString *inventory_list_id;
+- (UIScrollView *)scrollView;
+
 @end

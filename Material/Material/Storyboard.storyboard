@@ -2300,6 +2300,10 @@
                                         <animations/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="f5D-QB-TRU" id="rgS-wP-2pp"/>
+                                    <outlet property="delegate" destination="f5D-QB-TRU" id="GhY-te-w2F"/>
+                                </connections>
                             </tableView>
                             <searchBar contentMode="redraw" id="Oe9-wJ-cMC">
                                 <rect key="frame" x="0.0" y="47" width="320" height="44"/>

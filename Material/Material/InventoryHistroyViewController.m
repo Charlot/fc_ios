@@ -32,18 +32,32 @@
   [super viewDidLoad];
   self.searchBar.delegate = self;
   self.searchBar.showsCancelButton = YES;
-  self.historyTable.delegate = self;
-  self.historyTable.dataSource = self;
   self.positionTextField.delegate = self;
-  self.dataArray = [[NSMutableArray alloc] init];
+  //  self.dataArray = [[NSMutableArray alloc] init];
   self.positionDataArray = [[NSMutableArray alloc] init];
   //  [self customUI];
   //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
   //      initWithTarget:self
   //              action:@selector(dismissKeyboard)];
   //  [self.view addGestureRecognizer:tap];
+  MJRefreshHeader *header = [MJRefreshHeader headerWithRefreshingBlock:^{
+    [self loadData:@"0"];
+  }];
+
+  self.scrollView.header = header;
+  [self.scrollView.header beginRefreshing];
 }
 
+- (NSMutableArray *)dataArray {
+  if (!_dataArray) {
+    _dataArray = [[NSMutableArray alloc] init];
+  }
+  return _dataArray;
+}
+
+- (UIScrollView *)scrollView {
+  return self.historyTable;
+}
 //- (void)dismissKeyboard {
 //  NSArray *subviews = [self.view subviews];
 //  for (id objInput in subviews) {
@@ -163,17 +177,13 @@ preparation before navigation
 }
 
 - (void)customUI {
+  [self.positionTextField becomeFirstResponder];
   [self loadUser];
-
-  self.historyTable.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-    [self loadData:@"0"];
-  }];
-  [self.historyTable.header beginRefreshing];
 }
 
 - (void)loadData:(NSString *)page {
   InventoryAPI *api = [[InventoryAPI alloc] init];
-  [self.dataArray removeAllObjects];
+
   [api getInventoryListPosition:self.inventory_list_id
                        withUser:self.userName
                        withPage:page
@@ -183,15 +193,15 @@ preparation before navigation
                                   NSError *error) {
                             if (error == nil) {
                               if ([requestTableArray count] > 0) {
+                                [self.dataArray removeAllObjects];
                                 for (int i = 0; i < [requestTableArray count];
                                      i++) {
                                   [self.dataArray
                                       addObject:requestTableArray[i]];
                                 }
                               }
-                              [self.historyTable.header endRefreshing];
-
                               [self.historyTable reloadData];
+                              [self.historyTable.header endRefreshing];
                             }
                           }];
 }
