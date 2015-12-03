@@ -41,7 +41,7 @@
   self.positionData = [[NSMutableArray alloc] init];
   self.positionTable.delegate = self;
   self.positionTable.dataSource = self;
-
+  self.positionCount = @"0";
   [self.packageTextField becomeFirstResponder];
   self.packageTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
   self.partIDTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];

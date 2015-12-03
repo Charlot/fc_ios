@@ -359,8 +359,8 @@
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.afnet.activeView stopAnimating];
-        //        NSLog(@"the request INVENTORY LIST POSITION %@,%@", position,
-        //              responseObject);
+        NSLog(@"the request INVENTORY LIST POSITION %@,%@", position,
+              responseObject);
         //
         NSMutableArray *dataArray = [[NSMutableArray alloc] init];
 
@@ -371,14 +371,14 @@
                 [[InventoryListItem alloc] initWithObject:requestArray[i]];
             [dataArray addObject:inventory_list_item];
           }
+          if (block) {
+            block(dataArray, nil);
+          }
 
         } else {
 
           [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
                                                                   @"content"]]];
-        }
-        if (block) {
-          block(dataArray, nil);
         }
 
       }

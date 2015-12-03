@@ -137,10 +137,8 @@ preparation before navigation
                    withView:self.view
                       block:^(NSMutableArray *dataArray, NSError *error) {
                         if (error == nil) {
-                          if ([dataArray count] > 0) {
-                            [self performSegueWithIdentifier:@"toPositionItemVC"
-                                                      sender:self];
-                          }
+                          [self performSegueWithIdentifier:@"toPositionItemVC"
+                                                    sender:self];
                         }
                       }];
 }
