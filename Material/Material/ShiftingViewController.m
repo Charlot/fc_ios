@@ -72,7 +72,7 @@ preparation before navigation
 
 - (void)loadData {
   AFNetOperate *AFNet = [[AFNetOperate alloc] init];
-  [self.dataArray removeAllObjects];
+
   [AFNet.activeView stopAnimating];
   AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
   [AFNet.activeView stopAnimating];
@@ -84,7 +84,7 @@ preparation before navigation
         //        NSLog(@"the request GetMovementList is %@", responseObject);
         [AFNet.activeView stopAnimating];
         if ([responseObject[@"result"] integerValue] == 1) {
-
+          [self.dataArray removeAllObjects];
           NSArray *resultArray = responseObject[@"content"];
           for (int i = 0; i < resultArray.count; i++) {
             MovementList *ml =

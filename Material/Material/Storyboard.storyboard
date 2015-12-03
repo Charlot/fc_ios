@@ -2187,7 +2187,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="49"/>
+                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="69"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="historyTableCellReuseIdentifier" id="WbY-qw-FVk">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -6002,10 +6002,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ugR-I2-vhA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="453"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="79"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailTableCellReuseIdentifier" id="SyP-Dw-BMt">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -6488,7 +6489,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mNz-NV-qGZ">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mNz-NV-qGZ" id="tB6-Cg-T0m">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -6585,24 +6586,24 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xUu-VW-Prs"/>
-        <segue reference="UnZ-wN-WXV"/>
-        <segue reference="EZu-KH-oca"/>
-        <segue reference="zjP-oP-VXq"/>
-        <segue reference="Dng-DQ-LOk"/>
-        <segue reference="oOw-in-AQO"/>
-        <segue reference="SyV-YF-bxb"/>
-        <segue reference="2nV-DT-24h"/>
         <segue reference="Neh-iJ-Fpe"/>
         <segue reference="Do4-uK-Dun"/>
         <segue reference="GDE-C3-Tx4"/>
-        <segue reference="Kxl-Rh-nWd"/>
-        <segue reference="Get-Zr-2fp"/>
-        <segue reference="veK-WU-skj"/>
-        <segue reference="yJ1-Ae-Eed"/>
-        <segue reference="U3W-2k-BOU"/>
-        <segue reference="zbp-Dd-2O5"/>
+        <segue reference="Dng-DQ-LOk"/>
+        <segue reference="SyV-YF-bxb"/>
+        <segue reference="oOw-in-AQO"/>
+        <segue reference="2nV-DT-24h"/>
         <segue reference="tP9-hz-80H"/>
         <segue reference="fTA-Xe-KDm"/>
+        <segue reference="U3W-2k-BOU"/>
+        <segue reference="zbp-Dd-2O5"/>
+        <segue reference="Kxl-Rh-nWd"/>
+        <segue reference="veK-WU-skj"/>
+        <segue reference="Get-Zr-2fp"/>
+        <segue reference="yJ1-Ae-Eed"/>
+        <segue reference="JT4-AV-Rjg"/>
+        <segue reference="YxU-C8-xI9"/>
+        <segue reference="zjP-oP-VXq"/>
+        <segue reference="UnZ-wN-WXV"/>
     </inferredMetricsTieBreakers>
 </document>

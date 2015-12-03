@@ -45,7 +45,6 @@
   }];
 
   self.scrollView.header = header;
-  [self.scrollView.header beginRefreshing];
 }
 
 - (NSMutableArray *)dataArray {
@@ -58,17 +57,6 @@
 - (UIScrollView *)scrollView {
   return self.historyTable;
 }
-//- (void)dismissKeyboard {
-//  NSArray *subviews = [self.view subviews];
-//  for (id objInput in subviews) {
-//    if ([objInput isKindOfClass:[UITextField class]]) {
-//      UITextField *theTextField = objInput;
-//      if ([objInput isFirstResponder]) {
-//        [theTextField resignFirstResponder];
-//      }
-//    }
-//  }
-//}
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
@@ -83,15 +71,20 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
   [self.searchBar resignFirstResponder];
+  [self searchPosition:searchBar.text];
+}
+
+- (void)searchPosition:(NSString *)searchText {
   InventoryAPI *api = [[InventoryAPI alloc] init];
   [api getInventoryListByPosition:self.inventory_list_id
-                     withPosition:searchBar.text
+                     withPosition:searchText
                          withUser:self.userName
                          withView:self.view
                             block:^(NSMutableArray *dataArray, NSError *error) {
                               if (error == nil) {
-                                [self.dataArray removeAllObjects];
                                 if ([dataArray count] > 0) {
+                                  [self.dataArray removeAllObjects];
+
                                   for (int i = 0; i < [dataArray count]; i++) {
                                     [self.dataArray addObject:dataArray[i]];
                                   }
@@ -121,21 +114,14 @@ preparation before navigation
 }
 
 - (void)decoderDataReceived:(NSString *)data {
-  NSArray *subviews = [self.view subviews];
-  for (id objInput in subviews) {
-    if ([objInput isKindOfClass:[UITextField class]]) {
-      UITextField *tmpTextFile = objInput;
-      if ([objInput isFirstResponder]) {
-        tmpTextFile.text = data;
-        if (tmpTextFile == self.positionTextField) {
-          self.position = self.positionTextField.text;
-          [self getPositionInfo:tmpTextFile.text];
-          //          [self performSegueWithIdentifier:@"toPositionItemVC"
-          //          sender:self];
-        }
-        break;
-      }
-    }
+  if ([self.positionTextField isFirstResponder]) {
+    self.positionTextField.text = data;
+    self.position = self.positionTextField.text;
+    [self getPositionInfo:data];
+  }
+  if ([self.searchBar isFirstResponder]) {
+    self.searchBar.text = data;
+    [self searchPosition:data];
   }
 }
 
@@ -151,6 +137,7 @@ preparation before navigation
                    withView:self.view
                       block:^(NSMutableArray *dataArray, NSError *error) {
                         if (error == nil) {
+                          self.positionTextField.text = @"";
                           [self performSegueWithIdentifier:@"toPositionItemVC"
                                                     sender:self];
                         }
@@ -179,6 +166,7 @@ preparation before navigation
 - (void)customUI {
   [self.positionTextField becomeFirstResponder];
   [self loadUser];
+  [self.scrollView.header beginRefreshing];
 }
 
 - (void)loadData:(NSString *)page {

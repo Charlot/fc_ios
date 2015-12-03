@@ -126,6 +126,10 @@
     detail.movement = self.dataArray[self.movementListFinishTable
                                          .indexPathForSelectedRow.row];
   }
+  if ([segue.identifier isEqualToString:@"toPrintVC"]) {
+    ShiftingPrintViewController *print = segue.destinationViewController;
+    print.movement_list_id = self.movement_list_id;
+  }
 }
 
 /*

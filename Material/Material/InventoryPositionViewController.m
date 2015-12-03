@@ -43,9 +43,6 @@
   self.positionTable.dataSource = self;
   self.positionCount = @"0";
   [self.packageTextField becomeFirstResponder];
-  self.packageTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
-  self.partIDTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
-  self.fifoTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
 
   //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
   //      initWithTarget:self
@@ -161,7 +158,7 @@
 
 - (void)loadData {
   //  [self getPackageInfo:@"WI311501116894"];
-  [self.positionData removeAllObjects];
+
   [self getPositionInfo];
 }
 
@@ -178,6 +175,7 @@
                      block:^(NSMutableArray *dataArray, NSError *error) {
                        if (error == nil) {
                          if ([dataArray count] > 0) {
+                           [self.positionData removeAllObjects];
                            for (int i = 0; i < [dataArray count]; i++) {
                              [self.positionData addObject:dataArray[i]];
                            }
@@ -287,15 +285,17 @@
                                 block:^(BOOL state, NSError *error) {
                                   if (error == nil) {
                                     if (state) {
-                                      [self.positionData
-                                          removeObjectAtIndex:
-                                              self.positionTable
-                                                  .indexPathForSelectedRow.row];
-                                      [UIView animateWithDuration:0.5
-                                                       animations:^{
-                                                         [self.positionTable
-                                                                 reloadData];
-                                                       }];
+                                      [self loadData];
+                                      //                                      [self.positionData
+                                      //                                          removeObjectAtIndex:
+                                      //                                              self.positionTable
+                                      //                                                  .indexPathForSelectedRow.row];
+                                      //                                      [UIView
+                                      //                                      animateWithDuration:0.5
+                                      //                                                       animations:^{
+                                      //                                                         [self.positionTable
+                                      //                                                                 reloadData];
+                                      //                                                       }];
                                     }
                                   }
                                 }];

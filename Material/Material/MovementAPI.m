@@ -373,13 +373,13 @@
               block:(void (^)(NSString *, NSError *))block {
   NSLog(@"the request is %@",
         [[self.afnet print_movenment_list_receive:movement_list_id
-                                     printer_name:@"P009/"
+                                     printer_name:@"P010/"
                                            copies:copies]
             stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
   AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
   [manager
       GET:[[self.afnet print_movenment_list_receive:movement_list_id
-                                       printer_name:@"P009/"
+                                       printer_name:@"P010/"
                                              copies:copies]
               stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
       parameters:nil
