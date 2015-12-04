@@ -248,4 +248,6 @@
 
 - (NSString *)getNStoragePackageInfo;
 
+- (NSString *)searchPosition;
+
 @end

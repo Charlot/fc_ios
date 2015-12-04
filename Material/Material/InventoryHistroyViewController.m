@@ -76,22 +76,22 @@
 
 - (void)searchPosition:(NSString *)searchText {
   InventoryAPI *api = [[InventoryAPI alloc] init];
-  [api getInventoryListByPosition:self.inventory_list_id
-                     withPosition:searchText
-                         withUser:self.userName
-                         withView:self.view
-                            block:^(NSMutableArray *dataArray, NSError *error) {
-                              if (error == nil) {
-                                if ([dataArray count] > 0) {
-                                  [self.dataArray removeAllObjects];
+  [api searchPosition:self.inventory_list_id
+         withPosition:searchText
+             withUser:self.userName
+             withView:self.view
+                block:^(NSMutableArray *dataArray, NSError *error) {
+                  if (error == nil) {
+                    [self.dataArray removeAllObjects];
 
-                                  for (int i = 0; i < [dataArray count]; i++) {
-                                    [self.dataArray addObject:dataArray[i]];
-                                  }
-                                  [self.historyTable reloadData];
-                                }
-                              }
-                            }];
+                    if ([dataArray count] > 0) {
+                      for (int i = 0; i < [dataArray count]; i++) {
+                        [self.dataArray addObject:dataArray[i]];
+                      }
+                    }
+                    [self.historyTable reloadData];
+                  }
+                }];
 }
 
 /*

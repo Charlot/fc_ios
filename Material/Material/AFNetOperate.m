@@ -928,4 +928,11 @@
   return [base stringByAppendingString:get_nstorage_package_info];
 }
 
+- (NSString *)searchPosition {
+  NSString *base = [self baseURL];
+  NSString *search_position =
+      [[self URLDictionary] objectForKey:@"search_position"];
+  return [base stringByAppendingString:search_position];
+}
+
 @end

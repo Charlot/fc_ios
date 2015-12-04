@@ -254,7 +254,7 @@
 
         [self.afnet.activeView stopAnimating];
 
-          NSMutableArray *dataArray;
+        NSMutableArray *dataArray;
         if ([responseObject[@"result"] intValue] == 1) {
           dataArray = [[NSMutableArray alloc] init];
 
@@ -376,13 +376,13 @@
   NSLog(@"the request is %@",
         [[self.afnet print_movenment_list_receive:movement_list_id
                                      printer_name:@"P010/"
-                                           copies:copies]
+                                           copies:@""]
             stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
   AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
   [manager
       GET:[[self.afnet print_movenment_list_receive:movement_list_id
                                        printer_name:@"P010/"
-                                             copies:copies]
+                                             copies:@""]
               stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
       parameters:nil
       success:^(AFHTTPRequestOperation *operation, id responseObject) {

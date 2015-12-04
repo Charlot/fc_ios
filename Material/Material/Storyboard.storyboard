@@ -2188,6 +2188,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="69"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="69"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="historyTableCellReuseIdentifier" id="WbY-qw-FVk">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -5928,6 +5929,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="69"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="69"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="completeTableCellReuseIdentifier" id="KhN-uR-Pvv">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -5991,7 +5994,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bws-gB-TjB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2384" y="7944"/>
+            <point key="canvasLocation" x="2396" y="8066"/>
         </scene>
         <!--移库单信息-->
         <scene sceneID="Aj7-qY-GSH">
@@ -6006,7 +6009,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="79"/>
+                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="69"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="69"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailTableCellReuseIdentifier" id="SyP-Dw-BMt">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -6065,6 +6069,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="移库单信息" id="tNG-UU-2hE">
                         <barButtonItem key="rightBarButtonItem" title="完成并打印" id="2D8-hk-nDE">
                             <connections>
@@ -6590,13 +6595,13 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Neh-iJ-Fpe"/>
-        <segue reference="Do4-uK-Dun"/>
-        <segue reference="GDE-C3-Tx4"/>
         <segue reference="Dng-DQ-LOk"/>
         <segue reference="SyV-YF-bxb"/>
         <segue reference="oOw-in-AQO"/>
         <segue reference="2nV-DT-24h"/>
+        <segue reference="Neh-iJ-Fpe"/>
+        <segue reference="Do4-uK-Dun"/>
+        <segue reference="GDE-C3-Tx4"/>
         <segue reference="tP9-hz-80H"/>
         <segue reference="fTA-Xe-KDm"/>
         <segue reference="U3W-2k-BOU"/>
@@ -6605,9 +6610,9 @@
         <segue reference="veK-WU-skj"/>
         <segue reference="Get-Zr-2fp"/>
         <segue reference="yJ1-Ae-Eed"/>
-        <segue reference="JT4-AV-Rjg"/>
         <segue reference="YxU-C8-xI9"/>
-        <segue reference="zjP-oP-VXq"/>
+        <segue reference="JT4-AV-Rjg"/>
         <segue reference="UnZ-wN-WXV"/>
+        <segue reference="zjP-oP-VXq"/>
     </inferredMetricsTieBreakers>
 </document>

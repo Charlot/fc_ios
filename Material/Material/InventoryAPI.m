@@ -30,6 +30,55 @@
   return self;
 }
 
+- (void)searchPosition:(NSString *)inventory_list_id
+          withPosition:(NSString *)position
+              withUser:(NSString *)user_id
+              withView:(UIView *)optView
+                 block:(void (^)(NSMutableArray *dataArray,
+                                 NSError *error))block {
+  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+
+  [manager GET:[self.afnet searchPosition]
+      parameters:@{
+        @"inventory_list_id" : inventory_list_id,
+        @"position" : position,
+        @"user_id" : user_id,
+
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        [self.afnet.activeView stopAnimating];
+        NSMutableArray *dataArray;
+
+        if ([responseObject[@"result"] intValue] == 1) {
+          dataArray = [[NSMutableArray alloc] init];
+          NSArray *requestArray = responseObject[@"content"];
+          for (int i = 0; i < [requestArray count]; i++) {
+            InventoryList *il =
+                [[InventoryList alloc] initWithObject:requestArray[i]];
+            [dataArray addObject:il];
+          }
+        } else {
+
+          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
+                                                                  @"content"]]];
+        }
+        if (block) {
+          block(dataArray, nil);
+        }
+
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet
+            alert:[NSString
+                      stringWithFormat:@"%@", [error localizedDescription]]];
+        if (block) {
+          block(nil, error);
+        }
+      }];
+}
+
 /**
  *  创建盘点项
  *

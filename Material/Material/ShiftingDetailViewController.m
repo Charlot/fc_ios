@@ -26,9 +26,25 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  //  UIEdgeInsets adjustForTabbarInsets = UIEdgeInsetsMake(
+  //      0, 0, CGRectGetHeight(self.tabBarController.tabBar.frame) + 200, 0);
+  //  self.detailTableView.contentInset = adjustForTabbarInsets;
+  //  self.detailTableView.scrollIndicatorInsets = adjustForTabbarInsets;
+
   [self loadData];
   [self customUI];
 }
+
+//- (void)viewDidLayoutSubviews {
+//  [super viewDidLayoutSubviews];
+//
+//  CGFloat bottomOffset = self.bottomLayoutGuide.length;
+//
+//  self.detailTableView.contentInset =
+//      UIEdgeInsetsMake(0, 0, bottomOffset + 100, 0);
+//  self.detailTableView.scrollIndicatorInsets =
+//      UIEdgeInsetsMake(0, 0, bottomOffset + 100, 0);
+//}
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
@@ -37,7 +53,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  self.detailTableView.contentInset = UIEdgeInsetsMake(0, 0, 79, 0);
 }
 /*
 #pragma mark - Navigation

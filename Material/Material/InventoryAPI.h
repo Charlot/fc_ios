@@ -10,6 +10,13 @@
 
 @interface InventoryAPI : NSObject
 
+- (void)searchPosition:(NSString *)inventory_list_id
+          withPosition:(NSString *)position
+              withUser:(NSString *)userID
+              withView:(UIView *)optView
+                 block:
+                     (void (^)(NSMutableArray *dataArray, NSError *error))block;
+
 /**
  *  根据盘点清单 和库位 搜索历史纪录
 
