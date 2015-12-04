@@ -35,6 +35,10 @@
   // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  self.detailTableView.contentInset = UIEdgeInsetsMake(0, 0, 79, 0);
+}
 /*
 #pragma mark - Navigation
 
@@ -48,8 +52,8 @@ preparation before navigation
 
 - (void)loadData {
   [self getUser];
-  self.detailTableView.delegate = self;
-  self.detailTableView.dataSource = self;
+  //  self.detailTableView.delegate = self;
+  //  self.detailTableView.dataSource = self;
   self.detailTableView.allowsMultipleSelectionDuringEditing = NO;
   self.dataArray = [[NSMutableArray alloc] init];
   self.api = [[MovementAPI alloc] init];

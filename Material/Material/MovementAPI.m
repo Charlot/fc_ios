@@ -251,19 +251,21 @@
         @"package_id" : package_id
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.afnet.activeView stopAnimating];
-        NSLog(@"the request getPackageInfo %@", responseObject);
-        NSMutableArray *dataArray = [[NSMutableArray alloc] init];
 
+        [self.afnet.activeView stopAnimating];
+
+          NSMutableArray *dataArray;
         if ([responseObject[@"result"] intValue] == 1) {
+          dataArray = [[NSMutableArray alloc] init];
+
           dataArray = responseObject[@"content"];
-          if (block) {
-            block(dataArray, nil);
-          }
         } else {
 
           [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
                                                                   @"content"]]];
+        }
+        if (block) {
+          block(dataArray, nil);
         }
 
       }

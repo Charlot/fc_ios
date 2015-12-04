@@ -39,11 +39,11 @@
   [super viewDidLoad];
   self.api = [[InventoryAPI alloc] init];
   self.positionData = [[NSMutableArray alloc] init];
-  self.positionTable.delegate = self;
   self.positionTable.dataSource = self;
+  self.positionTable.delegate = self;
   self.positionCount = @"0";
   [self.packageTextField becomeFirstResponder];
-
+  [self getPackageInfo:@"WI3115011589744"];
   //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
   //      initWithTarget:self
   //              action:@selector(dismissKeyboard)];
@@ -135,14 +135,20 @@
             withView:self.view
                block:^(NSMutableArray *dataArray, NSError *error) {
                  if (error == nil) {
-                   NSDictionary *dictData = [dataArray mutableCopy];
-                   self.partIDTextField.text = [NSString
-                       stringWithFormat:@"%@",
-                                        [dictData objectForKey:@"part_id"]];
-                   self.fifoTextField.text = [NSString
-                       stringWithFormat:@"%@", [dictData objectForKey:@"fifo"]];
-                   self.qtyTextField.text = [NSString
-                       stringWithFormat:@"%@", [dictData objectForKey:@"qty"]];
+                   if (dataArray) {
+                     NSDictionary *dictData = [dataArray mutableCopy];
+                     self.partIDTextField.text = [NSString
+                         stringWithFormat:@"%@",
+                                          [dictData objectForKey:@"part_id"]];
+                     self.fifoTextField.text = [NSString
+                         stringWithFormat:@"%@",
+                                          [dictData objectForKey:@"fifo"]];
+                     self.qtyTextField.text = [NSString
+                         stringWithFormat:@"%@",
+                                          [dictData objectForKey:@"qty"]];
+                   } else {
+                     self.packageTextField.text = @"";
+                   }
                  }
                }];
 }

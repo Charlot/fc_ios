@@ -6056,6 +6056,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="1b3-7w-ZEG" id="Cuh-2e-dsG"/>
+                                    <outlet property="delegate" destination="1b3-7w-ZEG" id="WrM-Qc-2dG"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <animations/>
