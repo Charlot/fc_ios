@@ -43,7 +43,6 @@
   self.positionTable.delegate = self;
   self.positionCount = @"0";
   [self.packageTextField becomeFirstResponder];
-  [self getPackageInfo:@"WI3115011589744"];
   //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
   //      initWithTarget:self
   //              action:@selector(dismissKeyboard)];
