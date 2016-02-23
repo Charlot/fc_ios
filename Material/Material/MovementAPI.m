@@ -10,6 +10,7 @@
 #import "Movement.h"
 #import "DBManager.h"
 #import "AFNetOperate.h"
+#define kPageSzieKey 30
 
 @interface MovementAPI ()
 @property(nonatomic, strong) DBManager *db;
@@ -25,6 +26,76 @@
     _db = [[DBManager alloc] initWithDatabaseFilename:@"wmsdb.sql"];
   }
   return self;
+}
+
+- (void)getNStoragePackageInfo:(NSString *)package_id
+                      withView:(UIView *)optView
+                         block:(void (^)(NSMutableArray *, NSError *))block {
+  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+  [manager GET:[self.afnet getNStoragePackageInfo]
+      parameters:@{
+        @"package_id" : package_id
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.afnet.activeView stopAnimating];
+        NSLog(@"the request getPackageInfo %@", responseObject);
+        NSMutableArray *dataArray = [[NSMutableArray alloc] init];
+
+        if ([responseObject[@"result"] intValue] == 1) {
+          dataArray = responseObject[@"content"];
+          if (block) {
+            block(dataArray, nil);
+          }
+        } else {
+
+          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
+                                                                  @"content"]]];
+        }
+
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet
+            alert:[NSString
+                      stringWithFormat:@"%@", [error localizedDescription]]];
+        if (block) {
+          block(nil, error);
+        }
+      }];
+}
+
+- (void)webDeleteMovementSource:(NSString *)movement_source_id
+                       withView:(UIView *)optView
+                          block:(void (^)(BOOL state, NSError *error))block {
+  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+  [manager DELETE:[self.afnet delete_movement_source]
+      parameters:@{
+        @"movement_source_id" : movement_source_id
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"the request data is %@", responseObject);
+        [self.afnet.activeView stopAnimating];
+        BOOL state = FALSE;
+        if ([responseObject[@"result"] intValue] == 1) {
+          state = TRUE;
+        } else {
+          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
+                                                                  @"content"]]];
+        }
+        if (block) {
+          block(state, nil);
+        }
+
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet
+            alert:[NSString
+                      stringWithFormat:@"%@", [error localizedDescription]]];
+        if (block) {
+          block(FALSE, error);
+        }
+      }];
 }
 
 - (void)webGetMovementResources:(NSString *)movement_list_id
@@ -107,13 +178,13 @@
 
   query = [NSString
       stringWithFormat:
-          @"insert into movements (toWh, "
+          @"insert into movements (source_id, toWh, "
           @"toPosition, fromWh, fromPosition, packageId, partNr, "
           @"qty, movement_list_id, user, "
-          @"created_at) values('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', "
-          @"'%@', '%@')",
-          m.toWh, m.toPosition, m.fromWh, m.fromPosition, m.packageId, m.partNr,
-          m.qty, m.movement_list_id, m.user, created_at];
+          @"created_at) values('%@', '%@', '%@', '%@', '%@', '%@', "
+          @"'%@', '%@', '%@', " @"'%@', '%@')",
+          m.SourceID, m.toWh, m.toPosition, m.fromWh, m.fromPosition,
+          m.packageId, m.partNr, m.qty, m.movement_list_id, m.user, created_at];
   NSLog(@"===== query is %@", query);
   DBManager *db = [[DBManager alloc] initWithDatabaseFilename:@"wmsdb.sql"];
   [db executeQuery:query];
@@ -180,19 +251,21 @@
         @"package_id" : package_id
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.afnet.activeView stopAnimating];
-        NSLog(@"the request getPackageInfo %@", responseObject);
-        NSMutableArray *dataArray = [[NSMutableArray alloc] init];
 
+        [self.afnet.activeView stopAnimating];
+
+        NSMutableArray *dataArray;
         if ([responseObject[@"result"] intValue] == 1) {
+          dataArray = [[NSMutableArray alloc] init];
+
           dataArray = responseObject[@"content"];
-          if (block) {
-            block(dataArray, nil);
-          }
         } else {
 
           [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
                                                                   @"content"]]];
+        }
+        if (block) {
+          block(dataArray, nil);
         }
 
       }
@@ -302,14 +375,14 @@
               block:(void (^)(NSString *, NSError *))block {
   NSLog(@"the request is %@",
         [[self.afnet print_movenment_list_receive:movement_list_id
-                                     printer_name:@"P009/"
-                                           copies:copies]
+                                     printer_name:@"P010/"
+                                           copies:@""]
             stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
   AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
   [manager
       GET:[[self.afnet print_movenment_list_receive:movement_list_id
-                                       printer_name:@"P009/"
-                                             copies:copies]
+                                       printer_name:@"P010/"
+                                             copies:@""]
               stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
       parameters:nil
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -419,7 +492,8 @@
 
     NSString *moveMentId = [[arrayData objectAtIndex:i]
         objectAtIndex:[self.db.arrColumnNames indexOfObject:@"id"]];
-
+    NSString *movementSourceID = [[arrayData objectAtIndex:i]
+        objectAtIndex:[self.db.arrColumnNames indexOfObject:@"source_id"]];
     NSString *toWh = [[arrayData objectAtIndex:i]
         objectAtIndex:[self.db.arrColumnNames indexOfObject:@"toWh"]];
 
@@ -451,6 +525,7 @@
         objectAtIndex:[self.db.arrColumnNames indexOfObject:@"created_at"]];
     if (type == 0) {
       Movement *movement = [[Movement alloc] initWithID:moveMentId
+                                           withSourceID:movementSourceID
                                                withToWh:toWh
                                          withToPosition:toPosition
                                              withFromWh:fromWh

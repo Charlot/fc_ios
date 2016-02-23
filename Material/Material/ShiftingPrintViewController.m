@@ -17,8 +17,22 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  // Do any additional setup after loading the view.
+  self.navigationItem.hidesBackButton = YES;
 }
+// Do any additional setup after loading the view.
+//  [self.navigationItem.backBarButtonItem setEnabled:NO];
+//  self.navigationItem.leftBarButtonItem =
+//      [[UIBarButtonItem alloc] initWithTitle:@"返回"
+//                                       style:UIBarButtonItemStylePlain
+//                                      target:self
+//                                      action:@selector(done:)];
+//  [self.navigationItem.leftBarButtonItem setEnabled:NO];
+//}
+//
+//- (void)done:(id)sender {
+//  //  [self dismissViewControllerAnimated:YES completion:nil];
+//  [self.navigationController popViewControllerAnimated:YES];
+//}
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
@@ -37,7 +51,22 @@ preparation before navigation
 */
 
 - (IBAction)printAction:(id)sender {
-  [self verifyText];
+  [[[UIActionSheet alloc] initWithTitle:@"是否打印"
+                               delegate:self
+                      cancelButtonTitle:@"返回移库清单"
+                 destructiveButtonTitle:nil
+                      otherButtonTitles:@"确定", nil] showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet
+    clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if (buttonIndex == actionSheet.cancelButtonIndex) {
+    [self performSegueWithIdentifier:@"toHistoryVC" sender:self];
+    NSLog(@"click cancel");
+  } else {
+    [self verifyText];
+    NSLog(@"click yes");
+  }
 }
 
 - (void)verifyText {
@@ -61,4 +90,5 @@ preparation before navigation
     [alert show];
   }
 }
+
 @end

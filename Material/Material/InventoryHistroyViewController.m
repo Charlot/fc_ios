@@ -16,6 +16,7 @@
 #import "MJRefresh.h"
 
 @interface InventoryHistroyViewController ()
+- (IBAction)tapViewEvent:(id)sender;
 @property(strong, nonatomic) NSMutableArray *dataArray;
 @property(strong, nonatomic) IBOutlet UITableView *historyTable;
 @property(strong, nonatomic) IBOutlet UITextField *positionTextField;
@@ -29,7 +30,32 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self customUI];
+  self.searchBar.delegate = self;
+  self.searchBar.showsCancelButton = YES;
+  self.positionTextField.delegate = self;
+  //  self.dataArray = [[NSMutableArray alloc] init];
+  self.positionDataArray = [[NSMutableArray alloc] init];
+  //  [self customUI];
+  //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+  //      initWithTarget:self
+  //              action:@selector(dismissKeyboard)];
+  //  [self.view addGestureRecognizer:tap];
+  MJRefreshHeader *header = [MJRefreshHeader headerWithRefreshingBlock:^{
+    [self loadData:@"0"];
+  }];
+
+  self.scrollView.header = header;
+}
+
+- (NSMutableArray *)dataArray {
+  if (!_dataArray) {
+    _dataArray = [[NSMutableArray alloc] init];
+  }
+  return _dataArray;
+}
+
+- (UIScrollView *)scrollView {
+  return self.historyTable;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,27 +66,32 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
   [self.searchBar resignFirstResponder];
   [self.historyTable.header beginRefreshing];
-  [self loadData];
+  [self loadData:@"0"];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
   [self.searchBar resignFirstResponder];
+  [self searchPosition:searchBar.text];
+}
+
+- (void)searchPosition:(NSString *)searchText {
   InventoryAPI *api = [[InventoryAPI alloc] init];
-  [api getInventoryListByPosition:self.inventory_list_id
-                     withPosition:searchBar.text
-                         withUser:self.userName
-                         withView:self.view
-                            block:^(NSMutableArray *dataArray, NSError *error) {
-                              if (error == nil) {
-                                [self.dataArray removeAllObjects];
-                                if ([dataArray count] > 0) {
-                                  for (int i = 0; i < [dataArray count]; i++) {
-                                    [self.dataArray addObject:dataArray[i]];
-                                  }
-                                  [self.historyTable reloadData];
-                                }
-                              }
-                            }];
+  [api searchPosition:self.inventory_list_id
+         withPosition:searchText
+             withUser:self.userName
+             withView:self.view
+                block:^(NSMutableArray *dataArray, NSError *error) {
+                  if (error == nil) {
+                    [self.dataArray removeAllObjects];
+
+                    if ([dataArray count] > 0) {
+                      for (int i = 0; i < [dataArray count]; i++) {
+                        [self.dataArray addObject:dataArray[i]];
+                      }
+                    }
+                    [self.historyTable reloadData];
+                  }
+                }];
 }
 
 /*
@@ -75,7 +106,7 @@ preparation before navigation
     InventoryPositionViewController *positionVC =
         [segue destinationViewController];
     //    [positionVC.positionData removeAllObjects];
-    positionVC.positionData = self.positionDataArray;
+    //    positionVC.positionData = self.positionDataArray;
     positionVC.position = self.position;
     positionVC.inventory_list_id = self.inventory_list_id;
     positionVC.userName = self.userName;
@@ -83,18 +114,14 @@ preparation before navigation
 }
 
 - (void)decoderDataReceived:(NSString *)data {
-  NSArray *subviews = [self.view subviews];
-  for (id objInput in subviews) {
-    if ([objInput isKindOfClass:[UITextField class]]) {
-      UITextField *tmpTextFile = objInput;
-      if ([objInput isFirstResponder]) {
-        tmpTextFile.text = data;
-        if (tmpTextFile == self.positionTextField) {
-          [self getPositionInfo:tmpTextFile.text];
-        }
-        break;
-      }
-    }
+  if ([self.positionTextField isFirstResponder]) {
+    self.positionTextField.text = data;
+    self.position = self.positionTextField.text;
+    [self getPositionInfo:data];
+  }
+  if ([self.searchBar isFirstResponder]) {
+    self.searchBar.text = data;
+    [self searchPosition:data];
   }
 }
 
@@ -105,31 +132,31 @@ preparation before navigation
   [api getInventoryListItem:self.inventory_list_id
                withPosition:position
                    withUser:self.userName
-                   withPage:@"1"
-                   withSize:@"50"
+                   withPage:@"0"
+
                    withView:self.view
                       block:^(NSMutableArray *dataArray, NSError *error) {
                         if (error == nil) {
-                          if ([dataArray count] > 0) {
-                            for (int i = 0; i < [dataArray count]; i++) {
-                              [self.positionDataArray addObject:dataArray[i]];
-                            }
-                            [self performSegueWithIdentifier:@"toPositionItemVC"
-                                                      sender:self];
-                          }
+                          self.positionTextField.text = @"";
+                          [self performSegueWithIdentifier:@"toPositionItemVC"
+                                                    sender:self];
                         }
                       }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
   [textField resignFirstResponder];
+  self.position = textField.text;
+
   [self getPositionInfo:textField.text];
+  //  [self performSegueWithIdentifier:@"toPositionItemVC" sender:self];
   return NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
+  [self customUI];
 }
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
@@ -137,41 +164,32 @@ preparation before navigation
 }
 
 - (void)customUI {
+  [self.positionTextField becomeFirstResponder];
   [self loadUser];
-  self.searchBar.delegate = self;
-  self.searchBar.showsCancelButton = YES;
-  self.historyTable.delegate = self;
-  self.historyTable.dataSource = self;
-  self.positionTextField.delegate = self;
-  self.dataArray = [[NSMutableArray alloc] init];
-  self.positionDataArray = [[NSMutableArray alloc] init];
-
-  self.historyTable.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-    [self loadData];
-  }];
-  [self.historyTable.header beginRefreshing];
+  [self.scrollView.header beginRefreshing];
 }
 
-- (void)loadData {
+- (void)loadData:(NSString *)page {
   InventoryAPI *api = [[InventoryAPI alloc] init];
+
   [api getInventoryListPosition:self.inventory_list_id
                        withUser:self.userName
-                       withPage:@"1"
-                       withSize:@"50"
+                       withPage:page
+
                        withView:self.view
                           block:^(NSMutableArray *requestTableArray,
                                   NSError *error) {
                             if (error == nil) {
                               if ([requestTableArray count] > 0) {
+                                [self.dataArray removeAllObjects];
                                 for (int i = 0; i < [requestTableArray count];
                                      i++) {
                                   [self.dataArray
                                       addObject:requestTableArray[i]];
                                 }
-                                [self.historyTable.header endRefreshing];
-
-                                [self.historyTable reloadData];
                               }
+                              [self.historyTable reloadData];
+                              [self.historyTable.header endRefreshing];
                             }
                           }];
 }
@@ -225,4 +243,19 @@ preparation before navigation
   //  [self performSegueWithIdentifier:@"toPositionItemVC" sender:self];
 }
 
+- (void)dismissKeyboard {
+  NSArray *subviews = [self.view subviews];
+  for (id objInput in subviews) {
+    if ([objInput isKindOfClass:[UITextField class]]) {
+      UITextField *theTextField = objInput;
+      if ([objInput isFirstResponder]) {
+        [theTextField resignFirstResponder];
+      }
+    }
+  }
+}
+
+- (IBAction)tapViewEvent:(id)sender {
+  [self dismissKeyboard];
+}
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "InventoryListItem.h"
+#define ZGNotNull(obj)                                                         \
+  (obj && (![obj isEqual:[NSNull null]]) && (![obj isEqual:@"<null>"]))
 
 @implementation InventoryListItem
 - (instancetype)init {
@@ -22,7 +24,9 @@
     self.package_id =
         dictionary[@"package_id"] ? dictionary[@"package_id"] : @"";
     self.qty = dictionary[@"qty"] ? dictionary[@"qty"] : @"";
-    self.fifo = dictionary[@"fifo"] ? dictionary[@"fifo"] : @"";
+    //    self.fifo = dictionary[@"fifo"] ? dictionary[@"fifo"] : @"";
+    self.fifo = ZGNotNull(dictionary[@"fifo"]) ? dictionary[@"fifo"] : @"";
+
     self.position = dictionary[@"position"] ? dictionary[@"position"] : @"";
     self.inventory_list_id = dictionary[@"inventory_list_id"]
                                  ? dictionary[@"inventory_list_id"]

@@ -11,7 +11,7 @@
 #import "AFNetOperate.h"
 #import "InventoryList.h"
 #import "InventoryListItem.h"
-
+#define kPageSzieKey @"100"
 @interface InventoryAPI ()
 
 @property(nonatomic, strong) DBManager *db;
@@ -28,6 +28,55 @@
     _db = [[DBManager alloc] initWithDatabaseFilename:@"wmsdb.sql"];
   }
   return self;
+}
+
+- (void)searchPosition:(NSString *)inventory_list_id
+          withPosition:(NSString *)position
+              withUser:(NSString *)user_id
+              withView:(UIView *)optView
+                 block:(void (^)(NSMutableArray *dataArray,
+                                 NSError *error))block {
+  AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+
+  [manager GET:[self.afnet searchPosition]
+      parameters:@{
+        @"inventory_list_id" : inventory_list_id,
+        @"position" : position,
+        @"user_id" : user_id,
+
+      }
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        [self.afnet.activeView stopAnimating];
+        NSMutableArray *dataArray;
+
+        if ([responseObject[@"result"] intValue] == 1) {
+          dataArray = [[NSMutableArray alloc] init];
+          NSArray *requestArray = responseObject[@"content"];
+          for (int i = 0; i < [requestArray count]; i++) {
+            InventoryList *il =
+                [[InventoryList alloc] initWithObject:requestArray[i]];
+            [dataArray addObject:il];
+          }
+        } else {
+
+          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
+                                                                  @"content"]]];
+        }
+        if (block) {
+          block(dataArray, nil);
+        }
+
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.afnet.activeView stopAnimating];
+        [self.afnet
+            alert:[NSString
+                      stringWithFormat:@"%@", [error localizedDescription]]];
+        if (block) {
+          block(nil, error);
+        }
+      }];
 }
 
 /**
@@ -64,6 +113,7 @@
 
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"the request is %@", responseObject);
         [self.afnet.activeView stopAnimating];
         BOOL state = false;
         if ([responseObject[@"result"] intValue] == 1) {
@@ -222,7 +272,7 @@
 - (void)getInventoryListPosition:(NSString *)inventory_list_id
                         withUser:(NSString *)user_id
                         withPage:(NSString *)page
-                        withSize:(NSString *)size
+
                         withView:(UIView *)optView
                            block:(void (^)(NSMutableArray *, NSError *))block {
   AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
@@ -232,7 +282,7 @@
         @"inventory_list_id" : inventory_list_id,
         @"user_id" : user_id,
         @"page" : page,
-        @"size" : size
+        @"size" : kPageSzieKey
 
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -283,7 +333,6 @@
 - (void)getInventoryListByPosition:(NSString *)inventory_list_id
                       withPosition:(NSString *)position
                           withUser:(NSString *)user_id
-
                           withView:(UIView *)optView
                              block:
                                  (void (^)(NSMutableArray *, NSError *))block {
@@ -297,6 +346,7 @@
 
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
         [self.afnet.activeView stopAnimating];
         NSMutableArray *dataArray = [[NSMutableArray alloc] init];
 
@@ -344,7 +394,7 @@
                 withPosition:(NSString *)position
                     withUser:(NSString *)user_id
                     withPage:(NSString *)page
-                    withSize:(NSString *)size
+
                     withView:(UIView *)optView
                        block:(void (^)(NSMutableArray *, NSError *))block {
   AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
@@ -360,7 +410,7 @@
         [self.afnet.activeView stopAnimating];
         NSLog(@"the request INVENTORY LIST POSITION %@,%@", position,
               responseObject);
-
+        //
         NSMutableArray *dataArray = [[NSMutableArray alloc] init];
 
         if ([responseObject[@"result"] intValue] == 1) {
@@ -370,14 +420,14 @@
                 [[InventoryListItem alloc] initWithObject:requestArray[i]];
             [dataArray addObject:inventory_list_item];
           }
+          if (block) {
+            block(dataArray, nil);
+          }
 
         } else {
 
           [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
                                                                   @"content"]]];
-        }
-        if (block) {
-          block(dataArray, nil);
         }
 
       }

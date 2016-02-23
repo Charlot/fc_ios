@@ -10,6 +10,13 @@
 
 @interface InventoryAPI : NSObject
 
+- (void)searchPosition:(NSString *)inventory_list_id
+          withPosition:(NSString *)position
+              withUser:(NSString *)userID
+              withView:(UIView *)optView
+                 block:
+                     (void (^)(NSMutableArray *dataArray, NSError *error))block;
+
 /**
  *  根据盘点清单 和库位 搜索历史纪录
 
@@ -98,7 +105,6 @@
                 withPosition:(NSString *)position
                     withUser:(NSString *)user_id
                     withPage:(NSString *)page
-                    withSize:(NSString *)size
                     withView:(UIView *)optView
                        block:(void (^)(NSMutableArray *dataArray,
                                        NSError *error))block;
@@ -106,7 +112,7 @@
 - (void)getInventoryListPosition:(NSString *)inventory_list_id
                         withUser:(NSString *)user_id
                         withPage:(NSString *)page
-                        withSize:(NSString *)size
+
                         withView:(UIView *)optView
                            block:(void (^)(NSMutableArray *dataArray,
                                            NSError *error))block;

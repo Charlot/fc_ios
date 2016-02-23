@@ -11,6 +11,10 @@
 
 @interface MovementAPI : NSObject
 
+- (void)webDeleteMovementSource:(NSString *)movement_source_id
+                       withView:(UIView *)optView
+                          block:(void (^)(BOOL state, NSError *error))block;
+
 - (void)webGetMovementResources:(NSString *)movement_list_id
                        withView:(UIView *)optView
                           block:(void (^)(NSMutableArray *dataArray,
@@ -39,6 +43,20 @@
 
 - (NSMutableArray *)queryByMovementListID:(NSString *)mlid
                          ObjectDictionary:(NSInteger)type;
+
+/**
+ *  获取nstorage唯一码信息
+
+ *
+ *  @param package_id <#package_id description#>
+ *  @param optView    <#optView description#>
+ *  @param block      <#block description#>
+ */
+- (void)getNStoragePackageInfo:(NSString *)package_id
+                      withView:(UIView *)optView
+                         block:(void (^)(NSMutableArray *dataArray,
+                                         NSError *error))block;
+
 /**
  *  获取唯一码信息
  *

@@ -8,6 +8,8 @@
 
 #import "Movement.h"
 #import "DBManager.h"
+#define ZGNotNull(obj)                                                         \
+  (obj && (![obj isEqual:[NSNull null]]) && (![obj isEqual:@"<null>"]))
 
 @interface Movement ()
 
@@ -26,14 +28,16 @@
 - (instancetype)initWithObject:(NSDictionary *)dictionary {
   self = [super init];
   if (self) {
-    self.ID = dictionary[@"id"] ? dictionary[@"id"] : @"";
+    self.SourceID = dictionary[@"id"] ? dictionary[@"id"] : @"";
     self.toWh = dictionary[@"toWh"] ? dictionary[@"toWh"] : @"";
     self.toPosition =
         dictionary[@"toPosition"] ? dictionary[@"toPosition"] : @"";
     self.fromWh = dictionary[@"fromWh"] ? dictionary[@"fromWh"] : @"";
     self.fromPosition =
         dictionary[@"fromPosition"] ? dictionary[@"fromPosition"] : @"";
-    self.packageId = dictionary[@"packageId"] ? dictionary[@"packageId"] : @"";
+    self.packageId =
+        ZGNotNull(dictionary[@"packageId"]) ? dictionary[@"packageId"] : @"";
+
     self.partNr = dictionary[@"partNr"] ? dictionary[@"partNr"] : @"";
     self.qty = dictionary[@"qty"] ? dictionary[@"qty"] : @"";
     self.user = dictionary[@"user"] ? dictionary[@"user"] : @"";
@@ -47,6 +51,7 @@
 }
 
 - (instancetype)initWithID:(NSString *)movementID
+              withSourceID:(NSString *)sourceID
                   withToWh:(NSString *)toWh
             withToPosition:(NSString *)toPosition
                 withFromWh:(NSString *)fromWh
@@ -60,6 +65,7 @@
   self = [super init];
   if (self) {
     self.ID = movementID;
+    self.SourceID = sourceID;
     self.toWh = toWh;
     self.toPosition = toPosition;
     self.fromWh = fromWh;

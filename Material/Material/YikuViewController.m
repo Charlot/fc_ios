@@ -215,18 +215,23 @@
 
 - (void)getPackageInfo:(NSString *)package_id {
   MovementAPI *api = [[MovementAPI alloc] init];
-  [api getPackageInfo:package_id
-             withView:self.view
-                block:^(NSMutableArray *dataArray, NSError *error) {
-                  if (error == nil) {
-                    NSDictionary *dictData = [dataArray mutableCopy];
-                    self.partNrTextField.text = [NSString
-                        stringWithFormat:@"%@",
-                                         [dictData objectForKey:@"part_id"]];
-                    self.qtyTextField.text = [NSString
-                        stringWithFormat:@"%@", [dictData objectForKey:@"qty"]];
-                  }
-                }];
+  [api
+      getNStoragePackageInfo:package_id
+                    withView:self.view
+                       block:^(NSMutableArray *dataArray, NSError *error) {
+                         if (error == nil) {
+                           NSDictionary *dictData = [dataArray mutableCopy];
+                           self.partNrTextField.text = [NSString
+                               stringWithFormat:@"%@",
+                                                [dictData
+                                                    objectForKey:@"part_id"]];
+                           self.qtyTextField.text = [NSString
+                               stringWithFormat:@"%@",
+                                                [dictData objectForKey:@"qty"]];
+                           [self.partNrTextField resignFirstResponder];
+                           [self.fromWhTextField becomeFirstResponder];
+                         }
+                       }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -304,7 +309,7 @@
     //    strToWh = @"3EX";
     //    strToPosition = @"SCT 28 03 01";
     //    strPackage = @"rwwe";
-    //
+    //    strFromWh = @"3EX";
     //    strPartNr = @"411000895";
     if (buttonIndex == 1) {
 
@@ -325,7 +330,8 @@
               [AFNet alertSuccess:responseObject[@"content"]];
               [dict setValue:self.userName forKey:@"user"];
               self.movement = [[Movement alloc] initWithObject:dict];
-              [self createMovement:self.movement];
+              //              [self createMovement:self.movement];
+              [self clearData];
             } else {
               [AFNet alert:responseObject[@"content"]];
               NSLog(@"%@", responseObject[@"content"]);
@@ -463,7 +469,7 @@
   if ([segue.identifier isEqualToString:@"toMovementListDetailVC"]) {
     //        for push
     ShiftingDetailViewController *detail = segue.destinationViewController;
-    detail.movement_list_id = self.self.movementListID;
+    detail.movement_list_id = self.movementListID;
     detail.delegate = self;
     detail.fromState = @"local";
     //    for modal

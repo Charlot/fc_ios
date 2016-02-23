@@ -10,14 +10,18 @@
 #import "InventoryListItem.h"
 #import "InventoryConfirmViewController.h"
 #import "InventoryAPI.h"
+#import "InventoryList.h"
 #import "Captuvo.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "MovementAPI.h"
+
+#define ScreenWidth ([[UIScreen mainScreen] bounds].size.width)
 
 @interface InventoryPositionViewController () <
     UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,
     CaptuvoEventsProtocol>
 - (IBAction)createButtonClick:(id)sender;
+- (IBAction)tapViewAction:(id)sender;
 
 @property(strong, nonatomic) IBOutlet UITextField *partIDTextField;
 @property(strong, nonatomic) IBOutlet UITextField *fifoTextField;
@@ -25,6 +29,7 @@
 
 @property(strong, nonatomic) IBOutlet UITextField *packageTextField;
 @property(strong, nonatomic) IBOutlet UITableView *positionTable;
+@property(strong, nonatomic) NSString *positionCount;
 @property(strong, nonatomic) InventoryAPI *api;
 @end
 
@@ -32,7 +37,31 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self loadData];
+  self.api = [[InventoryAPI alloc] init];
+  self.positionData = [[NSMutableArray alloc] init];
+  self.positionTable.dataSource = self;
+  self.positionTable.delegate = self;
+  self.positionCount = @"0";
+  [self.packageTextField becomeFirstResponder];
+  //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+  //      initWithTarget:self
+  //              action:@selector(dismissKeyboard)];
+  //  UIView *tapView =
+  //      [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, 200)];
+  //  [self.view addSubview:tapView];
+  //  [tapView addGestureRecognizer:tap];
+}
+
+- (void)dismissKeyboard {
+  NSArray *subviews = [self.view subviews];
+  for (id objInput in subviews) {
+    if ([objInput isKindOfClass:[UITextField class]]) {
+      UITextField *theTextField = objInput;
+      if ([objInput isFirstResponder]) {
+        [theTextField resignFirstResponder];
+      }
+    }
+  }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,12 +71,12 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
   [super viewDidDisappear:YES];
-  [self.positionData removeAllObjects];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
+  [self loadData];
 }
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
@@ -71,30 +100,31 @@
 }
 
 - (void)createInventoryListItem {
-  [self.api
-      CreateInventoryListItem:self.inventory_list_id
-                 withPosition:self.position
-                     withUser:self.userName
-                      withQty:self.qtyTextField.text
-                   withPartID:self.partIDTextField.text
-                withPackageID:self.packageTextField.text
-                     withView:self.view
-                        block:^(BOOL state, NSError *error) {
-                          if (error == nil) {
-                            if (state) {
-                              NSArray *subviews = [self.view subviews];
-                              for (id objInput in subviews) {
-                                if ([objInput
-                                        isKindOfClass:[UITextField class]]) {
-                                  UITextField *tmpTextFile = objInput;
-                                  if ([objInput isFirstResponder]) {
-                                    tmpTextFile.text = @"";
+  [self.api CreateInventoryListItem:self.inventory_list_id
+                       withPosition:self.position
+                           withUser:self.userName
+                            withQty:self.qtyTextField.text
+                         withPartID:self.partIDTextField.text
+                      withPackageID:self.packageTextField.text
+                           withView:self.view
+                              block:^(BOOL state, NSError *error) {
+                                if (error == nil) {
+                                  if (state) {
+                                    [self clearData];
+                                    [self loadData];
                                   }
                                 }
-                              }
-                            }
-                          }
-                        }];
+                              }];
+}
+
+- (void)clearData {
+  NSArray *subviews = [self.view subviews];
+  for (id objInput in subviews) {
+    if ([objInput isKindOfClass:[UITextField class]]) {
+      UITextField *tmpTextFile = objInput;
+      tmpTextFile.text = @"";
+    }
+  }
 }
 
 - (void)getPackageInfo:(NSString *)package_id {
@@ -104,14 +134,20 @@
             withView:self.view
                block:^(NSMutableArray *dataArray, NSError *error) {
                  if (error == nil) {
-                   NSDictionary *dictData = [dataArray mutableCopy];
-                   self.partIDTextField.text = [NSString
-                       stringWithFormat:@"%@",
-                                        [dictData objectForKey:@"part_id"]];
-                   self.fifoTextField.text = [NSString
-                       stringWithFormat:@"%@", [dictData objectForKey:@"fifo"]];
-                   self.qtyTextField.text = [NSString
-                       stringWithFormat:@"%@", [dictData objectForKey:@"qty"]];
+                   if (dataArray) {
+                     NSDictionary *dictData = [dataArray mutableCopy];
+                     self.partIDTextField.text = [NSString
+                         stringWithFormat:@"%@",
+                                          [dictData objectForKey:@"part_id"]];
+                     self.fifoTextField.text = [NSString
+                         stringWithFormat:@"%@",
+                                          [dictData objectForKey:@"fifo"]];
+                     self.qtyTextField.text = [NSString
+                         stringWithFormat:@"%@",
+                                          [dictData objectForKey:@"qty"]];
+                   } else {
+                     self.packageTextField.text = @"";
+                   }
                  }
                }];
 }
@@ -126,10 +162,52 @@
 }
 
 - (void)loadData {
-  self.api = [[InventoryAPI alloc] init];
-  self.positionTable.delegate = self;
-  self.positionTable.dataSource = self;
-  [self.positionTable reloadData];
+  //  [self getPackageInfo:@"WI311501116894"];
+
+  [self getPositionInfo];
+}
+
+- (void)getPositionInfo {
+  //  NSLog(@"%@,%@,%@", self.inventory_list_id, self.position, self.userName);
+  InventoryAPI *api = [[InventoryAPI alloc] init];
+  [api
+      getInventoryListItem:self.inventory_list_id
+              withPosition:self.position
+                  withUser:self.userName
+                  withPage:@"0"
+
+                  withView:self.view
+                     block:^(NSMutableArray *dataArray, NSError *error) {
+                       if (error == nil) {
+                         if ([dataArray count] > 0) {
+                           [self.positionData removeAllObjects];
+                           for (int i = 0; i < [dataArray count]; i++) {
+                             [self.positionData addObject:dataArray[i]];
+                           }
+                           [api
+                               getInventoryListByPosition:self.inventory_list_id
+                                             withPosition:self.position
+                                                 withUser:self.userName
+                                                 withView:self.view
+                                                    block:^(NSMutableArray
+                                                                *dataArray,
+                                                            NSError *error) {
+                                                      if (error == nil) {
+                                                        InventoryList
+                                                            *inventoryList =
+                                                                (InventoryList
+                                                                     *)dataArray
+                                                                    [0];
+
+                                                        self.positionCount =
+                                                            inventoryList.count;
+                                                        [self.positionTable
+                                                                reloadData];
+                                                      }
+                                                    }];
+                         }
+                       }
+                     }];
 }
 
 #pragma mark UITableView Delegate
@@ -173,7 +251,7 @@
   CountLabel.textColor = [UIColor redColor];
   CountLabel.textAlignment = NSTextAlignmentLeft;
   CountLabel.text =
-      [NSString stringWithFormat:@"已盘点%ld件", [self.positionData count]];
+      [NSString stringWithFormat:@"已盘点%@件", self.positionCount];
   return CountLabel;
 }
 
@@ -212,15 +290,17 @@
                                 block:^(BOOL state, NSError *error) {
                                   if (error == nil) {
                                     if (state) {
-                                      [self.positionData
-                                          removeObjectAtIndex:
-                                              self.positionTable
-                                                  .indexPathForSelectedRow.row];
-                                      [UIView animateWithDuration:0.5
-                                                       animations:^{
-                                                         [self.positionTable
-                                                                 reloadData];
-                                                       }];
+                                      [self loadData];
+                                      //                                      [self.positionData
+                                      //                                          removeObjectAtIndex:
+                                      //                                              self.positionTable
+                                      //                                                  .indexPathForSelectedRow.row];
+                                      //                                      [UIView
+                                      //                                      animateWithDuration:0.5
+                                      //                                                       animations:^{
+                                      //                                                         [self.positionTable
+                                      //                                                                 reloadData];
+                                      //                                                       }];
                                     }
                                   }
                                 }];
@@ -252,5 +332,9 @@ preparation before navigation
 
 - (IBAction)createButtonClick:(id)sender {
   [self createInventoryListItem];
+}
+
+- (IBAction)tapViewAction:(id)sender {
+  [self dismissKeyboard];
 }
 @end

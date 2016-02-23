@@ -77,6 +77,20 @@
       [[UIView alloc] initWithFrame:CGRectZero];
   self.packageTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
   self.partIDTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
+  self.navigationItem.hidesBackButton = YES;
+  UIBarButtonItem *cancelShifting =
+      [[UIBarButtonItem alloc] initWithTitle:@"返回"
+                                       style:UIBarButtonItemStyleBordered
+                                      target:self
+                                      action:@selector(popBack)];
+  self.navigationItem.leftBarButtonItem = cancelShifting;
+}
+
+- (void)popBack {
+  [self.delegate backToShiftingDetail:self MovementListID:self.movementListID];
+
+  [self.navigationController popViewControllerAnimated:YES];
+  //  [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,18 +138,23 @@
 
 - (void)getPackageInfo:(NSString *)package_id {
   MovementAPI *api = [[MovementAPI alloc] init];
-  [api getPackageInfo:package_id
-             withView:self.view
-                block:^(NSMutableArray *dataArray, NSError *error) {
-                  if (error == nil) {
-                    NSDictionary *dictData = [dataArray mutableCopy];
-                    self.partIDTextField.text = [NSString
-                        stringWithFormat:@"%@",
-                                         [dictData objectForKey:@"part_id"]];
-                    self.qtyTextField.text = [NSString
-                        stringWithFormat:@"%@", [dictData objectForKey:@"qty"]];
-                  }
-                }];
+  [api
+      getNStoragePackageInfo:package_id
+                    withView:self.view
+                       block:^(NSMutableArray *dataArray, NSError *error) {
+                         if (error == nil) {
+                           NSDictionary *dictData = [dataArray mutableCopy];
+                           self.partIDTextField.text = [NSString
+                               stringWithFormat:@"%@",
+                                                [dictData
+                                                    objectForKey:@"part_id"]];
+                           self.qtyTextField.text = [NSString
+                               stringWithFormat:@"%@",
+                                                [dictData objectForKey:@"qty"]];
+                           [self.partIDTextField resignFirstResponder];
+                           [self.fromWhouseTextField becomeFirstResponder];
+                         }
+                       }];
 }
 
 /*
@@ -200,6 +219,12 @@ preparation before navigation
   NSString *strPartNr = self.partIDTextField.text;
   NSString *strFromWh = self.fromWhouseTextField.text;
   NSString *strFromPosition = self.fromPositionTextField.text;
+
+  //  strToWh = @"3EX";
+  //  strToPosition = @"SCT 28 03 01";
+  //  strPackage = @"rwwe";
+  //  strFromWh = @"3EX";
+  //  strPartNr = @"411000895";
 
   if (buttonIndex == 1) {
 

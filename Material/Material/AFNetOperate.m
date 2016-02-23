@@ -914,4 +914,25 @@
   return [base stringByAppendingString:get_movement_resources];
 }
 
+- (NSString *)delete_movement_source {
+  NSString *base = [self baseURL];
+  NSString *delete_movement_source =
+      [[self URLDictionary] objectForKey:@"delete_movement_source"];
+  return [base stringByAppendingString:delete_movement_source];
+}
+
+- (NSString *)getNStoragePackageInfo {
+  NSString *base = [self baseURL];
+  NSString *get_nstorage_package_info =
+      [[self URLDictionary] objectForKey:@"get_nstorage_package_info"];
+  return [base stringByAppendingString:get_nstorage_package_info];
+}
+
+- (NSString *)searchPosition {
+  NSString *base = [self baseURL];
+  NSString *search_position =
+      [[self URLDictionary] objectForKey:@"search_position"];
+  return [base stringByAppendingString:search_position];
+}
+
 @end

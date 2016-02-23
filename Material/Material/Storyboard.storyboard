@@ -2187,7 +2187,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="49"/>
+                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="69"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="69"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="historyTableCellReuseIdentifier" id="WbY-qw-FVk">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -2254,7 +2255,7 @@
         <scene sceneID="o6q-7e-Rv6">
             <objects>
                 <viewController id="f5D-QB-TRU" customClass="InventoryHistroyViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HaH-la-Vwl">
+                    <view key="view" contentMode="scaleToFill" id="HaH-la-Vwl" customClass="UIControl">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -2300,6 +2301,10 @@
                                         <animations/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="f5D-QB-TRU" id="rgS-wP-2pp"/>
+                                    <outlet property="delegate" destination="f5D-QB-TRU" id="GhY-te-w2F"/>
+                                </connections>
                             </tableView>
                             <searchBar contentMode="redraw" id="Oe9-wJ-cMC">
                                 <rect key="frame" x="0.0" y="47" width="320" height="44"/>
@@ -2310,6 +2315,9 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="tapViewEvent:" destination="f5D-QB-TRU" eventType="touchUpInside" id="eQc-qs-yLu"/>
+                        </connections>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="盘点单详情" id="YbV-4F-g9q"/>
@@ -5357,7 +5365,7 @@
         <scene sceneID="il6-h5-nBD">
             <objects>
                 <viewController id="RgY-9t-SPx" customClass="InventoryPositionViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cwn-Se-aT9">
+                    <view key="view" contentMode="scaleToFill" id="cwn-Se-aT9" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -5468,6 +5476,9 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="tapViewAction:" destination="RgY-9t-SPx" eventType="touchUpInside" id="QN1-au-IgP"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="库位详情" id="dlA-P1-m36">
                         <barButtonItem key="rightBarButtonItem" title="确定" id="cQQ-Rs-INB">
@@ -5918,6 +5929,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="69"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="69"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="completeTableCellReuseIdentifier" id="KhN-uR-Pvv">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -5981,7 +5994,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bws-gB-TjB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2384" y="7944"/>
+            <point key="canvasLocation" x="2396" y="8066"/>
         </scene>
         <!--移库单信息-->
         <scene sceneID="Aj7-qY-GSH">
@@ -5992,10 +6005,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ugR-I2-vhA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="453"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="69"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="69"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailTableCellReuseIdentifier" id="SyP-Dw-BMt">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -6045,11 +6060,16 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="1b3-7w-ZEG" id="Cuh-2e-dsG"/>
+                                    <outlet property="delegate" destination="1b3-7w-ZEG" id="WrM-Qc-2dG"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="移库单信息" id="tNG-UU-2hE">
                         <barButtonItem key="rightBarButtonItem" title="完成并打印" id="2D8-hk-nDE">
                             <connections>
@@ -6258,7 +6278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xy9-db-jNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2824" y="7149"/>
+            <point key="canvasLocation" x="3022" y="7043"/>
         </scene>
         <!--移库详情-->
         <scene sceneID="hge-kT-dgr">
@@ -6586,7 +6606,15 @@
         <segue reference="fTA-Xe-KDm"/>
         <segue reference="U3W-2k-BOU"/>
         <segue reference="zbp-Dd-2O5"/>
+        <segue reference="Kxl-Rh-nWd"/>
+        <segue reference="veK-WU-skj"/>
+        <segue reference="Get-Zr-2fp"/>
         <segue reference="yJ1-Ae-Eed"/>
+<<<<<<< HEAD
+=======
+        <segue reference="YxU-C8-xI9"/>
+        <segue reference="JT4-AV-Rjg"/>
+>>>>>>> 3bdb37c8b44cc59cb0d2657894efbab60ef7671a
         <segue reference="UnZ-wN-WXV"/>
         <segue reference="EZu-KH-oca"/>
         <segue reference="xUu-VW-Prs"/>

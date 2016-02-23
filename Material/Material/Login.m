@@ -123,7 +123,8 @@
                 [self loginSameAction:@"shop"];
               } else if ([requestCode isEqualToString:@"500"]) {
                 [self loginSameAction:@"require"];
-              } else if ([requestCode isEqualToString:@"600"]) {
+              } else if ([requestCode isEqualToString:@"600"] ||
+                         [requestCode isEqualToString:@"800"]) {
                 [self loginSameAction:@"inventory"];
               }
               [UserPreference
@@ -136,10 +137,8 @@
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [AFNet.activeView stopAnimating];
             NSLog(@"login error %@", [error description]);
-            //            [AFNet
-            //                alert:[NSString stringWithFormat:@"%@",
-            //                                                 [error
-            //                                                 localizedDescription]]];
+            //[AFNet alert:[NSString stringWithFormat:@"%@", [error
+            // localizedDescription]]];
             [AFNet alert:[NSString stringWithFormat:@"端口设置错误"]];
 
           }];

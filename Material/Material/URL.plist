@@ -47,7 +47,7 @@
 	<key>delete_movement_list</key>
 	<string>/api/v3/movement_list</string>
 	<key>create_inventory_list_item</key>
-	<string>/api/v3/inventory_list_item/inventory_item_list</string>
+	<string>/api/v3/inventory_list_item/</string>
 	<key>inventory_list_position</key>
 	<string>/api/v3/inventory_list/inventory_list_position</string>
 	<key>inventory_list_condition_item</key>
@@ -60,6 +60,12 @@
 	<string>/api/v1/packages</string>
 	<key>get_movement_resources</key>
 	<string>/api/v3/movement_source</string>
+	<key>delete_movement_source</key>
+	<string>/api/v3/movement_source</string>
+	<key>get_nstorage_package_info</key>
+	<string>/api/v1/packages/nstorage_package</string>
+	<key>search_position</key>
+	<string>/api/v3/inventory_list/search_position</string>
 	<key>order_led</key>
 	<dict>
 		<key>state_list</key>
@@ -112,7 +118,7 @@
 		<key>stock_xiang</key>
 		<string>P001/</string>
 		<key>movement_list</key>
-		<string>P009/</string>
+		<string>P010/</string>
 		<key>file</key>
 		<string>/printer/print/</string>
 		<key>port</key>

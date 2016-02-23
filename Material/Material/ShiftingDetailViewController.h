@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CreateMovementListItemViewController.h"
 
 @class ShiftingDetailViewController;
 
@@ -17,7 +18,8 @@
 @end
 
 @interface ShiftingDetailViewController
-    : UIViewController <UITableViewDataSource, UITableViewDelegate>
+    : UIViewController <UITableViewDataSource, UITableViewDelegate,
+                        CreateMovementListItemViewControllerDelegate>
 @property(nonatomic, weak) id<ShiftingDetailViewControllerDelegate> delegate;
 
 @property(nonatomic, strong) NSString *movement_list_id;

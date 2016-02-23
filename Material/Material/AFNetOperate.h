@@ -244,4 +244,10 @@
 
 - (NSString *)getMovementResources;
 
+- (NSString *)delete_movement_source;
+
+- (NSString *)getNStoragePackageInfo;
+
+- (NSString *)searchPosition;
+
 @end
