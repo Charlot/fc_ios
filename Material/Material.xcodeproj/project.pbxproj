@@ -1286,7 +1286,7 @@
 				ORGANIZATIONNAME = brilliantech;
 				TargetAttributes = {
 					B085F60B194004CC001F01F3 = {
-						DevelopmentTeam = ALEL54CX66;
+						DevelopmentTeam = 58FSFGRL4P;
 					};
 					B085F626194004CC001F01F3 = {
 						TestTargetID = B085F60B194004CC001F01F3;
