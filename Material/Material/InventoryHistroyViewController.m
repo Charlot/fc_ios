@@ -197,7 +197,7 @@ preparation before navigation
 - (void)loadUser {
   self.userName = @"";
   KeychainItemWrapper *keyChain =
-      [[KeychainItemWrapper alloc] initWithIdentifier:@"material"
+      [[KeychainItemWrapper alloc] initWithIdentifier:@"material-sh-jianxuan"
                                           accessGroup:nil];
   if ([keyChain objectForKey:(__bridge id)kSecAttrAccount]) {
     self.userName = [NSString

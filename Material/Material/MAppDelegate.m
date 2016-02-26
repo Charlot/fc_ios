@@ -134,7 +134,7 @@ SCNetworkReachabilityRef reachability;
 {
     [[Captuvo sharedCaptuvoDevice] startDecoderHardware];
     [[Captuvo sharedCaptuvoDevice] enableDecoderPowerUpBeep:YES];
-    [[PingWatcher sharedPingWtcher] resumePingWatcher];
+  //[[PingWatcher sharedPingWtcher] resumePingWatcher];
     dispatch_queue_t observeBattery=dispatch_queue_create("com.observe.battery.pptalent", NULL);
     dispatch_sync(observeBattery, ^{
         double delayInTime=17.0;

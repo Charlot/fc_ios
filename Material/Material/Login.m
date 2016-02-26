@@ -50,7 +50,7 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   KeychainItemWrapper *keychain =
-      [[KeychainItemWrapper alloc] initWithIdentifier:@"material"
+      [[KeychainItemWrapper alloc] initWithIdentifier:@"material-sh-jianxuan"
                                           accessGroup:nil];
   if ([keychain objectForKey:(__bridge id)kSecAttrAccount]) {
     self.email.text = [keychain objectForKey:(__bridge id)kSecAttrAccount];
@@ -96,7 +96,7 @@
   NSString *email = self.email.text;
   NSString *password = self.password.text;
   KeychainItemWrapper *keychain =
-      [[KeychainItemWrapper alloc] initWithIdentifier:@"material"
+      [[KeychainItemWrapper alloc] initWithIdentifier:@"material-sh-jianxuan"
                                           accessGroup:nil];
   [keychain setObject:self.email.text forKey:(__bridge id)kSecAttrAccount];
 

@@ -70,7 +70,7 @@
         self.received_date=dictionary[@"received_date"]?dictionary[@"received_date"]:@"";
         self.state=dictionary[@"state"]?[dictionary[@"state"] intValue]:0;
         self.state_display=dictionary[@"state_display"]?dictionary[@"state_display"]:@"";
-        self.user_id=dictionary[@"user_id"]?dictionary[@"user_id"]:@"";
+        self.user_id=dictionary[@"user_nr"]?dictionary[@"user_nr"]:@"";
         self.source_id=dictionary[@"source_id"]?dictionary[@"source_id"]:@"";
         self.source=dictionary[@"source"]?dictionary[@"source"]:@"";
         self.destination_id=dictionary[@"destination_id"]?dictionary[@"destination_id"]:@"";
