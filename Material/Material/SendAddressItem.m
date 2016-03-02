@@ -15,6 +15,7 @@
     if(self){
         self.name=[object objectForKey:@"name"];
         self.id=[object objectForKey:@"id"];
+        self.nr=[object objectForKey:@"nr"];
         self.is_default=[[object objectForKey:@"is_default"] intValue];
     }
     return self;

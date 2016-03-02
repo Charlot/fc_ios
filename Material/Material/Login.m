@@ -117,7 +117,6 @@
                   stringWithFormat:@"%@",
                                    responseObject[@"content"][@"role_id"]];
               if ([requestCode isEqualToString:@"300"]) {
-                [SendAddress sharedSendAddress];
                 [self loginSameAction:@"stock"];
               } else if ([requestCode isEqualToString:@"400"]) {
                 [self loginSameAction:@"shop"];
@@ -130,6 +129,8 @@
               [UserPreference
                   generateUserPreference:responseObject[@"content"]];
               [ScanStandard sharedScanStandard];
+                [SendAddress sharedSendAddress];
+                
             } else {
               [AFNet alert:responseObject[@"content"]];
             }

@@ -190,170 +190,337 @@
         }
         
     }
-    else{
-        //唯一码
-        NSString *alertString=@"请扫描唯一码";
-        BOOL isMatch  = [self.scanStandard checkKey:data];
-        if(isMatch){
-            [self textFieldShouldReturn:self.firstResponder];
-            //验证数据的合法性
-            AFNetOperate *AFNet=[[AFNetOperate alloc] init];
-            AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-            [AFNet.activeView stopAnimating];
-            NSString *address=[AFNet xiang_validate];
-            dispatch_queue_t validate=dispatch_queue_create("com.validate.pptalent", NULL);
-            dispatch_async(validate, ^{
-                NSString *myData=data;
-                if(self.tuo.ID.length>0 ){
-                    [manager POST:address
-                       parameters:@{@"id":myData}
-                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                              [AFNet.activeView stopAnimating];
-                              if([responseObject[@"result"] integerValue]==1){
-                                  
-                              }
-                              else{
-                                  NSDictionary *dic=[NSDictionary dictionary];
-                                  if([self.userPref.location_id isEqualToString:@"FG"]){
-                                      dic=@{
-                                            @"id":self.tuo.ID,
-                                            @"package_id":myData,
-                                            @"check_whouse":@0
-                                            };
-                                  }
-                                  else{
-                                      dic=@{
-                                            @"id":self.tuo.ID,
-                                            @"package_id":myData
-                                            };
-                                  }
-                                  AFNetOperate *AFNet=[[AFNetOperate alloc] init];
-                                  AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-                                  [AFNet.activeView stopAnimating];
-                                  [manager POST:[AFNet tuo_key_for_bundle]
-                                     parameters:dic
-                                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                            if([responseObject[@"result"] integerValue]==1){
-                                                //如果已经绑定了就直接添加
-                                                if([(NSDictionary *)responseObject[@"content"] count]>0){
-                                                    Xiang *xiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];
-                                                    [self.tuo addXiang:xiang];
-                                                    [self.xiangTable reloadData];
-                                                    [self.key becomeFirstResponder];
-                                                    self.key.text=@"";
-                                                    self.partNumber.text=@"";
-                                                    self.quatity.text=@"";
-                                                    self.dateTextField.text=@"";
-                                                    [self updateAddXiangCount];
-                                                    
-                                                    NSString *result_code=responseObject[@"result_code"];
-                                                    if([result_code isEqualToString:@"100"]){
-                                                        AudioServicesPlaySystemSound(1012);
-                                                        if(self.alert){
-                                                            [self.alert dismissWithClickedButtonIndex:0 animated:YES];
-                                                            self.alert=nil;
-                                                        }
-                                                        self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
-                                                                                              message:@"绑定成功！"
-                                                                                             delegate:self
-                                                                                    cancelButtonTitle:nil
-                                                                                    otherButtonTitles:nil];
-                                                        [NSTimer scheduledTimerWithTimeInterval:1.0f
-                                                                                         target:self
-                                                                                       selector:@selector(dissmissAlert:)
-                                                                                       userInfo:nil
-                                                                                        repeats:NO];
-                                                        [self.alert show];
-                                                    }
-                                                    else if([result_code isEqualToString:@"101"]){
-                                                        AudioServicesPlaySystemSound(1051);
-                                                        UIAlertView *positionAlert=[[UIAlertView alloc] initWithTitle:@"警告"
-                                                                                                              message:@"请确认部门是否正确"
-                                                                                                             delegate:self
-                                                                                                    cancelButtonTitle:@"确定"
-                                                                                                    otherButtonTitles:nil];
-                                                        [positionAlert show];
-                                                    }
-                                                }
-                                            }
-                                            else{
-                                                [AFNet alert:responseObject[@"content"]];
-                                                AudioServicesPlaySystemSound(1051);
-                                                targetTextField.text=@"";
-                                                [targetTextField becomeFirstResponder];
-                                            }
-                                        }
-                                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                            [AFNet.activeView stopAnimating];
-                                            [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
-                                            targetTextField.text=@"";
-                                            [targetTextField becomeFirstResponder];
-                                        }
-                                   ];
-
-                              }
-                              
-                          }
-                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                              [AFNet.activeView stopAnimating];
-                              [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
-                              targetTextField.text=@"";
-                              [targetTextField becomeFirstResponder];
-                          }
-                     ];
-   
-                }
-                else{
-                    
-                    [manager POST:address
-                       parameters:@{@"id":data}
-                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                              [AFNet.activeView stopAnimating];
-                              if([responseObject[@"result"] integerValue]==1){
-                                  
-                              }
-                              else{
-                                  [AFNet alert:responseObject[@"content"]];
-                                  AudioServicesPlaySystemSound(1051);
-                                  targetTextField.text=@"";
-                                  [targetTextField becomeFirstResponder];
-                              }
-                              
-                          }
-                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                              [AFNet.activeView stopAnimating];
-                              [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
-                              targetTextField.text=@"";
-                              [targetTextField becomeFirstResponder];
-                          }
-                     ];
-                    
-                }
-            });
-            
-            
-            
-        }
-        else{
-            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
-                                                          message:alertString
-                                                         delegate:self
-                                                cancelButtonTitle:@"确定"
-                                                otherButtonTitles:nil];
-            [alert show];
-            [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                             target:self
-                                           selector:@selector(removeAlert:)
-                                           userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert,@"alert", nil]
-                                            repeats:NO];
-            AudioServicesPlaySystemSound(1051);
-            targetTextField.text=@"";
-            [targetTextField becomeFirstResponder];
-        }
+    else if(targetTextField.tag==1){
+        [self validateKey:data];
+//        //唯一码
+//        NSString *alertString=@"请扫描唯一码";
+//        BOOL isMatch  = [self.scanStandard checkKey:data];
+//        if(isMatch){
+//            [self textFieldShouldReturn:self.firstResponder];
+//            //验证数据的合法性
+//            AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+//            AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+//            [AFNet.activeView stopAnimating];
+//            NSString *address=[AFNet xiang_validate];
+//            dispatch_queue_t validate=dispatch_queue_create("com.validate.pptalent", NULL);
+//            dispatch_async(validate, ^{
+//                NSString *myData=data;
+//                if(self.tuo.ID.length>0 ){
+//                    [manager POST:address
+//                       parameters:@{@"id":myData}
+//                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                              [AFNet.activeView stopAnimating];
+//                              if([responseObject[@"result"] integerValue]==1){
+//                                  
+//                              }
+//                              else{
+//                                  NSDictionary *dic=[NSDictionary dictionary];
+//                                  if([self.userPref.location_id isEqualToString:@"FG"]){
+//                                      dic=@{
+//                                            @"id":self.tuo.ID,
+//                                            @"package_id":myData,
+//                                            @"check_whouse":@0
+//                                            };
+//                                  }
+//                                  else{
+//                                      dic=@{
+//                                            @"id":self.tuo.ID,
+//                                            @"package_id":myData
+//                                            };
+//                                  }
+//                                  AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+//                                  AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+//                                  [AFNet.activeView stopAnimating];
+//                                  [manager POST:[AFNet tuo_key_for_bundle]
+//                                     parameters:dic
+//                                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                                            if([responseObject[@"result"] integerValue]==1){
+//                                                //如果已经绑定了就直接添加
+//                                                if([(NSDictionary *)responseObject[@"content"] count]>0){
+//                                                    Xiang *xiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];
+//                                                    [self.tuo addXiang:xiang];
+//                                                    [self.xiangTable reloadData];
+//                                                    [self.key becomeFirstResponder];
+//                                                    self.key.text=@"";
+//                                                    self.partNumber.text=@"";
+//                                                    self.quatity.text=@"";
+//                                                    self.dateTextField.text=@"";
+//                                                    [self updateAddXiangCount];
+//                                                    
+//                                                    NSString *result_code=responseObject[@"result_code"];
+//                                                    if([result_code isEqualToString:@"100"]){
+//                                                        AudioServicesPlaySystemSound(1012);
+//                                                        if(self.alert){
+//                                                            [self.alert dismissWithClickedButtonIndex:0 animated:YES];
+//                                                            self.alert=nil;
+//                                                        }
+//                                                        self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+//                                                                                              message:@"绑定成功！"
+//                                                                                             delegate:self
+//                                                                                    cancelButtonTitle:nil
+//                                                                                    otherButtonTitles:nil];
+//                                                        [NSTimer scheduledTimerWithTimeInterval:1.0f
+//                                                                                         target:self
+//                                                                                       selector:@selector(dissmissAlert:)
+//                                                                                       userInfo:nil
+//                                                                                        repeats:NO];
+//                                                        [self.alert show];
+//                                                    }
+//                                                    else if([result_code isEqualToString:@"101"]){
+//                                                        AudioServicesPlaySystemSound(1051);
+//                                                        UIAlertView *positionAlert=[[UIAlertView alloc] initWithTitle:@"警告"
+//                                                                                                              message:@"请确认部门是否正确"
+//                                                                                                             delegate:self
+//                                                                                                    cancelButtonTitle:@"确定"
+//                                                                                                    otherButtonTitles:nil];
+//                                                        [positionAlert show];
+//                                                    }
+//                                                }
+//                                            }
+//                                            else{
+//                                                [AFNet alert:responseObject[@"content"]];
+//                                                AudioServicesPlaySystemSound(1051);
+//                                                targetTextField.text=@"";
+//                                                [targetTextField becomeFirstResponder];
+//                                            }
+//                                        }
+//                                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                                            [AFNet.activeView stopAnimating];
+//                                            [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+//                                            targetTextField.text=@"";
+//                                            [targetTextField becomeFirstResponder];
+//                                        }
+//                                   ];
+//
+//                              }
+//                              
+//                          }
+//                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                              [AFNet.activeView stopAnimating];
+//                              [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+//                              targetTextField.text=@"";
+//                              [targetTextField becomeFirstResponder];
+//                          }
+//                     ];
+//   
+//                }
+//                else{
+//                    
+//                    [manager POST:address
+//                       parameters:@{@"id":data}
+//                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                              [AFNet.activeView stopAnimating];
+//                              if([responseObject[@"result"] integerValue]==1){
+//                                  
+//                              }
+//                              else{
+//                                  [AFNet alert:responseObject[@"content"]];
+//                                  AudioServicesPlaySystemSound(1051);
+//                                  targetTextField.text=@"";
+//                                  [targetTextField becomeFirstResponder];
+//                              }
+//                              
+//                          }
+//                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                              [AFNet.activeView stopAnimating];
+//                              [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+//                              targetTextField.text=@"";
+//                              [targetTextField becomeFirstResponder];
+//                          }
+//                     ];
+//                    
+//                }
+//            });
+//            
+//            
+//            
+//        }
+//        else{
+//            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
+//                                                          message:alertString
+//                                                         delegate:self
+//                                                cancelButtonTitle:@"确定"
+//                                                otherButtonTitles:nil];
+//            [alert show];
+//            [NSTimer scheduledTimerWithTimeInterval:2.0f
+//                                             target:self
+//                                           selector:@selector(removeAlert:)
+//                                           userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert,@"alert", nil]
+//                                            repeats:NO];
+//            AudioServicesPlaySystemSound(1051);
+//            targetTextField.text=@"";
+//            [targetTextField becomeFirstResponder];
+//        }
         
         
     }
 }
+
+-(void)validateKey:(NSString *)data{
+    //唯一码
+    UITextField *targetTextField=self.firstResponder;
+
+    NSString *alertString=@"请扫描唯一码";
+    BOOL isMatch  = [self.scanStandard checkKey:data];
+    if(isMatch){
+       // [self textFieldShouldReturn:self.firstResponder];
+        //验证数据的合法性
+        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+        [AFNet.activeView stopAnimating];
+        NSString *address=[AFNet xiang_validate];
+        dispatch_queue_t validate=dispatch_queue_create("com.validate.pptalent", NULL);
+        dispatch_async(validate, ^{
+            NSString *myData=data;
+            if(self.tuo.ID.length>0 ){
+                [manager POST:address
+                   parameters:@{@"id":myData}
+                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                          [AFNet.activeView stopAnimating];
+                          if([responseObject[@"result"] integerValue]==1){
+                               [self.partNumber becomeFirstResponder];
+                          }
+                          else{
+                              NSDictionary *dic=[NSDictionary dictionary];
+                              if([self.userPref.location_id isEqualToString:@"FG"]){
+                                  dic=@{
+                                        @"id":self.tuo.ID,
+                                        @"package_id":myData,
+                                        @"check_whouse":@0
+                                        };
+                              }
+                              else{
+                                  dic=@{
+                                        @"id":self.tuo.ID,
+                                        @"package_id":myData
+                                        };
+                              }
+                              AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+                              AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+                              [AFNet.activeView stopAnimating];
+                              [manager POST:[AFNet tuo_key_for_bundle]
+                                 parameters:dic
+                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                        if([responseObject[@"result"] integerValue]==1){
+                                            //如果已经绑定了就直接添加
+                                            if([(NSDictionary *)responseObject[@"content"] count]>0){
+                                                Xiang *xiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];
+                                                [self.tuo addXiang:xiang];
+                                                [self.xiangTable reloadData];
+                                                [self.key becomeFirstResponder];
+                                                self.key.text=@"";
+                                                self.partNumber.text=@"";
+                                                self.quatity.text=@"";
+                                                self.dateTextField.text=@"";
+                                                [self updateAddXiangCount];
+                                                
+                                                NSString *result_code=responseObject[@"result_code"];
+                                                if([result_code isEqualToString:@"100"]){
+                                                    AudioServicesPlaySystemSound(1012);
+                                                    if(self.alert){
+                                                        [self.alert dismissWithClickedButtonIndex:0 animated:YES];
+                                                        self.alert=nil;
+                                                    }
+                                                    self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+                                                                                          message:@"绑定成功！"
+                                                                                         delegate:self
+                                                                                cancelButtonTitle:nil
+                                                                                otherButtonTitles:nil];
+                                                    [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                                                     target:self
+                                                                                   selector:@selector(dissmissAlert:)
+                                                                                   userInfo:nil
+                                                                                    repeats:NO];
+                                                    [self.alert show];
+                                                }
+                                                else if([result_code isEqualToString:@"101"]){
+                                                    AudioServicesPlaySystemSound(1051);
+                                                    UIAlertView *positionAlert=[[UIAlertView alloc] initWithTitle:@"警告"
+                                                                                                          message:@"请确认部门是否正确"
+                                                                                                         delegate:self
+                                                                                                cancelButtonTitle:@"确定"
+                                                                                                otherButtonTitles:nil];
+                                                    [positionAlert show];
+                                                }
+                                            }
+                                        }
+                                        else{
+                                            [AFNet alert:responseObject[@"content"]];
+                                            AudioServicesPlaySystemSound(1051);
+                                            targetTextField.text=@"";
+                                            [targetTextField becomeFirstResponder];
+                                        }
+                                    }
+                                    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                        [AFNet.activeView stopAnimating];
+                                        [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+                                        targetTextField.text=@"";
+                                        [targetTextField becomeFirstResponder];
+                                    }
+                               ];
+                              
+                          }
+                          
+                      }
+                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                          [AFNet.activeView stopAnimating];
+                          [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+                          targetTextField.text=@"";
+                          [targetTextField becomeFirstResponder];
+                      }
+                 ];
+                
+            }
+            else{
+                
+                [manager POST:address
+                   parameters:@{@"id":data}
+                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                          [AFNet.activeView stopAnimating];
+                          if([responseObject[@"result"] integerValue]==1){
+                              
+                          }
+                          else{
+                              [AFNet alert:responseObject[@"content"]];
+                              AudioServicesPlaySystemSound(1051);
+                              targetTextField.text=@"";
+                              [targetTextField becomeFirstResponder];
+                          }
+                          
+                      }
+                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                          [AFNet.activeView stopAnimating];
+                          [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+                          targetTextField.text=@"";
+                          [targetTextField becomeFirstResponder];
+                      }
+                 ];
+                
+            }
+        });
+        
+        
+        
+    }
+    else{
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
+                                                      message:alertString
+                                                     delegate:self
+                                            cancelButtonTitle:@"确定"
+                                            otherButtonTitles:nil];
+        [alert show];
+        [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                         target:self
+                                       selector:@selector(removeAlert:)
+                                       userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert,@"alert", nil]
+                                        repeats:NO];
+        AudioServicesPlaySystemSound(1051);
+        targetTextField.text=@"";
+        [targetTextField becomeFirstResponder];
+    }
+
+}
+
 -(void)removeAlert:(NSTimer *)timer{
     UIAlertView *alert = [[timer userInfo]  objectForKey:@"alert"];
     [alert dismissWithClickedButtonIndex:0 animated:YES];
@@ -372,7 +539,7 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     __block long tag=textField.tag;
-    if(tag==4){
+    if(tag==3){
         AFNetOperate *AFNet=[[AFNetOperate alloc] init];
         AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
         NSString *key=self.key.text?self.key.text:@"";
@@ -538,6 +705,8 @@
                   }
              ];
         }
+    }else if(tag==1){
+        [self validateKey: textField.text] ;
     }
     else{
         tag++;

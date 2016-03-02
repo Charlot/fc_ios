@@ -35,15 +35,16 @@
                      SendAddressItem *item=[[SendAddressItem alloc] initWithObject:(NSDictionary *)result[i]];
                      [self.addresses addObject:item];
                      if(item.is_default==1){
-                         
                          self.defaultAddress.name=item.name;
                          self.defaultAddress.id=item.id;
+                         self.defaultAddress.nr=item.nr;
                          self.defaultAddress.is_default=item.is_default;
                      }
                  }
                  if(!self.defaultAddress.name){
                      self.defaultAddress.name=@"";
                      self.defaultAddress.id=@"";
+                     self.defaultAddress.nr=@"";
                      self.defaultAddress.is_default=0;
                  }
              }
