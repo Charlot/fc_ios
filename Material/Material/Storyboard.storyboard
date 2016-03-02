@@ -561,8 +561,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="部门" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0yr-HT-TV0">
-                                <rect key="frame" x="54" y="90" width="34" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目的地点编号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0yr-HT-TV0">
+                                <rect key="frame" x="54" y="90" width="84" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -574,8 +574,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备货人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wJM-e0-hNH">
-                                <rect key="frame" x="54" y="170" width="51" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备货员工号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wJM-e0-hNH">
+                                <rect key="frame" x="54" y="170" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -4252,7 +4252,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="ybg-TL-7Ek" style="IBUITableViewCellStyleDefault" id="dy5-lS-j9m">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dy5-lS-j9m" id="swN-XN-rft">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -4278,7 +4278,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZE3-yW-nIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3439" y="13411"/>
+            <point key="canvasLocation" x="3531" y="13379"/>
         </scene>
         <!--设置-->
         <scene sceneID="vHe-hc-MXd">
@@ -6010,24 +6010,24 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dyT-NG-4n1"/>
-        <segue reference="4Mm-GY-xPO"/>
         <segue reference="Dng-DQ-LOk"/>
+        <segue reference="mEd-et-lyR"/>
         <segue reference="Neh-iJ-Fpe"/>
         <segue reference="Do4-uK-Dun"/>
-        <segue reference="8RY-QF-ZAw"/>
+        <segue reference="4Mm-GY-xPO"/>
+        <segue reference="dyT-NG-4n1"/>
         <segue reference="7b0-8i-w2b"/>
-        <segue reference="Kxl-Rh-nWd"/>
-        <segue reference="Get-Zr-2fp"/>
-        <segue reference="veK-WU-skj"/>
+        <segue reference="zjP-oP-VXq"/>
+        <segue reference="EZu-KH-oca"/>
+        <segue reference="xUu-VW-Prs"/>
+        <segue reference="UnZ-wN-WXV"/>
         <segue reference="yJ1-Ae-Eed"/>
-        <segue reference="tP9-hz-80H"/>
         <segue reference="U3W-2k-BOU"/>
         <segue reference="zbp-Dd-2O5"/>
         <segue reference="ZXV-UZ-8rx"/>
-        <segue reference="xUu-VW-Prs"/>
-        <segue reference="UnZ-wN-WXV"/>
-        <segue reference="EZu-KH-oca"/>
-        <segue reference="zjP-oP-VXq"/>
+        <segue reference="tP9-hz-80H"/>
+        <segue reference="Kxl-Rh-nWd"/>
+        <segue reference="Get-Zr-2fp"/>
+        <segue reference="veK-WU-skj"/>
     </inferredMetricsTieBreakers>
 </document>

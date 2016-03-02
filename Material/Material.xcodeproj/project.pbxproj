@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		025846E01C869E8E001CB00F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 025846DF1C869E8E001CB00F /* Location.m */; };
 		1820CE551B5FDD3B004EB49D /* QueryPositionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820CE541B5FDD3B004EB49D /* QueryPositionTableViewController.m */; };
 		182905691B5F936B0092386A /* ChaKuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182905681B5F936B0092386A /* ChaKuViewController.m */; };
 		213FD7B51B2D0FEE00BD4211 /* InventoryConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */; };
@@ -201,6 +202,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		025846DE1C869E8E001CB00F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		025846DF1C869E8E001CB00F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		1820CE531B5FDD3B004EB49D /* QueryPositionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryPositionTableViewController.h; sourceTree = "<group>"; };
 		1820CE541B5FDD3B004EB49D /* QueryPositionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryPositionTableViewController.m; sourceTree = "<group>"; };
 		182905671B5F936B0092386A /* ChaKuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChaKuViewController.h; sourceTree = "<group>"; };
@@ -432,7 +435,7 @@
 		B07CE56C198B8890000FD578 /* RequireCheckXiangTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequireCheckXiangTableViewCell.xib; sourceTree = "<group>"; };
 		B07CE56F198B8CAA000FD578 /* RequireCheckBill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireCheckBill.h; sourceTree = "<group>"; };
 		B07CE570198B8CAA000FD578 /* RequireCheckBill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireCheckBill.m; sourceTree = "<group>"; };
-		B085F60C194004CC001F01F3 /* WMS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WMS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B085F60C194004CC001F01F3 /* VIM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B085F60F194004CC001F01F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B085F611194004CC001F01F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B085F613194004CC001F01F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -936,6 +939,8 @@
 				94134DD21C05FE4D00F5C0BD /* InventoryList.m */,
 				94648A871C09C47800EFC504 /* InventoryListItem.h */,
 				94648A881C09C47800EFC504 /* InventoryListItem.m */,
+				025846DE1C869E8E001CB00F /* Location.h */,
+				025846DF1C869E8E001CB00F /* Location.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1070,7 +1075,7 @@
 		B085F60D194004CC001F01F3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B085F60C194004CC001F01F3 /* WMS.app */,
+				B085F60C194004CC001F01F3 /* VIM.app */,
 				B085F627194004CC001F01F3 /* MaterialTests.xctest */,
 			);
 			name = Products;
@@ -1254,7 +1259,7 @@
 			);
 			name = Material;
 			productName = Material;
-			productReference = B085F60C194004CC001F01F3 /* WMS.app */;
+			productReference = B085F60C194004CC001F01F3 /* VIM.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B085F626194004CC001F01F3 /* MaterialTests */ = {
@@ -1364,6 +1369,7 @@
 				21942D771B329DFA001D5B53 /* UITextField+Extended.m in Sources */,
 				B04EF1DB19469CBA00A95D7A /* ReceiveXiangViewController.m in Sources */,
 				949359DA1C04A993003D2B25 /* UIView+MJExtension.m in Sources */,
+				025846E01C869E8E001CB00F /* Location.m in Sources */,
 				94648A891C09C47800EFC504 /* InventoryListItem.m in Sources */,
 				B09E4CD01A303C7C0041083D /* XiangChooseDepartmentViewController.m in Sources */,
 				B0DF64351943E1D1002D044B /* PrintViewController.m in Sources */,
@@ -1632,7 +1638,8 @@
 					"$(PROJECT_DIR)/Material",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_NAME = WMS;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cz-tek.wms.vmi";
+				PRODUCT_NAME = VIM;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1657,7 +1664,8 @@
 					"$(PROJECT_DIR)/Material",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_NAME = WMS;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cz-tek.wms.vmi";
+				PRODUCT_NAME = VIM;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

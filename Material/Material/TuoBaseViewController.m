@@ -18,6 +18,9 @@
 @property (strong, nonatomic) UITextField *firstResponder;
 @property (weak, nonatomic) IBOutlet UILabel *departmentLabel;
 @property (strong,nonatomic)NSString *location_id;
+
+@property (strong,nonatomic)UserPreference *userPreference;
+
 @end
 
 @implementation TuoBaseViewController
@@ -37,7 +40,9 @@
     // Do any additional setup after loading the view.//test comment
     self.department.delegate=self;
     self.agent.delegate=self;
-    self.location_id=[[UserPreference sharedUserPreference] location_id];
+    self.userPreference =[UserPreference sharedUserPreference];
+    self.location_id=[self.userPreference location_id];
+    self.department.text=[self.userPreference.location.defaultDestination nr];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -55,12 +60,15 @@
     else{
         [self.department becomeFirstResponder];
     }
+    
+      self.agent.enabled=NO;
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [self.firstResponder resignFirstResponder];
     self.firstResponder=nil;
+  
 //    [[Captuvo sharedCaptuvoDevice] stopDecoderHardware];
     [[Captuvo sharedCaptuvoDevice] removeCaptuvoDelegate:self];
 }
@@ -111,12 +119,12 @@
         department=self.department.text;
     }
     NSString *agent=self.agent.text;
-    if(agent.length>0){
+    if(agent.length>0 && self.department.text.length>0){
         [self baseToScan:department agent:agent];
     }
     else{
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"错误"
-                                                      message:@"信息填写不完整"
+                                                      message:@"请填写目的地编号和备货员工号"
                                                      delegate:self
                                             cancelButtonTitle:@"确定"
                                             otherButtonTitles:nil];

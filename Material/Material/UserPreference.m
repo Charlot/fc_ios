@@ -21,6 +21,8 @@
 // 1:手动
 #import "UserPreference.h"
 #import "AFNetOperate.h"
+#import "Location.h"
+
 @interface UserPreference()
 @end
 
@@ -32,6 +34,13 @@
     userPref.location_id=object[@"location_id"]?object[@"location_id"]:@"";
     userPref.location_name=object[@"location_name"]?object[@"location_name"]:@"";
     userPref.operation_mode=object[@"operation_mode"]?[NSString stringWithFormat:@"%@",object[@"operation_mode"]]:@"0";
+    Location* destination= [[Location alloc] initWithObject:object[@"location"][@"destination"]];
+    
+    Location* location=[[Location alloc] initWithObject:object[@"location"] AndDestination:destination];
+    
+    userPref.location=location;
+    
+    
     return userPref;
 }
 +(instancetype)sharedUserPreference
