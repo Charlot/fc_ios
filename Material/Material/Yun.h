@@ -15,6 +15,11 @@
 @property(nonatomic,strong)NSString *date;
 @property(nonatomic,strong)NSString *remark;
 @property(nonatomic,strong)NSMutableArray *tuoArray;
+@property(nonatomic,strong) NSMutableArray *xiang;
+
+@property(nonatomic)int accepted_packages;
+@property(nonatomic)int sum_packages;
+
 @property(nonatomic)int sended;
 @property(nonatomic,strong)NSString *delivery_date;
 @property(nonatomic,strong)NSString *received_date;

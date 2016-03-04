@@ -28,7 +28,9 @@
   self.activeView.center = CGPointMake(view.bounds.size.width / 2,
                                        view.bounds.size.width / 2 - 21.0);
   self.activeView.hidesWhenStopped = YES;
+   
   [view addSubview:self.activeView];
+    
   [self.activeView startAnimating];
   AFHTTPRequestOperationManager *manager =
       [AFHTTPRequestOperationManager manager];
@@ -321,6 +323,11 @@
   NSString *bind =
       [[[self URLDictionary] objectForKey:@"yun"] objectForKey:@"forklifts"];
   return [[self yun_index] stringByAppendingString:bind];
+}
+-(NSString *)yun_packages{
+    NSString *bind =
+    [[[self URLDictionary] objectForKey:@"yun"] objectForKey:@"packages"];
+    return [[self yun_index] stringByAppendingString:bind];
 }
 - (NSString *)yun_edit:(NSString *)id {
   NSString *yunRoot = [self yun_root];

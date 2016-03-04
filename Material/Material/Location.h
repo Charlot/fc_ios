@@ -12,6 +12,7 @@
 @property(nonatomic,strong)NSString *ID;
 @property(nonatomic,strong)NSString *name;
 @property(nonatomic,strong)NSString *nr;
+@property(nonatomic)NSInteger *receive_mode;
 @property(nonatomic,strong)NSString *tenant_id;
 @property(nonatomic,strong)NSString *created_at;
 @property(nonatomic,strong)NSString *updated_at;

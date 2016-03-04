@@ -157,6 +157,8 @@
 		<string>/get_by_time_and_state</string>
 		<key>root</key>
 		<string>/api/v1/deliveries</string>
+		<key>packages</key>
+		<string>/packages</string>
 	</dict>
 	<key>tuo</key>
 	<dict>

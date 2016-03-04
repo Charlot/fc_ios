@@ -59,6 +59,7 @@
 - (NSString *)yun_received;
 - (NSString *)yun_confirm_receive;
 - (NSString *)yun_folklifts;
+- (NSString *)yun_packages;
 
 - (NSString *)storages_move_store;
 

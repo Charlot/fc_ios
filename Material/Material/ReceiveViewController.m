@@ -11,8 +11,13 @@
 #import "ReceiveTuoViewController.h"
 #import "ReceiveYunViewController.h"
 #import "AFNetOperate.h"
+#import "UserPreference.h"
 @interface ReceiveViewController ()<CaptuvoEventsProtocol,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *scanTextField;
+
+
+@property (strong,nonatomic)UserPreference *userPreference;
+
 - (IBAction)test:(id)sender;
 @end
 
@@ -23,6 +28,9 @@
     // Do any additional setup after loading the view.
     self.scanTextField.delegate=self;
     [self.scanTextField becomeFirstResponder];
+    
+    
+    self.userPreference=[UserPreference sharedUserPreference];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -48,6 +56,92 @@
 {
     self.scanTextField.text=data;
     //扫描到对应的号码时应该去触发receive
+    [self receive:self.scanTextField.text];
+   }
+//only for test use
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self receive:self.scanTextField.text];
+    
+//    NSString *data=  self.scanTextField.text;
+//    AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+//    AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+//    [manager POST:[AFNet movables]
+//      parameters:@{@"id":data}
+//         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//             [AFNet.activeView stopAnimating];
+//             if([responseObject[@"result"] integerValue]==1){
+//                 int type=[responseObject[@"content"][@"type"] intValue];
+//                 if(type==1){
+//                     Xiang *xiang=[[Xiang alloc] initWithObject:responseObject[@"content"][@"object"]];
+//                     [self performSegueWithIdentifier:@"receiveXiang" sender:@{@"title":data,@"xiang":xiang}];
+//                 }
+//                 else if(type==2){
+//                     Tuo *tuo=[[Tuo alloc] initWithObject:responseObject[@"content"][@"object"]];
+//                     [manager GET:[AFNet tuo_packages]
+//                       parameters:@{@"id":tuo.ID}
+//                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                              if([responseObject[@"result"] integerValue]==1){
+//                                      NSArray *xiangList=responseObject[@"content"];
+//                                      [tuo.xiang removeAllObjects];
+//                                      for(int i=0;i<xiangList.count;i++){
+//                                          Xiang *xiang=[[Xiang alloc] initWithObject:xiangList[i]];
+//                                          [tuo.xiang addObject:xiang];
+//                                      }
+//                                      [self performSegueWithIdentifier:@"receiveTuo" sender:@{@"title":data,@"tuo":tuo}];
+//                              }
+//                              else{
+//                                  [AFNet alert:responseObject[@"content"]];
+//                              }
+//                              
+//                          }
+//                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                              [AFNet alert:@"something wrong"];
+//                          }
+//                      ];
+//
+//                 }
+//                 else if(type==3){
+//                     Yun *yun=[[Yun alloc] initWithObject:responseObject[@"content"][@"object"]];
+//                     [manager GET:[AFNet yun_folklifts]
+//                       parameters:@{@"id":yun.ID}
+//                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                              [AFNet.activeView stopAnimating];
+//                              if([responseObject[@"result"] integerValue]==1){
+//                                      NSArray *tuoArray=responseObject[@"content"];
+//                                      [yun.tuoArray removeAllObjects];
+//                                      for(int i=0;i<tuoArray.count;i++){
+//                                          Tuo *tuoItem=[[Tuo alloc] initWithObject:tuoArray[i]];
+//                                          [yun.tuoArray addObject:tuoItem];
+//                                      }
+//                                      [self performSegueWithIdentifier:@"receiveYun" sender:@{@"title":data,@"yun":yun}];
+//                              }
+//                              else{
+//                                  [AFNet alert:responseObject[@"content"]];
+//                              }
+//                              
+//                          }
+//                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                              [AFNet.activeView stopAnimating];
+//                              [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+//                          }
+//                      ];
+//                 }
+//             }
+//             else{
+//                 [AFNet alert:responseObject[@"content"]];
+//             }
+//         }
+//         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//             [AFNet.activeView stopAnimating];
+//             [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+//         }
+//     ];
+    return YES;
+}
+
+-(void)receive:(NSString *)data{
+
     AFNetOperate *AFNet=[[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
     [manager POST:[AFNet movables]
@@ -58,7 +152,7 @@
                   int type=[responseObject[@"content"][@"type"] intValue];
                   if(type==1){
                       Xiang *xiang=[[Xiang alloc] initWithObject:responseObject[@"content"][@"object"]];
-                       self.scanTextField.text=@"";
+                      self.scanTextField.text=@"";
                       [self performSegueWithIdentifier:@"receiveXiang" sender:@{@"title":data,@"xiang":xiang}];
                   }
                   else if(type==2){
@@ -88,31 +182,40 @@
                       
                   }
                   else if(type==3){
+                      
+                      NSInteger receive_mode=[[self.userPreference location ] receive_mode];
+                      
                       Yun *yun=[[Yun alloc] initWithObject:responseObject[@"content"][@"object"]];
-                      [manager GET:[AFNet yun_folklifts]
-                        parameters:@{@"id":yun.ID}
-                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                               [AFNet.activeView stopAnimating];
-                               if([responseObject[@"result"] integerValue]==1){
-                                   NSArray *tuoArray=responseObject[@"content"];
-                                   [yun.tuoArray removeAllObjects];
-                                   for(int i=0;i<tuoArray.count;i++){
-                                       Tuo *tuoItem=[[Tuo alloc] initWithObject:tuoArray[i]];
-                                       [yun.tuoArray addObject:tuoItem];
-                                   }
-                                    self.scanTextField.text=@"";
-                                   [self performSegueWithIdentifier:@"receiveYun" sender:@{@"title":data,@"yun":yun}];
-                               }
-                               else{
-                                   [AFNet alert:responseObject[@"content"]];
-                               }
-                               
-                           }
-                           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                               [AFNet.activeView stopAnimating];
-                               [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
-                           }
-                       ];
+                      
+                      
+                      if(receive_mode==100){
+                          
+                          UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"选择接收方式" message:@"" preferredStyle: UIAlertControllerStyleActionSheet];
+                          
+                          UIAlertAction *byTuoAction = [UIAlertAction actionWithTitle:@"按照托接收" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action)
+                                                        {
+                                                            [self yunReceiveByTuo:yun andInput:data];
+                                                        }];
+                          UIAlertAction *byXiangAction = [UIAlertAction actionWithTitle:@"按照箱接收" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action)
+                                                          {
+                                                              [self yunReceiveByXiang:yun andInput:data];
+                                                          }];
+                          UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+                                                         {
+                                                             self.scanTextField.text=@"";
+                                                         }];
+                          [alertController addAction:byTuoAction];
+                          [alertController addAction:byXiangAction];
+                          [alertController addAction:cancelAction];;
+                          
+                          [self presentViewController:alertController animated:YES completion:nil];
+                          
+                      }else if(receive_mode==200){
+                          [self yunReceiveByTuo:yun andInput:data];
+                          
+                                               }else if(receive_mode==300){
+                                                   [self yunReceiveByXiang:yun andInput:data];
+                                               }
                   }
               }
               else{
@@ -124,86 +227,76 @@
               [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
           }
      ];
+
 }
-//only for test use
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    NSString *data=  self.scanTextField.text;
+
+-(void)yunReceiveByTuo:(Yun*)yun andInput:(NSString *)data{
+    
     AFNetOperate *AFNet=[[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-    [manager POST:[AFNet movables]
-      parameters:@{@"id":data}
+    
+    [manager GET:[AFNet yun_folklifts]
+      parameters:@{@"id":yun.ID}
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              [AFNet.activeView stopAnimating];
              if([responseObject[@"result"] integerValue]==1){
-                 int type=[responseObject[@"content"][@"type"] intValue];
-                 if(type==1){
-                     Xiang *xiang=[[Xiang alloc] initWithObject:responseObject[@"content"][@"object"]];
-                     [self performSegueWithIdentifier:@"receiveXiang" sender:@{@"title":data,@"xiang":xiang}];
+                 NSArray *tuoArray=responseObject[@"content"];
+                 [yun.tuoArray removeAllObjects];
+                 for(int i=0;i<tuoArray.count;i++){
+                     Tuo *tuoItem=[[Tuo alloc] initWithObject:tuoArray[i]];
+                     [yun.tuoArray addObject:tuoItem];
                  }
-                 else if(type==2){
-                     Tuo *tuo=[[Tuo alloc] initWithObject:responseObject[@"content"][@"object"]];
-                     [manager GET:[AFNet tuo_packages]
-                       parameters:@{@"id":tuo.ID}
-                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                              if([responseObject[@"result"] integerValue]==1){
-                                      NSArray *xiangList=responseObject[@"content"];
-                                      [tuo.xiang removeAllObjects];
-                                      for(int i=0;i<xiangList.count;i++){
-                                          Xiang *xiang=[[Xiang alloc] initWithObject:xiangList[i]];
-                                          [tuo.xiang addObject:xiang];
-                                      }
-                                      [self performSegueWithIdentifier:@"receiveTuo" sender:@{@"title":data,@"tuo":tuo}];
-                              }
-                              else{
-                                  [AFNet alert:responseObject[@"content"]];
-                              }
-                              
-                          }
-                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                              [AFNet alert:@"something wrong"];
-                          }
-                      ];
-
-                 }
-                 else if(type==3){
-                     Yun *yun=[[Yun alloc] initWithObject:responseObject[@"content"][@"object"]];
-                     [manager GET:[AFNet yun_folklifts]
-                       parameters:@{@"id":yun.ID}
-                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                              [AFNet.activeView stopAnimating];
-                              if([responseObject[@"result"] integerValue]==1){
-                                      NSArray *tuoArray=responseObject[@"content"];
-                                      [yun.tuoArray removeAllObjects];
-                                      for(int i=0;i<tuoArray.count;i++){
-                                          Tuo *tuoItem=[[Tuo alloc] initWithObject:tuoArray[i]];
-                                          [yun.tuoArray addObject:tuoItem];
-                                      }
-                                      [self performSegueWithIdentifier:@"receiveYun" sender:@{@"title":data,@"yun":yun}];
-                              }
-                              else{
-                                  [AFNet alert:responseObject[@"content"]];
-                              }
-                              
-                          }
-                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                              [AFNet.activeView stopAnimating];
-                              [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
-                          }
-                      ];
-                 }
+                 self.scanTextField.text=@"";
+                 
+                 [AFNet.activeView stopAnimating];
+                 
+                 [self performSegueWithIdentifier:@"receiveYun" sender:@{@"title":data,@"yun":yun}];
              }
              else{
                  [AFNet alert:responseObject[@"content"]];
              }
+             
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              [AFNet.activeView stopAnimating];
              [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
          }
      ];
-    return YES;
 }
+
+
+-(void)yunReceiveByXiang:(Yun*)yun andInput:(NSString *)data{
+    
+    
+    AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+    AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+    
+    [manager GET:[AFNet yun_packages]
+      parameters:@{@"id":yun.ID}
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             if([responseObject[@"result"] integerValue]==1){
+                 NSArray *xiangList=responseObject[@"content"];
+                 [yun.xiang removeAllObjects];
+                 for(int i=0;i<xiangList.count;i++){
+                     Xiang *xiang=[[Xiang alloc] initWithObject:xiangList[i]];
+                     [yun.xiang addObject:xiang];
+                 }
+                 self.scanTextField.text=@"";
+                 [AFNet.activeView stopAnimating];
+                 [self performSegueWithIdentifier:@"receiveTuo" sender:@{@"title":data,@"tuo":yun}];
+             }
+             else{
+                 [AFNet alert:responseObject[@"content"]];
+             }
+             
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             [AFNet alert:@"something wrong"];
+         }
+     ];
+
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
