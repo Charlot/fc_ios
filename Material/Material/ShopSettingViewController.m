@@ -125,7 +125,14 @@
             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 [AFNet.activeView stopAnimating];
                 if([responseObject[@"result"] integerValue]==1){
-                    [self dismissViewControllerAnimated:YES completion:nil];
+//                    [self dismissViewControllerAnimated:YES completion:nil];
+                    UIStoryboard *storyboard =
+                    [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+                    UIViewController *tabbarStock = [[UIViewController alloc] init];
+                    tabbarStock =
+                    [storyboard instantiateViewControllerWithIdentifier:@"login"];
+                    [self presentViewController:tabbarStock animated:YES completion:nil];
+                    
                 }
                 else{
                     [AFNet alert:responseObject[@"content"]];

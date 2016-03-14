@@ -116,16 +116,19 @@
               NSString *requestCode = [NSString
                   stringWithFormat:@"%@",
                                    responseObject[@"content"][@"role_id"]];
-              if ([requestCode isEqualToString:@"300"]) {
-                [self loginSameAction:@"stock"];
-              } else if ([requestCode isEqualToString:@"400"]) {
-                [self loginSameAction:@"shop"];
-              } else if ([requestCode isEqualToString:@"500"]) {
-                [self loginSameAction:@"require"];
-              } else if ([requestCode isEqualToString:@"600"] ||
-                         [requestCode isEqualToString:@"800"]) {
-                [self loginSameAction:@"inventory"];
-              }
+//              if ([requestCode isEqualToString:@"300"]) {
+//                [self loginSameAction:@"stock"];
+//              } else if ([requestCode isEqualToString:@"400"]) {
+//                [self loginSameAction:@"shop"];
+//              } else if ([requestCode isEqualToString:@"500"]) {
+//                [self loginSameAction:@"require"];
+//              } else if ([requestCode isEqualToString:@"600"] ||
+//                         [requestCode isEqualToString:@"800"]) {
+//                [self loginSameAction:@"inventory"];
+//              }
+                
+                [self loginSameAction:@"menu_panel"];
+                
               [UserPreference
                   generateUserPreference:responseObject[@"content"]];
               [ScanStandard sharedScanStandard];
@@ -165,13 +168,13 @@
   UIStoryboard *storyboard =
       [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
   UIViewController *tabbarStock = [[UIViewController alloc] init];
-  if ([identifier isEqualToString:@"product"]) {
-    tabbarStock =
-        [storyboard instantiateViewControllerWithIdentifier:@"product"];
-  } else {
-    tabbarStock =
+//  if ([identifier isEqualToString:@"product"]) {
+     tabbarStock =
         [storyboard instantiateViewControllerWithIdentifier:identifier];
-  }
+//  } else {
+//    tabbarStock =
+//        [storyboard instantiateViewControllerWithIdentifier:identifier];
+//  }
   //写入用户信息
   NSString *number =
       self.email.text.length > 0 ? self.email.text : @"default-example";
@@ -181,7 +184,7 @@
   NSString *path =
       [document stringByAppendingPathComponent:@"user.info.archive"];
   [NSKeyedArchiver archiveRootObject:number toFile:path];
-
+//
   [self presentViewController:tabbarStock animated:YES completion:nil];
 }
 

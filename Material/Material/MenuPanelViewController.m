@@ -1,52 +1,31 @@
 //
-//  RequireSettingViewController.m
+//  MenuPanelViewController.m
 //  Material
 //
-//  Created by wayne on 14-7-23.
-//  Copyright (c) 2014年 brilliantech. All rights reserved.
+//  Created by Charlot on 16/3/14.
+//  Copyright © 2016年 brilliantech. All rights reserved.
 //
 
-#import "RequireSettingViewController.h"
+#import "MenuPanelViewController.h"
 #import "AFNetOperate.h"
 
-@interface RequireSettingViewController ()
-- (IBAction)logout:(id)sender;
+@interface MenuPanelViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
 
 @end
 
-@implementation RequireSettingViewController
+@implementation MenuPanelViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)logout:(id)sender {
     AFNetOperate *AFNet=[[AFNetOperate alloc] init];
@@ -56,14 +35,14 @@
             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 [AFNet.activeView stopAnimating];
                 if([responseObject[@"result"] integerValue]==1){
-                    //[self dismissViewControllerAnimated:YES completion:nil];
-                    
+                    //                    [self dismissViewControllerAnimated:YES completion:nil];
                     UIStoryboard *storyboard =
                     [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
                     UIViewController *tabbarStock = [[UIViewController alloc] init];
                     tabbarStock =
                     [storyboard instantiateViewControllerWithIdentifier:@"login"];
                     [self presentViewController:tabbarStock animated:YES completion:nil];
+                    
                 }
                 else{
                     [AFNet alert:responseObject[@"content"]];
@@ -75,4 +54,14 @@
             }
      ];
 }
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
 @end

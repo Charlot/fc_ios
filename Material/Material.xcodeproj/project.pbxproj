@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		025846E01C869E8E001CB00F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 025846DF1C869E8E001CB00F /* Location.m */; };
+		02F928CF1C968B6C00829573 /* MenuPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F928CE1C968B6C00829573 /* MenuPanelViewController.m */; };
 		1820CE551B5FDD3B004EB49D /* QueryPositionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820CE541B5FDD3B004EB49D /* QueryPositionTableViewController.m */; };
 		182905691B5F936B0092386A /* ChaKuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182905681B5F936B0092386A /* ChaKuViewController.m */; };
 		213FD7B51B2D0FEE00BD4211 /* InventoryConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213FD7B41B2D0FEE00BD4211 /* InventoryConfirmViewController.m */; };
@@ -204,6 +205,8 @@
 /* Begin PBXFileReference section */
 		025846DE1C869E8E001CB00F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		025846DF1C869E8E001CB00F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		02F928CD1C968B6C00829573 /* MenuPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuPanelViewController.h; sourceTree = "<group>"; };
+		02F928CE1C968B6C00829573 /* MenuPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuPanelViewController.m; sourceTree = "<group>"; };
 		1820CE531B5FDD3B004EB49D /* QueryPositionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryPositionTableViewController.h; sourceTree = "<group>"; };
 		1820CE541B5FDD3B004EB49D /* QueryPositionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryPositionTableViewController.m; sourceTree = "<group>"; };
 		182905671B5F936B0092386A /* ChaKuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChaKuViewController.h; sourceTree = "<group>"; };
@@ -1162,6 +1165,8 @@
 				B0454CCC1976022B001476F4 /* DELIVERY */,
 				B0454CCB19760224001476F4 /* REQUIRE */,
 				B04244CD1A1EDEA900AAFD24 /* PRODUCT */,
+				02F928CD1C968B6C00829573 /* MenuPanelViewController.h */,
+				02F928CE1C968B6C00829573 /* MenuPanelViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1371,6 +1376,7 @@
 				949359DA1C04A993003D2B25 /* UIView+MJExtension.m in Sources */,
 				025846E01C869E8E001CB00F /* Location.m in Sources */,
 				94648A891C09C47800EFC504 /* InventoryListItem.m in Sources */,
+				02F928CF1C968B6C00829573 /* MenuPanelViewController.m in Sources */,
 				B09E4CD01A303C7C0041083D /* XiangChooseDepartmentViewController.m in Sources */,
 				B0DF64351943E1D1002D044B /* PrintViewController.m in Sources */,
 				B0FDC96F194555FE008E4B72 /* YunInfoViewController.m in Sources */,
