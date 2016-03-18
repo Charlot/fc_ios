@@ -760,6 +760,12 @@
   NSString *_check_stock = [[self URLDictionary] objectForKey:@"check_stock"];
   return [base stringByAppendingString:_check_stock];
 }
+- (NSString *)enter_stock {
+    NSString *base = [self baseURL];
+    NSString *enter_stock =
+    [[self URLDictionary] objectForKey:@"enter_stock"];
+    return [base stringByAppendingString:enter_stock];
+}
 
 - (NSString *)inventory_list_item {
   NSString *base = [self baseURL];

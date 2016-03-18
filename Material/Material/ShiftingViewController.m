@@ -14,12 +14,17 @@
 #import "MJRefresh.h"
 #import "MovementListFinishViewController.h"
 #import "MovementDetailViewController.h"
+#import "UserPreference.h"
+
 
 @interface ShiftingViewController ()
 @property NSString *userName;
 @property(strong, nonatomic) IBOutlet UITableView *historyTableView;
 @property(strong, nonatomic) NSMutableArray *dataArray;
 @property NSString *movementListID;
+
+
+@property (strong,nonatomic)UserPreference *userPreference;
 @end
 
 @implementation ShiftingViewController
@@ -40,6 +45,9 @@
   self.navigationItem.hidesBackButton = TRUE;
   self.historyTableView.delegate = self;
   self.historyTableView.dataSource = self;
+    
+    
+    self.userPreference=[UserPreference sharedUserPreference];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,7 +86,7 @@ preparation before navigation
   [AFNet.activeView stopAnimating];
   [manager GET:[AFNet GetMovementList]
       parameters:@{
-        @"user_id" : self.userName
+                   @"user_id" : self.userPreference.user_id
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        NSLog(@"the request GetMovementList is %@", responseObject);
@@ -203,7 +211,7 @@ preparation before navigation
   AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
   [manager POST:[AFNet CreateMovementList]
       parameters:@{
-        @"user_id" : self.userName,
+        @"user_id" : self.userPreference.user_id,
         @"remarks" : @""
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {

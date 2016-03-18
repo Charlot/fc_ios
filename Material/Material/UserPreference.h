@@ -10,6 +10,7 @@
 #import "Location.h"
 
 @interface UserPreference : NSObject
+@property(nonatomic,strong)NSString *user_id;
 @property(nonatomic,strong)NSString *location_id;
 @property(nonatomic,strong)NSString *location_name;
 

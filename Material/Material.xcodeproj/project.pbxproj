@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		025846E01C869E8E001CB00F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 025846DF1C869E8E001CB00F /* Location.m */; };
+		02CB7FA51C97D9FB00BBD5A3 /* RukuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB7FA41C97D9FB00BBD5A3 /* RukuViewController.m */; };
 		02F928CF1C968B6C00829573 /* MenuPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F928CE1C968B6C00829573 /* MenuPanelViewController.m */; };
 		1820CE551B5FDD3B004EB49D /* QueryPositionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820CE541B5FDD3B004EB49D /* QueryPositionTableViewController.m */; };
 		182905691B5F936B0092386A /* ChaKuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182905681B5F936B0092386A /* ChaKuViewController.m */; };
@@ -205,6 +206,8 @@
 /* Begin PBXFileReference section */
 		025846DE1C869E8E001CB00F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		025846DF1C869E8E001CB00F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		02CB7FA31C97D9FB00BBD5A3 /* RukuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RukuViewController.h; sourceTree = "<group>"; };
+		02CB7FA41C97D9FB00BBD5A3 /* RukuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RukuViewController.m; sourceTree = "<group>"; };
 		02F928CD1C968B6C00829573 /* MenuPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuPanelViewController.h; sourceTree = "<group>"; };
 		02F928CE1C968B6C00829573 /* MenuPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuPanelViewController.m; sourceTree = "<group>"; };
 		1820CE531B5FDD3B004EB49D /* QueryPositionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryPositionTableViewController.h; sourceTree = "<group>"; };
@@ -606,6 +609,8 @@
 				9492B76A1C054209007DD8A0 /* MovementListFinishViewController.m */,
 				945E34201C0B398600C6D1E0 /* CreateMovementListItemViewController.h */,
 				945E34211C0B398600C6D1E0 /* CreateMovementListItemViewController.m */,
+				02CB7FA31C97D9FB00BBD5A3 /* RukuViewController.h */,
+				02CB7FA41C97D9FB00BBD5A3 /* RukuViewController.m */,
 			);
 			name = SHIFTING;
 			sourceTree = "<group>";
@@ -1415,6 +1420,7 @@
 				B0275FD8197E443A00E579C5 /* RequireHistoryListTableViewController.m in Sources */,
 				B0FDC96919453D63008E4B72 /* YunChooseTuoViewController.m in Sources */,
 				B085F6531940183D001F01F3 /* YunTableViewController.m in Sources */,
+				02CB7FA51C97D9FB00BBD5A3 /* RukuViewController.m in Sources */,
 				B0C75C261A3AC6B800F8A0FF /* UserPreference.m in Sources */,
 				B0B3040F1A23057600D8CF8E /* DefaultAddressTableViewController.m in Sources */,
 				B04244D31A1EF41A00AAFD24 /* ProductSettingViewController.m in Sources */,

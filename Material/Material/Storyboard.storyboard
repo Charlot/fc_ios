@@ -1104,7 +1104,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="3D3-Ky-lxj" style="IBUITableViewCellStyleDefault" id="6H5-g0-L9J">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6H5-g0-L9J" id="XfJ-Jg-lc3">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -2015,7 +2015,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMK-O6-TXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zll-gK-mGa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7738" y="7169"/>
+            <point key="canvasLocation" x="8270" y="7169"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rsE-JU-4Oz">
@@ -2030,8 +2030,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="UC0-Db-0zk" kind="relationship" relationship="viewControllers" id="M4c-ZN-ezF"/>
-                        <segue destination="fUf-8Y-5Xp" kind="relationship" relationship="viewControllers" id="b6u-lg-I9K"/>
-                        <segue destination="OhD-mD-1hB" kind="relationship" relationship="viewControllers" id="7F8-Mh-ijK"/>
                         <segue destination="RLF-Mb-f86" kind="relationship" relationship="viewControllers" id="LOH-uH-6go"/>
                         <segue destination="beQ-9b-e43" kind="relationship" relationship="viewControllers" id="SI0-aO-vpZ"/>
                     </connections>
@@ -2108,14 +2106,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="je4-DM-Dic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1585" y="7824"/>
+            <point key="canvasLocation" x="2117" y="7824"/>
         </scene>
         <!--盘点单详情-->
         <scene sceneID="o6q-7e-Rv6">
             <objects>
                 <viewController id="f5D-QB-TRU" customClass="InventoryHistroyViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HaH-la-Vwl" customClass="UIControl">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="扫描库位" textAlignment="natural" minimumFontSize="17" id="WTt-er-S2u">
@@ -2375,7 +2373,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UvI-Br-Yhv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5089" y="7997"/>
+            <point key="canvasLocation" x="5621" y="7997"/>
         </scene>
         <!--History Choose View Controller-->
         <scene sceneID="BVK-3x-onP">
@@ -2437,7 +2435,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zv-Uc-8M9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5489" y="7994"/>
+            <point key="canvasLocation" x="6021" y="7994"/>
         </scene>
         <!--History Yun Table View Controller-->
         <scene sceneID="qls-ct-3yM">
@@ -2449,7 +2447,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="yunCell" textLabel="6SW-0z-ksI" detailTextLabel="9b6-ut-hqg" style="IBUITableViewCellStyleValue1" id="PLB-G6-lJs">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PLB-G6-lJs" id="MAz-6n-Gff">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
@@ -2485,7 +2483,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgq-rJ-fAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7118" y="7537"/>
+            <point key="canvasLocation" x="7650" y="7537"/>
         </scene>
         <!--History Tuo Table View Controller-->
         <scene sceneID="G3A-3a-qKW">
@@ -2508,7 +2506,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQJ-Ve-HoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5534" y="8249"/>
+            <point key="canvasLocation" x="6066" y="8249"/>
         </scene>
         <!--History Xiang Table View Controller-->
         <scene sceneID="bXV-Wg-qda">
@@ -3086,7 +3084,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="XiM-QY-wDn" kind="relationship" relationship="viewControllers" id="r3I-aG-j4r"/>
+                        <segue destination="SFN-dN-JFa" kind="relationship" relationship="viewControllers" id="82w-ch-KxI"/>
                         <segue destination="5yj-mn-uD1" kind="relationship" relationship="viewControllers" id="ey7-2K-5Qj"/>
                         <segue destination="7IZ-dF-nyM" kind="relationship" relationship="viewControllers" id="Brw-aQ-KWY"/>
                         <segue destination="beQ-9b-e43" kind="relationship" relationship="viewControllers" id="If0-NA-MAK"/>
@@ -3094,7 +3092,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ksS-cC-6vi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-88" y="8103"/>
+            <point key="canvasLocation" x="422" y="8491"/>
         </scene>
         <!--收货历史-->
         <scene sceneID="bBi-6c-MDc">
@@ -3113,7 +3111,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9s-GU-ls3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4557" y="7997"/>
+            <point key="canvasLocation" x="5089" y="7997"/>
         </scene>
         <!--打印移库单-->
         <scene sceneID="suY-Dw-a28">
@@ -5073,7 +5071,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odj-BW-xEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1974" y="7226"/>
+            <point key="canvasLocation" x="2040" y="7112"/>
         </scene>
         <!--移库单详情-->
         <scene sceneID="2rs-HU-tvw">
@@ -5145,7 +5143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bws-gB-TjB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2396" y="8066"/>
+            <point key="canvasLocation" x="2928" y="8066"/>
         </scene>
         <!--移库单信息-->
         <scene sceneID="Aj7-qY-GSH">
@@ -5229,7 +5227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVS-os-dGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2444" y="7360"/>
+            <point key="canvasLocation" x="3016" y="7496"/>
         </scene>
         <!--移库-->
         <scene sceneID="X9p-3Q-Rd1">
@@ -5526,7 +5524,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htb-sH-aha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3439" y="7557"/>
+            <point key="canvasLocation" x="3971" y="7557"/>
         </scene>
         <!--查库-->
         <scene sceneID="5iz-b6-4kO">
@@ -5588,7 +5586,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YhR-Mp-Fv0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="768" y="7217"/>
+            <point key="canvasLocation" x="1236" y="7249"/>
         </scene>
         <!--库位-->
         <scene sceneID="xzE-Wd-7Cb">
@@ -5617,7 +5615,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mIg-xh-25v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1205" y="7217"/>
+            <point key="canvasLocation" x="1737" y="7217"/>
         </scene>
         <!--盘点-->
         <scene sceneID="NIq-Vl-aIh">
@@ -5636,7 +5634,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFy-Ce-cwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="744" y="8309"/>
+            <point key="canvasLocation" x="1276" y="8309"/>
         </scene>
         <!--查库-->
         <scene sceneID="c3T-ac-Oni">
@@ -5655,7 +5653,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4E-7n-akl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="358" y="7410"/>
+            <point key="canvasLocation" x="927" y="7240"/>
         </scene>
         <!--移库-->
         <scene sceneID="v74-x7-Q3I">
@@ -5674,7 +5672,185 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYj-LC-yol" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1150" y="7891"/>
+            <point key="canvasLocation" x="1738" y="7857"/>
+        </scene>
+        <!--入库-->
+        <scene sceneID="XMY-Gb-iWu">
+            <objects>
+                <viewController id="0IF-gE-rut" customClass="RukuViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ivY-PR-eVk" customClass="UIControl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仓库：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eFC-UX-aiK">
+                                <rect key="frame" x="32" y="127" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="库位：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="THm-xO-ysg">
+                                <rect key="frame" x="32" y="202" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="mFC-Cu-o9K">
+                                <rect key="frame" x="32" y="225" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="v4U-fa-Tlq">
+                                <rect key="frame" x="47" y="461" width="217" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.34018288000000002" green="0.73630819520000002" blue="0.37557483359999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="入库">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="enterActon:" destination="0IF-gE-rut" eventType="touchUpInside" id="ptZ-Iw-oYg"/>
+                                    <action selector="enterStock:" destination="0IF-gE-rut" eventType="touchUpInside" id="hKX-Vr-Eeh"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="ip7-Fg-CMu">
+                                <rect key="frame" x="30" y="155" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="唯一码：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0o8-h9-qdB">
+                                <rect key="frame" x="32" y="270" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="NOh-7I-ZEx">
+                                <rect key="frame" x="32" y="293" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="touchScreen:" destination="0IF-gE-rut" eventType="valueChanged" id="peM-97-KeL"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="入库" id="Obl-BQ-mww"/>
+                    <connections>
+                        <outlet property="packTF" destination="NOh-7I-ZEx" id="oDG-zt-TVN"/>
+                        <outlet property="positionTF" destination="mFC-Cu-o9K" id="JEr-Nf-ZdV"/>
+                        <outlet property="warehouseTF" destination="ip7-Fg-CMu" id="VW5-lU-BlC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g7D-IM-ltU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="233" y="7722"/>
+        </scene>
+        <!--入库-->
+        <scene sceneID="i72-GF-C5P">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SFN-dN-JFa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="入库" image="find" id="47V-oG-DGp"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zV2-M0-s1N">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0IF-gE-rut" kind="relationship" relationship="rootViewController" id="ZmD-rA-jjD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1k0-AV-RYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-174" y="7733"/>
+        </scene>
+        <!--查库-->
+        <scene sceneID="Kbg-6A-6R3">
+            <objects>
+                <viewController id="e3x-WZ-efT" customClass="ChaKuViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aQD-CF-NhU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="零件号：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gjd-Fa-MDQ">
+                                <rect key="frame" x="40" y="145" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仓库：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yXj-Yi-bwA">
+                                <rect key="frame" x="40" y="240" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="F3R-VE-WaO">
+                                <rect key="frame" x="40" y="260" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tJN-3T-u0u">
+                                <rect key="frame" x="52" y="357" width="217" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.34018288000000002" green="0.73630819520000002" blue="0.37557483359999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="查询">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmAction:" destination="e3x-WZ-efT" eventType="touchUpInside" id="kAs-Xt-FyG"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="4nw-Sg-qRU">
+                                <rect key="frame" x="37" y="174" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="查库" id="44C-Dz-MPD"/>
+                    <connections>
+                        <outlet property="partTextField" destination="4nw-Sg-qRU" id="jGi-Oy-XeY"/>
+                        <outlet property="whTextField" destination="F3R-VE-WaO" id="4JS-gp-h5U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gnR-nR-awf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1236" y="7249"/>
+        </scene>
+        <!--查库-->
+        <scene sceneID="iBA-TV-kKW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fJF-sy-ok2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="查库" image="find" id="v2k-Gy-PNE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pnK-18-e33">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="e3x-WZ-efT" kind="relationship" relationship="rootViewController" id="Lr3-rD-ST5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="skD-qE-FgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="927" y="7240"/>
         </scene>
     </scenes>
     <resources>
@@ -5692,25 +5868,25 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kxl-Rh-nWd"/>
-        <segue reference="SI0-aO-vpZ"/>
-        <segue reference="Hyz-uv-cpc"/>
-        <segue reference="fTA-Xe-KDm"/>
-        <segue reference="U3W-2k-BOU"/>
-        <segue reference="zbp-Dd-2O5"/>
+        <segue reference="If0-NA-MAK"/>
+        <segue reference="pF9-mf-As5"/>
+        <segue reference="EZu-KH-oca"/>
+        <segue reference="UnZ-wN-WXV"/>
+        <segue reference="zjP-oP-VXq"/>
+        <segue reference="8RY-QF-ZAw"/>
+        <segue reference="SkA-08-PWt"/>
+        <segue reference="FcC-pN-TYA"/>
+        <segue reference="7b0-8i-w2b"/>
         <segue reference="Neh-iJ-Fpe"/>
         <segue reference="Do4-uK-Dun"/>
         <segue reference="Dng-DQ-LOk"/>
-        <segue reference="mEd-et-lyR"/>
-        <segue reference="SkA-08-PWt"/>
-        <segue reference="GAe-Se-hn7"/>
-        <segue reference="7b0-8i-w2b"/>
+        <segue reference="Hyz-uv-cpc"/>
+        <segue reference="Xpt-zp-Oio"/>
+        <segue reference="U3W-2k-BOU"/>
+        <segue reference="zbp-Dd-2O5"/>
+        <segue reference="Kxl-Rh-nWd"/>
         <segue reference="veK-WU-skj"/>
         <segue reference="Get-Zr-2fp"/>
         <segue reference="yJ1-Ae-Eed"/>
-        <segue reference="xUu-VW-Prs"/>
-        <segue reference="UnZ-wN-WXV"/>
-        <segue reference="EZu-KH-oca"/>
-        <segue reference="zjP-oP-VXq"/>
     </inferredMetricsTieBreakers>
 </document>

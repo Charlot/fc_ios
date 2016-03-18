@@ -30,6 +30,9 @@
 +(instancetype)generateUserPreference:(id)object
 {
     UserPreference *userPref=[UserPreference sharedUserPreference];
+    userPref.user_id=object[@"user_id"]?object[@"user_id"]:@"";
+
+    
     userPref.role_id=object[@"role_id"]?[NSString stringWithFormat:@"%@",object[@"role_id"]]:@"";
     userPref.location_id=object[@"location_id"]?object[@"location_id"]:@"";
     userPref.location_name=object[@"location_name"]?object[@"location_name"]:@"";
