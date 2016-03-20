@@ -2961,7 +2961,7 @@
         <scene sceneID="qXM-bW-4V1">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="bw9-iL-tDC" customClass="ReceiveTuoViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mVT-X8-oF1">
+                    <view key="view" contentMode="scaleToFill" id="mVT-X8-oF1" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -3045,6 +3045,9 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="touchScreen:" destination="bw9-iL-tDC" eventType="touchUpInside" id="ux0-Jo-xec"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="接收箱接收" id="L8S-qB-Y61"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -5805,15 +5808,15 @@
         <segue reference="Jdf-8l-kNU"/>
         <segue reference="Dng-DQ-LOk"/>
         <segue reference="oOw-in-AQO"/>
-        <segue reference="2nV-DT-24h"/>
         <segue reference="SkA-08-PWt"/>
         <segue reference="dyT-NG-4n1"/>
+        <segue reference="7b0-8i-w2b"/>
         <segue reference="Neh-iJ-Fpe"/>
         <segue reference="Do4-uK-Dun"/>
         <segue reference="U3W-2k-BOU"/>
         <segue reference="zbp-Dd-2O5"/>
         <segue reference="tP9-hz-80H"/>
-        <segue reference="z0b-gw-Ccg"/>
+        <segue reference="fTA-Xe-KDm"/>
         <segue reference="PPk-8F-ZrK"/>
         <segue reference="aya-mQ-TZi"/>
         <segue reference="UAK-rn-23P"/>

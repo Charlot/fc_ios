@@ -45,6 +45,7 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title=self.tuo.container_id;
     self.scanTextField.delegate=self;
+ //   [self.scanTextField becomeFirstResponder];
     self.xiangTable.delegate=self;
     self.xiangTable.dataSource=self;
     self.countLabel.adjustsFontSizeToFitWidth=YES;
@@ -137,8 +138,8 @@
 #pragma textField
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    UIView *dummyView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
-    textField.inputView=dummyView;
+//    UIView *dummyView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
+//    textField.inputView=dummyView;
 }
 // for test via keyboard
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -229,6 +230,7 @@
                                   [[self.tuo.xiang objectAtIndex:i] setChecked:YES];
                                   [self.xiangTable reloadData];
                                   [self updateAddCheckedLabel];
+                                  self.scanTextField.text=@"";
                               }
                               else{
                                   dispatch_async(dispatch_get_main_queue(), ^{
@@ -432,4 +434,25 @@
         vc.disableBack=YES;
     }
 }
+
+
+- (IBAction)touchScreen:(id)sender {
+    // [self  dismissKeyboard];
+    
+    [self hideKeyboard];
+    [self.scanTextField resignFirstResponder];
+    
+  //  [self.snTextField becomeFirstResponder];
+}
+
+-(void)hideKeyboard{
+   // if(self.view.frame.origin.y!=0){
+        NSTimeInterval animationDuration=0.30f;
+        [UIView animateWithDuration:animationDuration
+                         animations:^{
+                             self.view.frame=CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+                         }];
+    //}
+}
+
 @end
