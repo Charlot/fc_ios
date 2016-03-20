@@ -110,6 +110,6 @@
     [self.ipTextField resignFirstResponder];
     [self.portTextField resignFirstResponder];
     [self.serverTextField resignFirstResponder];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end
