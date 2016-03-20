@@ -39,7 +39,9 @@
     userPref.operation_mode=object[@"operation_mode"]?[NSString stringWithFormat:@"%@",object[@"operation_mode"]]:@"0";
     Location* destination= [[Location alloc] initWithObject:object[@"location"][@"destination"]];
     
-    Location* location=[[Location alloc] initWithObject:object[@"location"] AndDestination:destination];
+     Location* order_source_location= [[Location alloc] initWithObject:object[@"location"][@"order_source_location"]];
+    
+    Location* location=[[Location alloc] initWithObject:object[@"location"] AndDestination:destination AndSource:order_source_location];
     
     userPref.location=location;
     

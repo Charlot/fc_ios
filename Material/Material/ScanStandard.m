@@ -38,7 +38,8 @@
                                     @"QUANTITY":@"quantity",
                                     @"PART":@"partNumber",
                                     @"DATE":@"date",
-                                    @"UNIQ":@"key"
+                                    @"UNIQ":@"key",
+                                    @"FORKLIFT":@"forklift"
                                   },
                           @"200":@{
                                     @"ORDERITEM_QTY":@"quantity",
@@ -98,37 +99,58 @@
 
 -(NSString *)filterQuantity:(NSString *)data
 {
-    if(self.regexDictionary.count==0){
-        [self alertForSetting];
-        return @"";
-    }
-    NSString *myData=[data copy];
-    int beginP=[self.regexDictionary[@"quantity"][@"prefix_length"] intValue];
-    int lastP=[self.regexDictionary[@"quantity"][@"suffix_length"] intValue];
-    NSString *postString=[NSString string];
-    if([myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)]){
-        postString=[myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)];
-    }
-    else{
-        postString=@"";
+//    if(self.regexDictionary.count==0){
+//        [self alertForSetting];
+//        return @"";
+//    }
+//    NSString *myData=[data copy];
+//    int beginP=[self.regexDictionary[@"quantity"][@"prefix_length"] intValue];
+//    int lastP=[self.regexDictionary[@"quantity"][@"suffix_length"] intValue];
+//    NSString *postString=[NSString string];
+//    if([myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)]){
+//        postString=[myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)];
+//    }
+//    else{
+//        postString=@"";
+//    }
+//    return postString;
+    
+    NSString *postString=[data copy];
+    NSError *error;
+    if(self.regexDictionary[@"quantity"] && self.regexDictionary[@"quantity"][@"suffix_string"]  && [self.regexDictionary[@"quantity"][@"suffix_string"] length]>0){
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:self.regexDictionary[@"quantity"][@"suffix_string"] options:0 error:&error];
+        
+        
+        postString = [regex stringByReplacingMatchesInString:data options:0 range:NSMakeRange(0, [data length]) withTemplate:@""];
     }
     return postString;
+    
 }
 -(NSString *)filterPartNumber:(NSString *)data
 {
-    if(self.regexDictionary.count==0){
-        [self alertForSetting];
-        return @"";
-    }
-    NSString *myData=[data copy];
-    int beginP=[self.regexDictionary[@"partNumber"][@"prefix_length"] intValue];
-    int lastP=[self.regexDictionary[@"partNumber"][@"suffix_length"] intValue];
-    NSString *postString=[NSString string];
-    if([myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)]){
-        postString=[myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)];
-    }
-    else{
-        postString=@"";
+//    if(self.regexDictionary.count==0){
+//        [self alertForSetting];
+//        return @"";
+//    }
+//    NSString *myData=[data copy];
+//    int beginP=[self.regexDictionary[@"partNumber"][@"prefix_length"] intValue];
+//    int lastP=[self.regexDictionary[@"partNumber"][@"suffix_length"] intValue];
+//    NSString *postString=[NSString string];
+//    if([myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)]){
+//        postString=[myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)];
+//    }
+//    else{
+//        postString=@"";
+//    }
+//    return postString;
+    
+    NSString *postString=[data copy];
+    NSError *error;
+    if(self.regexDictionary[@"partNumber"] && self.regexDictionary[@"partNumber"][@"suffix_string"] &&[self.regexDictionary[@"partNumber"][@"suffix_string"] length]>0){
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:self.regexDictionary[@"partNumber"][@"suffix_string"] options:0 error:&error];
+        
+        
+        postString = [regex stringByReplacingMatchesInString:data options:0 range:NSMakeRange(0, [data length]) withTemplate:@""];
     }
     return postString;
 }
@@ -152,39 +174,45 @@
 }
 -(NSString *)filterKey:(NSString *)data
 {
-    if(self.regexDictionary.count==0){
-        [self alertForSetting];
-        return @"";
-    }
-    NSString *myData=[data copy];
-    int beginP=[self.regexDictionary[@"key"][@"prefix_length"] intValue];
-    int lastP=[self.regexDictionary[@"key"][@"suffix_length"] intValue];
-    NSString *postString=[NSString string];
-    if([myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)]){
-        postString=[myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)];
-    }
-    else{
-        postString=@"";
+    NSString *postString=[data copy];
+     NSError *error;
+    if(self.regexDictionary[@"key"] && self.regexDictionary[@"key"][@"suffix_string"] &&[self.regexDictionary[@"key"][@"suffix_string"] length]>0){
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:self.regexDictionary[@"key"][@"suffix_string"] options:0 error:&error];
+    
+    
+  postString = [regex stringByReplacingMatchesInString:data options:0 range:NSMakeRange(0, [data length]) withTemplate:@""];
     }
     return postString;
 }
 -(NSString *)filterDepartment:(NSString *)data
 {
-    if(self.regexDictionary.count==0){
-        [self alertForSetting];
-        return @"";
-    }
-    NSString *myData=[data copy];
-    int beginP=[self.regexDictionary[@"department"][@"prefix_length"] intValue];
-    int lastP=[self.regexDictionary[@"department"][@"suffix_length"] intValue];
-    NSString *postString=[NSString string];
-    if([myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)]){
-        postString=[myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)];
-    }
-    else{
-        postString=@"";
+//    if(self.regexDictionary.count==0){
+//        [self alertForSetting];
+//        return @"";
+//    }
+//    NSString *myData=[data copy];
+//    int beginP=[self.regexDictionary[@"department"][@"prefix_length"] intValue];
+//    int lastP=[self.regexDictionary[@"department"][@"suffix_length"] intValue];
+//    NSString *postString=[NSString string];
+//    if([myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)]){
+//        postString=[myData substringWithRange:NSMakeRange(beginP, [myData length]-beginP-lastP)];
+//    }
+//    else{
+//        postString=@"";
+//    }
+//    return postString;
+    
+    
+    NSString *postString=[data copy];
+    NSError *error;
+    if(self.regexDictionary[@"department"] && self.regexDictionary[@"department"][@"suffix_string"] && [self.regexDictionary[@"department"][@"suffix_string"] length]>0){
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:self.regexDictionary[@"department"][@"suffix_string"] options:0 error:&error];
+        
+        
+        postString = [regex stringByReplacingMatchesInString:data options:0 range:NSMakeRange(0, [data length]) withTemplate:@""];
     }
     return postString;
+    
 }
 -(BOOL)checkQuantity:(NSString *)data{
     if(self.regexDictionary.count==0){

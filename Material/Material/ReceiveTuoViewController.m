@@ -12,6 +12,7 @@
 #import "AFNetOperate.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "ReceivePrintViewController.h"
+#import "ScanStandard.h"
 
 @interface ReceiveTuoViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,CaptuvoEventsProtocol>
 @property (weak, nonatomic) IBOutlet UITextField *scanTextField;
@@ -23,6 +24,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 - (IBAction)confirm:(id)sender;
 - (IBAction)cancel:(id)sender;
+
+
+@property (strong,nonatomic)ScanStandard *scanStandard;
+
 @end
 @implementation ReceiveTuoViewController
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -65,6 +70,9 @@
     if(!self.enableBack){
        [self.navigationItem setHidesBackButton:YES];
     }
+    
+    self.scanStandard=[ScanStandard sharedScanStandard];
+
 }
 -(void)updateCheckedLabel{
     NSString *count=[NSString stringWithFormat:@"%d",self.xiangCheckedCount];
@@ -106,10 +114,105 @@
 #pragma captuvo delegate
 -(void)decoderDataReceived:(NSString *)data
 {
+    
+    NSString *packNr=[self.scanStandard filterKey:data];
+    [self validate:packNr];
+}
+-(void)changeToAnotherXiang:(Tuo *)tuo
+{
+    self.tuo=tuo;
+    self.navigationItem.title=self.tuo.container_id;
+    self.xiangCheckedCount=0;
+    for(int i=0;i<self.tuo.xiang.count;i++){
+        Xiang *xiang=self.tuo.xiang[i];
+        if(xiang.checked){
+            self.xiangCheckedCount++;
+        }
+    }
+    self.scanTextField.text=@"";
+    [self.scanTextField becomeFirstResponder];
+    [self updateCheckedLabel];
+    [self.xiangTable reloadData];
+}
+#pragma textField
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    UIView *dummyView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
+    textField.inputView=dummyView;
+}
+// for test via keyboard
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSString *packNr=[self.scanStandard filterKey:textField.text];
+    [self validate:packNr];
+//    NSMutableArray *xiangArray=self.tuo.xiang;
+//    int count=0;
+//    for(int i=0;i<xiangArray.count;i++){
+//        if([textField.text isEqualToString:[xiangArray[i] container_id]]){
+//            count++;
+//            AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+//            AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+//            [manager POST:[AFNet xiang_check]
+//               parameters:@{@"id":[xiangArray[i] ID]}
+//                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                      [AFNet.activeView stopAnimating];
+//                      if([responseObject[@"result"] integerValue]==1){
+//                          [[self.tuo.xiang objectAtIndex:i] setChecked:YES];
+//                          [self.xiangTable reloadData];
+//                          [self updateAddCheckedLabel];
+//                      }
+//                      else{
+//                          [AFNet alert:responseObject[@"content"]];
+//                      }
+//                  }
+//                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                      [AFNet.activeView stopAnimating];
+//                      [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+//                  }
+//             ];
+//            break;
+//        }
+//    }
+//    if(count==0){
+//        //判断是不是扫的是另一个托中的箱
+//        BOOL noXiang=1;
+//        for(int i=0;i<self.tuoArray.count;i++){
+//            if(self.tuoArray[i]!=self.tuo){
+//                Tuo *tuoItem=self.tuoArray[i];
+//                for(int j=0;j<tuoItem.xiang.count;j++){
+//                    Xiang *xiangItem=tuoItem.xiang[j];
+//                    
+//                    if([textField.text isEqualToString:xiangItem.container_id]){
+//                        noXiang=0;
+//                        //切换到另一个拖的模式下
+//                        [self changeToAnotherXiang:tuoItem];
+//                        //把刚才扫描的那一箱给填上去
+//                        [self decoderDataReceived:xiangItem.container_id];
+//                        break ;
+//                    }
+//                }
+//            }
+//        }
+//        if(noXiang){
+//            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"没有找到该箱"
+//                                                           message:[NSString stringWithFormat:@"未在该拖清单中发现托箱%@",textField.text]
+//                                                          delegate:self
+//                                                 cancelButtonTitle:@"确定"
+//                                                 otherButtonTitles:nil];
+//            AudioServicesPlaySystemSound(1051);
+//            [alert show];
+//        }
+//    }
+//    
+   return YES;
+}
+
+-(void)validate:(NSString*)packNr{
+    
     NSMutableArray *xiangArray=self.tuo.xiang;
     int count=0;
     for(int i=0;i<xiangArray.count;i++){
-        if([data isEqualToString:[xiangArray[i] container_id]]){
+        if([packNr isEqualToString:[xiangArray[i] container_id]]){
             count++;
             dispatch_queue_t check_queue=dispatch_queue_create("com.check.pptalent", NULL);
             dispatch_async(check_queue, ^{
@@ -155,7 +258,7 @@
                 Tuo *tuoItem=self.tuoArray[i];
                 for(int j=0;j<tuoItem.xiang.count;j++){
                     Xiang *xiangItem=tuoItem.xiang[j];
-                    if([data isEqualToString:xiangItem.container_id]){
+                    if([packNr isEqualToString:xiangItem.container_id]){
                         noXiang=0;
                         //切换到另一个拖的模式下
                         [self changeToAnotherXiang:tuoItem];
@@ -168,7 +271,7 @@
         }
         if(noXiang){
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"没有找到该箱"
-                                                           message:[NSString stringWithFormat:@"未在该拖清单中发现托箱%@",data]
+                                                           message:[NSString stringWithFormat:@"未在该拖清单中发现托箱%@",packNr]
                                                           delegate:self
                                                  cancelButtonTitle:@"确定"
                                                  otherButtonTitles:nil];
@@ -176,92 +279,6 @@
             [alert show];
         }
     }
-}
--(void)changeToAnotherXiang:(Tuo *)tuo
-{
-    self.tuo=tuo;
-    self.navigationItem.title=self.tuo.container_id;
-    self.xiangCheckedCount=0;
-    for(int i=0;i<self.tuo.xiang.count;i++){
-        Xiang *xiang=self.tuo.xiang[i];
-        if(xiang.checked){
-            self.xiangCheckedCount++;
-        }
-    }
-    self.scanTextField.text=@"";
-    [self.scanTextField becomeFirstResponder];
-    [self updateCheckedLabel];
-    [self.xiangTable reloadData];
-}
-#pragma textField
--(void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    UIView *dummyView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
-    textField.inputView=dummyView;
-}
-// for test via keyboard
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    NSMutableArray *xiangArray=self.tuo.xiang;
-    int count=0;
-    for(int i=0;i<xiangArray.count;i++){
-        if([textField.text isEqualToString:[xiangArray[i] container_id]]){
-            count++;
-            AFNetOperate *AFNet=[[AFNetOperate alloc] init];
-            AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-            [manager POST:[AFNet xiang_check]
-               parameters:@{@"id":[xiangArray[i] ID]}
-                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                      [AFNet.activeView stopAnimating];
-                      if([responseObject[@"result"] integerValue]==1){
-                          [[self.tuo.xiang objectAtIndex:i] setChecked:YES];
-                          [self.xiangTable reloadData];
-                          [self updateAddCheckedLabel];
-                      }
-                      else{
-                          [AFNet alert:responseObject[@"content"]];
-                      }
-                  }
-                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                      [AFNet.activeView stopAnimating];
-                      [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
-                  }
-             ];
-            break;
-        }
-    }
-    if(count==0){
-        //判断是不是扫的是另一个托中的箱
-        BOOL noXiang=1;
-        for(int i=0;i<self.tuoArray.count;i++){
-            if(self.tuoArray[i]!=self.tuo){
-                Tuo *tuoItem=self.tuoArray[i];
-                for(int j=0;j<tuoItem.xiang.count;j++){
-                    Xiang *xiangItem=tuoItem.xiang[j];
-                    
-                    if([textField.text isEqualToString:xiangItem.container_id]){
-                        noXiang=0;
-                        //切换到另一个拖的模式下
-                        [self changeToAnotherXiang:tuoItem];
-                        //把刚才扫描的那一箱给填上去
-                        [self decoderDataReceived:xiangItem.container_id];
-                        break ;
-                    }
-                }
-            }
-        }
-        if(noXiang){
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"没有找到该箱"
-                                                           message:[NSString stringWithFormat:@"未在该拖清单中发现托箱%@",textField.text]
-                                                          delegate:self
-                                                 cancelButtonTitle:@"确定"
-                                                 otherButtonTitles:nil];
-            AudioServicesPlaySystemSound(1051);
-            [alert show];
-        }
-    }
-    
-    return YES;
 }
 #pragma table delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -362,6 +379,7 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex==1){
+        if(self.from==@"tuo"){
                 AFNetOperate *AFNet=[[AFNetOperate alloc] init];
                 AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
                 [manager POST:[AFNet tuo_confirm_receive]
@@ -380,6 +398,26 @@
                           [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
                       }
                  ];
+        }else if(self.from==@"yun"){
+            AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+            AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+            [manager POST:[AFNet yun_confirm_receive]
+               parameters:@{@"id":self.tuo.ID}
+                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                      [AFNet.activeView stopAnimating];
+                      if([responseObject[@"result"] integerValue]==1){
+                          [self performSegueWithIdentifier:@"print" sender:self];
+                      }
+                      else{
+                          [AFNet alert:responseObject[@"content"]];
+                      }
+                  }
+                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                      [AFNet.activeView stopAnimating];
+                      [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+                  }
+             ];
+        }
     }
 }
 - (IBAction)cancel:(id)sender {

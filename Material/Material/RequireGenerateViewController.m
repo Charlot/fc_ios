@@ -71,6 +71,8 @@
     self.partTextField.delegate=self;
     self.departmentTextField.delegate=self;
     self.quantityTextField.delegate=self;
+    
+    
     self.xiangTable.delegate=self;
     self.secondDepartmentTextField.delegate=self;
     self.secondPartNumberTextField.delegate=self;
@@ -93,6 +95,7 @@
     self.thisXiangArray=[NSMutableArray array];
     self.thisXiangCountLabel.adjustsFontSizeToFitWidth=YES;
     self.isExistDictionary=[NSMutableDictionary dictionary];
+  
 }
 
 - (void)didReceiveMemoryWarning
@@ -104,7 +107,17 @@
 {
     [super viewWillAppear:animated];
     [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
-    [self.departmentTextField becomeFirstResponder];
+
+    
+    [self.partTextField becomeFirstResponder];
+    
+    self.quantityTextField.text=@"1";
+    self.quantityTextField.enabled=NO;
+    self.departmentTextField.text=[self.userPreference.location.order_source_location name];
+    self.departmentTextField.enabled=NO;
+    
+    
+    
     [self.xiangTable reloadData];
  
 }
@@ -240,9 +253,9 @@
                           
                           NSMutableDictionary *content=[responseObject[@"content"] mutableCopy];
                           NSString *source=[content objectForKey:@"source_id"];
-                          [content setObject:partNumber forKey:@"part_id"];
+                          //[content setObject:partNumber forKey:@"part_id"];
                           [content setObject:quantity forKey:@"quantity"];
-                          [content setObject:department forKey:@"whouse_id"];
+                          //[content setObject:department forKey:@"whouse_id"];
                           [content removeObjectForKey:@"box_quantity"];
                           
                           RequireXiang *xiang=[[RequireXiang alloc] initWithObject:content];
@@ -275,7 +288,7 @@
                           AudioServicesPlaySystemSound(1051);
                           [AFNet alert:responseObject[@"content"]];
                           self.partTextField.text=@"";
-                          self.quantityTextField.text=@"";
+                          //self.quantityTextField.text=@"";
                           [self.partTextField becomeFirstResponder];
                       }
                   }
@@ -372,7 +385,7 @@
                                     repeats:NO];
     [alert show];
     self.partTextField.text=@"";
-    self.quantityTextField.text=@"";
+    //self.quantityTextField.text=@"";
     [self.partTextField becomeFirstResponder];
     //合并处理
     [self xiangMerge:xiang];
@@ -397,7 +410,7 @@
                                     repeats:NO];
     [alert show];
     self.partTextField.text=@"";
-    self.quantityTextField.text=@"";
+    //self.quantityTextField.text=@"";
     [self.partTextField becomeFirstResponder];
 }
 //添加箱后的合并

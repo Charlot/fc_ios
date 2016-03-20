@@ -168,7 +168,7 @@
                                        [tuo.xiang addObject:xiang];
                                    }
                                    self.scanTextField.text=@"";
-                                   [self performSegueWithIdentifier:@"receiveTuo" sender:@{@"title":data,@"tuo":tuo}];
+                                   [self performSegueWithIdentifier:@"receiveTuo" sender:@{@"title":data,@"tuo":tuo,@"from":@"tuo"}];
                                }
                                else{
                                    [AFNet alert:responseObject[@"content"]];
@@ -283,7 +283,7 @@
                  }
                  self.scanTextField.text=@"";
                  [AFNet.activeView stopAnimating];
-                 [self performSegueWithIdentifier:@"receiveTuo" sender:@{@"title":data,@"tuo":yun}];
+                 [self performSegueWithIdentifier:@"receiveTuo" sender:@{@"title":data,@"tuo":yun,@"from":@"yun"}];
              }
              else{
                  [AFNet alert:responseObject[@"content"]];
@@ -314,6 +314,7 @@
         vc.enableCancel=YES;
         vc.enableConfirm=YES;
         vc.tuo=[sender objectForKey:@"tuo"];
+        vc.from=[sender objectForKey:@"from"];
     }
     else if([segue.identifier isEqualToString:@"receiveYun"]){
         ReceiveYunViewController *vc=segue.destinationViewController;

@@ -9,13 +9,15 @@
 #import "RukuViewController.h"
 #import "AFNetOperate.h"
 
+#import "ScanStandard.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 @interface RukuViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *warehouseTF;
 @property (weak, nonatomic) IBOutlet UITextField *positionTF;
-@property (weak, nonatomic) IBOutlet UITextField *packTF;
+@property (weak, nonatomic) IBOutlet UITextField *containerTF;
 
+@property (strong,nonatomic)ScanStandard *scanStandard;
 
 //@property(nonatomic, strong) UIAlertView *alert;
 
@@ -42,10 +44,12 @@
     [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
     self.warehouseTF.delegate=self;
     self.positionTF.delegate=self;
-    self.packTF.delegate=self;
- 
+    self.containerTF.delegate=self;
     
-    [self.warehouseTF becomeFirstResponder];
+    self.scanStandard=[ScanStandard sharedScanStandard];
+
+    [self clearAllTextFields];
+    //[self.warehouseTF becomeFirstResponder];
     
 }
 
@@ -62,8 +66,6 @@
 -(void)decoderDataReceived:(NSString *)data
 {
     self.firstResponder.text=[data copy];
-    
-    
     if(self.firstResponder.text.length>0){
         [self textFieldShouldReturn:self.firstResponder];
     }
@@ -76,8 +78,8 @@
     if(textField==self.warehouseTF){
         [self.positionTF becomeFirstResponder];
     }else if(textField==self.positionTF){
-        [self.packTF becomeFirstResponder];
-    }else if(textField==self.packTF){
+        [self.containerTF becomeFirstResponder];
+    }else if(textField==self.containerTF){
       
         [self validate];
     }
@@ -85,11 +87,11 @@
 }
 
 -(void)validate{
-    
+    NSString *nr=[self.scanStandard filterKey:self.containerTF.text];
     AFNetOperate *AFNet = [[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
     [manager POST:[AFNet enter_stock]
-      parameters:@{@"warehouse":self.warehouseTF.text,@"position":self.positionTF.text,@"package":self.packTF.text}
+      parameters:@{@"warehouse":self.warehouseTF.text,@"position":self.positionTF.text,@"container":nr}
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              [AFNet.activeView stopAnimating];
              if ([responseObject[@"result"] integerValue] == 1) {
@@ -106,8 +108,9 @@
                                                  repeats:NO];
                  
                  AudioServicesPlaySystemSound(1051);
-                 [self clearAllTextFields];
-                 
+                 //[self clearAllTextFields];
+                 self.containerTF.text=@"";
+                 [self.containerTF becomeFirstResponder];
              } else {
                  [AFNet alert:responseObject[@"content"]];
              }

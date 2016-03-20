@@ -371,7 +371,7 @@
         NSString *address=[AFNet xiang_validate];
         dispatch_queue_t validate=dispatch_queue_create("com.validate.pptalent", NULL);
         dispatch_async(validate, ^{
-            NSString *myData=data;
+            NSString *myData= [self.scanStandard filterKey: data];
             if(self.tuo.ID.length>0 ){
                 [manager POST:address
                    parameters:@{@"id":myData}
@@ -547,6 +547,8 @@
         NSString *quantity=self.quatity.text?self.quatity.text:@"";
         NSString *date=self.dateTextField.text?self.dateTextField.text:@"";
         //after regex partNumber
+        NSString *keyPost=[self.scanStandard filterKey:key];
+        
         NSString *partNumberPost=[self.scanStandard filterPartNumber:partNumber];
         //after regex quantity
         NSString *quantityPost=[self.scanStandard filterQuantity:quantity];
@@ -559,7 +561,7 @@
             if([self.userPref.location_id isEqualToString:@"FG"]){
                 parameters=@{
                              @"id":self.tuo.ID,
-                             @"package_id":key,
+                             @"package_id":keyPost,
                              @"part_id":partNumberPost,
                              @"quantity":quantityPost,
                              @"custom_fifo_time":datePost,
@@ -572,7 +574,7 @@
             else{
             parameters=@{
                          @"id":self.tuo.ID,
-                          @"package_id":key,
+                          @"package_id":keyPost,
                           @"part_id":partNumberPost,
                           @"quantity":quantityPost,
                              @"custom_fifo_time":datePost,
@@ -650,7 +652,7 @@
  
             [manager POST:[AFNet xiang_index]
                parameters:@{@"package":@{
-                                    @"id":key,
+                                    @"id":keyPost,
                                     @"part_id":partNumberPost,
                                     @"quantity":quantityPost,
                                     @"custom_fifo_time":datePost,

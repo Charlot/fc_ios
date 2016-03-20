@@ -441,7 +441,7 @@
 		B07CE56C198B8890000FD578 /* RequireCheckXiangTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequireCheckXiangTableViewCell.xib; sourceTree = "<group>"; };
 		B07CE56F198B8CAA000FD578 /* RequireCheckBill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireCheckBill.h; sourceTree = "<group>"; };
 		B07CE570198B8CAA000FD578 /* RequireCheckBill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireCheckBill.m; sourceTree = "<group>"; };
-		B085F60C194004CC001F01F3 /* VIM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B085F60C194004CC001F01F3 /* VMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B085F60F194004CC001F01F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B085F611194004CC001F01F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B085F613194004CC001F01F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1083,7 +1083,7 @@
 		B085F60D194004CC001F01F3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B085F60C194004CC001F01F3 /* VIM.app */,
+				B085F60C194004CC001F01F3 /* VMI.app */,
 				B085F627194004CC001F01F3 /* MaterialTests.xctest */,
 			);
 			name = Products;
@@ -1269,7 +1269,7 @@
 			);
 			name = Material;
 			productName = Material;
-			productReference = B085F60C194004CC001F01F3 /* VIM.app */;
+			productReference = B085F60C194004CC001F01F3 /* VMI.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B085F626194004CC001F01F3 /* MaterialTests */ = {
@@ -1651,7 +1651,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cz-tek.wms.vmi";
-				PRODUCT_NAME = VIM;
+				PRODUCT_NAME = VMI;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1677,7 +1677,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cz-tek.wms.vmi";
-				PRODUCT_NAME = VIM;
+				PRODUCT_NAME = VMI;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

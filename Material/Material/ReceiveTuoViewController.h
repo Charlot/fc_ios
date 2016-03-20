@@ -13,6 +13,7 @@
 @interface ReceiveTuoViewController : UIViewController
 @property(nonatomic,strong)Tuo *tuo;
 @property(nonatomic,strong)Yun *yun;
+@property(nonatomic,strong)NSString *from;
 @property(nonatomic,strong)NSArray *tuoArray;
 @property(nonatomic)BOOL enableConfirm;
 @property(nonatomic)BOOL enableCancel;

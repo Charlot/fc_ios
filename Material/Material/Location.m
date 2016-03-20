@@ -30,7 +30,7 @@
 }
 
 
--(instancetype)initWithObject:(NSDictionary *)dictionary AndDestination:(Location*) destination
+-(instancetype)initWithObject:(NSDictionary *)dictionary AndDestination:(Location*) destination AndSource:(Location*)source
 {
     self=[super init];
     if(self){
@@ -42,6 +42,7 @@
         self.created_at=dictionary[@"created_at"]?dictionary[@"created_at"]:@"";
         self.updated_at=dictionary[@"updated_at"]?dictionary[@"updated_at"]:@"";
         self.defaultDestination=destination;
+        self.order_source_location=source;
     }
     return self;
 }

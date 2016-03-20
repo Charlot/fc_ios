@@ -18,10 +18,11 @@
 @property(nonatomic,strong)NSString *updated_at;
 
 @property(nonatomic,strong)Location *defaultDestination;
+@property(nonatomic,strong)Location *order_source_location;
 
 
 
 -(instancetype)initWithObject:(NSDictionary *)dictionary;
 
--(instancetype)initWithObject:(NSDictionary *)dictionary AndDestination:(Location *) destination;
+-(instancetype)initWithObject:(NSDictionary *)dictionary AndDestination:(Location *) destination  AndSource:(Location*)source;
 @end

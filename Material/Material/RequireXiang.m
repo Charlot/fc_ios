@@ -47,6 +47,7 @@
         self.partNumber_origin=[self.scanStandard filterPartNumber:self.partNumber];
         
         self.department=[object objectForKey:@"whouse_id"]?[object objectForKey:@"whouse_id"]:@"";
+        
         self.department_origin=[self.scanStandard filterDepartment:self.department];
         
         self.agent=[object objectForKey:@"user_id"]?[object objectForKey:@"user_id"]:@"";
