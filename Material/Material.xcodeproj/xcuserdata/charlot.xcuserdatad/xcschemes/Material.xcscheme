@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B085F60B194004CC001F01F3"
-               BuildableName = "VIM.app"
+               BuildableName = "VMI.app"
                BlueprintName = "Material"
                ReferencedContainer = "container:Material.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B085F60B194004CC001F01F3"
-            BuildableName = "VIM.app"
+            BuildableName = "VMI.app"
             BlueprintName = "Material"
             ReferencedContainer = "container:Material.xcodeproj">
          </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B085F60B194004CC001F01F3"
-            BuildableName = "VIM.app"
+            BuildableName = "VMI.app"
             BlueprintName = "Material"
             ReferencedContainer = "container:Material.xcodeproj">
          </BuildableReference>
@@ -85,7 +85,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B085F60B194004CC001F01F3"
-            BuildableName = "VIM.app"
+            BuildableName = "VMI.app"
             BlueprintName = "Material"
             ReferencedContainer = "container:Material.xcodeproj">
          </BuildableReference>
