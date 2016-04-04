@@ -55,11 +55,11 @@
 }
 
 - (void)loadData {
-  self.partTextField.text = self.inventory_list_item.part_id;
+  self.partTextField.text = self.inventory_list_item.part_nr;
   self.scanTextField.text = self.inventory_list_item.package_id;
   self.qtyTextField.text = self.inventory_list_item.qty;
-  self.positionTextField.text = self.inventory_list_item.position;
-  self.whouseidTextField.text = self.inventory_list_item.whouse_id;
+  self.positionTextField.text = self.inventory_list_item.position_nr;
+  self.whouseidTextField.text = self.inventory_list_item.whouse_nr;
 }
 
 - (void)viewDidLoad {

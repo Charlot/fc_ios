@@ -20,7 +20,8 @@
   if (self) {
     self.ID = dictionary[@"id"] ? dictionary[@"id"] : @"";
     self.count = dictionary[@"count"] ? dictionary[@"count"] : @"";
-    self.position = dictionary[@"position"] ? dictionary[@"position"] : @"";
+    self.position = dictionary[@"position_id"] ? dictionary[@"position_id"] : @"";
+       self.positionNr = dictionary[@"position_nr"] ? dictionary[@"position_nr"] : @"";
     self.inventory_list_id = dictionary[@"inventory_list_id"]
                                  ? dictionary[@"inventory_list_id"]
                                  : @"";

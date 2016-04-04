@@ -107,7 +107,7 @@ preparation before navigation
         [segue destinationViewController];
     //    [positionVC.positionData removeAllObjects];
     //    positionVC.positionData = self.positionDataArray;
-    positionVC.position = self.position;
+    positionVC.position = self.position ;
     positionVC.inventory_list_id = self.inventory_list_id;
     positionVC.userName = self.userName;
   }
@@ -231,14 +231,14 @@ preparation before navigation
   UILabel *IDLabel = [cell.contentView viewWithTag:100];
   UILabel *countLabel = [cell.contentView viewWithTag:200];
 
-  IDLabel.text = il.position;
+  IDLabel.text = il.positionNr;
   countLabel.text = [NSString stringWithFormat:@"%@", il.count];
 }
 
 - (void)tableView:(UITableView *)tableView
     didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   InventoryList *il = (InventoryList *)self.dataArray[indexPath.row];
-  self.position = il.position;
+  self.position = il.positionNr;
   [self getPositionInfo:self.position];
   //  [self performSegueWithIdentifier:@"toPositionItemVC" sender:self];
 }

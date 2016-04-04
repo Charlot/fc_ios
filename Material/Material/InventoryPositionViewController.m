@@ -235,11 +235,12 @@
 
   InventoryListItem *inventory_list_item =
       (InventoryListItem *)self.positionData[indexPath.row];
+    
   UILabel *partIDLabel = [cell.contentView viewWithTag:100];
   UILabel *FIFOLabel = [cell.contentView viewWithTag:200];
   UILabel *qtyLabel = [cell.contentView viewWithTag:300];
 
-  partIDLabel.text = inventory_list_item.part_id;
+  partIDLabel.text = inventory_list_item.part_nr;
   FIFOLabel.text = inventory_list_item.fifo;
   qtyLabel.text = inventory_list_item.qty;
 }
@@ -325,7 +326,7 @@ preparation before navigation
     InventoryListItem *il =
         (InventoryListItem *)
             self.positionData[self.positionTable.indexPathForSelectedRow.row];
-    [il setPosition:self.position];
+    [il setPosition_nr:self.position];
     inventoryDetailVC.inventory_list_item = il;
   }
 }
