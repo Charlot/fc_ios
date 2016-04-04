@@ -1650,7 +1650,7 @@
 					"$(PROJECT_DIR)/Material",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cz-tek.wms.vmi";
+				PRODUCT_BUNDLE_IDENTIFIER = wms.jiaxuan.vmi;
 				PRODUCT_NAME = VMI;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1676,7 +1676,7 @@
 					"$(PROJECT_DIR)/Material",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cz-tek.wms.vmi";
+				PRODUCT_BUNDLE_IDENTIFIER = wms.jiaxuan.vmi;
 				PRODUCT_NAME = VMI;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

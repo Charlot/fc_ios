@@ -3354,12 +3354,12 @@
                   moduleName = "VMI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/charlot/project/brilliantech/fc_ios/Material/Material/ReceiveTuoViewController.m"
-                  timestampString = "481486243.216651"
+                  timestampString = "481489594.413937"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "452"
                   endingLineNumber = "452"
-                  offsetFromSymbolStart = "70">
+                  offsetFromSymbolStart = "84">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -3369,12 +3369,12 @@
                   moduleName = "VMI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/charlot/project/brilliantech/fc_ios/Material/Material/ReceiveTuoViewController.m"
-                  timestampString = "481486243.216832"
+                  timestampString = "481489594.414044"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "452"
-                  endingLineNumber = "452"
-                  offsetFromSymbolStart = "15">
+                  startingLineNumber = "453"
+                  endingLineNumber = "453"
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
