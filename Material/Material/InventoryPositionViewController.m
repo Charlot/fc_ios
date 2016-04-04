@@ -42,6 +42,8 @@
   self.positionTable.dataSource = self;
   self.positionTable.delegate = self;
   self.positionCount = @"0";
+    self.packageTextField.delegate=self;
+    
   [self.packageTextField becomeFirstResponder];
   //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
   //      initWithTarget:self
@@ -153,7 +155,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  [textField resignFirstResponder];
+   [textField resignFirstResponder];
   if (textField == self.packageTextField) {
     [self getPackageInfo:textField.text];
   }
@@ -234,12 +236,16 @@
          forIndexPath:(NSIndexPath *)indexPath {
 
   InventoryListItem *inventory_list_item =
-      (InventoryListItem *)self.positionData[indexPath.row];
+    (InventoryListItem *)self.positionData[indexPath.row];
+    
+    UILabel *packageLabel = [cell.contentView viewWithTag:400];
     
   UILabel *partIDLabel = [cell.contentView viewWithTag:100];
   UILabel *FIFOLabel = [cell.contentView viewWithTag:200];
   UILabel *qtyLabel = [cell.contentView viewWithTag:300];
 
+    packageLabel.text=inventory_list_item.package_id;
+    
   partIDLabel.text = inventory_list_item.part_nr;
   FIFOLabel.text = inventory_list_item.fifo;
   qtyLabel.text = inventory_list_item.qty;

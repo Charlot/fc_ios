@@ -3354,7 +3354,7 @@
                   moduleName = "VMI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/charlot/project/brilliantech/fc_ios/Material/Material/ReceiveTuoViewController.m"
-                  timestampString = "481483755.557906"
+                  timestampString = "481486243.216651"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "452"
@@ -3369,7 +3369,7 @@
                   moduleName = "VMI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/charlot/project/brilliantech/fc_ios/Material/Material/ReceiveTuoViewController.m"
-                  timestampString = "481483755.558115"
+                  timestampString = "481486243.216832"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "452"
@@ -3434,11 +3434,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481483263.22835"
+            timestampString = "481486242.125517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3450,11 +3450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481483263.22835"
+            timestampString = "481486242.125517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3466,11 +3466,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481482053.201545"
+            timestampString = "481485368.256288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-getPositionInfo"
             landmarkType = "5">
          </BreakpointContent>
@@ -3514,39 +3514,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481482132.623603"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "-getPositionInfo"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481482133.229438"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "-getPositionInfo"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481482133.734373"
+            timestampString = "481485368.256288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "176"
@@ -3562,11 +3530,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481482179.970942"
+            timestampString = "481485368.256288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "-getPositionInfo"
             landmarkType = "5">
          </BreakpointContent>
@@ -3578,11 +3546,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481482300.004194"
+            timestampString = "481485368.256288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "-getPositionInfo"
             landmarkType = "5">
          </BreakpointContent>
@@ -3594,7 +3562,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481482300.61995"
+            timestampString = "481485368.256288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "-getPositionInfo"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Material/InventoryPositionViewController.m"
+            timestampString = "481485368.256288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "197"
@@ -3610,11 +3594,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481482313.739988"
+            timestampString = "481485368.256288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "-getPositionInfo"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Material/InventoryPositionViewController.m"
+            timestampString = "481485368.256288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "-getPositionInfo"
             landmarkType = "5">
          </BreakpointContent>
@@ -3786,11 +3786,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481482890.765924"
+            timestampString = "481485368.256288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-getPositionInfo"
             landmarkType = "5">
          </BreakpointContent>
@@ -3802,11 +3802,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481482891.351528"
+            timestampString = "481485368.256288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "-getPositionInfo"
             landmarkType = "5">
          </BreakpointContent>
@@ -3818,11 +3818,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481483240.694626"
+            timestampString = "481485368.256288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "-configureCell:forIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3830,15 +3830,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481483267.495511"
+            timestampString = "481486242.125517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
             landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3850,11 +3850,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481483294.739353"
+            timestampString = "481486242.125517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "-configureCell:forIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3866,12 +3866,172 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/InventoryPositionViewController.m"
-            timestampString = "481483334.339023"
+            timestampString = "481486242.125517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "-prepareForSegue:sender:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Material/InventoryPositionViewController.m"
+            timestampString = "481485368.256288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "-getPackageInfo:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Material/InventoryPositionViewController.m"
+            timestampString = "481485368.256288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "-getPackageInfo:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Material/InventoryPositionViewController.m"
+            timestampString = "481485368.256288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-decoderDataReceived:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Material/InventoryPositionViewController.m"
+            timestampString = "481485368.256288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-decoderDataReceived:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Material/InventoryPositionViewController.m"
+            timestampString = "481485368.256288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "-textFieldShouldReturn:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Material/InventoryPositionViewController.m"
+            timestampString = "481485441.689358"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-getPackageInfo:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[InventoryPositionViewController getPackageInfo:]"
+                  moduleName = "VMI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlot/project/brilliantech/fc_ios/Material/Material/InventoryPositionViewController.m"
+                  timestampString = "481485441.692096"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__50-[InventoryPositionViewController getPackageInfo:]_block_invoke"
+                  moduleName = "VMI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlot/project/brilliantech/fc_ios/Material/Material/InventoryPositionViewController.m"
+                  timestampString = "481485441.692289"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "78">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Material/InventoryPositionViewController.m"
+            timestampString = "481485447.368827"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-getPackageInfo:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Material/InventoryPositionViewController.m"
+            timestampString = "481485452.608778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-getPackageInfo:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
