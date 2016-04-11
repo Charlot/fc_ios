@@ -13,6 +13,8 @@
 #import "DBManager.h"
 #import "ShiftingDetailViewController.h"
 #import "MovementAPI.h"
+#import "ScanStandard.h"
+
 
 @interface YikuViewController ()
 @property(weak, nonatomic) IBOutlet UITextField *fromPositionTextField;
@@ -23,6 +25,8 @@
 @property(weak, nonatomic) IBOutlet UITextField *toPositionTextField;
 @property(weak, nonatomic) IBOutlet UITextField *toWhTextField;
 @property(nonatomic, strong) UIAlertView *backAlertView;
+@property(nonatomic,strong)ScanStandard *scanStandard;
+
 
 @property(nonatomic, strong) Movement *movement;
 @property NSString *userName;
@@ -133,6 +137,8 @@
   [self.view addGestureRecognizer:tap];
   //  [self getPackageInfo:@"WI311501127113"];
   [self initController];
+   self.scanStandard=[ScanStandard sharedScanStandard];
+    
 }
 
 - (void)dismissKeyboard {
@@ -182,25 +188,15 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  //    NSInteger nextTag = textField.tag + 1;
-  //    UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
-  //    if (nextResponder) {
-  //        [nextResponder becomeFirstResponder];
-  //        NSLog(@"next resonder");
-  //    }
-  //    else
-  //    {
-  //        [textField resignFirstResponder];
-  //        NSLog(@"current textfield %d", textField.tag);
-  //    }
-
   UITextField *next = textField.nextTextField;
   if (next) {
     [next becomeFirstResponder];
-    NSLog(@"next resonder");
   } else {
     [textField resignFirstResponder];
   }
+        if(textField==self.packageTextField){
+           [self getPackageInfo: textField.text];
+        }
   return NO;
 }
 
@@ -210,7 +206,9 @@
     if ([objInput isKindOfClass:[UITextField class]]) {
       UITextField *tmpTextFile = objInput;
       if ([objInput isFirstResponder]) {
-        tmpTextFile.text = data;
+     tmpTextFile.text = data;
+         // tmpTextFile.text=[self.scanStandard filterKey:data];
+          
         if (tmpTextFile == self.packageTextField) {
           [self getPackageInfo:tmpTextFile.text];
         }
@@ -222,7 +220,18 @@
   }
 }
 
+//-(BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+//    if(textField==self.packageTextField){
+//       [self getPackageInfo: textField.text];
+//    }
+//    return YES;
+//}
+
+
 - (void)getPackageInfo:(NSString *)package_id {
+    package_id=[self.scanStandard filterKey:package_id];
+    
   MovementAPI *api = [[MovementAPI alloc] init];
   [api
       getNStoragePackageInfo:package_id
@@ -310,8 +319,9 @@
   } else {
     NSString *strToWh = self.toWhTextField.text;
     NSString *strToPosition = self.toPositionTextField.text;
-    NSString *strPackage = self.packageTextField.text;
-    NSString *strQty = self.qtyTextField.text;
+   // NSString *strPackage = self.packageTextField.text;
+      NSString *strPackage=[self.scanStandard filterKey:self.packageTextField.text];
+      NSString *strQty = self.qtyTextField.text;
     NSString *strPartNr = self.partNrTextField.text;
     NSString *strFromWh = self.fromWhTextField.text;
     NSString *strFromPosition = self.fromPositionTextField.text;
