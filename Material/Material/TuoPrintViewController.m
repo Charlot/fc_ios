@@ -106,6 +106,10 @@
 - (IBAction)confirmPrint:(id)sender {
     AFNetOperate *AFNet=[[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+   
+    NSLog([[AFNet print_stock_tuo:self.tuo.ID printer_name:[self.printerSetting getPrinterModelWithAlternative:@"P001"] copies:[self.printerSetting getCopy:@"stock" type:@"tuo" alternative:@"P001"]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
+    
+    
       [manager GET:[[AFNet print_stock_tuo:self.tuo.ID printer_name:[self.printerSetting getPrinterModelWithAlternative:@"P001"] copies:[self.printerSetting getCopy:@"stock" type:@"tuo" alternative:@"P001"]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {

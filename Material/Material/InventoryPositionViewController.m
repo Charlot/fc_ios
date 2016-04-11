@@ -14,6 +14,8 @@
 #import "Captuvo.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "MovementAPI.h"
+#import "ScanStandard.h"
+
 
 #define ScreenWidth ([[UIScreen mainScreen] bounds].size.width)
 
@@ -31,6 +33,8 @@
 @property(strong, nonatomic) IBOutlet UITableView *positionTable;
 @property(strong, nonatomic) NSString *positionCount;
 @property(strong, nonatomic) InventoryAPI *api;
+@property (strong,nonatomic)ScanStandard *scanStandard;
+
 @end
 
 @implementation InventoryPositionViewController
@@ -44,6 +48,8 @@
   self.positionCount = @"0";
     self.packageTextField.delegate=self;
     
+    self.scanStandard=[ScanStandard sharedScanStandard];
+
   [self.packageTextField becomeFirstResponder];
   //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
   //      initWithTarget:self
@@ -102,12 +108,13 @@
 }
 
 - (void)createInventoryListItem {
+    
   [self.api CreateInventoryListItem:self.inventory_list_id
                        withPosition:self.position
                            withUser:self.userName
                             withQty:self.qtyTextField.text
                          withPartID:self.partIDTextField.text
-                      withPackageID:self.packageTextField.text
+                      withPackageID:[self.scanStandard filterKey:self.packageTextField.text]
                            withView:self.view
                               block:^(BOOL state, NSError *error) {
                                 if (error == nil) {
@@ -130,6 +137,7 @@
 }
 
 - (void)getPackageInfo:(NSString *)package_id {
+   package_id= [self.scanStandard filterKey:package_id];
   MovementAPI *movementApi = [[MovementAPI alloc] init];
   [movementApi
       getPackageInfo:package_id

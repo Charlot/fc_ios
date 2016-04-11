@@ -188,15 +188,16 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if(textField==self.packageTextField){
+           [self getPackageInfo: textField.text];
+        }
   UITextField *next = textField.nextTextField;
   if (next) {
     [next becomeFirstResponder];
   } else {
     [textField resignFirstResponder];
   }
-        if(textField==self.packageTextField){
-           [self getPackageInfo: textField.text];
-        }
+       
   return NO;
 }
 
@@ -246,8 +247,17 @@
                            self.qtyTextField.text = [NSString
                                stringWithFormat:@"%@",
                                                 [dictData objectForKey:@"qty"]];
-                           [self.partNrTextField resignFirstResponder];
-                           [self.fromWhTextField becomeFirstResponder];
+                             NSString *whouse=[dictData objectForKey:@"whouse_id"];
+                             if(whouse && whouse.length>0){
+                                 self.fromWhTextField.text=whouse;
+                             }
+                             
+                             NSString *position=[dictData objectForKey:@"position_id"];
+                             if(position && position.length>0){
+                                 self.fromPositionTextField.text=position;
+                             }
+                             
+                           [self.partNrTextField resignFirstResponder];                           [self.fromWhTextField becomeFirstResponder];
                          }
                        }];
 }
