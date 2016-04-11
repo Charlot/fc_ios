@@ -10,6 +10,8 @@
 #import "AFNetOperate.h"
 
 #import "ScanStandard.h"
+#import "UserPreference.h"
+
 #import <AudioToolbox/AudioToolbox.h>
 
 @interface RukuViewController ()
@@ -18,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *containerTF;
 
 @property (strong,nonatomic)ScanStandard *scanStandard;
+@property (strong,nonatomic)UserPreference *userPreference;
 
 //@property(nonatomic, strong) UIAlertView *alert;
 
@@ -45,10 +48,18 @@
     self.warehouseTF.delegate=self;
     self.positionTF.delegate=self;
     self.containerTF.delegate=self;
+    self.userPreference=[UserPreference sharedUserPreference];
     
+ 
     self.scanStandard=[ScanStandard sharedScanStandard];
 
     [self clearAllTextFields];
+    if(self.userPreference.location.default_whouse){
+        self.warehouseTF.text=self.userPreference.location.default_whouse.nr;
+    }
+    if(self.warehouseTF.text.length>0){
+        [self.positionTF becomeFirstResponder];
+    }
     //[self.warehouseTF becomeFirstResponder];
     
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0238B8CB1CBB910B00D08052 /* Whouse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0238B8CA1CBB910B00D08052 /* Whouse.m */; };
 		025846E01C869E8E001CB00F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 025846DF1C869E8E001CB00F /* Location.m */; };
 		02CB7FA51C97D9FB00BBD5A3 /* RukuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB7FA41C97D9FB00BBD5A3 /* RukuViewController.m */; };
 		02F928CF1C968B6C00829573 /* MenuPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F928CE1C968B6C00829573 /* MenuPanelViewController.m */; };
@@ -204,6 +205,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0238B8C91CBB910B00D08052 /* Whouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Whouse.h; sourceTree = "<group>"; };
+		0238B8CA1CBB910B00D08052 /* Whouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Whouse.m; sourceTree = "<group>"; };
 		025846DE1C869E8E001CB00F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		025846DF1C869E8E001CB00F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		02CB7FA31C97D9FB00BBD5A3 /* RukuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RukuViewController.h; sourceTree = "<group>"; };
@@ -949,6 +952,8 @@
 				94648A881C09C47800EFC504 /* InventoryListItem.m */,
 				025846DE1C869E8E001CB00F /* Location.h */,
 				025846DF1C869E8E001CB00F /* Location.m */,
+				0238B8C91CBB910B00D08052 /* Whouse.h */,
+				0238B8CA1CBB910B00D08052 /* Whouse.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1439,6 +1444,7 @@
 				B06CD6E41A25663900DF4D16 /* YunSendViewController.m in Sources */,
 				B0CC6AEF1A4D121A0047FF7F /* RequireCheckDetailTableViewCell.m in Sources */,
 				B061398D1941BCF900A0CF62 /* TuoBaseViewController.m in Sources */,
+				0238B8CB1CBB910B00D08052 /* Whouse.m in Sources */,
 				B037ECFA194BDC50008C456E /* YunTableViewCell.m in Sources */,
 				949359CD1C04A993003D2B25 /* MJRefreshAutoGifFooter.m in Sources */,
 				B07CE571198B8CAA000FD578 /* RequireCheckBill.m in Sources */,
