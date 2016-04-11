@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B085F60B194004CC001F01F3"
-               BuildableName = "WMS.app"
+               BuildableName = "VMI.app"
                BlueprintName = "Material"
                ReferencedContainer = "container:Material.xcodeproj">
             </BuildableReference>
@@ -23,10 +23,10 @@
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -43,26 +43,30 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B085F60B194004CC001F01F3"
-            BuildableName = "WMS.app"
+            BuildableName = "VMI.app"
             BlueprintName = "Material"
             ReferencedContainer = "container:Material.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B085F60B194004CC001F01F3"
-            BuildableName = "WMS.app"
+            BuildableName = "VMI.app"
             BlueprintName = "Material"
             ReferencedContainer = "container:Material.xcodeproj">
          </BuildableReference>
@@ -71,16 +75,17 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B085F60B194004CC001F01F3"
-            BuildableName = "WMS.app"
+            BuildableName = "VMI.app"
             BlueprintName = "Material"
             ReferencedContainer = "container:Material.xcodeproj">
          </BuildableReference>
