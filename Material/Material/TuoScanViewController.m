@@ -68,7 +68,8 @@
         self.xiangListLabel.text=@"已绑定箱数:";
     }
     else if([self.type isEqualToString:@"tuo"]){
-        [self.navigationItem setHidesBackButton:YES];
+      //  [self.navigationItem setHidesBackButton:YES];
+        self.navigationItem.leftBarButtonItem.title=@"Back";
         self.navigationItem.title=self.tuo.department;
     }
     self.xiangCountLabel.adjustsFontSizeToFitWidth=YES;
