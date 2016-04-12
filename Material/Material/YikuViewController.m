@@ -13,6 +13,7 @@
 #import "DBManager.h"
 #import "ShiftingDetailViewController.h"
 #import "MovementAPI.h"
+#import "UserPreference.h"
 
 @interface YikuViewController ()
 @property(weak, nonatomic) IBOutlet UITextField *fromPositionTextField;
@@ -23,6 +24,8 @@
 @property(weak, nonatomic) IBOutlet UITextField *toPositionTextField;
 @property(weak, nonatomic) IBOutlet UITextField *toWhTextField;
 @property(nonatomic, strong) UIAlertView *backAlertView;
+
+@property (strong,nonatomic)UserPreference *userPreference;
 
 @property(nonatomic, strong) Movement *movement;
 @property NSString *userName;
@@ -43,8 +46,28 @@
 
 - (void)initController {
   // Do any additional setup after loading the view.
+  //self.toWhTextField.text = @"JXW";
+  //self.fromWhTextField.text = @"JXW";
+   self.userPreference=[UserPreference sharedUserPreference];
+   if(self.userPreference.location.default_whouse){
+        self.toWhTextField.text=self.userPreference.location.default_whouse.nr;
+       self.fromWhTextField.text=self.userPreference.location.default_whouse.nr;
+    }
+    if(self.toWhTextField.text.length>0){
+        [self.toPositionTextField becomeFirstResponder];
+    }else{
+        [self.toWhTextField becomeFirstResponder];
+    }
+    
+  self.toWhTextField.clearButtonMode = UITextFieldViewModeAlways;
+  self.fromWhTextField.clearButtonMode = UITextFieldViewModeAlways;
+    typedef enum{
+        UITextFieldViewModeUnlessEditing
+    }UITextFieldViewMode;
+  
+    
   self.toWhTextField.delegate = self;
-  [self.toWhTextField becomeFirstResponder];
+  //[self.toPositionTextField becomeFirstResponder];
   self.toPositionTextField.delegate = self;
   self.packageTextField.delegate = self;
   self.qtyTextField.delegate = self;
@@ -392,12 +415,15 @@
   for (id objInput in subviews) {
     if ([objInput isKindOfClass:[UITextField class]]) {
       UITextField *theTextField = objInput;
-      theTextField.text = @"";
+        if(theTextField.tag!=0 && theTextField.tag!=5){
+            theTextField.text = @"";
+        }
       //                        NSLog(@"time is %d", i);
       //                        i++;
     }
   }
-  [self.toWhTextField becomeFirstResponder];
+
+  [self.toPositionTextField becomeFirstResponder];
 }
 
 ///**
@@ -462,6 +488,7 @@
   if (db.affectedRows != 0) {
     [self clearData];
     NSLog(@"操作成功");
+      
   }
 }
 

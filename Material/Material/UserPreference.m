@@ -22,6 +22,7 @@
 #import "UserPreference.h"
 #import "AFNetOperate.h"
 #import "Location.h"
+#import "Whouse.h"
 
 @interface UserPreference()
 @end
@@ -41,7 +42,10 @@
     
      Location* order_source_location= [[Location alloc] initWithObject:object[@"location"][@"order_source_location"]];
     
-    Location* location=[[Location alloc] initWithObject:object[@"location"] AndDestination:destination AndSource:order_source_location];
+    Whouse* whouse=[[Whouse alloc] initWithObject:object[@"location"][@"default_whouse"]];
+    
+    
+    Location* location=[[Location alloc] initWithObject:object[@"location"] AndDestination:destination AndSource:order_source_location AndDefaultWhouse:whouse];
     
     userPref.location=location;
     

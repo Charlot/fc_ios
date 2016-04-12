@@ -380,7 +380,7 @@
                           if([responseObject[@"result"] integerValue]==1){
                                [self.partNumber becomeFirstResponder];
                           }
-                          else{
+                          else if([responseObject[@"result"] integerValue]==0){
                               NSDictionary *dic=[NSDictionary dictionary];
                               if([self.userPref.location_id isEqualToString:@"FG"]){
                                   dic=@{
@@ -459,6 +459,9 @@
                                     }
                                ];
                               
+                          }else{
+                              [AFNet alert:responseObject[@"content"]];
+                              AudioServicesPlaySystemSound(1051);
                           }
                           
                       }

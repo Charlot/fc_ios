@@ -13,6 +13,7 @@
 #import "DBManager.h"
 #import "AFNetOperate.h"
 #import "MovementAPI.h"
+#import "UserPreference.h"
 
 @interface CreateMovementListItemViewController ()
 @property(strong, nonatomic) IBOutlet UITextField *toWhouseTextField;
@@ -22,6 +23,9 @@
 @property(strong, nonatomic) IBOutlet UITextField *qtyTextField;
 @property(strong, nonatomic) IBOutlet UITextField *fromWhouseTextField;
 @property(strong, nonatomic) IBOutlet UITextField *fromPositionTextField;
+@property(strong, nonatomic) IBOutlet UITextField *saveData;
+
+@property (strong,nonatomic)UserPreference *userPreference;
 
 - (IBAction)createButtonClick:(id)sender;
 @end
@@ -52,8 +56,28 @@
 
 - (void)initController {
   // Do any additional setup after loading the view.
+    //self.toWhouseTextField.text = @"JXW";
+    //self.fromWhouseTextField.text = @"JXW";
+    
+    self.userPreference=[UserPreference sharedUserPreference];
+    if(self.userPreference.location.default_whouse){
+        self.toWhouseTextField.text=self.userPreference.location.default_whouse.nr;
+        self.fromWhouseTextField.text=self.userPreference.location.default_whouse.nr;
+    }
+    if(self.toWhouseTextField.text.length>0){
+        [self.toPositionTextField becomeFirstResponder];
+    }else{
+        [self.toWhouseTextField becomeFirstResponder];
+    }
+    self.toWhouseTextField.clearButtonMode = UITextFieldViewModeAlways;
+    self.fromWhouseTextField.clearButtonMode = UITextFieldViewModeAlways;
+    typedef enum{
+        UITextFieldViewModeUnlessEditing
+    }UITextFieldViewMode;
+    
+    
   self.toWhouseTextField.delegate = self;
-  [self.toWhouseTextField becomeFirstResponder];
+  //[self.toPositionTextField becomeFirstResponder];
   self.toPositionTextField.delegate = self;
   self.packageTextField.delegate = self;
   self.qtyTextField.delegate = self;
@@ -260,6 +284,7 @@ preparation before navigation
                         stringWithFormat:@"%@", [error localizedDescription]]];
         }];
   }
+
 }
 
 - (void)clearData {
@@ -267,10 +292,13 @@ preparation before navigation
   for (id objInput in subviews) {
     if ([objInput isKindOfClass:[UITextField class]]) {
       UITextField *theTextField = objInput;
+        if(theTextField.tag!=0 && theTextField.tag!=5){
       theTextField.text = @"";
+        }
     }
   }
-  [self.toWhouseTextField becomeFirstResponder];
+
+  [self.toPositionTextField becomeFirstResponder];
 }
 
 @end

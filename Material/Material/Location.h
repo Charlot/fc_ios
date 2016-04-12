@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Whouse.h"
 
 @interface Location : NSObject
 @property(nonatomic,strong)NSString *ID;
@@ -19,10 +20,14 @@
 
 @property(nonatomic,strong)Location *defaultDestination;
 @property(nonatomic,strong)Location *order_source_location;
+@property(nonatomic,strong)Whouse *default_whouse;
 
 
 
 -(instancetype)initWithObject:(NSDictionary *)dictionary;
 
 -(instancetype)initWithObject:(NSDictionary *)dictionary AndDestination:(Location *) destination  AndSource:(Location*)source;
+
+
+-(instancetype)initWithObject:(NSDictionary *)dictionary AndDestination:(Location *) destination  AndSource:(Location*)source AndDefaultWhouse:(Whouse*)whouse;
 @end
