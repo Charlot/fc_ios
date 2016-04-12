@@ -45,6 +45,7 @@
     self.packageTextField.delegate=self;
     
   [self.packageTextField becomeFirstResponder];
+    self.qtyTextField.keyboardType= UIKeyboardTypeDecimalPad;
   //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
   //      initWithTarget:self
   //              action:@selector(dismissKeyboard)];
