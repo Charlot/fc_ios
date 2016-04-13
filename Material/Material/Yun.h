@@ -34,4 +34,7 @@
 -(instancetype)initWithObject:(NSDictionary *)dictionary;
 -(instancetype)initWith:(NSString *)ID name:(NSString *)name remark:(NSString *)remark;
 -(instancetype)copyMe:(Yun *)yun;
+
+
+@property(nonatomic,strong)NSString *orderId;
 @end

@@ -12,6 +12,10 @@
 		023D17F31CBE30AF00710F3E /* PickList.m in Sources */ = {isa = PBXBuildFile; fileRef = 023D17F21CBE30AF00710F3E /* PickList.m */; };
 		023D17FB1CBE39F000710F3E /* PickListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 023D17F91CBE39F000710F3E /* PickListTableViewCell.m */; };
 		023D17FC1CBE39F000710F3E /* PickListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 023D17FA1CBE39F000710F3E /* PickListTableViewCell.xib */; };
+		023D17FF1CBEA02500710F3E /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 023D17FE1CBEA02500710F3E /* Order.m */; };
+		023D18041CBEA08300710F3E /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 023D18021CBEA08300710F3E /* OrderTableViewCell.m */; };
+		023D18051CBEA08300710F3E /* OrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 023D18031CBEA08300710F3E /* OrderTableViewCell.xib */; };
+		023D18081CBEA43900710F3E /* DeliveryOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 023D18071CBEA43900710F3E /* DeliveryOrderViewController.m */; };
 		025846E01C869E8E001CB00F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 025846DF1C869E8E001CB00F /* Location.m */; };
 		02CB7FA51C97D9FB00BBD5A3 /* RukuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB7FA41C97D9FB00BBD5A3 /* RukuViewController.m */; };
 		02F928CF1C968B6C00829573 /* MenuPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F928CE1C968B6C00829573 /* MenuPanelViewController.m */; };
@@ -218,6 +222,13 @@
 		023D17F81CBE39F000710F3E /* PickListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickListTableViewCell.h; sourceTree = "<group>"; };
 		023D17F91CBE39F000710F3E /* PickListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickListTableViewCell.m; sourceTree = "<group>"; };
 		023D17FA1CBE39F000710F3E /* PickListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickListTableViewCell.xib; sourceTree = "<group>"; };
+		023D17FD1CBEA02500710F3E /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		023D17FE1CBEA02500710F3E /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		023D18011CBEA08300710F3E /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
+		023D18021CBEA08300710F3E /* OrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewCell.m; sourceTree = "<group>"; };
+		023D18031CBEA08300710F3E /* OrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderTableViewCell.xib; sourceTree = "<group>"; };
+		023D18061CBEA43900710F3E /* DeliveryOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeliveryOrderViewController.h; sourceTree = "<group>"; };
+		023D18071CBEA43900710F3E /* DeliveryOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeliveryOrderViewController.m; sourceTree = "<group>"; };
 		025846DE1C869E8E001CB00F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		025846DF1C869E8E001CB00F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		02CB7FA31C97D9FB00BBD5A3 /* RukuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RukuViewController.h; sourceTree = "<group>"; };
@@ -611,6 +622,16 @@
 			name = PICK;
 			sourceTree = "<group>";
 		};
+		023D18001CBEA05D00710F3E /* ORDER */ = {
+			isa = PBXGroup;
+			children = (
+				023D18011CBEA08300710F3E /* OrderTableViewCell.h */,
+				023D18021CBEA08300710F3E /* OrderTableViewCell.m */,
+				023D18031CBEA08300710F3E /* OrderTableViewCell.xib */,
+			);
+			name = ORDER;
+			sourceTree = "<group>";
+		};
 		219671961B2C294400779491 /* SHIFTING */ = {
 			isa = PBXGroup;
 			children = (
@@ -835,6 +856,8 @@
 				B001BEFC19A58A67000800AD /* trace */,
 				B0E8C6A2197F603500F0A030 /* RequireSettingViewController.h */,
 				B0E8C6A3197F603500F0A030 /* RequireSettingViewController.m */,
+				023D18061CBEA43900710F3E /* DeliveryOrderViewController.h */,
+				023D18071CBEA43900710F3E /* DeliveryOrderViewController.m */,
 			);
 			name = REQUIRE;
 			sourceTree = "<group>";
@@ -987,6 +1010,8 @@
 				0238B8CA1CBB910B00D08052 /* Whouse.m */,
 				023D17F11CBE30AF00710F3E /* PickList.h */,
 				023D17F21CBE30AF00710F3E /* PickList.m */,
+				023D17FD1CBEA02500710F3E /* Order.h */,
+				023D17FE1CBEA02500710F3E /* Order.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1237,6 +1262,7 @@
 		B096C63D194291FB00271AE4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				023D18001CBEA05D00710F3E /* ORDER */,
 				023D17F41CBE398A00710F3E /* PICK */,
 				B0454CCE1976024E001476F4 /* REQUIRE */,
 				B0454CCD19760244001476F4 /* DELIVERY */,
@@ -1383,6 +1409,7 @@
 				94E033101BFBFE6600372E70 /* LaunchScreen.storyboard in Resources */,
 				B058550419A2F800000C85E5 /* TuoCheckTableViewCell.xib in Resources */,
 				B04EF1D51946888900A95D7A /* ShopTuoTableViewCell.xib in Resources */,
+				023D18051CBEA08300710F3E /* OrderTableViewCell.xib in Resources */,
 				B04244E71A1F3ABA00AAFD24 /* ProductXiangTableViewCell.xib in Resources */,
 				B0BB1D8C1A2DBB5E0036AF61 /* Images.xcassets in Resources */,
 				B07CE56E198B8890000FD578 /* RequireCheckXiangTableViewCell.xib in Resources */,
@@ -1422,6 +1449,7 @@
 				025846E01C869E8E001CB00F /* Location.m in Sources */,
 				94648A891C09C47800EFC504 /* InventoryListItem.m in Sources */,
 				02F928CF1C968B6C00829573 /* MenuPanelViewController.m in Sources */,
+				023D18041CBEA08300710F3E /* OrderTableViewCell.m in Sources */,
 				B09E4CD01A303C7C0041083D /* XiangChooseDepartmentViewController.m in Sources */,
 				B0DF64351943E1D1002D044B /* PrintViewController.m in Sources */,
 				B0FDC96F194555FE008E4B72 /* YunInfoViewController.m in Sources */,
@@ -1481,6 +1509,7 @@
 				B0CC6AEF1A4D121A0047FF7F /* RequireCheckDetailTableViewCell.m in Sources */,
 				B061398D1941BCF900A0CF62 /* TuoBaseViewController.m in Sources */,
 				0238B8CB1CBB910B00D08052 /* Whouse.m in Sources */,
+				023D18081CBEA43900710F3E /* DeliveryOrderViewController.m in Sources */,
 				B037ECFA194BDC50008C456E /* YunTableViewCell.m in Sources */,
 				949359CD1C04A993003D2B25 /* MJRefreshAutoGifFooter.m in Sources */,
 				B07CE571198B8CAA000FD578 /* RequireCheckBill.m in Sources */,
@@ -1547,6 +1576,7 @@
 				94134DD31C05FE4D00F5C0BD /* InventoryList.m in Sources */,
 				B0643D66197DF40D0036AADA /* RequireDetailViewController.m in Sources */,
 				B04EF2121946E60D00A95D7A /* AFURLSessionManager.m in Sources */,
+				023D17FF1CBEA02500710F3E /* Order.m in Sources */,
 				B0DF644219446E5B002D044B /* TuoPrintViewController.m in Sources */,
 				B085F64F194014A8001F01F3 /* KeychainItemWrapper.m in Sources */,
 				B04244D01A1EDEEC00AAFD24 /* RoleViewController.m in Sources */,

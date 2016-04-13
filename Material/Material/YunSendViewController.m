@@ -105,6 +105,7 @@
 }
 
 - (IBAction)cancel:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+     [self.navigationController popViewControllerAnimated:YES];
+//    [self performSegueWithIdentifier:@"backToDeliveryIndex" sender:nil];
 }
 @end

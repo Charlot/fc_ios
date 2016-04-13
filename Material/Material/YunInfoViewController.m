@@ -104,10 +104,12 @@
     for(int i=0;i<self.yun.tuoArray.count;i++){
         [tuoArrayID addObject:[self.yun.tuoArray[i] ID]];
     }
+    
     [manager POST:[AFNet yun_index]
        parameters:@{
                     @"delivery":@{
-                            @"remark":self.remark.text
+                            @"remark":self.remark.text,
+                            @"order_id":self.yun.orderId==nil ? @"":self.yun.orderId
                             },
                     @"forklifts":tuoArrayID
                     }

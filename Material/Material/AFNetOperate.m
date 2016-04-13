@@ -1000,4 +1000,11 @@
     return [base stringByAppendingString:url];
 }
 
+- (NSString *)getRecentOrders {
+    NSString *base = [self baseURL];
+    NSString *url =
+    [[[self URLDictionary] objectForKey:@"orders"] objectForKey:@"recent"];
+    return [base stringByAppendingString:url];
+}
+
 @end
