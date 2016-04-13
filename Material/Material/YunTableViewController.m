@@ -14,9 +14,13 @@
 #import "AFNetOperate.h"
 #import "YunSendedViewController.h"
 #import "Tuo.h"
+#import "UserPreference.h"
 
 @interface YunTableViewController ()
 @property (nonatomic,strong)YunStore *yunStore;
+
+@property (strong,nonatomic)UserPreference *userPreference;
+
 @end
 
 @implementation YunTableViewController
@@ -35,6 +39,8 @@
     [super viewDidLoad];
     UINib *nib=[UINib nibWithNibName:@"YunTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"yunCell"];
+    
+    self.userPreference=[UserPreference sharedUserPreference];
     
 //    self.yunStore=[YunStore sharedYunStore:self.tableView];
     // Uncomment the following line to preserve selection between presentations.
@@ -304,6 +310,16 @@
     }
     else{
         return NO;
+    }
+}
+
+- (IBAction)createDelivery:(id)sender {
+    if(self.userPreference.location.check_delivery_by_pick){
+        // need check
+		[self performSegueWithIdentifier:@"selectPickList" sender:nil]; 
+    }else{
+       // not need check
+        [self performSegueWithIdentifier:@"selectForklift" sender:nil];
     }
 }
 

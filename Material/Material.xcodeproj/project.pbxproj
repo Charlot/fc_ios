@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0238B8CB1CBB910B00D08052 /* Whouse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0238B8CA1CBB910B00D08052 /* Whouse.m */; };
+		023D17F01CBE222B00710F3E /* DeliveryPickListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 023D17EF1CBE222B00710F3E /* DeliveryPickListViewController.m */; };
+		023D17F31CBE30AF00710F3E /* PickList.m in Sources */ = {isa = PBXBuildFile; fileRef = 023D17F21CBE30AF00710F3E /* PickList.m */; };
+		023D17FB1CBE39F000710F3E /* PickListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 023D17F91CBE39F000710F3E /* PickListTableViewCell.m */; };
+		023D17FC1CBE39F000710F3E /* PickListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 023D17FA1CBE39F000710F3E /* PickListTableViewCell.xib */; };
 		025846E01C869E8E001CB00F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 025846DF1C869E8E001CB00F /* Location.m */; };
 		02CB7FA51C97D9FB00BBD5A3 /* RukuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB7FA41C97D9FB00BBD5A3 /* RukuViewController.m */; };
 		02F928CF1C968B6C00829573 /* MenuPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F928CE1C968B6C00829573 /* MenuPanelViewController.m */; };
@@ -207,6 +211,13 @@
 /* Begin PBXFileReference section */
 		0238B8C91CBB910B00D08052 /* Whouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Whouse.h; sourceTree = "<group>"; };
 		0238B8CA1CBB910B00D08052 /* Whouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Whouse.m; sourceTree = "<group>"; };
+		023D17EE1CBE222B00710F3E /* DeliveryPickListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeliveryPickListViewController.h; sourceTree = "<group>"; };
+		023D17EF1CBE222B00710F3E /* DeliveryPickListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeliveryPickListViewController.m; sourceTree = "<group>"; };
+		023D17F11CBE30AF00710F3E /* PickList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickList.h; sourceTree = "<group>"; };
+		023D17F21CBE30AF00710F3E /* PickList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickList.m; sourceTree = "<group>"; };
+		023D17F81CBE39F000710F3E /* PickListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickListTableViewCell.h; sourceTree = "<group>"; };
+		023D17F91CBE39F000710F3E /* PickListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickListTableViewCell.m; sourceTree = "<group>"; };
+		023D17FA1CBE39F000710F3E /* PickListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickListTableViewCell.xib; sourceTree = "<group>"; };
 		025846DE1C869E8E001CB00F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		025846DF1C869E8E001CB00F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		02CB7FA31C97D9FB00BBD5A3 /* RukuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RukuViewController.h; sourceTree = "<group>"; };
@@ -581,6 +592,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		023D17ED1CBE220800710F3E /* PickList */ = {
+			isa = PBXGroup;
+			children = (
+				023D17EE1CBE222B00710F3E /* DeliveryPickListViewController.h */,
+				023D17EF1CBE222B00710F3E /* DeliveryPickListViewController.m */,
+			);
+			name = PickList;
+			sourceTree = "<group>";
+		};
+		023D17F41CBE398A00710F3E /* PICK */ = {
+			isa = PBXGroup;
+			children = (
+				023D17F81CBE39F000710F3E /* PickListTableViewCell.h */,
+				023D17F91CBE39F000710F3E /* PickListTableViewCell.m */,
+				023D17FA1CBE39F000710F3E /* PickListTableViewCell.xib */,
+			);
+			name = PICK;
+			sourceTree = "<group>";
+		};
 		219671961B2C294400779491 /* SHIFTING */ = {
 			isa = PBXGroup;
 			children = (
@@ -812,6 +842,7 @@
 		B0454CCC1976022B001476F4 /* DELIVERY */ = {
 			isa = PBXGroup;
 			children = (
+				023D17ED1CBE220800710F3E /* PickList */,
 				B0FDC9761945AFA3008E4B72 /* STOCK */,
 				B0FDC9771945AFC9008E4B72 /* SHOP */,
 			);
@@ -954,6 +985,8 @@
 				025846DF1C869E8E001CB00F /* Location.m */,
 				0238B8C91CBB910B00D08052 /* Whouse.h */,
 				0238B8CA1CBB910B00D08052 /* Whouse.m */,
+				023D17F11CBE30AF00710F3E /* PickList.h */,
+				023D17F21CBE30AF00710F3E /* PickList.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1204,6 +1237,7 @@
 		B096C63D194291FB00271AE4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				023D17F41CBE398A00710F3E /* PICK */,
 				B0454CCE1976024E001476F4 /* REQUIRE */,
 				B0454CCD19760244001476F4 /* DELIVERY */,
 				B04244E21A1F3A7700AAFD24 /* PRODUCT */,
@@ -1353,6 +1387,7 @@
 				B0BB1D8C1A2DBB5E0036AF61 /* Images.xcassets in Resources */,
 				B07CE56E198B8890000FD578 /* RequireCheckXiangTableViewCell.xib in Resources */,
 				B06E027519403D3D001B7899 /* Storyboard.storyboard in Resources */,
+				023D17FC1CBE39F000710F3E /* PickListTableViewCell.xib in Resources */,
 				B0CC6AF01A4D121A0047FF7F /* RequireCheckDetailTableViewCell.xib in Resources */,
 				B0619E46197CB044000C1C69 /* RequireListTableViewCell.xib in Resources */,
 				B0619E59197CBE17000C1C69 /* RequireXiangTableViewCell.xib in Resources */,
@@ -1437,6 +1472,7 @@
 				949359D01C04A993003D2B25 /* MJRefreshBackGifFooter.m in Sources */,
 				B0CC6AE31A4CFBD10047FF7F /* RequireCheckDetailTableViewController.m in Sources */,
 				B0619E45197CB044000C1C69 /* RequireListTableViewCell.m in Sources */,
+				023D17FB1CBE39F000710F3E /* PickListTableViewCell.m in Sources */,
 				B04EF1F21946DE2900A95D7A /* HistoryXiangTableViewController.m in Sources */,
 				B00EA13A1A272A1700D95594 /* HistoryXiangItemViewController.m in Sources */,
 				B058550719A2F832000C85E5 /* TuoCheckGeneralViewController.m in Sources */,
@@ -1473,6 +1509,7 @@
 				B0643D6A197E041B0036AADA /* RequireHistoryViewController.m in Sources */,
 				B04244DB1A1F286B00AAFD24 /* ProductReceiveViewController.m in Sources */,
 				9420D5251C031C2000AA1CB5 /* MovementDetailViewController.m in Sources */,
+				023D17F01CBE222B00710F3E /* DeliveryPickListViewController.m in Sources */,
 				B08B8F0D1953D39E009739DB /* TuoTableViewCell.m in Sources */,
 				9420D5191C02BD4E00AA1CB5 /* InventoryHistroyViewController.m in Sources */,
 				B099FD1A199C90C30049586E /* SimplePingHelper.m in Sources */,
@@ -1485,6 +1522,7 @@
 				940E8C6A1C00B930000CCA71 /* Movement.m in Sources */,
 				219671991B2C2AEB00779491 /* InventoryViewController.m in Sources */,
 				B0FDC96C19453EF7008E4B72 /* YunHaveTuoTableViewController.m in Sources */,
+				023D17F31CBE30AF00710F3E /* PickList.m in Sources */,
 				B04EF1D41946888900A95D7A /* ShopTuoTableViewCell.m in Sources */,
 				B09ECD7219AAD36500783B6A /* LED.m in Sources */,
 				B04EF1F51946E53600A95D7A /* ShopSettingViewController.m in Sources */,

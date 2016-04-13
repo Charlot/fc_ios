@@ -78,6 +78,7 @@
       initWithTarget:self
               action:@selector(dismissKeyboard)];
   [self.view addGestureRecognizer:tap];
+    self.qtyTextField.keyboardType= UIKeyboardTypeDecimalPad;
 }
 
 - (void)dismissKeyboard {

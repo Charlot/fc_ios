@@ -252,4 +252,5 @@
 
 - (NSString *)searchPosition;
 
+-(NSString*)getPickById;
 @end

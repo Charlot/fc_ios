@@ -51,6 +51,7 @@
     self.scanStandard=[ScanStandard sharedScanStandard];
 
   [self.packageTextField becomeFirstResponder];
+    self.qtyTextField.keyboardType= UIKeyboardTypeDecimalPad;
   //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
   //      initWithTarget:self
   //              action:@selector(dismissKeyboard)];

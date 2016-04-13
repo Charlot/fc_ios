@@ -79,6 +79,11 @@
 		<key>root</key>
 		<string>/api/v1/leds</string>
 	</dict>
+	<key>pick</key>
+	<dict>
+		<key>get_by_id</key>
+		<string>/api/v3/pick_lists</string>
+	</dict>
 	<key>order_item</key>
 	<dict>
 		<key>verify</key>
@@ -126,7 +131,7 @@
 		<key>port</key>
 		<string>:9000</string>
 		<key>base</key>
-		<string>http://192.168.1.109</string>
+		<string>http://192.168.1.67</string>
 	</dict>
 	<key>storages</key>
 	<dict>

@@ -14,7 +14,7 @@
 #import "AFNetOperate.h"
 #import "MovementAPI.h"
 #import "ScanStandard.h"
-
+#import "UserPreference.h"
 
 @interface CreateMovementListItemViewController ()
 @property(strong, nonatomic) IBOutlet UITextField *toWhouseTextField;
@@ -26,6 +26,8 @@
 @property(strong, nonatomic) IBOutlet UITextField *fromPositionTextField;
 @property(strong, nonatomic) IBOutlet UITextField *saveData;
 @property(nonatomic,strong)ScanStandard *scanStandard;
+
+@property (strong,nonatomic)UserPreference *userPreference;
 
 - (IBAction)createButtonClick:(id)sender;
 @end
@@ -58,8 +60,19 @@
 
 - (void)initController {
   // Do any additional setup after loading the view.
-    self.toWhouseTextField.text = @"JXW";
-    self.fromWhouseTextField.text = @"JXW";
+    //self.toWhouseTextField.text = @"JXW";
+    //self.fromWhouseTextField.text = @"JXW";
+    
+    self.userPreference=[UserPreference sharedUserPreference];
+    if(self.userPreference.location.default_whouse){
+        self.toWhouseTextField.text=self.userPreference.location.default_whouse.nr;
+        self.fromWhouseTextField.text=self.userPreference.location.default_whouse.nr;
+    }
+    if(self.toWhouseTextField.text.length>0){
+        [self.toPositionTextField becomeFirstResponder];
+    }else{
+        [self.toWhouseTextField becomeFirstResponder];
+    }
     self.toWhouseTextField.clearButtonMode = UITextFieldViewModeAlways;
     self.fromWhouseTextField.clearButtonMode = UITextFieldViewModeAlways;
     typedef enum{
@@ -68,7 +81,7 @@
     
     
   self.toWhouseTextField.delegate = self;
-  [self.toPositionTextField becomeFirstResponder];
+  //[self.toPositionTextField becomeFirstResponder];
   self.toPositionTextField.delegate = self;
   self.packageTextField.delegate = self;
   self.qtyTextField.delegate = self;

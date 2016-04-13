@@ -37,10 +37,20 @@
   [super viewDidLoad];
 
   _pickerData = @[ @"Item1", @"Item2", @"Item3" ];
-  [self getProcessingData];
-  // Do any additional setup after loading the view.
-  self.processingPicker.dataSource = self;
-  self.processingPicker.delegate = self;
+  
+    //[self getProcessingData];
+  
+    // Do any additional setup after loading the view.
+  //self.processingPicker.dataSource = self;
+ // self.processingPicker.delegate = self;
+}
+
+-(void)viewWillAppear:	(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self getProcessingData];
+    
+    self.processingPicker.dataSource = self;
+    self.processingPicker.delegate = self;
 }
 
 - (void)getProcessingData {
@@ -67,8 +77,10 @@
               }
               [_dataList addObject:inventory];
             }
-            [self.processingPicker reloadAllComponents];
+            
+            //[self.processingPicker reloadAllComponents];
           }
+          [self.processingPicker reloadAllComponents];
         } else {
           [AFNet alert:responseObject[@"content"]];
         }

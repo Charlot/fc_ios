@@ -41,6 +41,9 @@
         self.tenant_id=dictionary[@"tenant_id"]?dictionary[@"tenant_id"]:@"";
         self.created_at=dictionary[@"created_at"]?dictionary[@"created_at"]:@"";
         self.updated_at=dictionary[@"updated_at"]?dictionary[@"updated_at"]:@"";
+       
+            self.check_delivery_by_pick=dictionary[@"check_delivery_by_pick"]?([dictionary[@"check_delivery_by_pick"] boolValue]) : NO;
+        
         self.defaultDestination=destination;
         self.order_source_location=source;
     }
@@ -59,6 +62,11 @@
         self.tenant_id=dictionary[@"tenant_id"]?dictionary[@"tenant_id"]:@"";
         self.created_at=dictionary[@"created_at"]?dictionary[@"created_at"]:@"";
         self.updated_at=dictionary[@"updated_at"]?dictionary[@"updated_at"]:@"";
+        
+      // BOOL b= [dictionary[@"check_delivery_by_pick"] boolValue];
+               
+        self.check_delivery_by_pick=dictionary[@"check_delivery_by_pick"]?([dictionary[@"check_delivery_by_pick"] boolValue]) : NO;
+        
         self.defaultDestination=destination;
         self.order_source_location=source;
         self.default_whouse=whouse;

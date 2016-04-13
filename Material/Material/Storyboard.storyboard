@@ -1119,7 +1119,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ho3-nt-ok2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3389" y="4268"/>
+            <point key="canvasLocation" x="2451" y="4938"/>
         </scene>
         <!--托清单-->
         <scene sceneID="mFV-ef-ChJ">
@@ -1157,7 +1157,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vrP-tk-ygl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2484" y="2862"/>
+            <point key="canvasLocation" x="2088" y="2828"/>
         </scene>
         <!--已有运单-->
         <scene sceneID="MvT-dG-HbV">
@@ -1175,18 +1175,52 @@
                     <navigationItem key="navigationItem" title="已有运单" id="Mfr-OQ-Ag0">
                         <barButtonItem key="rightBarButtonItem" title="生成运单" id="sHd-el-xbt">
                             <connections>
-                                <segue destination="12S-J5-CbN" kind="push" id="2c4-Zh-zKC"/>
+                                <action selector="createDelivery:" destination="1kM-we-q0g" id="3SD-gf-Sqo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="ubZ-LU-SHt" kind="push" identifier="editYun" id="idT-DB-7O9"/>
                         <segue destination="5Xc-Yv-KyN" kind="push" identifier="checkYun" id="qg6-gj-fYy"/>
+                        <segue destination="12S-J5-CbN" kind="push" identifier="selectForklift" id="uGb-RP-W83"/>
+                        <segue destination="o4A-UV-gwo" kind="push" identifier="selectPickList" id="gbJ-tr-dTW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZ8-dO-nG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2931" y="2862"/>
+            <point key="canvasLocation" x="2569" y="2816"/>
+        </scene>
+        <!--选择择货单-->
+        <scene sceneID="YQS-gb-fEB">
+            <objects>
+                <viewController id="o4A-UV-gwo" customClass="DeliveryPickListViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jtU-Xw-2UL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="扫描择货单" textAlignment="natural" minimumFontSize="17" id="x9J-cG-6C7">
+                                <rect key="frame" x="44" y="99" width="247" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zp1-eJ-PCZ">
+                                <rect key="frame" x="-1" y="166" width="323" height="402"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="选择择货单" id="YwL-5d-8Rn"/>
+                    <connections>
+                        <outlet property="pickListNr" destination="x9J-cG-6C7" id="TJ0-X2-BP9"/>
+                        <outlet property="pickListTableView" destination="zp1-eJ-PCZ" id="hZ4-uu-qkr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gbG-oU-qcV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3048" y="2815"/>
         </scene>
         <!--Yun Sended View Controller-->
         <scene sceneID="Meu-W9-pLU">
@@ -1245,7 +1279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qWK-sH-QyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2986" y="3567"/>
+            <point key="canvasLocation" x="1986" y="3787"/>
         </scene>
         <!--Yun Check Xiang Table View Controller-->
         <scene sceneID="iUA-1H-TKP">
@@ -1273,7 +1307,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0r-sR-XIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3392" y="3567"/>
+            <point key="canvasLocation" x="2462" y="4057"/>
         </scene>
         <!--Yun Edit View Controller-->
         <scene sceneID="mYQ-cZ-hfG">
@@ -1337,7 +1371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qd3-nZ-0I9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3855" y="3575"/>
+            <point key="canvasLocation" x="3707" y="4227"/>
         </scene>
         <!--选择托清单-->
         <scene sceneID="vw5-dl-MVg">
@@ -1397,7 +1431,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y89-Uv-dH4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3399" y="2862"/>
+            <point key="canvasLocation" x="3439" y="3524"/>
         </scene>
         <!--运单信息-->
         <scene sceneID="7bf-bm-Fvb">
@@ -1464,7 +1498,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnv-Ev-tHv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="HcB-P7-E3x" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3893" y="2842"/>
+            <point key="canvasLocation" x="4265" y="2874"/>
         </scene>
         <!--已有托清单-->
         <scene sceneID="bPg-zn-JL4">
@@ -1493,7 +1527,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lYC-lO-NR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="NBD-Ev-auf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4483" y="3567"/>
+            <point key="canvasLocation" x="3215" y="4551"/>
         </scene>
         <!--发送运单-->
         <scene sceneID="Lhd-bv-P5g">
@@ -1876,7 +1910,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MIj-RF-YHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3917" y="4462"/>
+            <point key="canvasLocation" x="4051" y="4608"/>
         </scene>
         <!--Receive Print View Controller-->
         <scene sceneID="9vz-Rr-CNd">
@@ -5808,26 +5842,26 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WHI-RS-rUG"/>
-        <segue reference="FcC-pN-TYA"/>
-        <segue reference="mEd-et-lyR"/>
+        <segue reference="LWF-aC-Ypb"/>
         <segue reference="Jdf-8l-kNU"/>
-        <segue reference="Hyz-uv-cpc"/>
-        <segue reference="Xpt-zp-Oio"/>
-        <segue reference="U3W-2k-BOU"/>
-        <segue reference="zbp-Dd-2O5"/>
-        <segue reference="pF9-mf-As5"/>
-        <segue reference="EZu-KH-oca"/>
-        <segue reference="QU2-zR-Ew2"/>
-        <segue reference="Hg3-N0-v7Z"/>
         <segue reference="PPk-8F-ZrK"/>
         <segue reference="UAK-rn-23P"/>
         <segue reference="veK-WU-skj"/>
-        <segue reference="Neh-iJ-Fpe"/>
-        <segue reference="Dng-DQ-LOk"/>
+        <segue reference="pF9-mf-As5"/>
+        <segue reference="EZu-KH-oca"/>
+        <segue reference="Hg3-N0-v7Z"/>
+        <segue reference="QU2-zR-Ew2"/>
+        <segue reference="U3W-2k-BOU"/>
+        <segue reference="zbp-Dd-2O5"/>
+        <segue reference="Hyz-uv-cpc"/>
+        <segue reference="z0b-gw-Ccg"/>
+        <segue reference="uGb-RP-W83"/>
+        <segue reference="Do4-uK-Dun"/>
+        <segue reference="8RY-QF-ZAw"/>
         <segue reference="SkA-08-PWt"/>
+        <segue reference="FcC-pN-TYA"/>
         <segue reference="7b0-8i-w2b"/>
+        <segue reference="Dng-DQ-LOk"/>
         <segue reference="Dtg-Ls-yzU"/>
-        <segue reference="LWF-aC-Ypb"/>
     </inferredMetricsTieBreakers>
 </document>
