@@ -1724,9 +1724,9 @@
 					"$(PROJECT_DIR)/Material",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wms.jiaxuan.vmi;
+				PRODUCT_BUNDLE_IDENTIFIER = wms.vmi;
 				PRODUCT_NAME = VMI;
-				PROVISIONING_PROFILE = "38b6c00f-57fc-458c-9e40-e4c4b69c23f6";
+				PROVISIONING_PROFILE = "7de550e7-4463-4fc1-baad-3ce1f014a267";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1750,9 +1750,9 @@
 					"$(PROJECT_DIR)/Material",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wms.jiaxuan.vmi;
+				PRODUCT_BUNDLE_IDENTIFIER = wms.vmi;
 				PRODUCT_NAME = VMI;
-				PROVISIONING_PROFILE = "38b6c00f-57fc-458c-9e40-e4c4b69c23f6";
+				PROVISIONING_PROFILE = "7de550e7-4463-4fc1-baad-3ce1f014a267";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
