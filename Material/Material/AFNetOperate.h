@@ -26,6 +26,7 @@
 - (NSString *)xiang_root;
 - (NSString *)xiang_edit:(NSString *)id;
 - (NSString *)xiang_validate;
+- (NSString *)xiang_enter_stock;
 - (NSString *)xiang_check;
 - (NSString *)xiang_uncheck;
 - (NSString *)xiang_confirm_receive;

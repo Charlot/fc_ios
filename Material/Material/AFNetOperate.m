@@ -179,6 +179,11 @@
       [[[self URLDictionary] objectForKey:@"xiang"] objectForKey:@"validate"];
   return [[self xiang_index] stringByAppendingString:bind];
 }
+- (NSString *)xiang_enter_stock {
+    NSString *bind =
+    [[[self URLDictionary] objectForKey:@"xiang"] objectForKey:@"enter_stock"];
+    return [[self xiang_index] stringByAppendingString:bind];
+}
 - (NSString *)xiang_check {
   NSString *bind =
       [[[self URLDictionary] objectForKey:@"xiang"] objectForKey:@"check"];

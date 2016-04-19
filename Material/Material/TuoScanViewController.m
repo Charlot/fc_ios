@@ -592,8 +592,10 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        
         AFNetOperate *AFNet=[[AFNetOperate alloc] init];
         AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+        
         [manager DELETE:[AFNet tuo_remove_xiang]
              parameters:@{
                           @"package_id":[[self.tuo.xiang objectAtIndex:indexPath.row] ID]
