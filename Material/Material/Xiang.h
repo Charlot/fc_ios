@@ -21,6 +21,10 @@
 @property(nonatomic,strong)NSString *user_id;
 @property(nonatomic,strong)NSString *state_display;
 @property(nonatomic,strong)NSArray *possible_department;
+
+
+
+
 @property(nonatomic) int state ;
 @property(nonatomic)BOOL checked;
 -(instancetype)initExample;

@@ -10,22 +10,11 @@
 #import "ScanStandard.h"
 #import "UserPreference.h"
 #import "AFNetOperate.h"
-
 #import <AudioToolbox/AudioToolbox.h>
-//#import "NewValidate.h"
-//#import "Xiang.h"
-//#import "XiangDetailModel.h"
+#import "XiangDetailTableViewCell.h"
+#import "XiangDetail.h"
 
-//#import "PrintViewController.h"
-
-//#import "XiangEditViewController.h"
-
-//#import "XiangTableViewCell.h"
-
-#import "SortArray.h"
-#import "TuoCheckGeneralViewController.h"
-
-@interface XiangDetailViewController ()<UITextFieldDelegate,UITableViewDelegate,CaptuvoEventsProtocol,UIAlertViewDelegate>
+@interface XiangDetailViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,CaptuvoEventsProtocol,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *key;
 @property (weak, nonatomic) IBOutlet UITextField *partNumber;
 @property (weak, nonatomic) IBOutlet UITextField *fifo;
@@ -35,6 +24,8 @@
 @property (strong,nonatomic)UserPreference *userPref;
 @property (strong,nonatomic)UIAlertView *alert;
 @property (strong, nonatomic) UITextField *firstResponder;
+
+@property (strong,nonatomic) XiangDetailTableViewCell *tableviewCell;
 
 @end
 
@@ -56,7 +47,17 @@
     self.partNumber.delegate=self;
     self.quantity.delegate=self;
     self.fifo.delegate=self;
+    
+//    UITableView *tableView =[[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+//    tableView.dataSource=self;
+//    tableView.delegate=self;
+//    tableView.allowsSelection=NO;
+//    [self.view addSubview:tableView];
+    
+    
     self.xiangTable.delegate=self;
+    self.xiangTable.dataSource=self;
+    
 //    self.xiangTable.dataSource=self;
 //    self.xiangTable.delegate=self;
 //    self.xiangTable.dataSource=self;
@@ -71,9 +72,15 @@
 //        [self.navigationItem setHidesBackButton:YES];
 //        self.navigationItem.title=self.tuo.department;
 //    }
-//    UINib *nib=[UINib nibWithNibName:@"Xiang" bundle:nil];
+    UINib *nib=[UINib nibWithNibName:@"XiangDetailTableViewCell" bundle:nil];
+    
 //    [self.xiangTable registerNib:nib forCellReuseIdentifier:@"xiang_list_item"];
-//    
+//
+
+    [self.xiangTable registerNib:nib forCellReuseIdentifier:@"xiangCell"];
+    
+    [self.xiangTable reloadData];
+    
     self.scanStandard=[ScanStandard sharedScanStandard];
 
     self.userPref=[UserPreference sharedUserPreference];
@@ -91,6 +98,7 @@
     [super viewWillAppear:animated];
     [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
     [self.key becomeFirstResponder];
+    [self.xiangTable reloadData];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -289,13 +297,103 @@
                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //                      //成功了
                       [AFNet.activeView stopAnimating];
+                      
                       if([responseObject[@"result"] integerValue]==1){
-//                          if([(NSDictionary *)responseObject[@"content"] count]>0){
-//                          XiangDetailModel *xiangdetailModel=[[XiangDetailModel alloc] initWithObject:responseObject[@"content"]];
                           
+                          if([(NSDictionary *)responseObject[@"content"] count]>0){
+                              NSString *idValue;
+                              NSString *keyValue;
+                              NSString *partNrValue;
+                              NSString *quantityValue;
+                   
+//                              for(int i =0; i<[(NSDictionary *)responseObject[@"content"] count];i++){
+                                  idValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"id"];
+                                  keyValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"container_id"];
+                                  partNrValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"part_id_display"];
+                                  quantityValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"quantity"];
+//                              }
+
+                              _tableviewCell.key.text=keyValue;
+                              _tableviewCell.partNr.text=partNrValue;
+                              _tableviewCell.quantity.text=quantityValue;
+                              
+//                           XiangDetail *newXiangDetail=[[XiangDetail alloc] initWithObject:responseObject[@"content"]];
+                              
+//                          [self.xiangDetail addXiangDetail:newXiangDetail];
+                 
                           AudioServicesPlaySystemSound(1012);
-                          self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
-                                                                message:@"扫描入库成功"
+                          
+                          @try {
+                              NSString * result= idValue;
+//
+                              self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+                                                                    message:result
+                                                                   delegate:self
+                                                          cancelButtonTitle:nil
+                                                          otherButtonTitles:nil];
+                              [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                                               target:self
+                                                             selector:@selector(dissmissAlert:)
+                                                             userInfo:nil
+                                                              repeats:NO];
+
+                          } @catch (NSException *exception) {
+                             
+                              NSString *message = @"扫描入库成功";
+                              
+                              self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+                                                                    message:message
+                                                                   delegate:self
+                                                          cancelButtonTitle:nil
+                                                          otherButtonTitles:nil];
+                              [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                                               target:self
+                                                             selector:@selector(dissmissAlert:)
+                                                             userInfo:nil
+                                                              repeats:NO];
+
+                          }
+//                          @finally {
+//                              self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+//                                                                    message:@"扫描入库成功"
+//                                                                   delegate:self
+//                                                          cancelButtonTitle:nil
+//                                                          otherButtonTitles:nil];
+//                              [NSTimer scheduledTimerWithTimeInterval:2.0f
+//                                                               target:self
+//                                                             selector:@selector(dissmissAlert:)
+//                                                             userInfo:nil
+//                                                              repeats:NO];
+//                          }
+                          
+                          [self.xiangTable reloadData];
+                          [self.alert show];
+                          self.key.text=@"";
+                          self.partNumber.text=@"";
+                          self.quantity.text=@"";
+                          self.fifo.text=@"";
+                          [self.key becomeFirstResponder];
+                          }else{
+                              NSString *message = @"扫描入库失败，没有返回值";
+
+                              self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
+                                                                    message:message
+                                                                   delegate:self
+                                                          cancelButtonTitle:nil
+                                                          otherButtonTitles:nil];
+                              [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                                               target:self
+                                                             selector:@selector(dissmissAlert:)
+                                                             userInfo:nil
+                                                              repeats:NO];
+                              [self.alert show];
+
+                          }
+                      }else{
+                          NSString *message = @"扫描入库失败，网络错误";
+                          
+                          self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
+                                                                message:message
                                                                delegate:self
                                                       cancelButtonTitle:nil
                                                       otherButtonTitles:nil];
@@ -305,16 +403,8 @@
                                                          userInfo:nil
                                                           repeats:NO];
                           
-                          
-                          
                           [self.alert show];
-                          self.key.text=@"";
-                          self.partNumber.text=@"";
-                          self.quantity.text=@"";
-                          self.fifo.text=@"";
-                          [self.key becomeFirstResponder];
-//                          }
-                      }else{
+                          
                           [AFNet alert:responseObject[@"content"]];
                           self.key.text=@"";
                           self.partNumber.text=@"";
@@ -341,9 +431,7 @@
                               repeats:NO];
                             [self.alert show];
 
-            
-        
-        }
+                }
     }
     else{
         tag+=10;
@@ -351,6 +439,51 @@
         [nextText becomeFirstResponder];
     }
     return YES;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+//    NSArray * array=self.xiangdetailist[section];
+    return 2;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    XiangDetailTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"xiangCell" forIndexPath:indexPath];
+
+//       Xiang *xiang=[self.xiangdetailist objectAtIndex:indexPath.row];
+   
+    XiangDetail *xiangdetail=[self.xiangdetailist objectAtIndex:indexPath.row];
+    
+
+        cell.key.text=xiangdetail.key;
+        cell.partNr.text=xiangdetail.partNr;
+        cell.quantity.text=xiangdetail.quantity;
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    
+//
+    
+//    cell.stateLabel.text=xiang.state_display;
+//    if(xiang.state==0){
+//        [cell.stateLabel setTextColor:[UIColor redColor]];
+//    }
+//    else if(xiang.state==1 || xiang.state==2){
+//        [cell.stateLabel setTextColor:[UIColor blueColor]];
+//    }
+//    else if(xiang.state==3){
+//        [cell.stateLabel setTextColor:[UIColor colorWithRed:87.0/255.0 green:188.0/255.0 blue:96.0/255.0 alpha:1.0]];
+//    }
+//    else if(xiang.state==4){
+//        [cell.stateLabel setTextColor:[UIColor orangeColor]];
+//    }
+    
+        return cell;
 }
 
 @end

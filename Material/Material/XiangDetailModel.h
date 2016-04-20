@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface XiangDetailModel : NSObject
-@property (nonatomic,copy) NSString *key;
-@property (nonatomic,copy) NSString *partNr;
-@property (nonatomic,copy) NSString *quantity;
--(instancetype)initWithObject:(NSDictionary *)object;
-@property(nonatomic,strong) NSMutableArray *xiangdetailist;
--(void)addXiangdetailist:(NSSet *)xiangdetailist;
+@property(nonatomic,strong)NSMutableArray *xiangDetailArray;
++(instancetype)sharedXiangDetailStore:(UITableView *)view;
+//-(Xiang *)addXiang:(NSString *)key partNumber:(NSString *)partNumber quatity:(NSString *)quatity;
+-(NSInteger)xiangDetailCount;
+-(NSArray *)xiangDetailList;
+//-(void)removeXiang:(NSInteger)index;
+
 @end

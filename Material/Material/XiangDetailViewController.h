@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Tuo.h"
+#import "XiangDetail.h"
 @interface XiangDetailViewController : UIViewController
 @property(nonatomic,strong)NSString *type;
-
+@property(nonatomic,strong)Tuo *tuo;
 @property(nonatomic,strong) NSMutableArray *xiangdetailist;
+@property(nonatomic,strong)XiangDetail *xiangDetail;
 @end

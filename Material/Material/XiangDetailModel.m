@@ -8,29 +8,38 @@
 
 #import "XiangDetailModel.h"
 
+@interface XiangDetailModel()
+
+@end
 @implementation XiangDetailModel
-
-- (instancetype)init
++(instancetype)sharedXiangDetailStore:(UITableView *)view
 {
-    self = [super init];
-    
-    return self;
+    static XiangDetailModel *xiangList=nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        xiangList=[[XiangStore alloc] initPrivate:view];
+//    });
+    return xiangList;
 }
-
-- (instancetype)initWithObject:(NSDictionary *)object{
+-(instancetype)initPrivate:(UITableView *)view
+{
     self=[super init];
     if(self){
-        self.key=object[@"container_id"]?object[@"container_id"]:@"";
-        self.partNr=object[@"part_id_display"]?object[@"part_id_display"]:@"";
-        self.quantity=object[@"quantity"]?object[@"quantity"]:@"";
+        self.xiangDetailArray=[[NSMutableArray alloc] init];
+        //        [[[AFNetOperate alloc] init] getXiangs:self.xiangArray view:view];
     }
     return self;
 }
-
-
--(void)addXiangDetaiList:(XiangDetailModel *)xiangdetailist
+-(NSInteger)xiangDetailCount
 {
-    [self.xiangdetailist addObject:xiangdetailist];
+    return [self.xiangDetailArray count];
 }
-
+-(NSArray *)xiangDetailList
+{
+    return [self.xiangDetailArray copy];
+}
+//-(void)removeXiang:(NSInteger)index
+//{
+//    [self.xiangArray removeObjectAtIndex:index];
+//}
 @end

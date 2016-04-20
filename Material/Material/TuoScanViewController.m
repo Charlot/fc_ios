@@ -76,7 +76,7 @@
     [self.xiangTable registerNib:nib forCellReuseIdentifier:@"xiangCell"];
     self.alert=nil;
     self.scanStandard=[ScanStandard sharedScanStandard];
-    self.sum_packages_count= [self.tuo.xiang count];
+    self.sum_packages_count=[self.tuo.xiang count];
     [self updateXiangCountLabel];
     if(self.enablePop){
         self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"完成"
@@ -584,7 +584,7 @@
     else if(xiang.state==4){
         [cell.stateLabel setTextColor:[UIColor orangeColor]];
     }
-    cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    //cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
