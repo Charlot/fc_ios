@@ -13,6 +13,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "XiangDetailTableViewCell.h"
 #import "XiangDetail.h"
+#import "XiangDetailModel.h"
 
 @interface XiangDetailViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,CaptuvoEventsProtocol,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *key;
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *fifo;
 @property (weak, nonatomic) IBOutlet UITextField *quantity;
 @property (weak, nonatomic) IBOutlet UITableView *xiangTable;
+
 @property (strong,nonatomic)ScanStandard *scanStandard;
 @property (strong,nonatomic)UserPreference *userPref;
 @property (strong,nonatomic)UIAlertView *alert;
@@ -27,9 +29,13 @@
 
 @property (strong,nonatomic) XiangDetailTableViewCell *tableviewCell;
 
-@end
+@property(strong,nonatomic)XiangDetailModel *XiangItem;
 
+@property (nonatomic) int xiang_detail_count;
+
+@end
 @implementation XiangDetailViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,42 +48,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self clearExtraLine:self.xiangTable];
     // Do any additional setup after loading the view.
     self.key.delegate = self;
     self.partNumber.delegate=self;
     self.quantity.delegate=self;
     self.fifo.delegate=self;
-    
-//    UITableView *tableView =[[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
-//    tableView.dataSource=self;
-//    tableView.delegate=self;
-//    tableView.allowsSelection=NO;
-//    [self.view addSubview:tableView];
-    
-    
     self.xiangTable.delegate=self;
     self.xiangTable.dataSource=self;
-    
-//    self.xiangTable.dataSource=self;
-//    self.xiangTable.delegate=self;
-//    self.xiangTable.dataSource=self;
-//    if([self.type isEqualToString:@"xiang"]){
-//        self.navigationItem.rightBarButtonItem=NULL;
-//        self.tuo=[[Tuo alloc] init];
-//    }
-//    else if([self.type isEqualToString:@"addXiang"]){
-//        self.navigationItem.rightBarButtonItem=NULL;
-//    }
-//    else if([self.type isEqualToString:@"tuo"]){
-//        [self.navigationItem setHidesBackButton:YES];
-//        self.navigationItem.title=self.tuo.department;
-//    }
+    self.alert=nil;
     UINib *nib=[UINib nibWithNibName:@"XiangDetailTableViewCell" bundle:nil];
-    
-//    [self.xiangTable registerNib:nib forCellReuseIdentifier:@"xiang_list_item"];
-//
 
     [self.xiangTable registerNib:nib forCellReuseIdentifier:@"xiangCell"];
+    self.xiangdetailist=[[NSMutableArray alloc]init];
     
     [self.xiangTable reloadData];
     
@@ -85,8 +68,6 @@
 
     self.userPref=[UserPreference sharedUserPreference];
 }
-
-
 
 -(void)popout
 {
@@ -114,16 +95,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 -(void)removeAlert:(NSTimer *)timer{
     UIAlertView *alert = [[timer userInfo]  objectForKey:@"alert"];
     [alert dismissWithClickedButtonIndex:0 animated:YES];
@@ -137,12 +108,12 @@
     }
 }
 
--(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if(buttonIndex==1){
-//        [self performSegueWithIdentifier:@"scanToPrint" sender:@{@"container":self.tuo}];
-    }
-}
+//-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if(buttonIndex==1){
+////        [self performSegueWithIdentifier:@"scanToPrint" sender:@{@"container":self.tuo}];
+//    }
+//}
 
 #pragma decoder delegate
 -(void)decoderDataReceived:(NSString *)data{
@@ -270,6 +241,7 @@
         NSString *partNumber=self.partNumber.text?self.partNumber.text:@"";
         NSString *quantity=self.quantity.text?self.quantity.text:@"";
         NSString *fifo=self.fifo.text?self.fifo.text:@"";
+        
             //after regex partNumber
         NSString *partNumberPost=[self.scanStandard filterPartNumber:partNumber];
         //after regex quantity
@@ -301,78 +273,39 @@
                       if([responseObject[@"result"] integerValue]==1){
                           
                           if([(NSDictionary *)responseObject[@"content"] count]>0){
+
+
                               NSString *idValue;
                               NSString *keyValue;
                               NSString *partNrValue;
                               NSString *quantityValue;
-                   
-//                              for(int i =0; i<[(NSDictionary *)responseObject[@"content"] count];i++){
-                                  idValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"id"];
-                                  keyValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"container_id"];
-                                  partNrValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"part_id_display"];
-                                  quantityValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"quantity"];
-//                              }
 
-                              _tableviewCell.key.text=keyValue;
-                              _tableviewCell.partNr.text=partNrValue;
-                              _tableviewCell.quantity.text=quantityValue;
+                              idValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"id"];
+                              keyValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"container_id"];
                               
-//                           XiangDetail *newXiangDetail=[[XiangDetail alloc] initWithObject:responseObject[@"content"]];
+                              partNrValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"part_id_display"];
                               
-//                          [self.xiangDetail addXiangDetail:newXiangDetail];
-                 
-                          AudioServicesPlaySystemSound(1012);
+                              quantityValue=[NSString stringWithFormat:@"%@",[(NSDictionary *)responseObject[@"content"] valueForKey:@"quantity"]];
+
+                              self.XiangItem=[[XiangDetailModel alloc] initWith:idValue key:keyValue partNr:partNrValue quantity:quantityValue];
+
+                              XiangDetailModel *xiangdetailmodel=[[XiangDetailModel alloc]initWithObject:responseObject[@"content"]];
+                              [self.xiangdetailist insertObject:xiangdetailmodel atIndex:0];
+                              
+                              [self.xiangTable reloadData];
+                    
+                              AudioServicesPlaySystemSound(1012);
+                              
+                              self.key.text=@"";
                           
-                          @try {
-                              NSString * result= idValue;
-//
-                              self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
-                                                                    message:result
-                                                                   delegate:self
-                                                          cancelButtonTitle:nil
-                                                          otherButtonTitles:nil];
-                              [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                                               target:self
-                                                             selector:@selector(dissmissAlert:)
-                                                             userInfo:nil
-                                                              repeats:NO];
-
-                          } @catch (NSException *exception) {
-                             
-                              NSString *message = @"扫描入库成功";
-                              
-                              self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
-                                                                    message:message
-                                                                   delegate:self
-                                                          cancelButtonTitle:nil
-                                                          otherButtonTitles:nil];
-                              [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                                               target:self
-                                                             selector:@selector(dissmissAlert:)
-                                                             userInfo:nil
-                                                              repeats:NO];
-
-                          }
-//                          @finally {
-//                              self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
-//                                                                    message:@"扫描入库成功"
-//                                                                   delegate:self
-//                                                          cancelButtonTitle:nil
-//                                                          otherButtonTitles:nil];
-//                              [NSTimer scheduledTimerWithTimeInterval:2.0f
-//                                                               target:self
-//                                                             selector:@selector(dissmissAlert:)
-//                                                             userInfo:nil
-//                                                              repeats:NO];
-//                          }
+                              self.partNumber.text=@"";
                           
-                          [self.xiangTable reloadData];
-                          [self.alert show];
-                          self.key.text=@"";
-                          self.partNumber.text=@"";
-                          self.quantity.text=@"";
-                          self.fifo.text=@"";
-                          [self.key becomeFirstResponder];
+                              self.quantity.text=@"";
+                          
+                              self.fifo.text=@"";
+                          
+                              [self.key becomeFirstResponder];
+                              
                           }else{
                               NSString *message = @"扫描入库失败，没有返回值";
 
@@ -449,41 +382,30 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //    NSArray * array=self.xiangdetailist[section];
-    return 2;
+    return [self.xiangdetailist count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     XiangDetailTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"xiangCell" forIndexPath:indexPath];
-
-//       Xiang *xiang=[self.xiangdetailist objectAtIndex:indexPath.row];
+    
    
-    XiangDetail *xiangdetail=[self.xiangdetailist objectAtIndex:indexPath.row];
+        XiangDetailModel *xiangdetail=[self.xiangdetailist objectAtIndex:indexPath.row];
     
 
-        cell.key.text=xiangdetail.key;
-        cell.partNr.text=xiangdetail.partNr;
-        cell.quantity.text=xiangdetail.quantity;
-        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        cell.key.text=xiangdetail.Key;
+        cell.partNr.text=xiangdetail.PartNr;
+        cell.quantity.text=xiangdetail.Quantity;
     
-//
-    
-//    cell.stateLabel.text=xiang.state_display;
-//    if(xiang.state==0){
-//        [cell.stateLabel setTextColor:[UIColor redColor]];
-//    }
-//    else if(xiang.state==1 || xiang.state==2){
-//        [cell.stateLabel setTextColor:[UIColor blueColor]];
-//    }
-//    else if(xiang.state==3){
-//        [cell.stateLabel setTextColor:[UIColor colorWithRed:87.0/255.0 green:188.0/255.0 blue:96.0/255.0 alpha:1.0]];
-//    }
-//    else if(xiang.state==4){
-//        [cell.stateLabel setTextColor:[UIColor orangeColor]];
-//    }
-    
+//        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        cell.userInteractionEnabled = NO;
         return cell;
+}
+-(void)clearExtraLine :(UITableView *)tableView{
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor clearColor];
+    [self.xiangTable setTableFooterView:view];
 }
 
 @end
