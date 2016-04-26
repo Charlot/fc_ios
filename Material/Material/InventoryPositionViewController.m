@@ -113,9 +113,9 @@
                               block:^(BOOL state, NSError *error) {
                                 if (error == nil) {
                                   if (state) {
-                                    [self clearData];
                                     [self loadData];
                                   }
+                                    [self clearData];
                                 }
                               }];
 }
@@ -128,6 +128,8 @@
       tmpTextFile.text = @"";
     }
   }
+    
+    [self.packageTextField becomeFirstResponder];
 }
 
 - (void)getPackageInfo:(NSString *)package_id {
@@ -148,9 +150,13 @@
                      self.qtyTextField.text = [NSString
                          stringWithFormat:@"%@",
                                           [dictData objectForKey:@"qty"]];
+                       
+                       [self createInventoryListItem];
+                       
                    } else {
                      self.packageTextField.text = @"";
                    }
+                     [self.positionTable reloadData];
                  }
                }];
 }
@@ -204,8 +210,7 @@
 
                                                         self.positionCount =
                                                             inventoryList.count;
-                                                        [self.positionTable
-                                                                reloadData];
+                                                                                                        [self.positionTable reloadData];
                                                       }
                                                     }];
                          }

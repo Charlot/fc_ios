@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *positionTF;
 @property (weak, nonatomic) IBOutlet UITextField *containerTF;
 
+@property (weak, nonatomic) IBOutlet UILabel *unfilledLocation;
+
 @property (strong,nonatomic)ScanStandard *scanStandard;
 @property (strong,nonatomic)UserPreference *userPreference;
 
@@ -49,6 +51,7 @@
     self.positionTF.delegate=self;
     self.containerTF.delegate=self;
     self.userPreference=[UserPreference sharedUserPreference];
+    self.warehouseTF.clearButtonMode = UITextFieldViewModeAlways;
     
  
     self.scanStandard=[ScanStandard sharedScanStandard];
@@ -68,6 +71,7 @@
 {
     [super viewWillDisappear:animated];
     [[Captuvo sharedCaptuvoDevice] removeCaptuvoDelegate:self];
+    [self.unfilledLocation setHidden:true];
     
     [self.firstResponder resignFirstResponder];
     self.firstResponder=nil;
@@ -88,7 +92,10 @@
 {
     if(textField==self.warehouseTF){
         [self.positionTF becomeFirstResponder];
+        [self validate];
     }else if(textField==self.positionTF){
+        [self.unfilledLocation setHidden:false];
+//                [self validate];
         [self.containerTF becomeFirstResponder];
     }else if(textField==self.containerTF){
       
@@ -99,8 +106,10 @@
 
 -(void)validate{
     NSString *nr=[self.scanStandard filterKey:self.containerTF.text];
+    
     AFNetOperate *AFNet = [[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
+    
     [manager POST:[AFNet enter_stock]
       parameters:@{@"warehouse":self.warehouseTF.text,@"position":self.positionTF.text,@"container":nr}
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -111,6 +120,7 @@
                                                               delegate:self
                                                      cancelButtonTitle:@"确定"
                                                      otherButtonTitles:nil];
+                 [self.unfilledLocation setHidden:true];
                  [alert show];
                  [NSTimer scheduledTimerWithTimeInterval:2.0f
                                                   target:self

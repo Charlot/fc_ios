@@ -46,7 +46,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSString *container=[NSString stringWithFormat:@"%@",[self.container class]];
     // Do any additional setup after loading the view.
+    //托清单不可发送
+    if([container isEqualToString:@"Tuo"]){
+        self.sendButton.backgroundColor=[UIColor clearColor];
+    }
+
     if([self.noBackButton boolValue]){
         [self.navigationItem setHidesBackButton:YES];
     }
@@ -64,6 +70,12 @@
 {
     [super viewWillAppear:animated];
     NSString *class=[NSString stringWithFormat:@"%@",[self.container class]];
+    NSString *container=[NSString stringWithFormat:@"%@",[self.container class]];
+    //托清单不可发送
+    if([container isEqualToString:@"Tuo"]){
+        self.sendButton.backgroundColor=[UIColor clearColor];
+    }
+
     if([class isEqualToString:@"Yun"]){
         self.pageTextField.text=[self.printSetting getCopy:@"stock" type:@"yun" alternative:@"P002"];
     }
@@ -197,7 +209,7 @@
 - (IBAction)send:(id)sender {
     NSString *container=[NSString stringWithFormat:@"%@",[self.container class]];
     if([container isEqualToString:@"Tuo"]){
-        [self performSegueWithIdentifier:@"sendTuo" sender:self];
+        //[self performSegueWithIdentifier:@"sendTuo" sender:self];
     }
     else if([container isEqualToString:@"Yun"]){
         [self performSegueWithIdentifier:@"sendYun" sender:self];
