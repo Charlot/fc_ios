@@ -119,7 +119,7 @@
 -(void)decoderDataReceived:(NSString *)data{
     self.firstResponder.text=[data copy];
     UITextField *targetTextField=self.firstResponder;
-    if(targetTextField.tag==10 ){
+    if(targetTextField.tag==self.key.tag ){
         //date
         NSString *alertString=@"请扫描唯一码";
         BOOL isMatch  = [self.scanStandard checkKey:data];
@@ -143,7 +143,7 @@
             [targetTextField becomeFirstResponder];
         }
     }
-    else if(targetTextField.tag==20){
+    else if(targetTextField.tag==self.partNumber.tag){
         //part number
         NSString *alertString=@"请扫描零件号";
         BOOL isMatch  = [self.scanStandard checkPartNumber:data];
@@ -167,7 +167,7 @@
             [targetTextField becomeFirstResponder];
         }
     }
-    else if(targetTextField.tag==30){
+    else if(targetTextField.tag==self.fifo.tag){
         //count
         NSString *alertString=@"请扫描FIFO";
         BOOL isMatch  = [self.scanStandard checkDate:data];
@@ -231,7 +231,7 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     __block long tag=textField.tag;
-    if(tag==40){
+    if(tag==self.fifo.tag){
         
         
         AFNetOperate *AFNet=[[AFNetOperate alloc] init];
