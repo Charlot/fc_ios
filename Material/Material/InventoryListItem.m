@@ -32,6 +32,8 @@
                                  ? dictionary[@"inventory_list_id"]
                                  : @"";
     self.whouse_id = dictionary[@"whouse_id"] ? dictionary[@"whouse_id"] : @"";
+      self.fromWh = dictionary[@"fromWh"] ? dictionary[@"fromWh"] : @"";
+      self.fromPosition = dictionary[@"fromPosition"] ? dictionary[@"fromPosition"] : @"";
   }
   return self;
 }

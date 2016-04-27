@@ -397,7 +397,6 @@
         cell.key.text=xiangdetail.Key;
         cell.partNr.text=xiangdetail.PartNr;
         cell.quantity.text=xiangdetail.Quantity;
-    
 //        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         cell.userInteractionEnabled = NO;
         return cell;
@@ -407,5 +406,13 @@
     view.backgroundColor = [UIColor clearColor];
     [self.xiangTable setTableFooterView:view];
 }
+//-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return YES;
+//}
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    
+//}
 
 @end

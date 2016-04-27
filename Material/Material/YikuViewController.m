@@ -202,6 +202,7 @@
       UITextField *tmpTextFile = objInput;
       if ([objInput isFirstResponder]) {
         tmpTextFile.text = data;
+//          验证唯一码
         if (tmpTextFile == self.packageTextField) {
           [self getPackageInfo:tmpTextFile.text];
         }
@@ -228,8 +229,17 @@
                            self.qtyTextField.text = [NSString
                                stringWithFormat:@"%@",
                                                 [dictData objectForKey:@"qty"]];
+                             
+                             self.fromWhTextField.text = [NSString
+                                                          stringWithFormat:@"%@",
+                                                          [dictData
+                                                           objectForKey:@"fromWh"]];
+                             self.fromPositionTextField.text = [NSString
+                                                       stringWithFormat:@"%@",
+                                                       [dictData objectForKey:@"fromPosition"]];
+                             
                            [self.partNrTextField resignFirstResponder];
-                           [self.fromWhTextField becomeFirstResponder];
+//                           [self.fromWhTextField becomeFirstResponder];
                          }
                        }];
 }
@@ -392,12 +402,15 @@
   for (id objInput in subviews) {
     if ([objInput isKindOfClass:[UITextField class]]) {
       UITextField *theTextField = objInput;
+        if (theTextField.tag == self.toWhTextField.tag || theTextField.tag == self.toPositionTextField.tag ) {
+        }else{
       theTextField.text = @"";
+        }
       //                        NSLog(@"time is %d", i);
       //                        i++;
     }
   }
-  [self.toWhTextField becomeFirstResponder];
+  [self.packageTextField becomeFirstResponder];
 }
 
 ///**

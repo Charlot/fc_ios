@@ -17,6 +17,8 @@
 @property(nonatomic, strong) NSString *position;
 @property(nonatomic, strong) NSString *inventory_list_id;
 @property(nonatomic, strong) NSString *whouse_id;
+@property(nonatomic, strong) NSString *fromWh;
+@property(nonatomic, strong) NSString *fromPosition;
 - (instancetype)initWithObject:(NSDictionary *)dictionary;
 
 @end
