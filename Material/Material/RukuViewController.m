@@ -52,7 +52,6 @@
     self.containerTF.delegate=self;
     self.userPreference=[UserPreference sharedUserPreference];
     self.warehouseTF.clearButtonMode = UITextFieldViewModeAlways;
-    
  
     self.scanStandard=[ScanStandard sharedScanStandard];
 
@@ -94,16 +93,51 @@
         [self.positionTF becomeFirstResponder];
         [self validate];
     }else if(textField==self.positionTF){
-        [self.unfilledLocation setHidden:false];
-//                [self validate];
-        [self.containerTF becomeFirstResponder];
+//        [self.unfilledLocation setHidden:false];
+        [self capacity_lable];
+//        [self.containerTF becomeFirstResponder];
     }else if(textField==self.containerTF){
-      
         [self validate];
     }
     return YES;
 }
-
+-(void)capacity_lable{
+//    NSString *cl=[self.scanStandard filterKey:self.positionTF.text];
+    AFNetOperate *AFNet = [[AFNetOperate alloc] init];
+    AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
+    
+    [manager POST:	[AFNet rtposition]
+      parameters:@{@"position":self.positionTF.text}
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             [AFNet.activeView stopAnimating];
+             
+             if ([responseObject[@"result"] integerValue] == 1) {
+                 UIAlertView *alert_lable=[[UIAlertView alloc] initWithTitle:@""
+                                                               message:@"库位已满"
+                                                              delegate:self
+                                                     cancelButtonTitle:@"确定"
+                                                     otherButtonTitles: nil];
+                 [alert_lable show];
+                 
+                 self.unfilledLocation.text=[NSString stringWithFormat:@"%@",@"0"];
+                 
+                [self.unfilledLocation setHidden:false];
+                 
+                 self.positionTF.text=@"";
+             }else{
+//                 self.unfilledLocation=@"unfill";
+                 self.unfilledLocation.text=[NSString stringWithFormat:@"%d",(6-[responseObject[@"unfill"] integerValue])];
+                 
+                 [self.unfilledLocation setHidden:false];
+//                 [self textFieldShouldReturn:self.positionTF];
+                 [self.containerTF becomeFirstResponder];
+                 
+             }
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             [AFNet.activeView stopAnimating];
+         }];
+    
+}
 -(void)validate{
     NSString *nr=[self.scanStandard filterKey:self.containerTF.text];
     
@@ -120,8 +154,8 @@
                                                               delegate:self
                                                      cancelButtonTitle:@"确定"
                                                      otherButtonTitles:nil];
-                 [self.unfilledLocation setHidden:true];
                  [alert show];
+                 [self.unfilledLocation setHidden:true];
                  [NSTimer scheduledTimerWithTimeInterval:2.0f
                                                   target:self
                                                 selector:@selector(removeAlert:)

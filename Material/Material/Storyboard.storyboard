@@ -5506,7 +5506,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mNz-NV-qGZ">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mNz-NV-qGZ" id="tB6-Cg-T0m">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -5645,14 +5645,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dIN-Ef-yCx">
-                                <rect key="frame" x="254" y="254" width="20" height="21"/>
+                                <rect key="frame" x="222" y="202" width="54" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余容量：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dLI-af-NG6">
-                                <rect key="frame" x="180" y="254" width="75" height="21"/>
+                                <rect key="frame" x="150" y="202" width="75" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -5810,21 +5810,21 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mEd-et-lyR"/>
         <segue reference="Jdf-8l-kNU"/>
-        <segue reference="U3W-2k-BOU"/>
-        <segue reference="zbp-Dd-2O5"/>
-        <segue reference="Hyz-uv-cpc"/>
-        <segue reference="Xpt-zp-Oio"/>
         <segue reference="PPk-8F-ZrK"/>
         <segue reference="UAK-rn-23P"/>
         <segue reference="veK-WU-skj"/>
-        <segue reference="Neh-iJ-Fpe"/>
-        <segue reference="SkA-08-PWt"/>
-        <segue reference="FcC-pN-TYA"/>
-        <segue reference="WHI-RS-rUG"/>
+        <segue reference="Xpt-zp-Oio"/>
+        <segue reference="Hyz-uv-cpc"/>
+        <segue reference="U3W-2k-BOU"/>
+        <segue reference="zbp-Dd-2O5"/>
+        <segue reference="2c4-Zh-zKC"/>
+        <segue reference="ZfA-pO-UHe"/>
+        <segue reference="Do4-uK-Dun"/>
         <segue reference="hQ5-Fe-tiF"/>
         <segue reference="2nV-DT-24h"/>
+        <segue reference="mEd-et-lyR"/>
+        <segue reference="SkA-08-PWt"/>
         <segue reference="yJ1-Ae-Eed"/>
         <segue reference="Hg3-N0-v7Z"/>
         <segue reference="JT4-AV-Rjg"/>

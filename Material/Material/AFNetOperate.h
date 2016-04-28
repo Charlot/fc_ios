@@ -135,6 +135,7 @@
 - (NSString *)inventory_processing;
 - (NSString *)check_stock;
 - (NSString *)enter_stock;
+- (NSString *)rtposition;
 - (NSString *)inventory_list_item;
 - (NSString *)move;
 

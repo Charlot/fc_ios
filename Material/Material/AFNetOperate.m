@@ -766,6 +766,12 @@
     [[self URLDictionary] objectForKey:@"enter_stock"];
     return [base stringByAppendingString:enter_stock];
 }
+- (NSString *)rtposition {
+    NSString *base = [self baseURL];
+    NSString *rtposition =
+    [[self URLDictionary] objectForKey:@"rtposition"];
+    return [base stringByAppendingString:rtposition];
+}
 
 - (NSString *)inventory_list_item {
   NSString *base = [self baseURL];

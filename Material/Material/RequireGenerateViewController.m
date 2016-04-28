@@ -29,6 +29,7 @@
 @property (strong,nonatomic)NSMutableArray *xiangArray;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (strong ,nonatomic)NewValidate *validate;
+@property (strong ,nonatomic)NewValidate *capacity_lable;
 @property (strong,nonatomic)NSString *order_source_id;
 @property (nonatomic)int xiangCount;
 @property (weak, nonatomic) IBOutlet UIButton *firstTabButton;
