@@ -531,6 +531,9 @@
                          copies:(NSString *)copies {
   NSString *joint = [self base_for_print:@"stock_xiang"];
   NSString *after = [NSString string];
+    if(printer.length==0){
+     printer=@"X";
+    }
   if (copies.length > 0) {
     after = [[ID stringByAppendingPathComponent:printer]
         stringByAppendingPathComponent:copies];
@@ -544,6 +547,10 @@
                        copies:(NSString *)copies {
   NSString *joint = [self base_for_print:@"stock_tuo"];
   NSString *after = [NSString string];
+    if(printer.length==0){
+        printer=@"X";
+    }
+    
   if (copies.length > 0) {
     after = [[ID stringByAppendingPathComponent:printer]
         stringByAppendingPathComponent:copies];
@@ -557,6 +564,10 @@
                        copies:(NSString *)copies {
   NSString *joint = [self base_for_print:@"stock_yun"];
   NSString *after = [NSString string];
+    if(printer.length==0){
+        printer=@"X";
+    }
+    
   if (copies.length > 0) {
     after = [[ID stringByAppendingPathComponent:printer]
         stringByAppendingPathComponent:copies];
@@ -571,6 +582,10 @@
                               copies:(NSString *)copies {
   NSString *joint = [self base_for_print:@"shop_yun_receive"];
   NSString *after = [NSString string];
+    if(printer.length==0){
+        printer=@"X";
+    }
+    
   if (copies.length > 0) {
     after = [[ID stringByAppendingPathComponent:printer]
         stringByAppendingPathComponent:copies];
@@ -584,6 +599,10 @@
                                 copies:(NSString *)copies {
   NSString *joint = [self base_for_print:@"shop_yun_unreceive"];
   NSString *after = [NSString string];
+    if(printer.length==0){
+        printer=@"X";
+    }
+    
   if (copies.length > 0) {
     after = [[ID stringByAppendingPathComponent:printer]
         stringByAppendingPathComponent:copies];
@@ -597,6 +616,10 @@
                                 copies:(NSString *)copies {
   NSString *joint = [self base_for_print:@"shop_xiang_receive"];
   NSString *after = [NSString string];
+    if(printer.length==0){
+        printer=@"X";
+    }
+    
   if (copies.length > 0) {
     after = [[ID stringByAppendingPathComponent:printer]
         stringByAppendingPathComponent:copies];
@@ -610,6 +633,10 @@
                                   copies:(NSString *)copies {
   NSString *joint = [self base_for_print:@"shop_xiang_unreceive"];
   NSString *after = [NSString string];
+    if(printer.length==0){
+        printer=@"X";
+    }
+    
   if (copies.length > 0) {
     after = [[ID stringByAppendingPathComponent:printer]
         stringByAppendingPathComponent:copies];
@@ -623,6 +650,10 @@
                               copies:(NSString *)copies {
   NSString *joint = [self base_for_print:@"shop_tuo_receive"];
   NSString *after = [NSString string];
+    if(printer.length==0){
+        printer=@"X";
+    }
+    
   if (copies.length > 0) {
     after = [[ID stringByAppendingPathComponent:printer]
         stringByAppendingPathComponent:copies];
@@ -636,6 +667,10 @@
                                 copies:(NSString *)copies {
   NSString *joint = [self base_for_print:@"shop_tuo_unreceive"];
   NSString *after = [NSString string];
+    if(printer.length==0){
+        printer=@"X";
+    }
+    
   if (copies.length > 0) {
     after = [[ID stringByAppendingPathComponent:printer]
         stringByAppendingPathComponent:copies];
@@ -649,6 +684,10 @@
                            copies:(NSString *)copies {
   NSString *joint = [self base_for_print:@"transfer_note"];
   NSString *after = [NSString string];
+    if(printer.length==0){
+        printer=@"X";
+    }
+    
   if (copies.length > 0) {
     after = [[ID stringByAppendingPathComponent:printer]
         stringByAppendingPathComponent:copies];
@@ -918,8 +957,14 @@
                                     copies:(NSString *)copies {
   NSString *joint = [self base_for_print:@"movement_list"];
   NSString *after = [NSString string];
+    if(printer.length==0){
+        printer=@"X";
+    }
   if (copies.length > 0) {
-    after = [ID stringByAppendingPathComponent:copies];
+    //after = [ID stringByAppendingPathComponent:copies];
+      after = [[ID stringByAppendingPathComponent:printer]
+                      stringByAppendingPathComponent:copies];
+
   } else {
     after = ID;
   }
@@ -952,6 +997,20 @@
   NSString *search_position =
       [[self URLDictionary] objectForKey:@"search_position"];
   return [base stringByAppendingString:search_position];
+}
+
+- (NSString *)getPickById {
+    NSString *base = [self baseURL];
+    NSString *url =
+    [[[self URLDictionary] objectForKey:@"pick"] objectForKey:@"get_by_id"];
+    return [base stringByAppendingString:url];
+}
+
+- (NSString *)getRecentOrders {
+    NSString *base = [self baseURL];
+    NSString *url =
+    [[[self URLDictionary] objectForKey:@"orders"] objectForKey:@"recent"];
+    return [base stringByAppendingString:url];
 }
 
 @end

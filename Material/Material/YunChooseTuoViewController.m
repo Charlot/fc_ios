@@ -41,6 +41,7 @@
     self.tuoTable.delegate=self;
     if(!self.yun){
         self.yun=[[Yun alloc] init];
+        self.yun.orderId=self.orderId;
     }
     if([self.type isEqualToString:@"yunEdit"]){
         self.navigationItem.rightBarButtonItem.title=self.barTitle;

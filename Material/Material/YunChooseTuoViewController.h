@@ -14,4 +14,5 @@
 @property(nonatomic,strong)Yun *yunTarget;
 @property(nonatomic,strong)NSString *type;
 @property (strong,nonatomic) NSString *barTitle;
+@property(strong,nonatomic)NSString* orderId;
 @end

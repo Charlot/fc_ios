@@ -253,4 +253,6 @@
 
 - (NSString *)searchPosition;
 
+-(NSString*)getPickById;
+-(NSString*)getRecentOrders;
 @end

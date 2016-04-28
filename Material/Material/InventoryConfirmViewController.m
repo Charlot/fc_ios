@@ -11,6 +11,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "UITextField+Extended.h"
 #import "InventoryAPI.h"
+#import "ScanStandard.h"
 
 @interface InventoryConfirmViewController () <CaptuvoEventsProtocol,
                                               UITextFieldDelegate>
@@ -19,6 +20,7 @@
 @property(weak, nonatomic) IBOutlet UITextField *positionTextField;
 @property(weak, nonatomic) IBOutlet UITextField *qtyTextField;
 @property(weak, nonatomic) IBOutlet UITextField *scanTextField;
+@property (strong,nonatomic)ScanStandard *scanStandard;
 - (IBAction)confirm:(id)sender;
 
 @end
@@ -38,17 +40,19 @@
   // Do any additional setup after loading the view.
   //    NSLog(@"pass inventory id is %d", self.inventroy_id);
   self.scanTextField.delegate = self;
-  [self.scanTextField becomeFirstResponder];
+ // [self.scanTextField becomeFirstResponder];
   self.scanTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
   self.scanTextField.nextTextField = self.positionTextField;
-
+    self.scanTextField.enabled=NO;
   self.partTextField.delegate = self;
   self.partTextField.nextTextField = self.qtyTextField;
   self.partTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
-
+   self.partTextField.enabled=NO;
   self.qtyTextField.delegate = self;
   self.qtyTextField.nextTextField = self.positionTextField;
-
+    
+    [self.qtyTextField becomeFirstResponder];
+    
   self.positionTextField.inputView = [[UIView alloc] initWithFrame:CGRectZero];
 
   self.whouseidTextField.delegate = self;
@@ -65,6 +69,9 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self initController];
+    
+    self.scanStandard=[ScanStandard sharedScanStandard];
+
   [self loadData];
 
   UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
@@ -248,7 +255,7 @@
 }
 
 - (void)postData {
-  NSString *package_id = self.scanTextField.text;
+    NSString *package_id = [self.scanStandard filterKey:self.scanTextField.text];;
   NSString *part_id = self.partTextField.text;
   //    NSLog([NSString stringWithFormat:@"the part id is %@", part_id]);
   NSString *qty = self.qtyTextField.text;
@@ -273,8 +280,8 @@
             theTextField.text = @"";
           }
         }
-        [self.scanTextField becomeFirstResponder];
-
+        //[self.scanTextField becomeFirstResponder];
+          [self.qtyTextField becomeFirstResponder];
         [AFNet.activeView stopAnimating];
         if ([responseObject[@"result"] integerValue] == 1) {
 

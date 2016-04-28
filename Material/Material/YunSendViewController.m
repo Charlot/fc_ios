@@ -13,6 +13,7 @@
 #import "AFNetOperate.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "PrintViewController.h"
+#import "YunTableViewController.h"
 @interface YunSendViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *remarkLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tuoCountLabel;
@@ -105,6 +106,10 @@
 }
 
 - (IBAction)cancel:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+  //  [self.presentingViewController dismissViewControllerAnimated:self completion:nil];
+
+     
+   [self performSegueWithIdentifier:@"backToDeliveryIndex" sender:self];
+   
 }
 @end

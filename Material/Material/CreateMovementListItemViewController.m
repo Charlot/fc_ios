@@ -13,6 +13,7 @@
 #import "DBManager.h"
 #import "AFNetOperate.h"
 #import "MovementAPI.h"
+#import "ScanStandard.h"
 #import "UserPreference.h"
 
 @interface CreateMovementListItemViewController ()
@@ -24,6 +25,7 @@
 @property(strong, nonatomic) IBOutlet UITextField *fromWhouseTextField;
 @property(strong, nonatomic) IBOutlet UITextField *fromPositionTextField;
 @property(strong, nonatomic) IBOutlet UITextField *saveData;
+@property(nonatomic,strong)ScanStandard *scanStandard;
 
 @property (strong,nonatomic)UserPreference *userPreference;
 
@@ -40,6 +42,8 @@
   [self.view addGestureRecognizer:tap];
   //  [self getPackageInfo:@"WI311501127113"];
   [self initController];
+    
+    self.scanStandard=[ScanStandard sharedScanStandard];
 }
 
 - (void)dismissKeyboard {
@@ -133,6 +137,10 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if(textField==self.packageTextField){
+        [self getPackageInfo: textField.text];
+    }
+    
   UITextField *next = textField.nextTextField;
   if (next) {
     [next becomeFirstResponder];
@@ -161,6 +169,9 @@
 }
 
 - (void)getPackageInfo:(NSString *)package_id {
+    
+    package_id=[self.scanStandard filterKey:package_id];
+    
   MovementAPI *api = [[MovementAPI alloc] init];
   [api
       getNStoragePackageInfo:package_id
@@ -175,6 +186,17 @@
                            self.qtyTextField.text = [NSString
                                stringWithFormat:@"%@",
                                                 [dictData objectForKey:@"qty"]];
+                             
+                             NSString *whouse=[dictData objectForKey:@"whouse_id"];
+                             if(whouse && whouse.length>0){
+                                 self.fromWhouseTextField.text=whouse;
+                             }
+                             
+                             NSString *position=[dictData objectForKey:@"position_id"];
+                             if(position && position.length>0){
+                                 self.fromPositionTextField.text=position;
+                             }
+                             
                            [self.partIDTextField resignFirstResponder];
                            [self.fromWhouseTextField becomeFirstResponder];
                          }
@@ -238,7 +260,10 @@ preparation before navigation
     clickedButtonAtIndex:(NSInteger)buttonIndex {
   NSString *strToWh = self.toWhouseTextField.text;
   NSString *strToPosition = self.toPositionTextField.text;
-  NSString *strPackage = self.packageTextField.text;
+ // NSString *strPackage = self.packageTextField.text;
+    
+    NSString *strPackage=[self.scanStandard filterKey:self.packageTextField.text];
+    
   NSString *strQty = self.qtyTextField.text;
   NSString *strPartNr = self.partIDTextField.text;
   NSString *strFromWh = self.fromWhouseTextField.text;

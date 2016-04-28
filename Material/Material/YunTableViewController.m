@@ -14,13 +14,16 @@
 #import "AFNetOperate.h"
 #import "YunSendedViewController.h"
 #import "Tuo.h"
+#import "UserPreference.h"
 
 @interface YunTableViewController ()
 @property (nonatomic,strong)YunStore *yunStore;
+
+@property (strong,nonatomic)UserPreference *userPreference;
+
 @end
 
 @implementation YunTableViewController
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -36,6 +39,8 @@
     UINib *nib=[UINib nibWithNibName:@"YunTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"yunCell"];
     
+    self.userPreference=[UserPreference sharedUserPreference];
+    
 //    self.yunStore=[YunStore sharedYunStore:self.tableView];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -50,6 +55,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+         
     [super viewWillAppear:animated];
     //得到数据
     YunStore *yunStore=[[YunStore alloc] init];
@@ -304,6 +310,16 @@
     }
     else{
         return NO;
+    }
+}
+
+- (IBAction)createDelivery:(id)sender {
+    if(self.userPreference.location.check_delivery_by_pick){
+        // need check
+		[self performSegueWithIdentifier:@"selectPickList" sender:nil]; 
+    }else{
+       // not need check
+        [self performSegueWithIdentifier:@"selectForklift" sender:nil];
     }
 }
 

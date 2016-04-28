@@ -17,6 +17,7 @@
 @property(nonatomic,strong)NSString *tenant_id;
 @property(nonatomic,strong)NSString *created_at;
 @property(nonatomic,strong)NSString *updated_at;
+@property(nonatomic)BOOL *check_delivery_by_pick;
 
 @property(nonatomic,strong)Location *defaultDestination;
 @property(nonatomic,strong)Location *order_source_location;
