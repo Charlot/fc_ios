@@ -63,6 +63,9 @@
         self.user_id=dictionary[@"user_id"]?dictionary[@"user_id"]:@"";
         self.state=dictionary[@"state"]?[dictionary[@"state"] intValue]:0;
         self.state_display=dictionary[@"state_display"]?dictionary[@"state_display"]:@"";
+        
+        self.parent_id=dictionary[@"parent_id"]?dictionary[@"parent_id"]:@"";
+        self.parent_container_id=dictionary[@"parent_container_id"]?dictionary[@"parent_container_id"]:@"";
     }
     return self;
 }
@@ -78,6 +81,8 @@
     self.state=tuo.state;
     self.state_display=tuo.state_display;
     self.user_id=tuo.user_id;
+    self.parent_id=tuo.parent_id;
+    self.parent_container_id=tuo.parent_container_id;
     return self;
 }
 -(void)addXiang:(Xiang *)xiang

@@ -24,7 +24,6 @@
 @end
 
 @implementation YunTableViewController
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -56,6 +55,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+         
     [super viewWillAppear:animated];
     //得到数据
     YunStore *yunStore=[[YunStore alloc] init];

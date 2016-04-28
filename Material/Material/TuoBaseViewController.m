@@ -11,7 +11,15 @@
 #import "Tuo.h"
 #import "AFNetOperate.h"
 #import "UserPreference.h"
-@interface TuoBaseViewController ()<UITextFieldDelegate,CaptuvoEventsProtocol>
+#import "Yun.h"
+
+@interface TuoBaseViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,CaptuvoEventsProtocol,UIAlertViewDelegate,UIPickerViewDataSource,
+UIPickerViewDelegate>{
+    NSMutableArray *_dataList;
+    NSArray *_pickerData;
+    NSString *_deliveryId;
+}
+
 - (IBAction)nextStep:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *department;
 @property (weak, nonatomic) IBOutlet UITextField *agent;
@@ -20,6 +28,7 @@
 @property (strong,nonatomic)NSString *location_id;
 
 @property (strong,nonatomic)UserPreference *userPreference;
+@property (weak, nonatomic) IBOutlet UIPickerView *deliveryPicker;
 
 @end
 
@@ -62,7 +71,86 @@
     }
     
       self.agent.enabled=NO;
+    [self getDeliveryList];
+    self.deliveryPicker.dataSource=self;
+    self.deliveryPicker.delegate=self;
+    
 }
+
+-(void)getDeliveryList{
+    
+    _dataList = [[NSMutableArray alloc] init];
+    _deliveryId = @"";
+    
+    AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+    AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+    [AFNet.activeView stopAnimating];
+    [manager GET:[AFNet yun_root]
+      parameters:@{
+                   @"state":@[@0,@1,@2,@3,@4],
+                   @"type":@0
+                   }
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             [AFNet.activeView stopAnimating];
+             if([responseObject[@"result"] integerValue]==1){
+                 NSArray *resultArray=responseObject[@"content"];
+                 for(int i=0;i<[resultArray count];i++){
+                     Yun *yun=[[Yun alloc] initWithObject:resultArray[i]];
+                     if (i == 0) {
+                                                     _deliveryId =yun.ID;
+                                                      NSLog(@"the id is %@", _deliveryId);
+                            }
+                    [_dataList addObject:yun];
+                 }
+                  [self.deliveryPicker reloadAllComponents];
+             }
+             else{
+                 [AFNet alert:responseObject[@"content"]];
+             }
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             [AFNet.activeView stopAnimating];
+             [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+         }
+     ];
+}
+
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+// The number of rows of data
+- (NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component {
+    //   return _pickerData.count;
+    return [_dataList count];
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString *)pickerView:(UIPickerView *)pickerView
+             titleForRow:(NSInteger)row
+            forComponent:(NSInteger)component {
+    //    return _pickerData[row];
+    Yun *yun = [[Yun alloc] init];
+    yun = _dataList[row];
+    //    NSString *strFromInt = [NSString stringWithFormat:@"%d",[_dataList
+    //    count]];
+    //    NSLog(strFromInt);
+    //
+    return yun.container_id;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView
+      didSelectRow:(NSInteger)row
+       inComponent:(NSInteger)component {
+    Yun *yun = [[Yun alloc] init];
+    yun = _dataList[row];
+    
+    _deliveryId= yun.ID;
+}
+
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -90,6 +178,7 @@
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"tuoBaseToScan"]){
+        
         TuoScanViewController *scanViewController=segue.destinationViewController;
         Tuo *tuo=[[Tuo alloc] init];
         if([self.location_id isEqualToString:@"FG"]){
@@ -98,6 +187,9 @@
         else{
            tuo.department=self.department.text;
         }
+        
+        tuo.parent_id=_deliveryId;
+        
         tuo.agent=self.agent.text;
         NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy.MM.dd"];
@@ -119,12 +211,12 @@
         department=self.department.text;
     }
     NSString *agent=self.agent.text;
-    if(agent.length>0 && self.department.text.length>0){
+    if(agent.length>0 && self.department.text.length>0 && _deliveryId.length>0){
         [self baseToScan:department agent:agent];
     }
     else{
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"错误"
-                                                      message:@"请填写目的地编号和备货员工号"
+                                                      message:@"请填写和选择信息"
                                                      delegate:self
                                             cancelButtonTitle:@"确定"
                                             otherButtonTitles:nil];
@@ -143,6 +235,7 @@
     }
     else{
         parameters=@{@"forklift":@{
+                             @"delivery_id":_deliveryId,
                              @"whouse_id":department,
                              @"stocker_id":agent
                              }};

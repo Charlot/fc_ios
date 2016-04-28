@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="bRR-Yf-CoJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="bRR-Yf-CoJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -248,8 +248,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="aQ9-QC-YMc" kind="relationship" relationship="viewControllers" id="hjc-eZ-cjO"/>
                         <segue destination="VHM-2W-26T" kind="relationship" relationship="viewControllers" id="Bai-fR-qaU"/>
+                        <segue destination="aQ9-QC-YMc" kind="relationship" relationship="viewControllers" id="hjc-eZ-cjO"/>
                         <segue destination="MXL-Lu-Ppy" kind="relationship" relationship="viewControllers" id="KC3-SV-CPi"/>
                         <segue destination="beQ-9b-e43" kind="relationship" relationship="viewControllers" id="Jdf-8l-kNU"/>
                     </connections>
@@ -643,18 +643,29 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备货员工号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wJM-e0-hNH">
-                                <rect key="frame" x="54" y="170" width="70" height="21"/>
+                                <rect key="frame" x="54" y="149" width="70" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择运单" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5vD-3N-kyW">
+                                <rect key="frame" x="53" y="220" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="KQn-RF-Rm4">
-                                <rect key="frame" x="51" y="192" width="218" height="30"/>
+                                <rect key="frame" x="51" y="171" width="218" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
+                            <pickerView contentMode="scaleToFill" id="ntb-lf-gdv">
+                                <rect key="frame" x="-1" y="245" width="320" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -667,6 +678,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="agent" destination="KQn-RF-Rm4" id="VgR-dg-Tb5"/>
+                        <outlet property="deliveryPicker" destination="ntb-lf-gdv" id="4cc-4S-Lxf"/>
                         <outlet property="department" destination="53v-1h-kQn" id="EeK-oQ-RWD"/>
                         <outlet property="departmentLabel" destination="0yr-HT-TV0" id="77H-rE-sg1"/>
                         <segue destination="Zq0-sm-J8a" kind="push" identifier="tuoBaseToScan" id="mEd-et-lyR"/>
@@ -953,7 +965,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0z-i1-EhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GRt-gM-KUS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5129" y="1445"/>
+            <point key="canvasLocation" x="5463" y="1525"/>
         </scene>
         <!--选择目的地-->
         <scene sceneID="7a8-Kn-R60">
@@ -1146,6 +1158,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VHM-2W-26T" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="运单" image="yun-tarbar" id="XCl-vn-xaG"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="qDf-lw-2vJ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="j0z-4o-mph">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1226,7 +1239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbG-oU-qcV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3110" y="2737"/>
+            <point key="canvasLocation" x="3198" y="2873"/>
         </scene>
         <!--Yun Sended View Controller-->
         <scene sceneID="Meu-W9-pLU">
@@ -1634,11 +1647,13 @@
                         <outlet property="tuoCountLabel" destination="AAn-8r-K6u" id="AvR-vL-ape"/>
                         <segue destination="auM-tp-hPM" kind="push" identifier="changeAddress" id="hy6-vM-msP"/>
                         <segue destination="W31-QG-1bE" kind="push" identifier="print" id="GDE-C3-Tx4"/>
+                        <segue destination="icu-qW-O5I" kind="unwind" identifier="backToDeliveryIndex" unwindAction="unwindToYunTable:" id="BaN-AP-kYk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="euL-7c-P1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="icu-qW-O5I" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4320" y="3893"/>
+            <point key="canvasLocation" x="2844" y="3671"/>
         </scene>
         <!--扫描托接收-->
         <scene sceneID="ufc-71-gmQ">
@@ -5848,26 +5863,26 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uGb-RP-W83"/>
-        <segue reference="Jdf-8l-kNU"/>
+        <segue reference="If0-NA-MAK"/>
+        <segue reference="PPk-8F-ZrK"/>
+        <segue reference="veK-WU-skj"/>
+        <segue reference="UAK-rn-23P"/>
+        <segue reference="mEd-et-lyR"/>
+        <segue reference="SkA-08-PWt"/>
+        <segue reference="xK7-Cq-f4d"/>
+        <segue reference="Hyz-uv-cpc"/>
+        <segue reference="fTA-Xe-KDm"/>
         <segue reference="U3W-2k-BOU"/>
         <segue reference="zbp-Dd-2O5"/>
-        <segue reference="Hyz-uv-cpc"/>
-        <segue reference="Xpt-zp-Oio"/>
-        <segue reference="PPk-8F-ZrK"/>
-        <segue reference="UAK-rn-23P"/>
-        <segue reference="veK-WU-skj"/>
         <segue reference="pF9-mf-As5"/>
         <segue reference="EZu-KH-oca"/>
         <segue reference="QU2-zR-Ew2"/>
         <segue reference="Hg3-N0-v7Z"/>
-        <segue reference="Dng-DQ-LOk"/>
-        <segue reference="8RY-QF-ZAw"/>
-        <segue reference="SkA-08-PWt"/>
-        <segue reference="Do4-uK-Dun"/>
-        <segue reference="hy6-vM-msP"/>
-        <segue reference="GDE-C3-Tx4"/>
         <segue reference="Dtg-Ls-yzU"/>
+        <segue reference="WHI-RS-rUG"/>
+        <segue reference="GDE-C3-Tx4"/>
+        <segue reference="hQ5-Fe-tiF"/>
+        <segue reference="hy6-vM-msP"/>
         <segue reference="LWF-aC-Ypb"/>
     </inferredMetricsTieBreakers>
 </document>
