@@ -53,11 +53,12 @@
                                          delegate:self
                                 cancelButtonTitle:@"确定"
                                 otherButtonTitles:nil];
-  [NSTimer scheduledTimerWithTimeInterval:5.0f
-                                   target:self
-                                 selector:@selector(dissmissAlert:)
-                                 userInfo:nil
-                                  repeats:NO];
+//  为nil alert时间
+//  [NSTimer scheduledTimerWithTimeInterval:5.0f
+//                                   target:self
+//                                 selector:@selector(dissmissAlert:)
+//                                 userInfo:nil
+//                                  repeats:NO];
   AudioServicesPlaySystemSound(1051);
   [self.alert show];
 }

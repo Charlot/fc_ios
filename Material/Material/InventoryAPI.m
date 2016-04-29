@@ -11,11 +11,14 @@
 #import "AFNetOperate.h"
 #import "InventoryList.h"
 #import "InventoryListItem.h"
+#import <AudioToolbox/AudioToolbox.h>
 #define kPageSzieKey @"100"
 @interface InventoryAPI ()
 
 @property(nonatomic, strong) DBManager *db;
 @property(nonatomic, strong) AFNetOperate *afnet;
+@property(nonatomic,strong)UIAlertView *alert;
+
 
 @end
 
@@ -118,12 +121,26 @@
         BOOL state = false;
         if ([responseObject[@"result"] intValue] == 1) {
           state = true;
-          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
-                                                                  @"content"]]];
+//          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
+//                                                                  @"content"]]];
+            AudioServicesPlaySystemSound(1012);
         } else {
 
-          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[
-                                                                  @"content"]]];
+          [self.afnet alert:[NSString stringWithFormat:@"%@", responseObject[@"content"]]];
+//            self.alert = [[UIAlertView alloc] initWithTitle:@""
+//                                                    message:[NSString stringWithFormat:@"%@", responseObject[
+//                                                                                                             @"content"]]
+//                                                   delegate:self
+//                                          cancelButtonTitle:@"确定"
+//                                          otherButtonTitles:nil];
+//            AudioServicesPlaySystemSound(1051);
+//            [self.alert show];
+//            [NSTimer scheduledTimerWithTimeInterval:50.0f
+//                                             target:self
+//                                           selector:@selector(dissmissAlert:)
+//                                           userInfo:nil
+//                                            repeats:NO];
+           
         }
         if (block) {
           block(state, nil);

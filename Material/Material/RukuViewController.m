@@ -107,7 +107,7 @@
     AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
     
     [manager POST:	[AFNet rtposition]
-      parameters:@{@"position":self.positionTF.text}
+      parameters:@{@"warehouse":self.warehouseTF.text,@"position":self.positionTF.text}
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              [AFNet.activeView stopAnimating];
              
