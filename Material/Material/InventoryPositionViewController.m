@@ -35,6 +35,8 @@
 @property(strong, nonatomic) InventoryAPI *api;
 @property (strong,nonatomic)ScanStandard *scanStandard;
 
+@property (weak, nonatomic) IBOutlet UILabel *positionNow;
+
 @end
 
 @implementation InventoryPositionViewController
@@ -46,6 +48,7 @@
   self.positionTable.dataSource = self;
   self.positionTable.delegate = self;
   self.positionCount = @"0";
+
     self.packageTextField.delegate=self;
     
     self.scanStandard=[ScanStandard sharedScanStandard];
@@ -218,6 +221,7 @@
 
                                                         self.positionCount =
                                                             inventoryList.count;
+                                                          self.positionNow.text= inventoryList.positionNr;
                                                                                                         [self.positionTable reloadData];
                                                       }
                                                     }];
