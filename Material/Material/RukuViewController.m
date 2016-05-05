@@ -27,6 +27,7 @@
 //@property(nonatomic, strong) UIAlertView *alert;
 
 @property (strong, nonatomic) UITextField *firstResponder;
+//@property int *lable;
 
 @end
 
@@ -98,6 +99,7 @@
 //        [self.containerTF becomeFirstResponder];
     }else if(textField==self.containerTF){
         [self validate];
+        [self capacity_lable];
     }
     return YES;
 }
@@ -105,9 +107,8 @@
 //    NSString *cl=[self.scanStandard filterKey:self.positionTF.text];
     AFNetOperate *AFNet = [[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
-    
     [manager POST:	[AFNet rtposition]
-      parameters:@{@"position":self.positionTF.text}
+      parameters:@{@"warehouse":self.warehouseTF.text,@"position":self.positionTF.text}
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              [AFNet.activeView stopAnimating];
              
@@ -118,18 +119,15 @@
                                                      cancelButtonTitle:@"确定"
                                                      otherButtonTitles: nil];
                  [alert_lable show];
-                 
                  self.unfilledLocation.text=[NSString stringWithFormat:@"%@",@"0"];
-                 
-                [self.unfilledLocation setHidden:false];
-                 
                  self.positionTF.text=@"";
+                 self.containerTF.text=@"";
+                 [self.positionTF becomeFirstResponder];
+                 [self.unfilledLocation setHidden:true];
              }else{
-//                 self.unfilledLocation=@"unfill";
+
                  self.unfilledLocation.text=[NSString stringWithFormat:@"%d",(6-[responseObject[@"unfill"] integerValue])];
-                 
                  [self.unfilledLocation setHidden:false];
-//                 [self textFieldShouldReturn:self.positionTF];
                  [self.containerTF becomeFirstResponder];
                  
              }
@@ -155,14 +153,16 @@
                                                      cancelButtonTitle:@"确定"
                                                      otherButtonTitles:nil];
                  [alert show];
-                 [self.unfilledLocation setHidden:true];
+                 
+                 
+
                  [NSTimer scheduledTimerWithTimeInterval:2.0f
                                                   target:self
                                                 selector:@selector(removeAlert:)
                                                 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert,@"alert", nil]
                                                  repeats:NO];
                  
-                 AudioServicesPlaySystemSound(1051);
+                 AudioServicesPlaySystemSound(1012);
                  //[self clearAllTextFields];
                  self.containerTF.text=@"";
                  [self.containerTF becomeFirstResponder];

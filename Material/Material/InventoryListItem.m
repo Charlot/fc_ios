@@ -30,6 +30,7 @@
 
     self.position_id = dictionary[@"position_id"] ? dictionary[@"position_id"] : @"";
       self.position_nr = dictionary[@"position_nr"] ? dictionary[@"position_nr"] : @"";
+      self.current_position_nr = dictionary[@"current_position_nr"] ? dictionary[@"current_position_nr"] : @"";
 
     self.inventory_list_id = dictionary[@"inventory_list_id"]
                                  ? dictionary[@"inventory_list_id"]
