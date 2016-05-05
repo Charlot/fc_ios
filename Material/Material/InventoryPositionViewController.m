@@ -35,17 +35,22 @@
 @property(strong, nonatomic) InventoryAPI *api;
 @property (strong,nonatomic)ScanStandard *scanStandard;
 
+@property (weak, nonatomic) IBOutlet UILabel *positionNow;
+@property (weak, nonatomic) IBOutlet UILabel *positionScan;
+
 @end
 
 @implementation InventoryPositionViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    self.positionScan.text=self.position;
   self.api = [[InventoryAPI alloc] init];
   self.positionData = [[NSMutableArray alloc] init];
   self.positionTable.dataSource = self;
   self.positionTable.delegate = self;
   self.positionCount = @"0";
+
     self.packageTextField.delegate=self;
     
     self.scanStandard=[ScanStandard sharedScanStandard];
@@ -135,6 +140,7 @@
       tmpTextFile.text = @"";
     }
   }
+    self.positionNow.text=@"";
     
     [self.packageTextField becomeFirstResponder];
 }
@@ -158,6 +164,10 @@
                      self.qtyTextField.text = [NSString
                          stringWithFormat:@"%@",
                                           [dictData objectForKey:@"qty"]];
+                       
+                       self.positionNow.text = [NSString
+                                                 stringWithFormat:@"%@",
+                                                 [dictData objectForKey:@"position"]];
                        
                        [self createInventoryListItem];
                        
@@ -218,6 +228,7 @@
 
                                                         self.positionCount =
                                                             inventoryList.count;
+                                                         // self.positionNow.text= inventoryList.positionNr;
                                                                                                         [self.positionTable reloadData];
                                                       }
                                                     }];

@@ -20,6 +20,8 @@
 @property(weak, nonatomic) IBOutlet UITextField *positionTextField;
 @property(weak, nonatomic) IBOutlet UITextField *qtyTextField;
 @property(weak, nonatomic) IBOutlet UITextField *scanTextField;
+@property (weak, nonatomic) IBOutlet UITextField *currentPositionTF;
+
 @property (strong,nonatomic)ScanStandard *scanStandard;
 - (IBAction)confirm:(id)sender;
 
@@ -50,6 +52,8 @@
    self.partTextField.enabled=NO;
   self.qtyTextField.delegate = self;
   self.qtyTextField.nextTextField = self.positionTextField;
+    self.currentPositionTF.delegate=self;
+    self.currentPositionTF.enabled=false;
     
     [self.qtyTextField becomeFirstResponder];
     
@@ -64,6 +68,7 @@
   self.qtyTextField.text = self.inventory_list_item.qty;
   self.positionTextField.text = self.inventory_list_item.position_nr;
   self.whouseidTextField.text = self.inventory_list_item.whouse_nr;
+    self.currentPositionTF.text=self.inventory_list_item.current_position_nr;
 }
 
 - (void)viewDidLoad {

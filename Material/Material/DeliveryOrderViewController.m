@@ -27,6 +27,7 @@ UIPickerViewDelegate>{
 @property (weak, nonatomic) IBOutlet UIPickerView *ordersPick;
 
 
+//- (IBAction)pressNavigation:(id)sender;
 
 @end
 
@@ -132,8 +133,13 @@ numberOfRowsInComponent:(NSInteger)component {
 - (IBAction)toSelectForkLift:(id)sender {
     if(_orderId){
      [self performSegueWithIdentifier:@"selectForkliftAfterOrder" sender:@{@"orderId":_orderId}];
+        
     }
 }
+
+//- (IBAction)pressNavigation:(id)sender{
+//    [self  performSegueWithIdentifier:@"selectForkliftAfterOrder" sender:self];
+//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
