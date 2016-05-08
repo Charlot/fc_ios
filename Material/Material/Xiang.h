@@ -29,6 +29,7 @@
 @property(nonatomic)BOOL checked;
 -(instancetype)initExample;
 -(instancetype)initWith:(NSString *)ID partNumber:(NSString *)partNumber key:(NSString *)key count:(NSString *)count position:(NSString *)position remark:(NSString *)remark date:(NSString *)date;
+
 -(instancetype)initWithObject:(NSDictionary *)object;
 -(instancetype)copyMe:(Xiang *)xiang;
 @end

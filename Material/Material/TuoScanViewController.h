@@ -14,4 +14,5 @@
 @property(nonatomic,strong)NSString *type;
 @property(nonatomic)BOOL hideCheckButton;
 @property(nonatomic)BOOL enablePop;
+@property(nonatomic,strong) NSMutableArray *xiangdetailist;
 @end

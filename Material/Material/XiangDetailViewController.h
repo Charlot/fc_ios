@@ -12,7 +12,5 @@
 @interface XiangDetailViewController : UIViewController
 //@property(nonatomic,strong)NSString *type;
 //@property(nonatomic,strong)Tuo *tuo;
-@property(nonatomic,strong) NSMutableArray *xiangdetailist;
 //@property(nonatomic,strong)XiangDetailModel *xiangDetail;
-
 @end

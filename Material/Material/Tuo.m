@@ -84,6 +84,7 @@
 {
     [self.xiang addObject:xiang];
 }
+
 -(NSInteger)xiangAmount
 {
     return [self.xiang count];

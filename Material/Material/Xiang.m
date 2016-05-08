@@ -22,6 +22,7 @@
     }
     return self;
 }
+
 -(instancetype)initWith:(NSString *)ID partNumber:(NSString *)partNumber key:(NSString *)key count:(NSString *)count position:(NSString *)position remark:(NSString *)remark date:(NSString *)date
 {
     self=[super init];
@@ -35,6 +36,7 @@
     }
     return self;
 }
+
 -(instancetype)initWithObject:(NSDictionary *)object
 {
     self=[super init];

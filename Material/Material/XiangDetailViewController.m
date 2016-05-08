@@ -24,14 +24,21 @@
 
 @property (strong,nonatomic)ScanStandard *scanStandard;
 @property (strong,nonatomic)UserPreference *userPref;
+@property(strong,nonatomic)NSMutableArray *xiangdetailist;
+
 @property (strong,nonatomic)UIAlertView *alert;
 @property (strong, nonatomic) UITextField *firstResponder;
+
 
 @property (strong,nonatomic) XiangDetailTableViewCell *tableviewCell;
 
 @property(strong,nonatomic)XiangDetailModel *XiangItem;
 
 @property (nonatomic) int xiang_detail_count;
+@property(nonatomic)NSDictionary *parameters;
+@property NSString *partNumberDeleteP;
+
+- (IBAction)sureToInput:(id)sender;
 
 @end
 @implementation XiangDetailViewController
@@ -114,17 +121,85 @@
 ////        [self performSegueWithIdentifier:@"scanToPrint" sender:@{@"container":self.tuo}];
 //    }
 //}
-
+-(void)enterPackageCheck{
+    AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+    AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+    [manager GET: [AFNet xiang_index]
+    parameters: @{@"package_id":self.key.text}
+    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [AFNet.activeView stopAnimating];
+        if ([responseObject[@"result"] integerValue] == 1) {
+            NSString *message = @"唯一码已存在";
+            
+            self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
+                                                  message:message
+                                                 delegate:self
+                                        cancelButtonTitle:nil
+                                        otherButtonTitles:nil];
+            [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                             target:self
+                                           selector:@selector(dissmissAlert:)
+                                           userInfo:nil
+                                            repeats:NO];
+            AudioServicesPlaySystemSound(1051);
+            [self.alert show];
+            self.key.text = @"";
+            
+        }else{
+            [self textFieldShouldReturn:self.firstResponder];
+            [self.partNumber becomeFirstResponder];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [AFNet.activeView stopAnimating];
+        
+    }];
+}
+-(void)enterPartNrCheck{
+    AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+    AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+    [manager POST: [AFNet part_validate]
+      parameters: @{@"id":self.partNumberDeleteP}
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             [AFNet.activeView stopAnimating];
+             if ([responseObject[@"result"] integerValue] == 0) {
+                 NSString *message = @"零件不存在";
+                 
+                 self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
+                                                       message:message
+                                                      delegate:self
+                                             cancelButtonTitle:nil
+                                             otherButtonTitles:nil];
+                 [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                                  target:self
+                                                selector:@selector(dissmissAlert:)
+                                                userInfo:nil
+                                                 repeats:NO];
+                 AudioServicesPlaySystemSound(1051);
+                 [self.alert show];
+                 self.partNumber.text = @"";
+                 
+             }else{
+                 [self textFieldShouldReturn:self.firstResponder];
+                 [self.quantity becomeFirstResponder];
+             }
+             
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             [AFNet.activeView stopAnimating];
+             
+         }];
+    
+}
 #pragma decoder delegate
 -(void)decoderDataReceived:(NSString *)data{
     self.firstResponder.text=[data copy];
     UITextField *targetTextField=self.firstResponder;
     if(targetTextField.tag==self.key.tag ){
-        //date
+        //唯一码
         NSString *alertString=@"请扫描唯一码";
         BOOL isMatch  = [self.scanStandard checkKey:data];
         if(isMatch){
-            [self textFieldShouldReturn:self.firstResponder];
+            [self enterPackageCheck];
         }
         else{
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
@@ -148,7 +223,8 @@
         NSString *alertString=@"请扫描零件号";
         BOOL isMatch  = [self.scanStandard checkPartNumber:data];
         if(isMatch){
-            [self textFieldShouldReturn:self.firstResponder];
+            self.partNumberDeleteP=[self.scanStandard filterPartNumber:self.partNumber.text];
+            [self enterPartNrCheck];
         }
         else{
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
@@ -168,7 +244,7 @@
         }
     }
     else if(targetTextField.tag==self.fifo.tag){
-        //count
+        //fifo
         NSString *alertString=@"请扫描FIFO";
         BOOL isMatch  = [self.scanStandard checkDate:data];
         if(isMatch){
@@ -193,7 +269,7 @@
         
     }
     else{
-        //唯一码
+        //qty
         NSString *alertString=@"请扫描数量";
         BOOL isMatch  = [self.scanStandard checkQuantity:data];
         if(isMatch){
@@ -227,16 +303,85 @@
     self.firstResponder=textField;
 }
 
+-(void)getPackageInfo{
+    AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+    AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+    [manager POST:[AFNet xiang_enter_stock]
+       parameters: self.parameters
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
+              [AFNet.activeView stopAnimating];
+              
+              if([responseObject[@"result"] integerValue]==1){
+                  
+                  if([(NSDictionary *)responseObject[@"content"] count]>0){
+                      NSString *message = @"已完成全部入库！";
+                      
+                      self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+                                                            message:message
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:nil];
+                      [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                                       target:self
+                                                     selector:@selector(dissmissAlert:)
+                                                     userInfo:nil
+                                                      repeats:NO];
+                      [self.alert show];
+                       AudioServicesPlaySystemSound(1012);
+                      
+
+                      
+                  }else{
+                      NSString *message = @"扫描入库失败，没有返回值";
+                      
+                      self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
+                                                            message:message
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:nil];
+                      [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                                       target:self
+                                                     selector:@selector(dissmissAlert:)
+                                                     userInfo:nil
+                                                      repeats:NO];
+                      [self.alert show];
+                      
+                  }
+              }else{
+                  NSString *message = @"扫描入库失败，网络错误";
+                  
+                  self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:nil];
+                  [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                                   target:self
+                                                 selector:@selector(dissmissAlert:)
+                                                 userInfo:nil
+                                                  repeats:NO];
+                  
+                  [self.alert show];
+                  [AFNet alert:responseObject[@"content"]];
+                  self.key.text=@"";
+                  self.partNumber.text=@"";
+                  self.quantity.text=@"";
+                  self.fifo.text=@"";
+                  [self.key becomeFirstResponder];
+              }
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              [AFNet.activeView stopAnimating];
+              [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+          }
+     ];
+    
+}
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     __block long tag=textField.tag;
     if(tag==self.fifo.tag){
-        
-        
-        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
-        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-        
         NSString *key=self.key.text?self.key.text:@"";
         NSString *partNumber=self.partNumber.text?self.partNumber.text:@"";
         NSString *quantity=self.quantity.text?self.quantity.text:@"";
@@ -250,9 +395,10 @@
         //after regex date
         if(key.length>0){
             
-            NSDictionary *parameters=[NSDictionary dictionary];
+            self.parameters=[NSDictionary dictionary];
 
-            parameters=@{@"package":@{
+            self.parameters=@{@"package":
+                                  @[@{
                              @"id":key,
                              @"part_id_display":partNumber,
                              @"part_id":partNumberPost,
@@ -260,97 +406,48 @@
                              @"quantity_display":quantity,
                              @"custom_fifo_time":fifoPost,
                              @"fifo_time_display":fifo
-                             }
+                             },@{
+                            @"id":key,
+                            @"part_id_display":partNumber,
+                            @"part_id":partNumberPost,
+                            @"quantity":quantityPost,
+                            @"quantity_display":quantity,
+                            @"custom_fifo_time":fifoPost,
+                            @"fifo_time_display":fifo
+                                        } ]
                          };
-                
-//            }
-            [manager POST:[AFNet xiang_enter_stock]
-               parameters: parameters
-                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                      //成功了
-                      [AFNet.activeView stopAnimating];
-                      
-                      if([responseObject[@"result"] integerValue]==1){
-                          
-                          if([(NSDictionary *)responseObject[@"content"] count]>0){
+            
+            NSString *idValue;
+            NSString *keyValue;
+            NSString *partNrValue;
+            NSString *quantityValue;
+            
+            idValue=self.key.text;
+            keyValue=self.key.text;
+            quantityValue=self.quantity.text;
+            partNrValue=self.partNumber.text;
+            
+            
+            self.XiangItem=[[XiangDetailModel alloc] initWith:idValue key:keyValue partNr:partNrValue quantity:quantityValue];
+            
+            XiangDetailModel *xiangdetailmodel=self.XiangItem;
+            
+            [self.xiangdetailist insertObject:xiangdetailmodel atIndex:0];
+            
+            [self.xiangTable reloadData];
+            
+            AudioServicesPlaySystemSound(1012);
+            
+            self.key.text=@"";
+            
+            self.partNumber.text=@"";
+            
+            self.quantity.text=@"";
+            
+            self.fifo.text=@"";
+            
+            [self.key becomeFirstResponder];
 
-
-                              NSString *idValue;
-                              NSString *keyValue;
-                              NSString *partNrValue;
-                              NSString *quantityValue;
-
-                              idValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"id"];
-                              keyValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"container_id"];
-                              
-                              partNrValue=[(NSDictionary *)responseObject[@"content"] valueForKey:@"part_id_display"];
-                              
-                              quantityValue=[NSString stringWithFormat:@"%@",[(NSDictionary *)responseObject[@"content"] valueForKey:@"quantity"]];
-
-                              self.XiangItem=[[XiangDetailModel alloc] initWith:idValue key:keyValue partNr:partNrValue quantity:quantityValue];
-
-                              XiangDetailModel *xiangdetailmodel=[[XiangDetailModel alloc]initWithObject:responseObject[@"content"]];
-                              [self.xiangdetailist insertObject:xiangdetailmodel atIndex:0];
-                              
-                              [self.xiangTable reloadData];
-                    
-                              AudioServicesPlaySystemSound(1012);
-                              
-                              self.key.text=@"";
-                          
-                              self.partNumber.text=@"";
-                          
-                              self.quantity.text=@"";
-                          
-                              self.fifo.text=@"";
-                          
-                              [self.key becomeFirstResponder];
-                              
-                          }else{
-                              NSString *message = @"扫描入库失败，没有返回值";
-
-                              self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
-                                                                    message:message
-                                                                   delegate:self
-                                                          cancelButtonTitle:nil
-                                                          otherButtonTitles:nil];
-                              [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                                               target:self
-                                                             selector:@selector(dissmissAlert:)
-                                                             userInfo:nil
-                                                              repeats:NO];
-                              [self.alert show];
-
-                          }
-                      }else{
-                          NSString *message = @"扫描入库失败，网络错误";
-                          
-                          self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
-                                                                message:message
-                                                               delegate:self
-                                                      cancelButtonTitle:nil
-                                                      otherButtonTitles:nil];
-                          [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                                           target:self
-                                                         selector:@selector(dissmissAlert:)
-                                                         userInfo:nil
-                                                          repeats:NO];
-                          
-                          [self.alert show];
-                          
-                          [AFNet alert:responseObject[@"content"]];
-                          self.key.text=@"";
-                          self.partNumber.text=@"";
-                          self.quantity.text=@"";
-                          self.fifo.text=@"";
-                          [self.key becomeFirstResponder];
-                      }
-              }
-                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                      [AFNet.activeView stopAnimating];
-                      [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
-                  }
-             ];
         }else{
             self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
                             message:@"检查扫描参数"
@@ -397,6 +494,8 @@
         cell.key.text=xiangdetail.Key;
         cell.partNr.text=xiangdetail.PartNr;
         cell.quantity.text=xiangdetail.Quantity;
+
+    
 //        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         cell.userInteractionEnabled = NO;
         return cell;
@@ -415,4 +514,21 @@
 //    
 //}
 
+- (IBAction)sureToInput:(id)sender {
+    [self getPackageInfo];
+    
+    XiangDetailModel *xianglist = self.xiangdetailist[0];
+    
+    self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
+                                          message:[NSString stringWithFormat:@"%@",xianglist.PartNr]
+                                         delegate:self
+                                cancelButtonTitle:@"123"
+                                otherButtonTitles:nil];
+    [NSTimer scheduledTimerWithTimeInterval:10.0f
+                                     target:self
+                                   selector:@selector(dissmissAlert:)
+                                   userInfo:nil
+                                    repeats:NO];
+    [self.alert show];
+}
 @end
