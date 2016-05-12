@@ -7,6 +7,7 @@
 //
 
 #import "TuoScanViewController.h"
+#import "MovementAPI.h"
 #import "TuoStore.h"
 #import "UserPreference.h"
 #import "Xiang.h"
@@ -78,6 +79,22 @@
         self.navigationItem.rightBarButtonItem.title=@"确定入库";
         [self.xiangListLabel setHidden:true];
         [self.xiangCountLabel setHidden:true];
+        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+        [manager POST:[AFNet CreateMovementList]
+           parameters:@{@"user_id":self.userID}
+              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                  [AFNet.activeView stopAnimating];
+                  Xiang *xiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];
+                 [self.tuo addXiang:xiang];
+                   self.rukuList=xiang.listid;
+                  
+              } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  [AFNet.activeView stopAnimating];
+                  
+              }
+         ];
+
     }
     self.xiangCountLabel.adjustsFontSizeToFitWidth=YES;
     UINib *nib=[UINib nibWithNibName:@"XiangTableViewCell" bundle:nil];
@@ -106,6 +123,12 @@
     [self.xiangTable reloadData];
         if(self.hideCheckButton){
             self.checkButton.hidden=YES;
+        }
+
+}-(void)viewDidAppear:(BOOL)animated
+{
+        if ([self.type isEqualToString:@"ruku"]) {
+             self.tuo=[[Tuo alloc] init];
         }
 }
 
@@ -181,7 +204,7 @@
                               
                           }else{
                               [self textFieldShouldReturn:self.firstResponder];
-                              [self.quatity becomeFirstResponder];
+//                              [self.quatity becomeFirstResponder];
                           }
                           
                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -452,40 +475,32 @@
 {
     __block long tag=textField.tag;
     if(tag==4){
-        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
-        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-        NSString *key=self.key.text?self.key.text:@"";
-        NSString *partNumber=self.partNumber.text?self.partNumber.text:@"";
-        NSString *quantity=self.quatity.text?self.quatity.text:@"";
-        NSString *date=self.dateTextField.text?self.dateTextField.text:@"";
-        //after regex partNumber
-        NSString *partNumberPost=[self.scanStandard filterPartNumber:partNumber];
-        //after regex quantity
-        NSString *quantityPost=[self.scanStandard filterQuantity:quantity];
-        //after regex date
-        NSString *datePost=[self.scanStandard filterDate:date];
         
         if ([self.type isEqualToString:@"ruku"]) {
             if (self.partNumber.text.length > 0) {
-                [AFNet.activeView stopAnimating];
-//                self.parameters=[NSDictionary dictionary];
-//                self.parameters=@{@"package":@{
-//                                          @"id":key,
-//                                          @"part_id_display":partNumber,
-//                                          @"part_id":partNumberPost,
-//                                          @"quantity":quantityPost,
-//                                          @"quantity_display":quantity,
-//                                          @"custom_fifo_time":datePost,
-//                                          @"fifo_time_display":date
-//                                          }};
                 
-               self.xianglist = [[Xiang alloc] initWith:key partNumber:partNumber key:key count:quantity position:@"" remark:@"" date:date];
+                if (self.key.text.length>0 && self.partNumber.text.length>0 && self.quatity.text.length>0 && self.dateTextField.text.length>0) {
+                    [self getPackageInfo];
+                }else{
+                    self.alert= [[UIAlertView alloc]initWithTitle:@"警告"
+                                                          message:@"扫描数据不能为空"
+                                                         delegate:self
+                                                cancelButtonTitle:nil
+                                                otherButtonTitles:nil];
+                    [NSTimer scheduledTimerWithTimeInterval:1.5f
+                                                     target:self
+                                                   selector:@selector(dissmissAlert:)
+                                                   userInfo:nil
+                                                    repeats:NO];
+                    [self alert];
+                    self.key.text=@"";
+                    self.partNumber.text=@"";
+                    self.quatity.text=@"";
+                    self.dateTextField.text=@"";
+                    [self.key becomeFirstResponder];
+                    
+                }
                 
-                [self.tuo addXiang:self.xianglist];
-                
-                [self.xiangTable reloadData];
-                
-                AudioServicesPlaySystemSound(1012);
             }else{
                 self.alert= [[UIAlertView alloc]initWithTitle:nil
                                                       message:@"零件号不可为空"
@@ -506,9 +521,24 @@
             self.dateTextField.text=@"";
             [self.key becomeFirstResponder];
 
-        }else if(self.tuo.ID.length>0){
+        }else{
+            AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+            AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+            NSString *key=self.key.text?self.key.text:@"";
+            NSString *partNumber=self.partNumber.text?self.partNumber.text:@"";
+            NSString *quantity=self.quatity.text?self.quatity.text:@"";
+            NSString *date=self.dateTextField.text?self.dateTextField.text:@"";
+            //after regex partNumber
+            NSString *partNumberPost=[self.scanStandard filterPartNumber:partNumber];
+            //after regex quantity
+            NSString *quantityPost=[self.scanStandard filterQuantity:quantity];
+            //after regex date
+            NSString *datePost=[self.scanStandard filterDate:date];
             //拖下面的绑定，不仅绑定，而且会为拖加入新的箱
             NSDictionary *parameters=[NSDictionary dictionary];
+            
+        if(self.tuo.ID.length>0){
+            
             if([self.userPref.location_id isEqualToString:@"FG"]){
                 parameters=@{
                              @"id":self.tuo.ID,
@@ -659,7 +689,8 @@
              ];
         }
     }
-        
+}
+    
     else{
         tag++;
         UITextField *nextText=(UITextField *)[self.view viewWithTag:tag];
@@ -719,11 +750,49 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        delete_movement_source
         // Delete the row from the data source
         if ([self.type isEqualToString:@"ruku"]) {
-            [self.tuo.xiang removeObjectAtIndex:indexPath.row];
-            [self.xiangTable reloadData];
-//            [NSKeyedArchiver archiveRootObject:self.tuo.xiang toFile:<#(nonnull NSString *)#>]
+            
+            int row=indexPath.row;
+            Xiang *tuoRetain=[[[Xiang alloc] init] copyMe:[self.tuo.xiang objectAtIndex:row]];
+            NSString *ID=[NSString stringWithFormat:@"%d", tuoRetain.moveSourceId];
+            AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+            AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+            [manager DELETE:[AFNet delete_movement_source]
+                 parameters:@{
+                              @"movement_source_id":ID
+                              }
+                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        [AFNet.activeView stopAnimating];
+                        if([responseObject[@"result"] integerValue]==1){
+                            self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+                                                                  message:@"删除成功！"
+                                                                 delegate:self
+                                                        cancelButtonTitle:nil
+                                                        otherButtonTitles:nil];
+                            [NSTimer scheduledTimerWithTimeInterval:0.9f
+                                                             target:self
+                                                           selector:@selector(dissmissAlert:)
+                                                           userInfo:nil
+                                                            repeats:NO];
+                            [self.tuo.xiang removeObjectAtIndex:indexPath.row];
+                            [self.xiangTable reloadData];
+                            [self.alert show];
+                            
+                        }
+                        else{
+                            [AFNet alert:responseObject[@"content"]];
+                            [self.alert show];
+                        }
+                        
+                    }
+                    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        [AFNet.activeView stopAnimating];
+                    }
+             ];
+
+        
         }else{
         AFNetOperate *AFNet=[[AFNetOperate alloc] init];
         AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
@@ -801,36 +870,40 @@
         tuoCheck.xiangArray=[sender objectForKey:@"xiangArray"];
     }
 }
+//入库
 -(void)getPackageInfo{
-    
-
-    
-        self.parameters=[NSDictionary dictionary];
-    for(int i = 0;i<self.tuo.xiang.count;i++){
-        Xiang *judgexiang=self.tuo.xiang[i];
-        self.parameters=@{@"package":@{
-                                  @"id":judgexiang.key,
-                                  @"part_id_display":judgexiang.number,
-                                  @"part_id":[self.scanStandard filterPartNumber:judgexiang.number],
-                                  @"quantity":[self.scanStandard filterPartNumber:judgexiang.count],
-                                  @"quantity_display":judgexiang.count,
-                                  @"custom_fifo_time":[self.scanStandard filterPartNumber:judgexiang.date],
-                                  @"fifo_time_display":judgexiang.date
-                                  }};
-    
-    
+    NSString *key=self.key.text?self.key.text:@"";
+    NSString *partNumber=self.partNumber.text?self.partNumber.text:@"";
+    NSString *quantity=self.quatity.text?self.quatity.text:@"";
+    NSString *date=self.dateTextField.text?self.dateTextField.text:@"";
+    //after regex partNumber
+    NSString *partNumberPost=[self.scanStandard filterPartNumber:partNumber];
+    //after regex quantity
+    NSString *quantityPost=[self.scanStandard filterQuantity:quantity];
+    //after regex date
+    NSString *datePost=[self.scanStandard filterDate:date];
+    self.parameters=[NSDictionary dictionary];
+    self.parameters=@{
+                      @"movement_list_id":self.rukuList,
+                      @"toWh":@"WE87",
+                      @"toPosition":@"WE87-1",
+                      @"packageId":key,
+                      @"partNr":partNumberPost,
+                      @"qty":quantityPost,
+                      @"fifo":datePost,
+                      @"type":@"ENTRY"
+                      };
     AFNetOperate *AFNet=[[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-    [manager POST:[AFNet xiang_enter_stock]
+    [manager POST:[AFNet ValidateMovement]
        parameters:self.parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               [AFNet.activeView stopAnimating];
               if([responseObject[@"result"] integerValue]==1){
-                  if([(NSDictionary *)responseObject[@"content"] count]>0 ){
-                      if ((i+1) == self.tuo.xiang.count) {
-                          NSString *message = @"已完成全部入库！";
+//                  if([(NSDictionary *)responseObject[@"content"] count]>0 ){
+//                      if ((i+1) == self.tuo.xiang.count) {
                           self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
-                                                                message:message
+                                                                message:responseObject[@"content"]
                                                                delegate:self
                                                       cancelButtonTitle:nil
                                                       otherButtonTitles:nil];
@@ -843,31 +916,18 @@
                           AudioServicesPlaySystemSound(1012);
                           
                           [self.alert show];
-                            [self.tuo.xiang removeAllObjects];
-                            [self.xiangTable reloadData];
+//                            [self.tuo.xiang removeAllObjects];
+                  self.xianglist = [[Xiang alloc] initWith:key partNumber:partNumber key:key count:quantity position:@"" remark:@"" date:date];
+                  self.xianglist.moveSourceId=[(responseObject[@"object"][@"id"]) intValue];
+                  [self.tuo addXiang:self.xianglist];
+                   [self.xiangTable reloadData];
                           
-                      }
-                  }else{
-                      NSString *message = @"扫描入库失败，没有返回值";
-                      
-                      self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
-                                                            message:message
-                                                           delegate:self
-                                                  cancelButtonTitle:nil
-                                                  otherButtonTitles:nil];
-                      [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                                       target:self
-                                                     selector:@selector(dissmissAlert:)
-                                                     userInfo:nil
-                                                      repeats:NO];
-                      [self.alert show];
-                      
-                  }
+
               }else{
-                  NSString *message = @"扫描入库失败，网络错误";
+//                  NSString *message = @"扫描入库失败，网络错误";
                   
                   self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
-                                                        message:message
+                                                        message:responseObject[@"content"]
                                                        delegate:self
                                               cancelButtonTitle:nil
                                               otherButtonTitles:nil];
@@ -878,7 +938,7 @@
                                                   repeats:NO];
                   
                   [self.alert show];
-                  [AFNet alert:responseObject[@"content"]];
+//                  [AFNet alert:responseObject[@"content"]];
                   self.key.text=@"";
                   self.partNumber.text=@"";
                   self.quatity.text=@"";
@@ -892,19 +952,74 @@
           }
      ];
       
-    }
+//    }
 }
 - (IBAction)finish:(id)sender {
-    
-    
-    
     if ([self.type isEqualToString:@"ruku"]) {
-        [self getPackageInfo];
+        if (self.tuo.xiang.count==0) {
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
+                                                          message:@"没有任何入库项，请扫描入库信息？"
+                                                         delegate:self
+                                                cancelButtonTitle:@"确定"
+                                                otherButtonTitles:nil];
+//            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:self.rukuList
+//                                                          message:self.rukuList
+//                                                         delegate:self
+//                                                cancelButtonTitle:@"不继续"
+//                                                otherButtonTitles:@"继续操作", nil];
+
+            [alert show];
+
+        }else{
+//        [self getPackageInfo];
+            AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+            AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+            [manager POST:[AFNet create_package_enter_stock]
+               parameters:@{@"movement_list_id":self.rukuList,@"employee_id":self.userID}
+            
+                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                     [AFNet.activeView stopAnimating];
+                    if([responseObject[@"result"] integerValue]==1){
+                        self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+                                                              message:@"已完成全部入库"
+                                                             delegate:self
+                                                    cancelButtonTitle:nil
+                                                    otherButtonTitles:nil];
+                        [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                         target:self
+                                                       selector:@selector(dissmissAlert:)
+                                                       userInfo:nil
+                                                        repeats:NO];
+                        
+                        AudioServicesPlaySystemSound(1012);
+                        
+                        [self.alert show];
+                        self.tuo=[[Tuo alloc] init];
+                        [self.xiangdetailist removeAllObjects];
+                        [self.xiangTable reloadData];
+                    }else{
+                        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
+                                                                      message:@"失败"
+                                                                     delegate:self
+                                                            cancelButtonTitle:@"不继续"
+                                                            otherButtonTitles:nil];
+                        [alert show];
+                        
+                    }
+                }
+                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                       [AFNet.activeView stopAnimating];
+                      UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
+                                                                    message:@"没有绑定任何箱，需要继续吗？"
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"不继续"
+                                                          otherButtonTitles:@"继续操作", nil];
+                      [alert show];
+                  }];
+        }
         
-        
-        
-        
-    }else if(self.tuo.xiang.count==0){
+    }else {
+        if(self.tuo.xiang.count==0){
        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
                                                      message:@"没有绑定任何箱，需要继续吗？"
                                                     delegate:self
@@ -915,13 +1030,16 @@
     else{
       [self performSegueWithIdentifier:@"scanToPrint" sender:@{@"container":self.tuo}];
      }
+    }
 }
+
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex==1){
          [self performSegueWithIdentifier:@"scanToPrint" sender:@{@"container":self.tuo}];
     }
 }
+
 - (IBAction)checkXiang:(id)sender {
     NSArray *xiangArray=[SortArray sortByPartNumber:self.tuo.xiang];
     [self performSegueWithIdentifier:@"checkXiang" sender:@{@"xiangArray":xiangArray}];

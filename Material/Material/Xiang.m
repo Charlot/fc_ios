@@ -37,6 +37,19 @@
     return self;
 }
 
+//-(instancetype)initWithForRuKuList:(NSString *)ID listID:(NSString *)listID created_at:(NSString *)created_at count:(NSString *) count state:(NSString *)state
+//{
+//    self = [super init];
+//    if(self){
+//        self.listid=listID?listID:@"";
+//        self.listcreat_at=created_at?created_at:@"";
+//        self.listcount=count?count:@"";
+//        self.liststate=state?state:@"";
+//        
+//    }
+//    return self;
+//}
+
 -(instancetype)initWithObject:(NSDictionary *)object
 {
     self=[super init];
@@ -55,6 +68,8 @@
         self.state_display=object[@"state_display"]?object[@"state_display"]:@"";
         self.possible_department=object[@"possible_department"]?[NSArray arrayWithArray:object[@"possible_department"]]:[NSArray array];
         self.state=object[@"state"]?[object[@"state"] intValue]:0 ;
+        
+        self.listid=object[@"id"]?object[@"id"]:@"";
     }
     return self;
 }
@@ -72,6 +87,10 @@
     self.state=xiang.state;
     self.state_display=[xiang.state_display copy];
     self.possible_department=[NSArray arrayWithArray:xiang.possible_department];
+    self.listid=[xiang.listid copy];
+    
+    self.moveSourceId=xiang.moveSourceId;
+    
     return self;
 }
 @end

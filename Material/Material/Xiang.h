@@ -22,13 +22,21 @@
 @property(nonatomic,strong)NSString *state_display;
 @property(nonatomic,strong)NSArray *possible_department;
 
-
+@property(nonatomic,strong)NSString *listid;
+@property(nonatomic,strong)NSString *listcreat_at;
+@property(nonatomic,strong)NSString *listcount;
+@property(nonatomic,strong)NSString *liststate;
 
 
 @property(nonatomic) int state ;
 @property(nonatomic)BOOL checked;
+
+@property(nonatomic)int moveSourceId;
+
 -(instancetype)initExample;
 -(instancetype)initWith:(NSString *)ID partNumber:(NSString *)partNumber key:(NSString *)key count:(NSString *)count position:(NSString *)position remark:(NSString *)remark date:(NSString *)date;
+
+//-(instancetype)initWithForRuKuList:(NSString *)ID listID:(NSString *)listID created_at:(NSString *)created_at count:(NSString *) count state:(NSString *)state;
 
 -(instancetype)initWithObject:(NSDictionary *)object;
 -(instancetype)copyMe:(Xiang *)xiang;

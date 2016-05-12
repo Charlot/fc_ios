@@ -162,6 +162,7 @@
  *  @return <#return value description#>
  */
 - (NSString *)ValidateMovement;
+-(NSString *)create_package_enter_stock;
 /**
  *  保存移库
  *

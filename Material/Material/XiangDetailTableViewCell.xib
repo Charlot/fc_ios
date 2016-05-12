@@ -56,7 +56,7 @@
                 <outlet property="partNr" destination="PVp-n9-lsd" id="WLf-B6-Zlg"/>
                 <outlet property="quantity" destination="Wbx-nV-dtk" id="944-l7-cSK"/>
             </connections>
-            <point key="canvasLocation" x="311" y="425"/>
+            <point key="canvasLocation" x="315" y="392"/>
         </tableViewCell>
     </objects>
 </document>

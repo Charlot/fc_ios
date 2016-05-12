@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Tuo.h"
 @interface RuKuTableTableViewController : UITableViewController
+@property(nonatomic,strong)Tuo *tuo;
 
 @end

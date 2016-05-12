@@ -6021,7 +6021,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="GfO-nr-oom" kind="relationship" relationship="rootViewController" id="KLd-b9-AMB"/>
+                        <segue destination="GfO-nr-oom" kind="relationship" relationship="rootViewController" id="ggU-ug-B4y"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vG-o7-eHP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6044,14 +6044,49 @@
                     <navigationItem key="navigationItem" title="已有入库单" id="goV-nY-BZm">
                         <barButtonItem key="rightBarButtonItem" title="生成入库单" id="Bjf-DY-ko2">
                             <connections>
-                                <segue destination="Zq0-sm-J8a" kind="push" id="NDU-03-1fo"/>
+                                <action selector="creatRuKuList:" destination="GfO-nr-oom" id="gGO-c7-9lN"/>
+                                <segue destination="Zq0-sm-J8a" kind="push" id="YZY-w5-iAQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="EMM-A9-bh2" kind="push" identifier="rukuDetail" id="c1N-MS-H92"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ann-gW-FCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4229" y="105"/>
+            <point key="canvasLocation" x="4133" y="389"/>
+        </scene>
+        <!--入库单详情-->
+        <scene sceneID="Sx1-tS-ylx">
+            <objects>
+                <viewController id="EMM-A9-bh2" customClass="RuKuDetailTableViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G9t-ks-TeV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XKj-qO-xh2">
+                                <rect key="frame" x="0.0" y="64" width="320" height="452"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="入库单详情" id="4ik-u2-8F5">
+                        <barButtonItem key="rightBarButtonItem" title="入库" id="s7f-4m-bzF">
+                            <connections>
+                                <action selector="rukuButten:" destination="EMM-A9-bh2" id="yxf-qc-5R0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="XKj-qO-xh2" id="dEa-JY-siC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zvl-3O-9yo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4474" y="-19"/>
         </scene>
     </scenes>
     <resources>
@@ -6070,24 +6105,24 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kxl-Rh-nWd"/>
-        <segue reference="veK-WU-skj"/>
-        <segue reference="Get-Zr-2fp"/>
-        <segue reference="EZu-KH-oca"/>
+        <segue reference="zjP-oP-VXq"/>
+        <segue reference="YxU-C8-xI9"/>
         <segue reference="pF9-mf-As5"/>
         <segue reference="UnZ-wN-WXV"/>
-        <segue reference="zjP-oP-VXq"/>
-        <segue reference="yJ1-Ae-Eed"/>
-        <segue reference="tP9-hz-80H"/>
-        <segue reference="fTA-Xe-KDm"/>
-        <segue reference="U3W-2k-BOU"/>
-        <segue reference="zbp-Dd-2O5"/>
+        <segue reference="Kxl-Rh-nWd"/>
+        <segue reference="Get-Zr-2fp"/>
+        <segue reference="veK-WU-skj"/>
+        <segue reference="YZY-w5-iAQ"/>
         <segue reference="SkA-08-PWt"/>
-        <segue reference="NDU-03-1fo"/>
-        <segue reference="Dng-DQ-LOk"/>
+        <segue reference="FcC-pN-TYA"/>
+        <segue reference="WHI-RS-rUG"/>
+        <segue reference="hQ5-Fe-tiF"/>
         <segue reference="2nV-DT-24h"/>
         <segue reference="Neh-iJ-Fpe"/>
-        <segue reference="Do4-uK-Dun"/>
-        <segue reference="FcC-pN-TYA"/>
+        <segue reference="yJ1-Ae-Eed"/>
+        <segue reference="U3W-2k-BOU"/>
+        <segue reference="zbp-Dd-2O5"/>
+        <segue reference="tP9-hz-80H"/>
+        <segue reference="fTA-Xe-KDm"/>
     </inferredMetricsTieBreakers>
 </document>

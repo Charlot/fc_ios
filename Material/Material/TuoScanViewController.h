@@ -12,6 +12,8 @@
 @interface TuoScanViewController : UIViewController
 @property(nonatomic,strong)Tuo *tuo;
 @property(nonatomic,strong)NSString *type;
+@property(nonatomic,strong)NSString *userID;
+@property(nonatomic,strong)NSString *rukuList;
 @property(nonatomic)BOOL hideCheckButton;
 @property(nonatomic)BOOL enablePop;
 @property(nonatomic,strong) NSMutableArray *xiangdetailist;

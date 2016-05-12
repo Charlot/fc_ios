@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.dataArray = [[NSMutableArray alloc] init];
+    self.dataArray = [[NSMutableArray alloc] init];
 
   self.userName = @"";
   KeychainItemWrapper *keyChain =

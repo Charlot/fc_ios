@@ -36,6 +36,8 @@
 	<string>/api/v3/movement_list</string>
 	<key>create_movement_list</key>
 	<string>/api/v3/movement_list</string>
+	<key>create_package_enter_stock</key>
+	<string>/api/v3/movement_list/create_package_enter_stock</string>
 	<key>validate_movement</key>
 	<string>/api/v3/movement_list/validate_movement</string>
 	<key>save_movements</key>

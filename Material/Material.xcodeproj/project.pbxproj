@@ -165,6 +165,7 @@
 		B0BB1D8C1A2DBB5E0036AF61 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0BB1D8B1A2DBB5E0036AF61 /* Images.xcassets */; };
 		B0BE29301949921900061E67 /* XiangTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BE292E1949921900061E67 /* XiangTableViewCell.m */; };
 		B0BE29311949921900061E67 /* XiangTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0BE292F1949921900061E67 /* XiangTableViewCell.xib */; };
+		B0C45FF11CE4242300388726 /* RuKuDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C45FF01CE4242300388726 /* RuKuDetailTableViewController.m */; };
 		B0C75C261A3AC6B800F8A0FF /* UserPreference.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C75C251A3AC6B800F8A0FF /* UserPreference.m */; };
 		B0CC6AE01A4CFBC00047FF7F /* RequireCheckGeneralTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CC6ADF1A4CFBC00047FF7F /* RequireCheckGeneralTableViewController.m */; };
 		B0CC6AE31A4CFBD10047FF7F /* RequireCheckDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CC6AE21A4CFBD10047FF7F /* RequireCheckDetailTableViewController.m */; };
@@ -500,6 +501,8 @@
 		B0BE292D1949921900061E67 /* XiangTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XiangTableViewCell.h; sourceTree = "<group>"; };
 		B0BE292E1949921900061E67 /* XiangTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XiangTableViewCell.m; sourceTree = "<group>"; };
 		B0BE292F1949921900061E67 /* XiangTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XiangTableViewCell.xib; sourceTree = "<group>"; };
+		B0C45FEF1CE4242300388726 /* RuKuDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuKuDetailTableViewController.h; sourceTree = "<group>"; };
+		B0C45FF01CE4242300388726 /* RuKuDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuKuDetailTableViewController.m; sourceTree = "<group>"; };
 		B0C75C241A3AC6B800F8A0FF /* UserPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreference.h; sourceTree = "<group>"; };
 		B0C75C251A3AC6B800F8A0FF /* UserPreference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreference.m; sourceTree = "<group>"; };
 		B0CC6ADE1A4CFBC00047FF7F /* RequireCheckGeneralTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireCheckGeneralTableViewController.h; sourceTree = "<group>"; };
@@ -1230,6 +1233,8 @@
 				B036ECFE1CC6137600AEE701 /* XiangDetailViewController.m */,
 				B00D3D571CDD874800EAE1D0 /* RuKuTableTableViewController.h */,
 				B00D3D581CDD874800EAE1D0 /* RuKuTableTableViewController.m */,
+				B0C45FEF1CE4242300388726 /* RuKuDetailTableViewController.h */,
+				B0C45FF01CE4242300388726 /* RuKuDetailTableViewController.m */,
 			);
 			name = Xiang;
 			sourceTree = "<group>";
@@ -1482,6 +1487,7 @@
 				B04244DB1A1F286B00AAFD24 /* ProductReceiveViewController.m in Sources */,
 				9420D5251C031C2000AA1CB5 /* MovementDetailViewController.m in Sources */,
 				B08B8F0D1953D39E009739DB /* TuoTableViewCell.m in Sources */,
+				B0C45FF11CE4242300388726 /* RuKuDetailTableViewController.m in Sources */,
 				9420D5191C02BD4E00AA1CB5 /* InventoryHistroyViewController.m in Sources */,
 				B036ECFF1CC6137600AEE701 /* XiangDetailViewController.m in Sources */,
 				B099FD1A199C90C30049586E /* SimplePingHelper.m in Sources */,

@@ -816,7 +816,13 @@
       [[self URLDictionary] objectForKey:@"validate_movement"];
   return [base stringByAppendingString:validate_movement];
 }
-
+//扫描入库
+- (NSString *)create_package_enter_stock {
+    NSString *base = [self baseURL];
+    NSString *create_package_enter_stock =
+    [[self URLDictionary] objectForKey:@"create_package_enter_stock"];
+    return [base stringByAppendingString:create_package_enter_stock];
+}
 - (NSString *)SaveMovement {
   NSString *base = [self baseURL];
   NSString *save_movement =
@@ -843,7 +849,12 @@
       [[self URLDictionary] objectForKey:@"delete_movement_list"];
   return [base stringByAppendingString:delete_movement_list];
 }
-
+//- (NSString *)CreateRuKuList {
+//    NSString *base = [self baseURL];
+//    NSString *delete_movement_list =
+//    [[self URLDictionary] objectForKey:@"delete_movement_list"];
+//    return [base stringByAppendingString:delete_movement_list];
+//}
 - (NSString *)CreateInventoryListItem {
   NSString *base = [self baseURL];
   NSString *create_inventory_list_item =
