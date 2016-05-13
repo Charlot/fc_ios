@@ -22,10 +22,16 @@
 @property(nonatomic,strong)NSString *state_display;
 @property(nonatomic,strong)NSArray *possible_department;
 
+
 @property(nonatomic,strong)NSString *listid;
 @property(nonatomic,strong)NSString *listcreat_at;
 @property(nonatomic,strong)NSString *listcount;
 @property(nonatomic,strong)NSString *liststate;
+@property(nonatomic,strong)NSString *partNr;
+@property(nonatomic,strong)NSString *fifo;
+@property(nonatomic,strong)NSString *packageId;
+@property(nonatomic,strong)NSString *qty;
+
 
 
 @property(nonatomic) int state ;

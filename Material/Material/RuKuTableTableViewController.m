@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 brilliantech. All rights reserved.
 //
 #import "RuKuTableTableViewController.h"
-#import "RuKuDetailTableViewController.h"
+#import "GetInForTableViewController.h"
 #import "TuoTableViewController.h"
 #import "TuoStore.h"
 #import "XiangStore.h"
@@ -232,6 +232,7 @@
 //    Xiang *Retain = [[[Xiang alloc]init] copyMe:[self.dataArray objectAtIndex:row]];
     self.rukuList= [NSString stringWithFormat:@"%@",rukuList.ID];
     [self performSegueWithIdentifier:@"rukuDetail" sender:@{@"rukuDetail":rukuList}];
+//    TuoScanViewController *scan=segue.destinationViewController;
 
 }
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -244,7 +245,7 @@
 //    id vewctl=segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"rukuDetail"] ) {
         id o=segue.destinationViewController;
-        RuKuDetailTableViewController *scan=segue.destinationViewController;
+        GetInForTableViewController *scan=segue.destinationViewController;
         scan.listID=self.rukuList;
         scan.userID=self.userID;
     }else{

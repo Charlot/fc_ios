@@ -6050,43 +6050,37 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="EMM-A9-bh2" kind="push" identifier="rukuDetail" id="c1N-MS-H92"/>
+                        <segue destination="bOe-Jr-tOy" kind="push" identifier="rukuDetail" id="ezt-CO-xfo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ann-gW-FCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4133" y="389"/>
+            <point key="canvasLocation" x="4167" y="125"/>
         </scene>
-        <!--入库单详情-->
-        <scene sceneID="Sx1-tS-ylx">
+        <!--入库单-->
+        <scene sceneID="dE5-DA-H9E">
             <objects>
-                <viewController id="EMM-A9-bh2" customClass="RuKuDetailTableViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="G9t-ks-TeV">
+                <tableViewController title="入库单" id="bOe-Jr-tOy" customClass="GetInForTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="22" sectionFooterHeight="22" id="TSw-Ap-GDD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XKj-qO-xh2">
-                                <rect key="frame" x="0.0" y="64" width="320" height="452"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="入库单详情" id="4ik-u2-8F5">
-                        <barButtonItem key="rightBarButtonItem" title="入库" id="s7f-4m-bzF">
+                        <connections>
+                            <outlet property="dataSource" destination="bOe-Jr-tOy" id="3nl-w6-Lez"/>
+                            <outlet property="delegate" destination="bOe-Jr-tOy" id="ynA-zX-KQB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="已有入库单" id="7cU-ZY-G8s">
+                        <barButtonItem key="rightBarButtonItem" title="生成入库单" id="hCZ-qw-koP">
                             <connections>
-                                <action selector="rukuButten:" destination="EMM-A9-bh2" id="yxf-qc-5R0"/>
+                                <action selector="creatRuKuList:" destination="bOe-Jr-tOy" id="piL-iN-lZ4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="XKj-qO-xh2" id="dEa-JY-siC"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zvl-3O-9yo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zKl-Oj-hJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4474" y="-19"/>
+            <point key="canvasLocation" x="4576" y="74"/>
         </scene>
     </scenes>
     <resources>

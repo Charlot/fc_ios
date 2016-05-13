@@ -118,6 +118,7 @@
 		B0619E59197CBE17000C1C69 /* RequireXiangTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0619E57197CBE17000C1C69 /* RequireXiangTableViewCell.xib */; };
 		B0619E5C197CC8EB000C1C69 /* RequireTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0619E5B197CC8EB000C1C69 /* RequireTodayViewController.m */; };
 		B0619E5F197D0D32000C1C69 /* RequireGenerateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0619E5E197D0D32000C1C69 /* RequireGenerateViewController.m */; };
+		B061E3541CE568CE0017B479 /* GetInForTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B061E3531CE568CE0017B479 /* GetInForTableViewController.m */; };
 		B0643D62197DEF6F0036AADA /* RequirePrintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0643D61197DEF6F0036AADA /* RequirePrintViewController.m */; };
 		B0643D66197DF40D0036AADA /* RequireDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0643D65197DF40D0036AADA /* RequireDetailViewController.m */; };
 		B0643D6A197E041B0036AADA /* RequireHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0643D69197E041B0036AADA /* RequireHistoryViewController.m */; };
@@ -422,6 +423,8 @@
 		B0619E5B197CC8EB000C1C69 /* RequireTodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireTodayViewController.m; sourceTree = "<group>"; };
 		B0619E5D197D0D32000C1C69 /* RequireGenerateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireGenerateViewController.h; sourceTree = "<group>"; };
 		B0619E5E197D0D32000C1C69 /* RequireGenerateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireGenerateViewController.m; sourceTree = "<group>"; };
+		B061E3521CE568CE0017B479 /* GetInForTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetInForTableViewController.h; sourceTree = "<group>"; };
+		B061E3531CE568CE0017B479 /* GetInForTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetInForTableViewController.m; sourceTree = "<group>"; };
 		B0643D60197DEF6F0036AADA /* RequirePrintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirePrintViewController.h; sourceTree = "<group>"; };
 		B0643D61197DEF6F0036AADA /* RequirePrintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirePrintViewController.m; sourceTree = "<group>"; };
 		B0643D64197DF40D0036AADA /* RequireDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireDetailViewController.h; sourceTree = "<group>"; };
@@ -1235,6 +1238,8 @@
 				B00D3D581CDD874800EAE1D0 /* RuKuTableTableViewController.m */,
 				B0C45FEF1CE4242300388726 /* RuKuDetailTableViewController.h */,
 				B0C45FF01CE4242300388726 /* RuKuDetailTableViewController.m */,
+				B061E3521CE568CE0017B479 /* GetInForTableViewController.h */,
+				B061E3531CE568CE0017B479 /* GetInForTableViewController.m */,
 			);
 			name = Xiang;
 			sourceTree = "<group>";
@@ -1456,6 +1461,7 @@
 				B03D524C194D412300696E4E /* YunSendedViewController.m in Sources */,
 				B06CD6E41A25663900DF4D16 /* YunSendViewController.m in Sources */,
 				B0CC6AEF1A4D121A0047FF7F /* RequireCheckDetailTableViewCell.m in Sources */,
+				B061E3541CE568CE0017B479 /* GetInForTableViewController.m in Sources */,
 				B061398D1941BCF900A0CF62 /* TuoBaseViewController.m in Sources */,
 				B037ECFA194BDC50008C456E /* YunTableViewCell.m in Sources */,
 				949359CD1C04A993003D2B25 /* MJRefreshAutoGifFooter.m in Sources */,

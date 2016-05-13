@@ -68,8 +68,12 @@
         self.state_display=object[@"state_display"]?object[@"state_display"]:@"";
         self.possible_department=object[@"possible_department"]?[NSArray arrayWithArray:object[@"possible_department"]]:[NSArray array];
         self.state=object[@"state"]?[object[@"state"] intValue]:0 ;
-        
+////////here are ruku used
         self.listid=object[@"id"]?object[@"id"]:@"";
+        self.fifo=object[@"fifo"]?object[@"fifo"]:@"";
+        self.packageId=object[@"packageId"]?object[@"packageId"]:@"";
+        self.qty=object[@"qty"]?object[@"qty"]:@"";
+        self.partNr=object[@"partNr"]?object[@"partNr"]:@"";
     }
     return self;
 }
@@ -90,6 +94,10 @@
     self.listid=[xiang.listid copy];
     
     self.moveSourceId=xiang.moveSourceId;
+    self.partNr=[xiang.partNr copy];
+    self.fifo=[xiang.fifo copy];
+    self.packageId=[xiang.packageId copy];
+    self.qty=[xiang.qty copy];
     
     return self;
 }
