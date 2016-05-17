@@ -260,6 +260,7 @@
     }
     else{
         //唯一码
+        
         NSString *alertString=@"请扫描唯一码";
         BOOL isMatch  = [self.scanStandard checkKey:data];
         if(isMatch){
@@ -573,7 +574,7 @@
                       [AFNet.activeView stopAnimating];
                       if([responseObject[@"result"] integerValue]==1){
                           
-                          Xiang *newXiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];
+                          Xiang *newXiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];//alert “唯一好不可用”
                           [self.tuo addXiang:newXiang];
                           [self.xiangTable reloadData];
                           tag=1;

@@ -19,12 +19,19 @@
 #import "Xiang.h"
 #import "MJRefresh.h"
 #import <AudioToolbox/AudioToolbox.h>
-@interface GetInForTableViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,CaptuvoEventsProtocol,UIAlertViewDelegate>
+
+#import "MovementList.h"
+#import "TuoTableViewCell.h"
+#import "XiangTableViewCell.h"
+@interface GetInForTableViewController ()
 @property(strong,nonatomic)NSString *listNumber;
 - (IBAction)creatRuKuList:(id)sender;
 @property (strong,nonatomic)UIAlertView *alert;
 @property(strong,nonatomic)NSString *rukuList;
 @property (strong,nonatomic)Xiang *xianglist;
+
+@property(strong, nonatomic) NSMutableArray *dataArray;
+@property NSString *movementListID;
 
 @end
 
@@ -44,6 +51,7 @@
 {
     [super viewDidLoad];
     self.tuo=[[Tuo alloc] init];
+    self.dataArray = [[NSMutableArray alloc] init];
     self.userID=@"";
     KeychainItemWrapper *keyChain =
     [[KeychainItemWrapper alloc] initWithIdentifier:@"material"
@@ -54,8 +62,8 @@
                        [keyChain objectForKey:(__bridge id)kSecAttrAccount]];
     }
     
-    UINib *nib=[UINib nibWithNibName:@"TuoTableViewCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"tuoCell"];
+    UINib *nib=[UINib nibWithNibName:@"XiangTableViewCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"xiangCell"];
     
     
 }
@@ -91,7 +99,9 @@
 {
     AFNetOperate *AFNet = [[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
-
+    
+    TuoStore *tuoStore=[[TuoStore alloc] init];
+    tuoStore.listArray=[[NSMutableArray alloc] init];
     [manager GET:[AFNet getMovementResources]
       parameters:@{
                    @"movement_list_id" : self.listID
@@ -99,16 +109,14 @@
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              [AFNet.activeView stopAnimating];
              if ([responseObject[@"result"] integerValue] == 1) {
-                     [AFNet.activeView stopAnimating];
-//                 [self.dataArray removeAllObjects];
-                 NSMutableArray *xiangList=responseObject[@"content"];
-                 for(int i=0;i<xiangList.count;i++){
-                     Xiang *data=[[Xiang alloc] initWithObject:xiangList[i]];
-                     [self.tuo.xiang addObject:data];
+                 [self.dataArray removeAllObjects];
+                 
+                 NSArray *resultArray = responseObject[@"content"];
+                 
+                 for (int i = 0; i < resultArray.count; i++) {
+                     MovementList *ml =[[MovementList alloc] initWithObject:resultArray[i]];
+                     [self.dataArray addObject:ml];
                  }
-                 
-                 
-                 [self.tableView.header endRefreshing];
                  [self.tableView reloadData];
                  
              } else {
@@ -119,7 +127,9 @@
              [AFNet.activeView stopAnimating];
              [AFNet alert:[NSString
                            stringWithFormat:@"%@", [error localizedDescription]]];
-         }];}
+         }];
+                  [self.tableView.header endRefreshing];
+}
 
 -(void)allState
 {
@@ -133,35 +143,24 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    return self.tuo.xiang.count;
-    return [self.tuo.xiang count];
+    return self.dataArray.count;
+//    return [self.tuo.xiang count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     XiangTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"xiangCell" forIndexPath:indexPath];
-    Xiang *xiang=[self.tuo.xiang objectAtIndex:indexPath.row];
-    cell.partNumber.text=xiang.partNr;
-    cell.key.text=xiang.packageId;
-    cell.quantity.text=xiang.qty;
-    cell.position.text=xiang.position;
-    cell.date.text=xiang.fifo;
-    cell.stateLabel.text=@"待入库";
-    cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    [cell.stateLabel setTextColor:[UIColor redColor]];
-    
-    if(xiang.state==0){
-        [cell.stateLabel setTextColor:[UIColor redColor]];
-    }
-    
-    else if(xiang.state==1 || xiang.state==2){
-        [cell.stateLabel setTextColor:[UIColor blueColor]];
-    }
-    else if(xiang.state==3){
-        [cell.stateLabel setTextColor:[UIColor colorWithRed:87.0/255.0 green:188.0/255.0 blue:96.0/255.0 alpha:1.0]];
-    }
-    else if(xiang.state==4){
-        [cell.stateLabel setTextColor:[UIColor orangeColor]];
+
+    MovementList *movementList = (MovementList *)self.dataArray [indexPath.row];
+    XiangTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"xiangCell" forIndexPath:indexPath];
+    cell.key.text=movementList.packageId;
+    cell.partNumber.text=movementList.partNr;
+    cell.date.text=movementList.fifo;
+    cell.quantity.text=movementList.qty;
+    cell.position.text=movementList.position;
+    if (![movementList.state isEqualToString:@"成功"]) {
+        cell.stateLabel.text = @"未入库";
+    } else {
+        cell.stateLabel.text = @"已入库";
     }
 
     //    cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
@@ -177,11 +176,11 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //        delete_movement_source
+        //delete_movement_source
         // Delete the row from the data source
         int row=indexPath.row;
-        Xiang *tuoRetain=[[[Xiang alloc] init] copyMe:[self.tuo.xiang objectAtIndex:row]];
-        NSString *ID=[NSString stringWithFormat:@"%d", tuoRetain.moveSourceId];
+        MovementList *tuoRetain=[[[MovementList alloc] init] copyMe:[self.dataArray objectAtIndex:row]];
+        NSString *ID=[NSString stringWithFormat:@"%@", tuoRetain.packageId];
         AFNetOperate *AFNet=[[AFNetOperate alloc] init];
         AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
         [manager DELETE:[AFNet delete_movement_source]
@@ -267,7 +266,7 @@
                                               otherButtonTitles:nil];
                   
                   AudioServicesPlaySystemSound(1012);
-                  
+                  self.dataArray = [[NSMutableArray alloc] init];
                   [self.alert show];
                   [self.tableView reloadData];
               }else{

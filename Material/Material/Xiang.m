@@ -71,9 +71,10 @@
 ////////here are ruku used
         self.listid=object[@"id"]?object[@"id"]:@"";
         self.fifo=object[@"fifo"]?object[@"fifo"]:@"";
-        self.packageId=object[@"packageId"]?object[@"packageId"]:@"";
+        self.packageId=object[@"package_id"]?object[@"package_id"]:@"";
         self.qty=object[@"qty"]?object[@"qty"]:@"";
-        self.partNr=object[@"partNr"]?object[@"partNr"]:@"";
+        self.partNr=object[@"part_id"]?object[@"part_id"]:@"";
+        self.frposition=object[@"fromPosition"]?object[@"fromPosition"]:@"";
     }
     return self;
 }

@@ -6071,7 +6071,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="已有入库单" id="7cU-ZY-G8s">
-                        <barButtonItem key="rightBarButtonItem" title="生成入库单" id="hCZ-qw-koP">
+                        <barButtonItem key="rightBarButtonItem" title="入库" id="hCZ-qw-koP">
                             <connections>
                                 <action selector="creatRuKuList:" destination="bOe-Jr-tOy" id="piL-iN-lZ4"/>
                             </connections>
@@ -6099,18 +6099,14 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zjP-oP-VXq"/>
-        <segue reference="YxU-C8-xI9"/>
-        <segue reference="pF9-mf-As5"/>
-        <segue reference="UnZ-wN-WXV"/>
         <segue reference="Kxl-Rh-nWd"/>
         <segue reference="Get-Zr-2fp"/>
         <segue reference="veK-WU-skj"/>
-        <segue reference="YZY-w5-iAQ"/>
-        <segue reference="SkA-08-PWt"/>
+        <segue reference="mEd-et-lyR"/>
         <segue reference="FcC-pN-TYA"/>
-        <segue reference="WHI-RS-rUG"/>
+        <segue reference="SkA-08-PWt"/>
         <segue reference="hQ5-Fe-tiF"/>
+        <segue reference="WHI-RS-rUG"/>
         <segue reference="2nV-DT-24h"/>
         <segue reference="Neh-iJ-Fpe"/>
         <segue reference="yJ1-Ae-Eed"/>
@@ -6118,5 +6114,9 @@
         <segue reference="zbp-Dd-2O5"/>
         <segue reference="tP9-hz-80H"/>
         <segue reference="fTA-Xe-KDm"/>
+        <segue reference="pF9-mf-As5"/>
+        <segue reference="YxU-C8-xI9"/>
+        <segue reference="UnZ-wN-WXV"/>
+        <segue reference="zjP-oP-VXq"/>
     </inferredMetricsTieBreakers>
 </document>

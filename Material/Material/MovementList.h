@@ -13,6 +13,17 @@
 @property(nonatomic, strong) NSString *count;
 @property(nonatomic, strong) NSString *created_at;
 @property(nonatomic, strong) NSString *state;
-- (instancetype)initWithObject:(NSDictionary *)dictionary;
 
+@property(nonatomic,strong)NSString *listid;
+@property(nonatomic,strong)NSString *position;
+@property(nonatomic,strong)NSString *listcount;
+@property(nonatomic,strong)NSString *liststate;
+@property(nonatomic,strong)NSString *partNr;
+@property(nonatomic,strong)NSString *fifo;
+@property(nonatomic,strong)NSString *packageId;
+@property(nonatomic,strong)NSString *qty;
+
+@property(nonatomic)int moveSourceId;
+- (instancetype)initWithObject:(NSDictionary *)dictionary;
+-(instancetype)copyMe:(MovementList *)xiang;
 @end

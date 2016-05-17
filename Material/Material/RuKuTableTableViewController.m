@@ -126,8 +126,6 @@
                      MovementList *ml =[[MovementList alloc] initWithObject:resultArray[i]];
                      [self.dataArray addObject:ml];
                  }
-                 [self.tableView.header endRefreshing];
-                 
                  [self.tableView reloadData];
                  
              } else {
@@ -138,7 +136,9 @@
              [AFNet.activeView stopAnimating];
              [AFNet alert:[NSString
                            stringWithFormat:@"%@", [error localizedDescription]]];
-         }];}
+         }];
+    [self.tableView.header endRefreshing];
+}
 
 -(void)allState
 {
