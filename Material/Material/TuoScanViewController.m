@@ -98,6 +98,12 @@
               }
          ];
 
+    }else if([self.type isEqualToString:@"contnruku"]){
+        [self.xiangListLabel setHidden:true];
+        [self.xiangCountLabel setHidden:true];
+        self.navigationItem.rightBarButtonItem.title=@"确定入库";
+        self.rukuList=self.listID;
+        
     }
     self.xiangCountLabel.adjustsFontSizeToFitWidth=YES;
     UINib *nib=[UINib nibWithNibName:@"XiangTableViewCell" bundle:nil];
@@ -130,7 +136,7 @@
 
 }-(void)viewDidAppear:(BOOL)animated
 {
-        if ([self.type isEqualToString:@"ruku"]) {
+        if ([self.type isEqualToString:@"ruku"] || [self.type isEqualToString:@"contnruku"]) {
              self.tuo=[[Tuo alloc] init];
         }
 }
@@ -272,7 +278,7 @@
             AFNetOperate *AFNet=[[AFNetOperate alloc] init];
             AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
             //检查唯一码是否可用
-            if ([self.type isEqualToString:@"ruku"]) {
+            if ([self.type isEqualToString:@"ruku"] || [self.type isEqualToString:@"contnruku"]) {
                 if (self.tuo.xiang.count > 0) {
                     NSMutableArray *KeyArray=[[NSMutableArray alloc] init];
                     for(int i = 0;i<self.tuo.xiang.count;i++){
@@ -480,7 +486,7 @@
     __block long tag=textField.tag;
     if(tag==4){
         
-        if ([self.type isEqualToString:@"ruku"]) {
+        if ([self.type isEqualToString:@"ruku"] || [self.type isEqualToString:@"contnruku"]) {
             if (self.partNumber.text.length > 0) {
                 
                 if (self.key.text.length>0 && self.partNumber.text.length>0 && self.quatity.text.length>0 && self.dateTextField.text.length>0) {
@@ -728,7 +734,7 @@
     cell.quantity.text=xiang.count;
     cell.position.text=xiang.position;
     cell.date.text=xiang.date;
-    if ([self.type isEqualToString:@"ruku"]) {
+    if ([self.type isEqualToString:@"ruku"] || [self.type isEqualToString:@"contnruku"]) {
         cell.stateLabel.text=@"待入库";
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         [cell.stateLabel setTextColor:[UIColor redColor]];
@@ -756,7 +762,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
 //        delete_movement_source
         // Delete the row from the data source
-        if ([self.type isEqualToString:@"ruku"]) {
+        if ([self.type isEqualToString:@"ruku"] || [self.type isEqualToString:@"contnruku"]) {
             
             int row=indexPath.row;
             Xiang *tuoRetain=[[[Xiang alloc] init] copyMe:[self.tuo.xiang objectAtIndex:row]];
@@ -963,17 +969,12 @@
 }
 - (IBAction)finish:(id)sender {
     if ([self.type isEqualToString:@"ruku"]) {
-        if (self.tuo.xiang.count==0) {
+        if (self.tuo.xiang.count==0 && [self.type isEqualToString:@"ruku"]) {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
                                                           message:@"没有任何入库项，请扫描入库信息？"
                                                          delegate:self
                                                 cancelButtonTitle:@"确定"
                                                 otherButtonTitles:nil];
-//            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:self.rukuList
-//                                                          message:self.rukuList
-//                                                         delegate:self
-//                                                cancelButtonTitle:@"不继续"
-//                                                otherButtonTitles:@"继续操作", nil];
 
             [alert show];
 
@@ -1025,7 +1026,55 @@
                   }];
         }
         
-    }else {
+    }else if([self.type isEqualToString:@"contnruku"])
+    {
+        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+        [manager POST:[AFNet create_package_enter_stock]
+           parameters:@{@"movement_list_id":self.rukuList,@"employee_id":self.userID}
+         
+              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                  [AFNet.activeView stopAnimating];
+                  if([responseObject[@"result"] integerValue]==1){
+                      self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+                                                            message:@"已完成全部入库"
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:nil];
+                      [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                       target:self
+                                                     selector:@selector(dissmissAlert:)
+                                                     userInfo:nil
+                                                      repeats:NO];
+                      
+                      AudioServicesPlaySystemSound(1012);
+                      
+                      [self.alert show];
+                      self.tuo=[[Tuo alloc] init];
+                      [self.xiangdetailist removeAllObjects];
+                      [self.xiangTable reloadData];
+                  }else{
+                      UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
+                                                                    message:@"失败"
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"不继续"
+                                                          otherButtonTitles:nil];
+                      [alert show];
+                      
+                  }
+              }
+              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  [AFNet.activeView stopAnimating];
+                  UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
+                                                                message:@"没有绑定任何箱，需要继续吗？"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"不继续"
+                                                      otherButtonTitles:@"继续操作", nil];
+                  [alert show];
+              }];
+
+    }else
+    {
         if(self.tuo.xiang.count==0){
        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
                                                      message:@"没有绑定任何箱，需要继续吗？"

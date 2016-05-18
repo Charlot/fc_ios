@@ -14,6 +14,7 @@
 @property(nonatomic,strong)NSString *type;
 @property(nonatomic,strong)NSString *userID;
 @property(nonatomic,strong)NSString *rukuList;
+@property(nonatomic,strong)NSString *listID;
 @property(nonatomic)BOOL hideCheckButton;
 @property(nonatomic)BOOL enablePop;
 @property(nonatomic,strong) NSMutableArray *xiangdetailist;

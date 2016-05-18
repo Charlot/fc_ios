@@ -22,6 +22,7 @@
 #import "MovementList.h"
 #import "TuoTableViewCell.h"
 #import "XiangTableViewCell.h"
+#import "TuoScanViewController.h"
 @interface GetInForTableViewController ()
 @property(strong,nonatomic)NSString *listNumber;
 - (IBAction)continueRuKu:(id)sender;
@@ -167,17 +168,26 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        //delete_movement_source
-//        // Delete the row from the data source
-//        int row=indexPath.row;
-//        MovementList *tuoRetain=[[[MovementList alloc] init] copyMe:[self.dataArray objectAtIndex:row]];
-//        NSString *ID=[NSString stringWithFormat:@"%d", tuoRetain.moveSourceId];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //delete_movement_source
+        // Delete the row from the data source
+        int row=indexPath.row;
+        MovementList *tuoRetain=[[[MovementList alloc] init] copyMe:[self.dataArray objectAtIndex:row]];
+        self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+                                              message:tuoRetain.ID
+                                             delegate:self
+                                    cancelButtonTitle:nil
+                                    otherButtonTitles:nil];
+        
+        AudioServicesPlaySystemSound(1012);
+        
+        [self.alert show];
+//        NSString *ID=[NSString stringWithFormat:@"%d", tuoRetain.ID];
 //        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
 //        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
 //        [manager DELETE:[AFNet delete_movement_source]
 //             parameters:@{
-//                          @"movement_source_id":ID
+//                          @"movement_source_id":tuoRetain.ID
 //                          }
 //                success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //                    [AFNet.activeView stopAnimating];
@@ -208,9 +218,9 @@
 //                }
 //         ];
 //        
-//        
-//    }
-}//不可在此删除
+        
+    }
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 //    int row = indexPath.row;
@@ -239,6 +249,11 @@
 //        scan.userID=self.userID;
 //        scan.hideCheckButton=YES;
 //    }
+    TuoScanViewController *scan=segue.destinationViewController;
+    scan.type=@"contnruku";
+    scan.hideCheckButton=YES;
+    scan.listID=self.listID;
+    scan.userID=self.userID;
 
 }
 
