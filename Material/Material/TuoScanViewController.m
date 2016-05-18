@@ -892,7 +892,10 @@
                       @"partNr":partNumberPost,
                       @"qty":quantityPost,
                       @"fifo":datePost,
-                      @"type":@"ENTRY"
+                      @"type":@"ENTRY",
+                      @"qty_dislplay":quantity,
+                      @"part_display":partNumber,
+                      @"fifo_display":date
                       };
     AFNetOperate *AFNet=[[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
