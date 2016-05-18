@@ -74,6 +74,9 @@
     else if([self.type isEqualToString:@"tuo"]){
         [self.navigationItem setHidesBackButton:YES];
         self.navigationItem.title=self.tuo.department;
+        self.partNumber.enabled=NO;
+        self.quatity.enabled=NO;
+        self.dateTextField.enabled=NO;
     }else if([self.type isEqualToString:@"ruku"]){
         self.tuo=[[Tuo alloc] init];
         self.navigationItem.rightBarButtonItem.title=@"确定入库";
@@ -328,7 +331,7 @@
                                       dic=@{
                                             @"id":self.tuo.ID,
                                             @"package_id":myData
-                                            };
+                                            };//托清单
                                   }
                                   AFNetOperate *AFNet=[[AFNetOperate alloc] init];
                                   AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
@@ -574,7 +577,7 @@
                       [AFNet.activeView stopAnimating];
                       if([responseObject[@"result"] integerValue]==1){
                           
-                          Xiang *newXiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];//alert “唯一好不可用”
+                          Xiang *newXiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];//alert “唯一号不可用”
                           [self.tuo addXiang:newXiang];
                           [self.xiangTable reloadData];
                           tag=1;

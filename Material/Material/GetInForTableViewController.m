@@ -19,13 +19,12 @@
 #import "Xiang.h"
 #import "MJRefresh.h"
 #import <AudioToolbox/AudioToolbox.h>
-
 #import "MovementList.h"
 #import "TuoTableViewCell.h"
 #import "XiangTableViewCell.h"
 @interface GetInForTableViewController ()
 @property(strong,nonatomic)NSString *listNumber;
-- (IBAction)creatRuKuList:(id)sender;
+- (IBAction)continueRuKu:(id)sender;
 @property (strong,nonatomic)UIAlertView *alert;
 @property(strong,nonatomic)NSString *rukuList;
 @property (strong,nonatomic)Xiang *xianglist;
@@ -144,7 +143,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.dataArray.count;
-//    return [self.tuo.xiang count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -167,58 +165,52 @@
     return cell;
 }
 
-//unwind
-//- (IBAction)unwindToTuoTable:(UIStoryboardSegue *)unwindSegue{
-//    [self.tableView reloadData];
-//    
-//}
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //delete_movement_source
-        // Delete the row from the data source
-        int row=indexPath.row;
-        MovementList *tuoRetain=[[[MovementList alloc] init] copyMe:[self.dataArray objectAtIndex:row]];
-        NSString *ID=[NSString stringWithFormat:@"%@", tuoRetain.packageId];
-        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
-        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-        [manager DELETE:[AFNet delete_movement_source]
-             parameters:@{
-                          @"movement_source_id":ID
-                          }
-                success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    [AFNet.activeView stopAnimating];
-                    if([responseObject[@"result"] integerValue]==1){
-                        self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
-                                                              message:@"删除成功！"
-                                                             delegate:self
-                                                    cancelButtonTitle:nil
-                                                    otherButtonTitles:nil];
-                        [NSTimer scheduledTimerWithTimeInterval:0.9f
-                                                         target:self
-                                                       selector:@selector(dissmissAlert:)
-                                                       userInfo:nil
-                                                        repeats:NO];
-                        [self.tuo.xiang removeObjectAtIndex:indexPath.row];
-                        [self.tableView reloadData];
-                        [self.alert show];
-                        
-                    }
-                    else{
-                        [AFNet alert:responseObject[@"content"]];
-                        [self.alert show];
-                    }
-                    
-                }
-                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                    [AFNet.activeView stopAnimating];
-                }
-         ];
-        
-        
-    }
-}
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        //delete_movement_source
+//        // Delete the row from the data source
+//        int row=indexPath.row;
+//        MovementList *tuoRetain=[[[MovementList alloc] init] copyMe:[self.dataArray objectAtIndex:row]];
+//        NSString *ID=[NSString stringWithFormat:@"%d", tuoRetain.moveSourceId];
+//        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+//        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+//        [manager DELETE:[AFNet delete_movement_source]
+//             parameters:@{
+//                          @"movement_source_id":ID
+//                          }
+//                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                    [AFNet.activeView stopAnimating];
+//                    if([responseObject[@"result"] integerValue]==1){
+//                        self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+//                                                              message:@"删除成功！"
+//                                                             delegate:self
+//                                                    cancelButtonTitle:@"确定"
+//                                                    otherButtonTitles:nil];
+////                        [NSTimer scheduledTimerWithTimeInterval:0.9f
+////                                                         target:self
+////                                                       selector:@selector(dissmissAlert:)
+////                                                       userInfo:nil
+////                                                        repeats:NO];
+//                        [self.tuo.xiang removeObjectAtIndex:indexPath.row];
+//                        [self.tableView reloadData];
+//                        [self.alert show];
+//                        
+//                    }
+//                    else{
+//                        [AFNet alert:responseObject[@"content"]];
+//                        [self.alert show];
+//                    }
+//                    
+//                }
+//                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                    [AFNet.activeView stopAnimating];
+//                }
+//         ];
+//        
+//        
+//    }
+}//不可在此删除
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 //    int row = indexPath.row;
@@ -230,7 +222,7 @@
 }
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    return NO;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -250,7 +242,14 @@
 
 }
 
-- (IBAction)creatRuKuList:(id)sender {
+- (IBAction)continueRuKu:(id)sender {
+    if (self.dataArray.count == 0) {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
+                                                      message:@"没有任何入库内容"
+                                                     delegate:self
+                                            cancelButtonTitle:@"确定"                                            otherButtonTitles:nil];
+        [alert show];
+    }else{
     AFNetOperate *AFNet=[[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
     [manager POST:[AFNet create_package_enter_stock]
@@ -288,7 +287,21 @@
                                                   otherButtonTitles:@"继续操作", nil];
               [alert show];
           }];
+    }
     
+}
+
+-(void)removeAlert:(NSTimer *)timer{
+    UIAlertView *alert = [[timer userInfo]  objectForKey:@"alert"];
+    [alert dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+-(void)dissmissAlert:(NSTimer *)timer
+{
+    if(self.alert){
+        [self.alert dismissWithClickedButtonIndex:0 animated:YES];
+        self.alert=nil;
+    }
 }
 
 @end

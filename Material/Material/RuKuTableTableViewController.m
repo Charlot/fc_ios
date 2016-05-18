@@ -181,49 +181,52 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        // Delete the row from the data source
-//        
-//        int row=indexPath.row;
-//        Tuo *tuoRetain=[[[Tuo alloc] init] copyMe:[self.tuoStore.tuoList objectAtIndex:row]];
-//        
-//        
-//        dispatch_queue_t deleteRow=dispatch_queue_create("com.delete.row.pptalent", NULL);
-//        dispatch_async(deleteRow, ^{
-//            NSString *ID=[tuoRetain ID];
-//            AFNetOperate *AFNet=[[AFNetOperate alloc] init];
-//            AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [AFNet.activeView stopAnimating];
-//            });
-//            [manager DELETE:[AFNet DeleteMovementList]
-//                 parameters:@{@"movement_list_id":ID}
-//                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                        if([responseObject[@"result"] integerValue]==1){
-//                        }
-//                        else{
-//                            
-//                            [AFNet alert:responseObject[@"content"]];
-//                            [self viewWillAppear:YES];
-//                        }
-//                        
-//                    }
-//                    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                        
-//                        [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
-//                        [self viewWillAppear:YES];
-//                    }
-//             ];
-//        });
-//        
-//        [self.tuoStore removeTuo:row];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        
+        int row=indexPath.row;
+        MovementList *tuoRetain=[[[MovementList alloc] init] copyMe:[self.dataArray objectAtIndex:row]];
+        
+        
+        dispatch_queue_t deleteRow=dispatch_queue_create("com.delete.row.pptalent", NULL);
+        dispatch_async(deleteRow, ^{
+        NSString *ID=tuoRetain.ID;
+
+        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [AFNet.activeView stopAnimating];
+        });
+        [manager DELETE:[AFNet DeleteMovementList]
+             parameters:@{@"movement_list_id":ID}
+                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    if([responseObject[@"result"] integerValue]==1){
+                         [self.dataArray removeObjectAtIndex:indexPath.row];
+                        [self.tableView reloadData];
+                    }
+                    else{
+                        
+                        [AFNet alert:responseObject[@"content"]];
+                        [self viewWillAppear:YES];
+                    }
+                    
+                }
+                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    
+                    [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+                    [self viewWillAppear:YES];
+                }
+         ];
+    });
+        
+
 //        [tableView cellForRowAtIndexPath:indexPath].alpha = 0.0;
 //        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//        
-//        
-//    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//    }
+        
+        
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -237,7 +240,7 @@
 }
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        return NO;
+        return YES;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

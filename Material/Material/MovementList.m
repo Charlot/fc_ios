@@ -37,7 +37,9 @@
 -(instancetype)copyMe:(MovementList *)MovementList
 {
 
+    
     self.moveSourceId=MovementList.moveSourceId;
+    self.ID=[MovementList.listid copy];
     self.partNr=[MovementList.partNr copy];
     self.fifo=[MovementList.fifo copy];
     self.packageId=[MovementList.packageId copy];
