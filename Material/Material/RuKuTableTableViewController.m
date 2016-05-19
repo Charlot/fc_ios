@@ -62,11 +62,6 @@
                          stringWithFormat:@"%@",
                          [keyChain objectForKey:(__bridge id)kSecAttrAccount]];
     }
-//    XiangStore *xiangStore=[[XiangStore alloc] init];
-//    xiangStore.xiangArray=[[NSMutableArray alloc] init];
-   
-//    self.tableView.delegate=self;
-//    self.tableView.dataSource=self;
     
     UINib *nib=[UINib nibWithNibName:@"TuoTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"tuoCell"];
@@ -92,10 +87,6 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)customController {
-    
-    //    [backButton setBackgroundImage:backImage forState:UIControlStateNormal];
-    //  [backButton setTitle:@"取消" forState:UIControlStateNormal];
-    //  [backButton addTarget:self
     self.tableView.header =
     [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self selfState];
@@ -103,7 +94,6 @@
     [self.tableView.header beginRefreshing];
 }
 #pragma mark - 筛选显示的状态
-////////////////////////this
 -(void)selfState
 {
     TuoStore *tuoStore=[[TuoStore alloc] init];
@@ -161,13 +151,15 @@
     MovementList *movementList = (MovementList *)self.dataArray [indexPath.row];
     TuoTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"tuoCell" forIndexPath:indexPath];
     cell.idLabel.text=movementList.ID;
-    cell.departmentLabel.text=@"入库";
+    cell.departmentLabel.text=@"发送员";
     cell.agentLabel.text=self.userID;
-    cell.sumPackageLabel.text=@"nil";
+    cell.sumPackageLabel.text=[NSString stringWithFormat:@"%@", movementList.count];
     if (![movementList.state isEqualToString:@"成功"]) {
         cell.stateLabel.text = @"未入库";
+        [cell.stateLabel setTextColor:[UIColor redColor]];
     } else {
         cell.stateLabel.text = @"已入库";
+        [cell.stateLabel setTextColor:[UIColor blueColor]];
     }
 //    cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     return cell;
@@ -218,12 +210,6 @@
                 }
          ];
     });
-        
-
-//        [tableView cellForRowAtIndexPath:indexPath].alpha = 0.0;
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-        
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
@@ -257,33 +243,6 @@
     scan.userID=self.userID;
     scan.hideCheckButton=YES;
     }
-    //异步请求
-    
-//    AFNetOperate *AFNet=[[AFNetOperate alloc] init];
-//    AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-//    [manager POST:[AFNet CreateMovementList]
-//       parameters:@{@"user_id":self.userID}
-//          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//              [AFNet.activeView stopAnimating];
-//              Xiang *xiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];
-//              [self.tuo addXiang:xiang];
-//              
-//              
-//              scan.rukuList=xiang.listid;
-//              
-//              [self.tableView reloadData];
-//              AudioServicesPlaySystemSound(1051);
-//              
-//          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//              [AFNet.activeView stopAnimating];
-//              
-//          }
-//     ];
-    
-//    if([segue.identifier isEqualToString:@"tuoEdit"]){
-//        TuoEditViewController *tuoEdit=segue.destinationViewController;
-//        tuoEdit.tuo=[sender objectForKey:@"tuo"];
-//    }
 }
 
 - (IBAction)creatRuKuList:(id)sender {

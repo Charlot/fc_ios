@@ -156,11 +156,7 @@
     cell.date.text=movementList.fifo;
     cell.quantity.text=movementList.qty;
     cell.position.text=movementList.position;
-    if (![movementList.state isEqualToString:@"成功"]) {
-        cell.stateLabel.text = @"未入库";
-    } else {
-        cell.stateLabel.text = @"已入库";
-    }
+    cell.stateLabel.text = @"无";
 
     //    cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     return cell;
@@ -173,51 +169,43 @@
         // Delete the row from the data source
         int row=indexPath.row;
         MovementList *tuoRetain=[[[MovementList alloc] init] copyMe:[self.dataArray objectAtIndex:row]];
-        self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
-                                              message:tuoRetain.ID
-                                             delegate:self
-                                    cancelButtonTitle:nil
-                                    otherButtonTitles:nil];
+        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+        [manager DELETE:[AFNet delete_movement_source]
+             parameters:@{
+                          @"movement_source_id":tuoRetain.ID
+                          }
+                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    [AFNet.activeView stopAnimating];
+                    if([responseObject[@"result"] integerValue]==1){
+                        self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+                                                              message:@"删除成功！"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"确定"
+                                                    otherButtonTitles:nil];
+//                        [NSTimer scheduledTimerWithTimeInterval:0.9f
+//                                                         target:self
+//                                                       selector:@selector(dissmissAlert:)
+//                                                       userInfo:nil
+//                                                        repeats:NO];
+                         AudioServicesPlaySystemSound(1012);
+                        [self.dataArray removeObjectAtIndex:indexPath.row];
+                        [self.tableView reloadData];
+                        [self.alert show];
+                        
+                    }
+                    else{
+                        [AFNet alert:responseObject[@"content"]];
+                        [self.tableView reloadData];
+                        [self.alert show];
+                    }
+                    
+                }
+                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    [AFNet.activeView stopAnimating];
+                }
+         ];
         
-        AudioServicesPlaySystemSound(1012);
-        
-        [self.alert show];
-//        NSString *ID=[NSString stringWithFormat:@"%d", tuoRetain.ID];
-//        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
-//        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-//        [manager DELETE:[AFNet delete_movement_source]
-//             parameters:@{
-//                          @"movement_source_id":tuoRetain.ID
-//                          }
-//                success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                    [AFNet.activeView stopAnimating];
-//                    if([responseObject[@"result"] integerValue]==1){
-//                        self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
-//                                                              message:@"删除成功！"
-//                                                             delegate:self
-//                                                    cancelButtonTitle:@"确定"
-//                                                    otherButtonTitles:nil];
-////                        [NSTimer scheduledTimerWithTimeInterval:0.9f
-////                                                         target:self
-////                                                       selector:@selector(dissmissAlert:)
-////                                                       userInfo:nil
-////                                                        repeats:NO];
-//                        [self.tuo.xiang removeObjectAtIndex:indexPath.row];
-//                        [self.tableView reloadData];
-//                        [self.alert show];
-//                        
-//                    }
-//                    else{
-//                        [AFNet alert:responseObject[@"content"]];
-//                        [self.alert show];
-//                    }
-//                    
-//                }
-//                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                    [AFNet.activeView stopAnimating];
-//                }
-//         ];
-//        
         
     }
 }
@@ -232,7 +220,7 @@
 }
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return NO;
+    return YES;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

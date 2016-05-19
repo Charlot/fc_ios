@@ -554,7 +554,7 @@
                   moduleName = "WMS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wayne/HHcode/leoni_HH/fc_ios/Material/Material/RuKuDetailTableViewCell.h"
-                  timestampString = "485259580.380324"
+                  timestampString = "485318741.487509"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -569,7 +569,7 @@
                   moduleName = "WMS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wayne/HHcode/leoni_HH/fc_ios/Material/Material/RuKuDetailTableViewCell.h"
-                  timestampString = "485259580.380504"
+                  timestampString = "485318741.487653"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -938,11 +938,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Material/RuKuTableTableViewController.m"
-            timestampString = "485250031.990432"
+            timestampString = "485318740.411472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Material/GetInForTableViewController.m"
+            timestampString = "485318740.411472"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -953,13 +969,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Material/TuoScanViewController.m"
-            timestampString = "485259300.786848"
+            filePath = "Material/GetInForTableViewController.m"
+            timestampString = "485318740.411472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1029"
-            endingLineNumber = "1029"
-            landmarkName = "-finish:"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -969,62 +985,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Material/TuoScanViewController.m"
-            timestampString = "485259419.240223"
+            filePath = "Material/GetInForTableViewController.m"
+            timestampString = "485318740.411472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "971"
-            endingLineNumber = "971"
-            landmarkName = "-finish:"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Material/TuoScanViewController.m"
-            timestampString = "485259456.696149"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "981"
-            endingLineNumber = "981"
-            landmarkName = "-finish:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[TuoScanViewController finish:]"
-                  moduleName = "WMS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wayne/HHcode/leoni_HH/fc_ios/Material/Material/TuoScanViewController.m"
-                  timestampString = "485259580.468603"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "981"
-                  endingLineNumber = "981"
-                  offsetFromSymbolStart = "644">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[TuoScanViewController finish:]"
-                  moduleName = "WMS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wayne/HHcode/leoni_HH/fc_ios/Material/Material/TuoScanViewController.m"
-                  timestampString = "485259580.46885"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "981"
-                  endingLineNumber = "981"
-                  offsetFromSymbolStart = "648">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
