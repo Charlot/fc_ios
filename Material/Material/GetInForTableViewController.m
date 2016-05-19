@@ -130,10 +130,6 @@
          }];
                   [self.tableView.header endRefreshing];
 }
-
--(void)allState
-{
-}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -183,11 +179,6 @@
                                                              delegate:self
                                                     cancelButtonTitle:@"确定"
                                                     otherButtonTitles:nil];
-//                        [NSTimer scheduledTimerWithTimeInterval:0.9f
-//                                                         target:self
-//                                                       selector:@selector(dissmissAlert:)
-//                                                       userInfo:nil
-//                                                        repeats:NO];
                          AudioServicesPlaySystemSound(1012);
                         [self.dataArray removeObjectAtIndex:indexPath.row];
                         [self.tableView reloadData];
@@ -225,18 +216,6 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    //    id vewctl=segue.destinationViewController;
-//    if ([segue.identifier isEqualToString:@"rukuDetail"] ) {
-//        id o=segue.destinationViewController;
-//        RuKuDetailTableViewController *scan=segue.destinationViewController;
-//        scan.listID=self.rukuList;
-//        scan.userID=self.userID;
-//    }else{
-//        TuoScanViewController *scan=segue.destinationViewController;
-//        scan.type=@"ruku";
-//        scan.userID=self.userID;
-//        scan.hideCheckButton=YES;
-//    }
     TuoScanViewController *scan=segue.destinationViewController;
     scan.type=@"contnruku";
     scan.hideCheckButton=YES;
@@ -250,7 +229,8 @@
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
                                                       message:@"没有任何入库内容"
                                                      delegate:self
-                                            cancelButtonTitle:@"确定"                                            otherButtonTitles:nil];
+                                            cancelButtonTitle:@"确定"
+                                            otherButtonTitles:nil];
         [alert show];
     }else{
     AFNetOperate *AFNet=[[AFNetOperate alloc] init];

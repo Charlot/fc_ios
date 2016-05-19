@@ -413,7 +413,6 @@
                               [targetTextField becomeFirstResponder];
                           }
                      ];
-   
                 }
                 else{
                     
@@ -442,9 +441,6 @@
                     
                 }
             });
-            
-            
-            
         }
         else{
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
@@ -478,9 +474,6 @@
     textField.inputView = dummyView;
     self.firstResponder=textField;
 }
-
-
-
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     __block long tag=textField.tag;
@@ -508,7 +501,6 @@
                     self.quatity.text=@"";
                     self.dateTextField.text=@"";
                     [self.key becomeFirstResponder];
-                    
                 }
                 
             }else{
@@ -546,7 +538,6 @@
             NSString *datePost=[self.scanStandard filterDate:date];
             //拖下面的绑定，不仅绑定，而且会为拖加入新的箱
             NSDictionary *parameters=[NSDictionary dictionary];
-            
         if(self.tuo.ID.length>0){
             
             if([self.userPref.location_id isEqualToString:@"FG"]){
@@ -582,8 +573,7 @@
                       //箱绑定成功了
                       [AFNet.activeView stopAnimating];
                       if([responseObject[@"result"] integerValue]==1){
-                          
-                          Xiang *newXiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];//alert “唯一号不可用”
+                          Xiang *newXiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];
                           [self.tuo addXiang:newXiang];
                           [self.xiangTable reloadData];
                           tag=1;
@@ -594,8 +584,6 @@
                           self.quatity.text=@"";
                           self.dateTextField.text=@"";
                           [self updateAddXiangCount];
-                          
-                          
                           NSString *result_code=responseObject[@"result_code"];
                           if([result_code isEqualToString:@"100"]){
                               AudioServicesPlaySystemSound(1012);
@@ -801,9 +789,7 @@
                         [AFNet.activeView stopAnimating];
                     }
              ];
-
-        
-        }else{
+       }else{
         AFNetOperate *AFNet=[[AFNetOperate alloc] init];
         AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
         
@@ -833,143 +819,135 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    Xiang *xiang=[[self.xiangStore xiangList] objectAtIndex:indexPath.row];
-    Xiang *xiang=[self.tuo.xiang objectAtIndex:indexPath.row];
-    if([self.type isEqualToString:@"xiang"]){
-       [self performSegueWithIdentifier:@"fromTuo" sender:@{
-                                                            @"xiang":xiang,
-                                                            @"xiangIndex":[NSNumber numberWithInteger:indexPath.row]
-                                                            }
-        ];
-    }else if ([self.type isEqualToString:@"ruku"]){
-        
-    }
-    else{
-       [self performSegueWithIdentifier:@"fromTuo" sender:@{@"xiang":xiang}];
-    }
+            Xiang *xiang=[self.tuo.xiang objectAtIndex:indexPath.row];
+            if([self.type isEqualToString:@"xiang"]){
+               [self performSegueWithIdentifier:@"fromTuo" sender:@{
+                                                                    @"xiang":xiang,
+                                                                    @"xiangIndex":[NSNumber numberWithInteger:indexPath.row]
+                                                                    }
+                ];
+            }else if ([self.type isEqualToString:@"ruku"]){
+                
+            }
+            else{
+               [self performSegueWithIdentifier:@"fromTuo" sender:@{@"xiang":xiang}];
+            }
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //单独绑定箱的时候，不让删除，会误导，在最外面删去
-    if([self.type isEqualToString:@"xiang"]){
-        return NO;
-    }
-    else{
-        return YES;
-    }
+            if([self.type isEqualToString:@"xiang"]){
+                return NO;
+            }
+            else{
+                return YES;
+            }
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"scanToPrint"]){
-        PrintViewController *printViewController = segue.destinationViewController;
-        printViewController.container=[sender objectForKey:@"container"];
-        printViewController.noBackButton=@1;
-        printViewController.enableSend=YES;
-    }
-    else if([segue.identifier isEqualToString:@"fromTuo"]){
-        XiangEditViewController *xiangEdit=segue.destinationViewController;
-        xiangEdit.xiang=[sender objectForKey:@"xiang"];
-        if([self.type isEqualToString:@"xiang"]){
-            xiangEdit.enableSend=YES;
-            xiangEdit.xiangArray=self.tuo.xiang;
-            xiangEdit.xiangIndex=[[sender objectForKey:@"xiangIndex"] intValue];
+        if([segue.identifier isEqualToString:@"scanToPrint"]){
+            PrintViewController *printViewController = segue.destinationViewController;
+            printViewController.container=[sender objectForKey:@"container"];
+            printViewController.noBackButton=@1;
+            printViewController.enableSend=YES;
         }
-    }
-    else if([segue.identifier isEqualToString:@"checkXiang"]){
-        TuoCheckGeneralViewController *tuoCheck=segue.destinationViewController;
-        tuoCheck.xiangArray=[sender objectForKey:@"xiangArray"];
-    }
+        else if([segue.identifier isEqualToString:@"fromTuo"]){
+            XiangEditViewController *xiangEdit=segue.destinationViewController;
+            xiangEdit.xiang=[sender objectForKey:@"xiang"];
+            if([self.type isEqualToString:@"xiang"]){
+                xiangEdit.enableSend=YES;
+                xiangEdit.xiangArray=self.tuo.xiang;
+                xiangEdit.xiangIndex=[[sender objectForKey:@"xiangIndex"] intValue];
+            }
+        }
+        else if([segue.identifier isEqualToString:@"checkXiang"]){
+            TuoCheckGeneralViewController *tuoCheck=segue.destinationViewController;
+            tuoCheck.xiangArray=[sender objectForKey:@"xiangArray"];
+        }
 }
 //入库
 -(void)getPackageInfo{
-    NSString *key=self.key.text?self.key.text:@"";
-    NSString *partNumber=self.partNumber.text?self.partNumber.text:@"";
-    NSString *quantity=self.quatity.text?self.quatity.text:@"";
-    NSString *date=self.dateTextField.text?self.dateTextField.text:@"";
-    //after regex partNumber
-    NSString *partNumberPost=[self.scanStandard filterPartNumber:partNumber];
-    //after regex quantity
-    NSString *quantityPost=[self.scanStandard filterQuantity:quantity];
-    //after regex date
-    NSString *datePost=[self.scanStandard filterDate:date];
-    self.parameters=[NSDictionary dictionary];
-    self.parameters=@{
-                      @"movement_list_id":self.rukuList,
-                      @"toWh":@"WE87",
-                      @"toPosition":@"WE87-1",
-                      @"packageId":key,
-                      @"partNr":partNumberPost,
-                      @"qty":quantityPost,
-                      @"fifo":datePost,
-                      @"type":@"ENTRY",
-                      @"qty_dislplay":quantity,
-                      @"part_display":partNumber,
-                      @"fifo_display":date
-                      };
-    AFNetOperate *AFNet=[[AFNetOperate alloc] init];
-    AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-    [manager POST:[AFNet ValidateMovement]
-       parameters:self.parameters
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              [AFNet.activeView stopAnimating];
-              if([responseObject[@"result"] integerValue]==1){
-//                  if([(NSDictionary *)responseObject[@"content"] count]>0 ){
-//                      if ((i+1) == self.tuo.xiang.count) {
-                          self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
-                                                                message:responseObject[@"content"]
-                                                               delegate:self
-                                                      cancelButtonTitle:nil
-                                                      otherButtonTitles:nil];
-                          [NSTimer scheduledTimerWithTimeInterval:0.8f
-                                                           target:self
-                                                         selector:@selector(dissmissAlert:)
-                                                         userInfo:nil
-                                                          repeats:NO];
-                          
-                          AudioServicesPlaySystemSound(1012);
-                          
-                          [self.alert show];
-//                            [self.tuo.xiang removeAllObjects];
-                  self.xianglist = [[Xiang alloc] initWith:key partNumber:partNumber key:key count:quantity position:@"" remark:@"" date:date];
-                  self.xianglist.moveSourceId=[(responseObject[@"object"][@"id"]) intValue];
-                  [self.tuo addXiang:self.xianglist];
-                   [self.xiangTable reloadData];
-                          
+        NSString *key=self.key.text?self.key.text:@"";
+        NSString *partNumber=self.partNumber.text?self.partNumber.text:@"";
+        NSString *quantity=self.quatity.text?self.quatity.text:@"";
+        NSString *date=self.dateTextField.text?self.dateTextField.text:@"";
+        //after regex partNumber
+        NSString *partNumberPost=[self.scanStandard filterPartNumber:partNumber];
+        //after regex quantity
+        NSString *quantityPost=[self.scanStandard filterQuantity:quantity];
+        //after regex date
+        NSString *datePost=[self.scanStandard filterDate:date];
+        self.parameters=[NSDictionary dictionary];
+        self.parameters=@{
+                          @"movement_list_id":self.rukuList,
+                          @"toWh":@"WE87",
+                          @"toPosition":@"WE87-1",
+                          @"packageId":key,
+                          @"partNr":partNumberPost,
+                          @"qty":quantityPost,
+                          @"fifo":datePost,
+                          @"type":@"ENTRY",
+                          @"qty_dislplay":quantity,
+                          @"part_display":partNumber,
+                          @"fifo_display":date
+                        };
+          AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+          AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+          [manager POST:[AFNet ValidateMovement]
+           parameters:self.parameters
+              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          [AFNet.activeView stopAnimating];
+          if([responseObject[@"result"] integerValue]==1){
 
-              }else{
-//                  NSString *message = @"扫描入库失败，网络错误";
-                  
-                  self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
-                                                        message:responseObject[@"content"]
-                                                       delegate:self
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:nil];
-                  [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                                   target:self
-                                                 selector:@selector(dissmissAlert:)
-                                                 userInfo:nil
-                                                  repeats:NO];
-                  
-                  [self.alert show];
-//                  [AFNet alert:responseObject[@"content"]];
-                  self.key.text=@"";
-                  self.partNumber.text=@"";
-                  self.quatity.text=@"";
-                  self.dateTextField.text=@"";
-                  [self.key becomeFirstResponder];
-              }
+          self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+                                                message:responseObject[@"content"]
+                                               delegate:self
+                                      cancelButtonTitle:nil
+                                      otherButtonTitles:nil];
+          [NSTimer scheduledTimerWithTimeInterval:0.8f
+                                           target:self
+                                         selector:@selector(dissmissAlert:)
+                                         userInfo:nil
+                                          repeats:NO];
+          
+          AudioServicesPlaySystemSound(1012);
+          
+          [self.alert show];
+          self.xianglist = [[Xiang alloc] initWith:key partNumber:partNumber key:key count:quantity position:@"" remark:@"" date:date];
+          self.xianglist.moveSourceId=[(responseObject[@"object"][@"id"]) intValue];
+          [self.tuo addXiang:self.xianglist];
+          [self.xiangTable reloadData];
+                      
+
+          }else{
+              self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
+                                                    message:responseObject[@"content"]
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:nil];
+              [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                               target:self
+                                             selector:@selector(dissmissAlert:)
+                                             userInfo:nil
+                                              repeats:NO];
+              
+              [self.alert show];
+              self.key.text=@"";
+              self.partNumber.text=@"";
+              self.quatity.text=@"";
+              self.dateTextField.text=@"";
+              [self.key becomeFirstResponder];
           }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              [AFNet.activeView stopAnimating];
-              [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
-          }
-     ];
-      
-//    }
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          [AFNet.activeView stopAnimating];
+          [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+      }
+    ];
 }
 - (IBAction)finish:(id)sender {
     if ([self.type isEqualToString:@"ruku"]) {
-        if (self.tuo.xiang.count==0 && [self.type isEqualToString:@"ruku"])
+        if (self.tuo.xiang.count<=0 && [self.type isEqualToString:@"ruku"])
         {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
                                                           message:@"没有任何入库项，请扫描入库信息？"
@@ -988,7 +966,7 @@
             [self enter_stock];
            
         }else{
-            if(self.tuo.xiang.count==0){
+            if(self.tuo.xiang.count<=0){
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
                                                          message:@"没有绑定任何箱，需要继续吗？"
                                                         delegate:self
@@ -1007,7 +985,6 @@
     AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
     [manager POST:[AFNet create_package_enter_stock]
        parameters:@{@"movement_list_id":self.rukuList,@"employee_id":self.userID}
-     
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               [AFNet.activeView stopAnimating];
               if([responseObject[@"result"] integerValue]==1){
@@ -1046,9 +1023,6 @@
                                                   otherButtonTitles:@"继续操作", nil];
               [alert show];
           }];
-
-    
-    
 }
 
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

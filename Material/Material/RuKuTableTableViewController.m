@@ -50,23 +50,21 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    self.tuo=[[Tuo alloc] init];
-    self.dataArray = [[NSMutableArray alloc] init];
-    self.userID=@"";
-    KeychainItemWrapper *keyChain =
-    [[KeychainItemWrapper alloc] initWithIdentifier:@"material"
-                                        accessGroup:nil];
-    if ([keyChain objectForKey:(__bridge id)kSecAttrAccount]) {
-        self.userID = [NSString
-                         stringWithFormat:@"%@",
-                         [keyChain objectForKey:(__bridge id)kSecAttrAccount]];
-    }
-    
-    UINib *nib=[UINib nibWithNibName:@"TuoTableViewCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"tuoCell"];
-    
-    
+        [super viewDidLoad];
+        self.tuo=[[Tuo alloc] init];
+        self.dataArray = [[NSMutableArray alloc] init];
+        self.userID=@"";
+        KeychainItemWrapper *keyChain =
+        [[KeychainItemWrapper alloc] initWithIdentifier:@"material"
+                                            accessGroup:nil];
+        if ([keyChain objectForKey:(__bridge id)kSecAttrAccount]) {
+            self.userID = [NSString
+                             stringWithFormat:@"%@",
+                             [keyChain objectForKey:(__bridge id)kSecAttrAccount]];
+        }
+        
+        UINib *nib=[UINib nibWithNibName:@"TuoTableViewCell" bundle:nil];
+        [self.tableView registerNib:nib forCellReuseIdentifier:@"tuoCell"];
 }
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -89,12 +87,12 @@
 - (void)customController {
     self.tableView.header =
     [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self selfState];
+        [self loadData];
     }];
     [self.tableView.header beginRefreshing];
 }
 #pragma mark - 筛选显示的状态
--(void)selfState
+-(void)loadData
 {
     TuoStore *tuoStore=[[TuoStore alloc] init];
     tuoStore.listArray=[[NSMutableArray alloc] init];
@@ -130,9 +128,6 @@
     [self.tableView.header endRefreshing];
 }
 
--(void)allState
-{
-}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -147,29 +142,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
-    MovementList *movementList = (MovementList *)self.dataArray [indexPath.row];
-    TuoTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"tuoCell" forIndexPath:indexPath];
-    cell.idLabel.text=movementList.ID;
-    cell.departmentLabel.text=@"发送员";
-    cell.agentLabel.text=self.userID;
-    cell.sumPackageLabel.text=[NSString stringWithFormat:@"%@", movementList.count];
-    if (![movementList.state isEqualToString:@"成功"]) {
-        cell.stateLabel.text = @"未入库";
-        [cell.stateLabel setTextColor:[UIColor redColor]];
-    } else {
-        cell.stateLabel.text = @"已入库";
-        [cell.stateLabel setTextColor:[UIColor blueColor]];
-    }
-//    cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-    return cell;
+    
+            MovementList *movementList = (MovementList *)self.dataArray [indexPath.row];
+            TuoTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"tuoCell" forIndexPath:indexPath];
+            cell.idLabel.text=movementList.ID;
+            cell.departmentLabel.text=@"发送员";
+            cell.agentLabel.text=self.userID;
+            cell.sumPackageLabel.text=[NSString stringWithFormat:@"%@", movementList.count];
+            if (![movementList.state isEqualToString:@"成功"]) {
+                cell.stateLabel.text = @"未入库";
+                [cell.stateLabel setTextColor:[UIColor redColor]];
+            } else {
+                cell.stateLabel.text = @"已入库";
+                [cell.stateLabel setTextColor:[UIColor blueColor]];
+            }
+        //    cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+            return cell;
 }
 
 //unwind
-- (IBAction)unwindToTuoTable:(UIStoryboardSegue *)unwindSegue{
-    [self.tableView reloadData];
-    
-}
+//- (IBAction)unwindToTuoTable:(UIStoryboardSegue *)unwindSegue{
+//    [self.tableView reloadData];
+//    
+//}
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -178,12 +173,9 @@
         
         int row=indexPath.row;
         MovementList *tuoRetain=[[[MovementList alloc] init] copyMe:[self.dataArray objectAtIndex:row]];
-        
-        
         dispatch_queue_t deleteRow=dispatch_queue_create("com.delete.row.pptalent", NULL);
         dispatch_async(deleteRow, ^{
         NSString *ID=tuoRetain.ID;
-
         AFNetOperate *AFNet=[[AFNetOperate alloc] init];
         AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -218,7 +210,6 @@
 {
     int row = indexPath.row;
     MovementList *rukuList = (MovementList *)self.dataArray [indexPath.row];
-//    Xiang *Retain = [[[Xiang alloc]init] copyMe:[self.dataArray objectAtIndex:row]];
     self.rukuList= [NSString stringWithFormat:@"%@",rukuList.ID];
     [self performSegueWithIdentifier:@"rukuDetail" sender:@{@"rukuDetail":rukuList}];
 //    TuoScanViewController *scan=segue.destinationViewController;
@@ -232,17 +223,17 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 //    id vewctl=segue.destinationViewController;
-    if ([segue.identifier isEqualToString:@"rukuDetail"] ) {
-        id o=segue.destinationViewController;
-        GetInForTableViewController *scan=segue.destinationViewController;
-        scan.listID=self.rukuList;
+        if ([segue.identifier isEqualToString:@"rukuDetail"] ) {
+            id o=segue.destinationViewController;
+            GetInForTableViewController *scan=segue.destinationViewController;
+            scan.listID=self.rukuList;
+            scan.userID=self.userID;
+        }else{
+        TuoScanViewController *scan=segue.destinationViewController;
+        scan.type=@"ruku";
         scan.userID=self.userID;
-    }else{
-    TuoScanViewController *scan=segue.destinationViewController;
-    scan.type=@"ruku";
-    scan.userID=self.userID;
-    scan.hideCheckButton=YES;
-    }
+        scan.hideCheckButton=YES;
+        }
 }
 
 - (IBAction)creatRuKuList:(id)sender {
