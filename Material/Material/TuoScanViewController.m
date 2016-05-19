@@ -105,34 +105,34 @@
         self.rukuList=self.listID;
         
     }
-    self.xiangCountLabel.adjustsFontSizeToFitWidth=YES;
-    UINib *nib=[UINib nibWithNibName:@"XiangTableViewCell" bundle:nil];
-    [self.xiangTable registerNib:nib forCellReuseIdentifier:@"xiangCell"];
-    self.alert=nil;
-    self.scanStandard=[ScanStandard sharedScanStandard];
-    self.sum_packages_count=[self.tuo.xiang count];
-    [self updateXiangCountLabel];
-    if(self.enablePop){
-        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"完成"
-                                                                                style:UIBarButtonItemStyleBordered
-                                                                               target:self
-                                                                               action:@selector(popout)];
+        self.xiangCountLabel.adjustsFontSizeToFitWidth=YES;
+        UINib *nib=[UINib nibWithNibName:@"XiangTableViewCell" bundle:nil];
+        [self.xiangTable registerNib:nib forCellReuseIdentifier:@"xiangCell"];
+        self.alert=nil;
+        self.scanStandard=[ScanStandard sharedScanStandard];
+        self.sum_packages_count=[self.tuo.xiang count];
+        [self updateXiangCountLabel];
+        if(self.enablePop){
+            self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"完成"
+                                                                                    style:UIBarButtonItemStyleBordered
+                                                                                   target:self
+                                                                                   action:@selector(popout)];
     }
-    self.userPref=[UserPreference sharedUserPreference];
+        self.userPref=[UserPreference sharedUserPreference];
 }
 -(void)popout
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
-    [self.key becomeFirstResponder];
-    [self.xiangTable reloadData];
-        if(self.hideCheckButton){
-            self.checkButton.hidden=YES;
-        }
+    {
+        [super viewWillAppear:animated];
+        [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
+        [self.key becomeFirstResponder];
+        [self.xiangTable reloadData];
+            if(self.hideCheckButton){
+                self.checkButton.hidden=YES;
+            }
 
 }-(void)viewDidAppear:(BOOL)animated
 {
@@ -143,10 +143,10 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
-    [[Captuvo sharedCaptuvoDevice] removeCaptuvoDelegate:self];
-    [self.firstResponder resignFirstResponder];
-    self.firstResponder=nil;
+        [super viewWillDisappear:animated];
+        [[Captuvo sharedCaptuvoDevice] removeCaptuvoDelegate:self];
+        [self.firstResponder resignFirstResponder];
+        self.firstResponder=nil;
 }
 - (void)didReceiveMemoryWarning
 {
