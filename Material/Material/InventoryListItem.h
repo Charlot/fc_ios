@@ -17,6 +17,8 @@
 @property(nonatomic, strong) NSString *fifo;
 @property(nonatomic, strong) NSString *position_id;
 @property(nonatomic, strong) NSString *position_nr;
+@property(nonatomic, strong) NSString *current_position_nr;
+
 @property(nonatomic, strong) NSString *inventory_list_id;
 @property(nonatomic, strong) NSString *whouse_id;
 
