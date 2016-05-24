@@ -126,7 +126,7 @@
                  [self.unfilledLocation setHidden:true];
              }else{
 
-                 self.unfilledLocation.text=[NSString stringWithFormat:@"%d",(6-[responseObject[@"unfill"] integerValue])];
+                 self.unfilledLocation.text=[NSString stringWithFormat:@"%ld",([responseObject[@"unfill"][@"max_position_count"] integerValue]-[responseObject[@"unfill"][@"warehouse"] integerValue])];
                  [self.unfilledLocation setHidden:false];
                  [self.containerTF becomeFirstResponder];
                  

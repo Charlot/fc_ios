@@ -12,7 +12,9 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "Order.h"
 #import "Inventory.h"
+#import "Yun.h"
 #import "YunChooseTuoViewController.h"
+#import "YunInfoViewController.h"
 
 @interface DeliveryOrderViewController()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,CaptuvoEventsProtocol,UIAlertViewDelegate,UIPickerViewDataSource,
 UIPickerViewDelegate>{
@@ -36,6 +38,10 @@ UIPickerViewDelegate>{
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if(!self.yun){
+        self.yun=[[Yun alloc] init];
+        self.yun.orderId=self.orderId;
+    }
  
     
     
@@ -148,8 +154,11 @@ numberOfRowsInComponent:(NSInteger)component {
         //        InventoryConfirmViewController
         //        *ic=segue.destinationViewController;
         //        ic.inventroy_id= _inventoryId;
-        YunChooseTuoViewController *tuo = segue.destinationViewController;
-        tuo.orderId=[sender objectForKey:@"orderId"];
+//        YunChooseTuoViewController *tuo = segue.destinationViewController;
+//        tuo.orderId=[sender objectForKey:@"orderId"];
+        YunInfoViewController *yunInfo = segue.destinationViewController;
+        yunInfo.orderId=[sender objectForKey:@"orderId"];
+        yunInfo.yun=self.yun;
     }
 }
 

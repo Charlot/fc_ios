@@ -313,13 +313,17 @@
     }
 }
 
+
+///////////////////////////////problem???????
+
 - (IBAction)createDelivery:(id)sender {
     if(self.userPreference.location.check_delivery_by_pick){
         // need check
 		[self performSegueWithIdentifier:@"selectPickList" sender:nil]; 
     }else{
        // not need check
-        [self performSegueWithIdentifier:@"selectForklift" sender:nil];
+//        [self performSegueWithIdentifier:@"selectForklift" sender:nil];
+        [self performSegueWithIdentifier:@"selectPickList" sender:nil];
     }
 }
 

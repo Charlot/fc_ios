@@ -11,4 +11,5 @@
 
 @interface YunInfoViewController : UIViewController
 @property(nonatomic,strong)Yun *yun;
+@property(strong,nonatomic)NSString* orderId;
 @end

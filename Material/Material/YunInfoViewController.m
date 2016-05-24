@@ -109,7 +109,8 @@
        parameters:@{
                     @"delivery":@{
                             @"remark":self.remark.text,
-                            @"order_id":self.yun.orderId==nil ? @"":self.yun.orderId
+//                            @"order_id":self.yun.orderId==nil ? @"":self.yun.orderId
+                            @"order_id":self.orderId==nil ? @"":self.orderId
                             },
                     @"forklifts":tuoArrayID
                     }

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Yun;
 @interface DeliveryOrderViewController : UIViewController
-
+@property(nonatomic,strong)Yun *yun;
+@property(strong,nonatomic)NSString* orderId;
 @end
