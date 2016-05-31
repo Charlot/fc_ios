@@ -21,22 +21,22 @@
 #import "TuoCheckGeneralViewController.h"
 
 @interface TuoScanViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,CaptuvoEventsProtocol,UIAlertViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *key;
-@property (weak, nonatomic) IBOutlet UITextField *partNumber;
-@property (weak, nonatomic) IBOutlet UITextField *quatity;
-@property (weak, nonatomic) IBOutlet UITextField *dateTextField;
-@property (strong, nonatomic) UITextField *firstResponder;
-@property (weak, nonatomic) IBOutlet UILabel *xiangListLabel;
-@property (weak, nonatomic) IBOutlet UITableView *xiangTable;
-@property (strong,nonatomic)UIAlertView *alert;
-@property (strong,nonatomic)ScanStandard *scanStandard;
-@property (strong,nonatomic)UserPreference *userPref;
-@property (weak, nonatomic) IBOutlet UILabel *xiangCountLabel;
-@property (nonatomic)int sum_packages_count;
+@property (weak, nonatomic  ) IBOutlet     UITextField    *key;
+@property (weak, nonatomic  ) IBOutlet     UITextField    *partNumber;
+@property (weak, nonatomic  ) IBOutlet     UITextField    *quatity;
+@property (weak, nonatomic  ) IBOutlet     UITextField    *dateTextField;
+@property (weak, nonatomic  ) IBOutlet     UILabel        *xiangListLabel;
+@property (weak, nonatomic  ) IBOutlet     UITableView    *xiangTable;
+@property (weak, nonatomic  ) IBOutlet     UILabel        *xiangCountLabel;
+@property (strong, nonatomic) UITextField    *firstResponder;
+@property (strong,nonatomic ) UIAlertView    *alert;
+@property (strong,nonatomic ) ScanStandard   *scanStandard;
+@property (strong,nonatomic ) UserPreference *userPref;
+@property (nonatomic        ) int            sum_packages_count;
 - (IBAction)finish:(id)sender;
 - (IBAction)checkXiang:(id)sender;
 - (IBAction)clickScreen:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *checkButton;
+@property (weak, nonatomic  ) IBOutlet     UIButton       *checkButton;
 @end
 
 @implementation TuoScanViewController
@@ -53,39 +53,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.key.delegate=self;
-    self.partNumber.delegate=self;
-    self.quatity.delegate=self;
-    self.dateTextField.delegate=self;
-    self.xiangTable.delegate=self;
-    self.xiangTable.dataSource=self;
+    self.key.delegate                              = self;
+    self.partNumber.delegate                       = self;
+    self.quatity.delegate                          = self;
+    self.dateTextField.delegate                    = self;
+    self.xiangTable.delegate                       = self;
+    self.xiangTable.dataSource                     = self;
     if([self.type isEqualToString:@"xiang"]){
-        self.navigationItem.rightBarButtonItem=NULL;
-        self.tuo=[[Tuo alloc] init];
+    self.navigationItem.rightBarButtonItem         = NULL;
+    self.tuo                                       = [[Tuo alloc] init];
     }
     else if([self.type isEqualToString:@"addXiang"]){
-        self.navigationItem.rightBarButtonItem=NULL;
-        self.xiangListLabel.text=@"已绑定箱数:";
+    self.navigationItem.rightBarButtonItem         = NULL;
+    self.xiangListLabel.text                       = @"已绑定箱数:";
     }
     else if([self.type isEqualToString:@"tuo"]){
       //  [self.navigationItem setHidesBackButton:YES];
-        self.navigationItem.leftBarButtonItem.title=@"Back";
-        self.navigationItem.title=self.tuo.department;
+    self.navigationItem.leftBarButtonItem.title    = @"Back";
+    self.navigationItem.title                      = self.tuo.department;
     }
-    self.xiangCountLabel.adjustsFontSizeToFitWidth=YES;
-    UINib *nib=[UINib nibWithNibName:@"XiangTableViewCell" bundle:nil];
+    self.xiangCountLabel.adjustsFontSizeToFitWidth = YES;
+    UINib *nib                                     = [UINib nibWithNibName:@"XiangTableViewCell" bundle:nil];
     [self.xiangTable registerNib:nib forCellReuseIdentifier:@"xiangCell"];
-    self.alert=nil;
-    self.scanStandard=[ScanStandard sharedScanStandard];
-    self.sum_packages_count= [self.tuo.xiang count];
+    self.alert                                     = nil;
+    self.scanStandard                              = [ScanStandard sharedScanStandard];
+    self.sum_packages_count                        = [self.tuo.xiang count];
     [self updateXiangCountLabel];
     if(self.enablePop){
-        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"完成"
+    self.navigationItem.rightBarButtonItem         = [[UIBarButtonItem alloc] initWithTitle:@"完成"
                                                                                 style:UIBarButtonItemStyleBordered
                                                                                target:self
                                                                                action:@selector(popout)];
     }
-    self.userPref=[UserPreference sharedUserPreference];
+    self.userPref                                  = [UserPreference sharedUserPreference];
 }
 -(void)popout
 {
@@ -98,7 +98,7 @@
     [self.key becomeFirstResponder];
     [self.xiangTable reloadData];
     if(self.hideCheckButton){
-        self.checkButton.hidden=YES;
+    self.checkButton.hidden      = YES;
     }
 }
 
@@ -107,7 +107,7 @@
     [super viewWillDisappear:animated];
     [[Captuvo sharedCaptuvoDevice] removeCaptuvoDelegate:self];
     [self.firstResponder resignFirstResponder];
-    self.firstResponder=nil;
+    self.firstResponder          = nil;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -116,36 +116,36 @@
 }
 #pragma decoder delegate
 -(void)decoderDataReceived:(NSString *)data{
-    self.firstResponder.text=[data copy];
-    UITextField *targetTextField=self.firstResponder;
-    if(targetTextField.tag==4 ){
+    self.firstResponder.text     = [data copy];
+    UITextField *targetTextField = self.firstResponder;
+    if(targetTextField.tag == 4){
         //date
-        NSString *alertString=@"请扫描日期";
-        BOOL isMatch  = [self.scanStandard checkDate:data];
-        if(isMatch){
-            [self textFieldShouldReturn:self.firstResponder];
-        }
-        else{
-            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
+    NSString *alertString        = @"请扫描日期";
+    BOOL isMatch                 = [self.scanStandard checkDate:data];
+    if(isMatch){
+        [self textFieldShouldReturn:self.firstResponder];
+    }
+    else{
+    UIAlertView *alert           = [[UIAlertView alloc] initWithTitle:@""
                                                           message:alertString
                                                          delegate:self
                                                 cancelButtonTitle:@"确定"
-                                                otherButtonTitles:nil];
-            [alert show];
-            [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                             target:self
-                                           selector:@selector(removeAlert:)
-                                           userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert,@"alert", nil]
-                                            repeats:NO];
-            AudioServicesPlaySystemSound(1051);
-            targetTextField.text=@"";
-            [targetTextField becomeFirstResponder];
+                                        otherButtonTitles:nil];
+    [alert show];
+    [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                     target:self
+                                   selector:@selector(removeAlert:)
+                                   userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert,@"alert", nil]
+                                    repeats:NO];
+    AudioServicesPlaySystemSound(1051);
+    targetTextField.text         = @"";
+    [targetTextField becomeFirstResponder];
         }
     }
     else if(targetTextField.tag==2){
         //part number
-        NSString *alertString=@"请扫描零件号";
-        BOOL isMatch  = [self.scanStandard checkPartNumber:data];
+        NSString *alertString = @"请扫描零件号";
+        BOOL isMatch          = [self.scanStandard checkPartNumber:data];
         if(isMatch){
             [self textFieldShouldReturn:self.firstResponder];
         }
@@ -168,8 +168,8 @@
     }
     else if(targetTextField.tag==3){
         //count
-        NSString *alertString=@"请扫描数量";
-        BOOL isMatch  = [self.scanStandard checkQuantity:data];
+        NSString *alertString = @"请扫描数量";
+        BOOL isMatch          = [self.scanStandard checkQuantity:data];
         if(isMatch){
             [self textFieldShouldReturn:self.firstResponder];
         }
@@ -186,7 +186,7 @@
                                            userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert,@"alert", nil]
                                             repeats:NO];
             AudioServicesPlaySystemSound(1051);
-            targetTextField.text=@"";
+            targetTextField.text = @"";
             [targetTextField becomeFirstResponder];
         }
         
@@ -409,10 +409,10 @@
                                                 [self.tuo addXiang:xiang];
                                                 [self.xiangTable reloadData];
                                                 [self.key becomeFirstResponder];
-                                                self.key.text=@"";
-                                                self.partNumber.text=@"";
-                                                self.quatity.text=@"";
-                                                self.dateTextField.text=@"";
+                                                self.key.text           = @"";
+                                                self.partNumber.text    = @"";
+                                                self.quatity.text       = @"";
+                                                self.dateTextField.text = @"";
                                                 [self updateAddXiangCount];
                                                 
                                                 NSString *result_code=responseObject[@"result_code"];
@@ -448,14 +448,14 @@
                                         else{
                                             [AFNet alert:responseObject[@"content"]];
                                             AudioServicesPlaySystemSound(1051);
-                                            targetTextField.text=@"";
+                                            targetTextField.text = @"";
                                             [targetTextField becomeFirstResponder];
                                         }
                                     }
                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                         [AFNet.activeView stopAnimating];
                                         [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
-                                        targetTextField.text=@"";
+                                        targetTextField.text = @"";
                                         [targetTextField becomeFirstResponder];
                                     }
                                ];
@@ -469,7 +469,7 @@
                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                           [AFNet.activeView stopAnimating];
                           [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
-                          targetTextField.text=@"";
+                          targetTextField.text = @"";
                           [targetTextField becomeFirstResponder];
                       }
                  ];
@@ -533,9 +533,9 @@
 #pragma textField delegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    UIView* dummyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
+    UIView* dummyView   = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
     textField.inputView = dummyView;
-    self.firstResponder=textField;
+    self.firstResponder = textField;
 }
 
 
@@ -544,24 +544,24 @@
 {
     __block long tag=textField.tag;
     if(tag==3){
-        AFNetOperate *AFNet=[[AFNetOperate alloc] init];
-        AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-        NSString *key=self.key.text?self.key.text:@"";
-        NSString *partNumber=self.partNumber.text?self.partNumber.text:@"";
-        NSString *quantity=self.quatity.text?self.quatity.text:@"";
-        NSString *date=self.dateTextField.text?self.dateTextField.text:@"";
+        AFNetOperate *AFNet                    = [[AFNetOperate alloc] init];
+        AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
+        NSString *key                          = self.key.text?self.key.text:@"";
+        NSString *partNumber                   = self.partNumber.text?self.partNumber.text:@"";
+        NSString *quantity                     = self.quatity.text?self.quatity.text:@"";
+        NSString *date                         = self.dateTextField.text?self.dateTextField.text:@"";
         //after regex partNumber
-        NSString *keyPost=[self.scanStandard filterKey:key];
-        
-        NSString *partNumberPost=[self.scanStandard filterPartNumber:partNumber];
+        NSString *keyPost                      = [self.scanStandard filterKey:key];
+
+        NSString *partNumberPost               = [self.scanStandard filterPartNumber:partNumber];
         //after regex quantity
-        NSString *quantityPost=[self.scanStandard filterQuantity:quantity];
+        NSString *quantityPost                 = [self.scanStandard filterQuantity:quantity];
         //after regex date
-        NSString *datePost=[self.scanStandard filterDate:date];
+        NSString *datePost                     = [self.scanStandard filterDate:date];
 
         if(self.tuo.ID.length>0){
             //拖下面的绑定，不仅绑定，而且会为拖加入新的箱
-            NSDictionary *parameters=[NSDictionary dictionary];
+            NSDictionary *parameters = [NSDictionary dictionary];
             if([self.userPref.location_id isEqualToString:@"FG"]){
                 parameters=@{
                              @"id":self.tuo.ID,
@@ -600,12 +600,12 @@
                           [self.tuo addXiang:newXiang];
                           [self.xiangTable reloadData];
                           tag=1;
-                          UITextField *nextText=(UITextField *)[self.view viewWithTag:tag];
+                          UITextField *nextText   = (UITextField *)[self.view viewWithTag:tag];
                           [nextText becomeFirstResponder];
-                          self.key.text=@"";
-                          self.partNumber.text=@"";
-                          self.quatity.text=@"";
-                          self.dateTextField.text=@"";
+                          self.key.text           = @"";
+                          self.partNumber.text    = @"";
+                          self.quatity.text       = @"";
+                          self.dateTextField.text = @"";
                           [self updateAddXiangCount];
                           
                           
@@ -637,10 +637,10 @@
                       }
                       else{
                           [AFNet alert:responseObject[@"content"]];
-                          self.key.text=@"";
-                          self.partNumber.text=@"";
-                          self.quatity.text=@"";
-                          self.dateTextField.text=@"";
+                          self.key.text           = @"";
+                          self.partNumber.text    = @"";
+                          self.quatity.text       = @"";
+                          self.dateTextField.text = @"";
                           [self.key becomeFirstResponder];
                       }
                       
@@ -669,16 +669,16 @@
                       [AFNet.activeView stopAnimating];
                       if([responseObject[@"result"] integerValue]==1){
                           if([(NSDictionary *)responseObject[@"content"] count]>0){
-                              Xiang *newXiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];
+                              Xiang *newXiang         = [[Xiang alloc] initWithObject:responseObject[@"content"]];
                               [self.tuo addXiang:newXiang];
                               [self.xiangTable reloadData];
-                              tag=1;
-                              UITextField *nextText=(UITextField *)[self.view viewWithTag:tag];
+                              tag                     = 1;
+                              UITextField *nextText   = (UITextField *)[self.view viewWithTag:tag];
                               [nextText becomeFirstResponder];
-                              self.key.text=@"";
-                              self.partNumber.text=@"";
-                              self.quatity.text=@"";
-                              self.dateTextField.text=@"";
+                              self.key.text           = @"";
+                              self.partNumber.text    = @"";
+                              self.quatity.text       = @"";
+                              self.dateTextField.text = @"";
                               self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
                                                                     message:@"绑定成功！"
                                                                    delegate:self
@@ -697,10 +697,10 @@
                       }
                       else{
                           [AFNet alert:responseObject[@"content"]];
-                          self.key.text=@"";
-                          self.partNumber.text=@"";
-                          self.quatity.text=@"";
-                          self.dateTextField.text=@"";
+                          self.key.text           = @"";
+                          self.partNumber.text    = @"";
+                          self.quatity.text       = @"";
+                          self.dateTextField.text = @"";
                           [self.key becomeFirstResponder];
                       }
                       
@@ -739,14 +739,14 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XiangTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"xiangCell" forIndexPath:indexPath];
-    Xiang *xiang=[self.tuo.xiang objectAtIndex:indexPath.row];
-    cell.partNumber.text=xiang.number;
-    cell.key.text=xiang.key;
-    cell.quantity.text=xiang.count;
-    cell.position.text=xiang.position;
-    cell.date.text=xiang.date;
-    cell.stateLabel.text=xiang.state_display;
+    XiangTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"xiangCell" forIndexPath:indexPath];
+    Xiang *xiang             = [self.tuo.xiang objectAtIndex:indexPath.row];
+    cell.partNumber.text     = xiang.number;
+    cell.key.text            = xiang.key;
+    cell.quantity.text       = xiang.count;
+    cell.position.text       = xiang.position;
+    cell.date.text           = xiang.date;
+    cell.stateLabel.text     = xiang.state_display;
     if(xiang.state==0){
         [cell.stateLabel setTextColor:[UIColor redColor]];
     }
@@ -822,22 +822,22 @@
 {
     if([segue.identifier isEqualToString:@"scanToPrint"]){
         PrintViewController *printViewController = segue.destinationViewController;
-        printViewController.container=[sender objectForKey:@"container"];
-        printViewController.noBackButton=@1;
-        printViewController.enableSend=YES;
+        printViewController.container            = [sender objectForKey:@"container"];
+        printViewController.noBackButton         = @1;
+        printViewController.enableSend           = YES;
     }
     else if([segue.identifier isEqualToString:@"fromTuo"]){
-        XiangEditViewController *xiangEdit=segue.destinationViewController;
+        XiangEditViewController *xiangEdit       = segue.destinationViewController;
         xiangEdit.xiang=[sender objectForKey:@"xiang"];
         if([self.type isEqualToString:@"xiang"]){
-            xiangEdit.enableSend=YES;
-            xiangEdit.xiangArray=self.tuo.xiang;
-            xiangEdit.xiangIndex=[[sender objectForKey:@"xiangIndex"] intValue];
+        xiangEdit.enableSend                     = YES;
+        xiangEdit.xiangArray                     = self.tuo.xiang;
+        xiangEdit.xiangIndex                     = [[sender objectForKey:@"xiangIndex"] intValue];
         }
     }
     else if([segue.identifier isEqualToString:@"checkXiang"]){
-        TuoCheckGeneralViewController *tuoCheck=segue.destinationViewController;
-        tuoCheck.xiangArray=[sender objectForKey:@"xiangArray"];
+        TuoCheckGeneralViewController *tuoCheck  = segue.destinationViewController;
+        tuoCheck.xiangArray                      = [sender objectForKey:@"xiangArray"];
     }
 }
 - (IBAction)finish:(id)sender {

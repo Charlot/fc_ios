@@ -2142,7 +2142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="je4-DM-Dic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2117" y="7824"/>
+            <point key="canvasLocation" x="2119" y="7916"/>
         </scene>
         <!--盘点单详情-->
         <scene sceneID="o6q-7e-Rv6">
@@ -5677,7 +5677,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYj-LC-yol" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1738" y="7857"/>
+            <point key="canvasLocation" x="1644" y="7899"/>
         </scene>
         <!--入库-->
         <scene sceneID="XMY-Gb-iWu">
@@ -5908,13 +5908,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="If0-NA-MAK"/>
-        <segue reference="U3W-2k-BOU"/>
-        <segue reference="zbp-Dd-2O5"/>
-        <segue reference="Xpt-zp-Oio"/>
-        <segue reference="Hyz-uv-cpc"/>
-        <segue reference="PPk-8F-ZrK"/>
-        <segue reference="UAK-rn-23P"/>
-        <segue reference="veK-WU-skj"/>
+        <segue reference="pF9-mf-As5"/>
+        <segue reference="EZu-KH-oca"/>
+        <segue reference="QU2-zR-Ew2"/>
+        <segue reference="Hg3-N0-v7Z"/>
         <segue reference="mEd-et-lyR"/>
         <segue reference="SkA-08-PWt"/>
         <segue reference="4O1-OE-ag4"/>
@@ -5923,11 +5920,14 @@
         <segue reference="Do4-uK-Dun"/>
         <segue reference="hQ5-Fe-tiF"/>
         <segue reference="hy6-vM-msP"/>
-        <segue reference="Dtg-Ls-yzU"/>
+        <segue reference="PPk-8F-ZrK"/>
+        <segue reference="UAK-rn-23P"/>
+        <segue reference="veK-WU-skj"/>
+        <segue reference="U3W-2k-BOU"/>
+        <segue reference="zbp-Dd-2O5"/>
+        <segue reference="Xpt-zp-Oio"/>
+        <segue reference="Hyz-uv-cpc"/>
         <segue reference="yJ1-Ae-Eed"/>
-        <segue reference="YxU-C8-xI9"/>
-        <segue reference="JT4-AV-Rjg"/>
-        <segue reference="QU2-zR-Ew2"/>
-        <segue reference="Hg3-N0-v7Z"/>
+        <segue reference="Dtg-Ls-yzU"/>
     </inferredMetricsTieBreakers>
 </document>

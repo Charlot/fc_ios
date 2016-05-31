@@ -8,25 +8,19 @@
 
 #import "RukuViewController.h"
 #import "AFNetOperate.h"
-
 #import "ScanStandard.h"
 #import "UserPreference.h"
-
 #import <AudioToolbox/AudioToolbox.h>
 
 @interface RukuViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *warehouseTF;
-@property (weak, nonatomic) IBOutlet UITextField *positionTF;
-@property (weak, nonatomic) IBOutlet UITextField *containerTF;
+@property (weak, nonatomic  ) IBOutlet UITextField    *warehouseTF;
+@property (weak, nonatomic  ) IBOutlet UITextField    *positionTF;
+@property (weak, nonatomic  ) IBOutlet UITextField    *containerTF;
+@property (weak, nonatomic  ) IBOutlet UILabel        *unfilledLocation;
+@property (strong, nonatomic) UITextField    *firstResponder;
+@property (strong,nonatomic ) ScanStandard   *scanStandard;
+@property (strong,nonatomic ) UserPreference *userPreference;
 
-@property (weak, nonatomic) IBOutlet UILabel *unfilledLocation;
-
-@property (strong,nonatomic)ScanStandard *scanStandard;
-@property (strong,nonatomic)UserPreference *userPreference;
-
-//@property(nonatomic, strong) UIAlertView *alert;
-
-@property (strong, nonatomic) UITextField *firstResponder;
 //@property int *lable;
 
 @end
@@ -48,14 +42,12 @@
 {
     [super viewWillAppear:animated];
     [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
-    self.warehouseTF.delegate=self;
-    self.positionTF.delegate=self;
-    self.containerTF.delegate=self;
-    self.userPreference=[UserPreference sharedUserPreference];
+    self.userPreference              = [UserPreference sharedUserPreference];
+    self.warehouseTF.delegate        = self;
+    self.positionTF.delegate         = self;
+    self.containerTF.delegate        = self;
     self.warehouseTF.clearButtonMode = UITextFieldViewModeAlways;
- 
-    self.scanStandard=[ScanStandard sharedScanStandard];
-
+    self.scanStandard                = [ScanStandard sharedScanStandard];
     [self clearAllTextFields];
     if(self.userPreference.location.default_whouse){
         self.warehouseTF.text=self.userPreference.location.default_whouse.nr;
@@ -72,32 +64,30 @@
     [super viewWillDisappear:animated];
     [[Captuvo sharedCaptuvoDevice] removeCaptuvoDelegate:self];
     [self.unfilledLocation setHidden:true];
-    
     [self.firstResponder resignFirstResponder];
-    self.firstResponder=nil;
+    self.firstResponder = nil;
     
 }
 
 -(void)decoderDataReceived:(NSString *)data
 {
-    self.firstResponder.text=[data copy];
+    self.firstResponder.text = [data copy];
     if(self.firstResponder.text.length>0){
         [self textFieldShouldReturn:self.firstResponder];
     }
     
 }
 
-
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if(textField==self.warehouseTF){
+    if(textField == self.warehouseTF){
         [self.positionTF becomeFirstResponder];
         [self validate];
-    }else if(textField==self.positionTF){
+    }else if(textField == self.positionTF){
 //        [self.unfilledLocation setHidden:false];
         [self capacity_lable];
 //        [self.containerTF becomeFirstResponder];
-    }else if(textField==self.containerTF){
+    }else if(textField == self.containerTF){
         [self validate];
         [self capacity_lable];
     }
@@ -105,13 +95,15 @@
 }
 -(void)capacity_lable{
 //    NSString *cl=[self.scanStandard filterKey:self.positionTF.text];
-    AFNetOperate *AFNet = [[AFNetOperate alloc] init];
+    AFNetOperate *AFNet                    = [[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
     [manager POST:	[AFNet check_position_capacity]
-      parameters:@{@"warehouse":self.warehouseTF.text,@"position":self.positionTF.text}
+      parameters:@{
+                   @"warehouse":self.warehouseTF.text,
+                   @"position":self.positionTF.text
+                   }
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              [AFNet.activeView stopAnimating];
-             
              if ([responseObject[@"result"] integerValue] == 1) {
                  UIAlertView *alert_lable=[[UIAlertView alloc] initWithTitle:@""
                                                                message:@"库位已满"
@@ -119,14 +111,13 @@
                                                      cancelButtonTitle:@"确定"
                                                      otherButtonTitles: nil];
                  [alert_lable show];
-                 self.unfilledLocation.text=[NSString stringWithFormat:@"%@",@"0"];
-                 self.positionTF.text=@"";
-                 self.containerTF.text=@"";
+                 self.unfilledLocation.text = [NSString stringWithFormat:@"%@",@"0"];
+                 self.positionTF.text       = @"";
+                 self.containerTF.text      = @"";
                  [self.positionTF becomeFirstResponder];
                  [self.unfilledLocation setHidden:true];
              }else{
-
-                 self.unfilledLocation.text=[NSString stringWithFormat:@"%ld",([responseObject[@"content"][@"position_capacity"] integerValue]-[responseObject[@"content"][@"position_stock_count"] integerValue])];
+                self.unfilledLocation.text=[NSString stringWithFormat:@"%ld",([responseObject[@"content"][@"position_capacity"] integerValue]-[responseObject[@"content"][@"position_stock_count"] integerValue])];
                  [self.unfilledLocation setHidden:false];
                  [self.containerTF becomeFirstResponder];
                  
@@ -139,7 +130,7 @@
 -(void)validate{
     NSString *nr=[self.scanStandard filterKey:self.containerTF.text];
     
-    AFNetOperate *AFNet = [[AFNetOperate alloc] init];
+    AFNetOperate *AFNet                    = [[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
     
     [manager POST:[AFNet enter_stock]
@@ -153,9 +144,6 @@
                                                      cancelButtonTitle:@"确定"
                                                      otherButtonTitles:nil];
                  [alert show];
-                 
-                 
-
                  [NSTimer scheduledTimerWithTimeInterval:2.0f
                                                   target:self
                                                 selector:@selector(removeAlert:)
@@ -190,8 +178,6 @@
     }
     
     [self clearTextFields: textFields];
-    
-    
     [self.warehouseTF becomeFirstResponder];
 }
 
@@ -208,9 +194,8 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-        UIView* dummyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
+        UIView* dummyView   = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
         textField.inputView = dummyView;
-        
         [self hideKeyboard];
      
     
