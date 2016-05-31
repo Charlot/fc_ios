@@ -107,7 +107,7 @@
 //    NSString *cl=[self.scanStandard filterKey:self.positionTF.text];
     AFNetOperate *AFNet = [[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
-    [manager POST:	[AFNet rtposition]
+    [manager POST:	[AFNet check_position_capacity]
       parameters:@{@"warehouse":self.warehouseTF.text,@"position":self.positionTF.text}
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              [AFNet.activeView stopAnimating];
@@ -126,7 +126,7 @@
                  [self.unfilledLocation setHidden:true];
              }else{
 
-                 self.unfilledLocation.text=[NSString stringWithFormat:@"%ld",([responseObject[@"unfill"][@"max_position_count"] integerValue]-[responseObject[@"unfill"][@"warehouse"] integerValue])];
+                 self.unfilledLocation.text=[NSString stringWithFormat:@"%ld",([responseObject[@"content"][@"position_capacity"] integerValue]-[responseObject[@"content"][@"position_stock_count"] integerValue])];
                  [self.unfilledLocation setHidden:false];
                  [self.containerTF becomeFirstResponder];
                  

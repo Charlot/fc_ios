@@ -28,8 +28,8 @@
 	<string>/api/v3/whouse/check_stock</string>
 	<key>enter_stock</key>
 	<string>/api/v1/moving/enter</string>
-	<key>rtposition</key>
-	<string>/api/v1/moving/rt_position</string>
+	<key>check_position_capacity</key>
+	<string>/api/v1/moving/check_position_capacity</string>
 	<key>inventory_list_item</key>
 	<string>/api/v3/inventory_list_item</string>
 	<key>move</key>

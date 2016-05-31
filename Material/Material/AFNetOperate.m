@@ -806,11 +806,11 @@
     [[self URLDictionary] objectForKey:@"enter_stock"];
     return [base stringByAppendingString:enter_stock];
 }
-- (NSString *)rtposition {
+- (NSString *)check_position_capacity {
     NSString *base = [self baseURL];
-    NSString *rtposition =
-    [[self URLDictionary] objectForKey:@"rtposition"];
-    return [base stringByAppendingString:rtposition];
+    NSString *check_position_capacity =
+    [[self URLDictionary] objectForKey:@"check_position_capacity"];
+    return [base stringByAppendingString:check_position_capacity];
 }
 
 - (NSString *)inventory_list_item {
