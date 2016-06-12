@@ -24,6 +24,7 @@
 #import "XiangTableViewCell.h"
 #import "TuoScanViewController.h"
 @interface GetInForTableViewController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *continueRuKu;
 @property(strong,nonatomic)NSString *listNumber;
 - (IBAction)continueRuKu:(id)sender;
 @property (strong,nonatomic)UIAlertView *alert;
@@ -60,6 +61,15 @@
         self.userID = [NSString
                        stringWithFormat:@"%@",
                        [keyChain objectForKey:(__bridge id)kSecAttrAccount]];
+    }
+    
+    
+    ///////////////////
+    
+    if ([self.listState isEqualToString:@"FINISH"]) {
+        self.continueRuKu.enabled=NO;
+    }else{
+        self.continueRuKu.enabled=YES;
     }
     
     UINib *nib=[UINib nibWithNibName:@"XiangTableViewCell" bundle:nil];

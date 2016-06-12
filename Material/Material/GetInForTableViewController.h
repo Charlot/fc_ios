@@ -13,6 +13,7 @@
 @property(nonatomic,strong)Tuo *tuo;
 //@property(nonatomic,strong)NSString *rukuList;
 @property(nonatomic,strong)NSString *userID;
+@property(nonatomic,strong)NSString *listState;
 //@property(nonatomic,strong) NSMutableArray *xiangdetailist;
 @end
 

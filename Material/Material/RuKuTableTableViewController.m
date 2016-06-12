@@ -32,6 +32,7 @@
 @property(strong,nonatomic)NSString *userID;
 @property (strong,nonatomic)UIAlertView *alert;
 @property(strong,nonatomic)NSString *rukuList;
+@property(strong,nonatomic)NSString *listState;
 
 @end
 
@@ -211,6 +212,9 @@
     int row = indexPath.row;
     MovementList *rukuList = (MovementList *)self.dataArray [indexPath.row];
     self.rukuList= [NSString stringWithFormat:@"%@",rukuList.ID];
+    if ([rukuList.state isEqualToString:@"成功"]) {
+        self.listState = @"FINISH";
+    }
     [self performSegueWithIdentifier:@"rukuDetail" sender:@{@"rukuDetail":rukuList}];
 //    TuoScanViewController *scan=segue.destinationViewController;
 
@@ -228,6 +232,7 @@
             GetInForTableViewController *scan=segue.destinationViewController;
             scan.listID=self.rukuList;
             scan.userID=self.userID;
+            scan.listState=self.listState;
         }else{
         TuoScanViewController *scan=segue.destinationViewController;
         scan.type=@"ruku";
