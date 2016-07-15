@@ -91,6 +91,7 @@
                   Xiang *xiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];
                  [self.tuo addXiang:xiang];
                    self.rukuList=xiang.listid;
+                [self.tuo.xiang removeAllObjects];
                   
               } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                   [AFNet.activeView stopAnimating];
@@ -947,10 +948,11 @@
 }
 - (IBAction)finish:(id)sender {
     if ([self.type isEqualToString:@"ruku"]) {
-        if (self.tuo.xiang.count<=0 && [self.type isEqualToString:@"ruku"])
+        NSLog([NSString stringWithFormat:@"%lu",(unsigned long)self.tuo.xiang.count]);
+        if (self.tuo.xiang.count == 0)
         {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
-                                                          message:@"没有任何入库项，请扫描入库信息？"
+                                                          message:@"没有任何入库项，请扫描入库信息!"
                                                          delegate:self
                                                 cancelButtonTitle:@"确定"
                                                 otherButtonTitles:nil];
@@ -963,6 +965,8 @@
         
         }else if([self.type isEqualToString:@"contnruku"])
         {
+            NSLog([NSString stringWithFormat:@"%lu",(unsigned long)self.tuo.xiang.count]);
+
             [self enter_stock];
            
         }else{

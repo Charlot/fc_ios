@@ -126,6 +126,7 @@
                  for (int i = 0; i < resultArray.count; i++) {
                      MovementList *ml =[[MovementList alloc] initWithObject:resultArray[i]];
                      [self.dataArray addObject:ml];
+                     
                  }
                  [self.tableView reloadData];
                  
@@ -161,8 +162,17 @@
     cell.partNumber.text=movementList.partNr;
     cell.date.text=movementList.fifo;
     cell.quantity.text=movementList.qty;
-    cell.position.text=movementList.position;
-    cell.stateLabel.text = @"无";
+    
+//    cell.date.text=[self.scanStandard filterDate:movementList.fifo];
+    
+
+    if ([self.listState isEqualToString:@"FINISH"]) {
+            cell.stateLabel.text = @"已入库";
+            cell.position.text=movementList.position;
+    }else{
+            cell.stateLabel.text = @"未入库";
+            cell.position.text=@"";
+    }
 
     //    cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     return cell;

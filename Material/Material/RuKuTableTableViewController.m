@@ -214,6 +214,9 @@
     self.rukuList= [NSString stringWithFormat:@"%@",rukuList.ID];
     if ([rukuList.state isEqualToString:@"成功"]) {
         self.listState = @"FINISH";
+    }else
+    {
+        self.listState = @"UNFINISH";
     }
     [self performSegueWithIdentifier:@"rukuDetail" sender:@{@"rukuDetail":rukuList}];
 //    TuoScanViewController *scan=segue.destinationViewController;
