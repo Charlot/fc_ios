@@ -965,8 +965,6 @@
         
         }else if([self.type isEqualToString:@"contnruku"])
         {
-            NSLog([NSString stringWithFormat:@"%lu",(unsigned long)self.tuo.xiang.count]);
-
             [self enter_stock];
            
         }else{
