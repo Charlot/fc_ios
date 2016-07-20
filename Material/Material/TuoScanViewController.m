@@ -20,6 +20,7 @@
 #import "ScanStandard.h"
 #import "SortArray.h"
 #import "TuoCheckGeneralViewController.h"
+#import "RuKuTableTableViewController.h"
 
 @interface TuoScanViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,CaptuvoEventsProtocol,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *key;
@@ -865,6 +866,10 @@
             TuoCheckGeneralViewController *tuoCheck=segue.destinationViewController;
             tuoCheck.xiangArray=[sender objectForKey:@"xiangArray"];
         }
+//        else if([self.type isEqualToString:@"ruku"] || [self.type isEqualToString:@"contnruku"]){
+//            RuKuTableTableViewController *RuKuTableTableViewController = segue.destinationViewController;
+//       
+//        }
 }
 //入库
 -(void)getPackageInfo{
@@ -1002,10 +1007,92 @@
                                                   repeats:NO];
                   
                   AudioServicesPlaySystemSound(1012);
+                  //[self performSegueWithIdentifier:@"finishTuo" sender:self];
+        NSString *key=self.key.text?self.key.text:@"";
+        NSString *partNumber=self.partNumber.text?self.partNumber.text:@"";
+        NSString *quantity=self.quatity.text?self.quatity.text:@"";
+        NSString *date=self.dateTextField.text?self.dateTextField.text:@"";
+        //after regex partNumber
+        NSString *partNumberPost=[self.scanStandard filterPartNumber:partNumber];
+        //after regex quantity
+        NSString *quantityPost=[self.scanStandard filterQuantity:quantity];
+        //after regex date
+        NSString *datePost=[self.scanStandard filterDate:date];
+        self.parameters=[NSDictionary dictionary];
+        self.parameters=@{
+                          @"movement_list_id":self.rukuList,
+                          @"toWh":@"WE87",
+                          @"toPosition":@"WE87-1",
+                          @"packageId":key,
+                          @"partNr":partNumberPost,
+                          @"qty":quantityPost,
+                          @"fifo":datePost,
+                          @"type":@"ENTRY",
+                          @"qty_dislplay":quantity,
+                          @"part_display":partNumber,
+                          @"fifo_display":date
+                        };
+          AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+          AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+          [manager POST:[AFNet ValidateMovement]
+           parameters:self.parameters
+              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          [AFNet.activeView stopAnimating];
+          if([responseObject[@"result"] integerValue]==1){
+
+          self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+                                                message:responseObject[@"content"]
+                                               delegate:self
+                                      cancelButtonTitle:nil
+                                      otherButtonTitles:nil];
+          [NSTimer scheduledTimerWithTimeInterval:0.8f
+                                           target:self
+                                         selector:@selector(dissmissAlert:)
+                                         userInfo:nil
+                                          repeats:NO];
+        
+          AudioServicesPlaySystemSound(1012);
+          
+          [self.alert show];
+          self.xianglist = [[Xiang alloc] initWith:key partNumber:partNumber key:key count:quantity position:@"" remark:@"" date:date];
+          self.xianglist.moveSourceId=[(responseObject[@"object"][@"id"]) intValue];
+          [self.tuo addXiang:self.xianglist];
+          [self.xiangTable reloadData];
+          //[self performSegueWithIdentifier:@"backToMain" sender:nil];
+                      
+
+          }else{
+              self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
+                                                    message:responseObject[@"content"]
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:nil];
+              [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                               target:self
+                                             selector:@selector(dissmissAlert:)
+                                             userInfo:nil
+                                              repeats:NO];
+              
+              [self.alert show];
+              self.key.text=@"";
+              self.partNumber.text=@"";
+              self.quatity.text=@"";
+              self.dateTextField.text=@"";
+              [self.key becomeFirstResponder];
+          }
+      }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          [AFNet.activeView stopAnimating];
+          [AFNet alert:[NSString stringWithFormat:@"%@",[error localizedDescription]]];
+      }
+    ];
+
                   [self.alert show];
                   self.tuo=[[Tuo alloc] init];
                   [self.xiangdetailist removeAllObjects];
                   [self.xiangTable reloadData];
+                
+                  
               }else{
                   UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
                                                                 message:responseObject[@"content"]

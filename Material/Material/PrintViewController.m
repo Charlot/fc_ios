@@ -209,25 +209,31 @@
     NSString *containerClass=[NSString stringWithFormat:@"%@",[self.container class]];
     if([containerClass isEqualToString:@"Tuo"]){
         if(![self.noBackButton boolValue]){
+            NSLog(@"1");
             [self.navigationController popViewControllerAnimated:YES];
         }
         else{
+            NSLog(@"123456");
             [self performSegueWithIdentifier:@"finishTuo" sender:self];
         }
     }
     else if([containerClass isEqualToString:@"Yun"]){
         if(![self.noBackButton boolValue]){
+            NSLog(@"2");
             [self.navigationController popViewControllerAnimated:YES];
         }
         else{
+            NSLog(@"3");
             [self performSegueWithIdentifier:@"finishYun" sender:self];
         }
     }
     else if([containerClass isEqualToString:@"Xiang"]){
         if(![self.noBackButton boolValue]){
+            NSLog(@"4");
             [self.navigationController popViewControllerAnimated:YES];
         }
         else{
+            NSLog(@"5");
             [self performSegueWithIdentifier:@"finishXiang" sender:self];
         }
     }
