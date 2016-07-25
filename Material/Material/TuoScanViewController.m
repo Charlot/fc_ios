@@ -23,6 +23,7 @@
 #import "RuKuTableTableViewController.h"
 
 @interface TuoScanViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,CaptuvoEventsProtocol,UIAlertViewDelegate>
+@property RuKuTableTableViewController *RuKuTableTableViewController;
 @property (weak, nonatomic) IBOutlet UITextField *key;
 @property (weak, nonatomic) IBOutlet UITextField *partNumber;
 @property (weak, nonatomic) IBOutlet UITextField *quatity;
@@ -188,44 +189,46 @@
         NSString *alertString=@"请扫描零件号";
         BOOL isMatch  = [self.scanStandard checkPartNumber:data];
         if(isMatch){
+            [self textFieldShouldReturn:self.firstResponder];
             //检查零件号合法性
             self.partNumberDeleteP=[self.scanStandard filterPartNumber:self.partNumber.text];
-            if ([self.type isEqualToString:@"ruku"]) {
-                AFNetOperate *AFNet=[[AFNetOperate alloc] init];
-                AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
-                [manager POST: [AFNet part_validate]
-                   parameters: @{@"id":self.partNumberDeleteP}
-                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                          [AFNet.activeView stopAnimating];
-                          if ([responseObject[@"result"] integerValue] == 0) {
-                              NSString *message = @"零件不存在";
-                              self.alert= [[UIAlertView alloc]initWithTitle:nil
-                                                                    message:message
-                                                                   delegate:self
-                                                          cancelButtonTitle:nil
-                                                          otherButtonTitles:nil];
-                              [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                                               target:self
-                                                             selector:@selector(dissmissAlert:)
-                                                             userInfo:nil
-                                                              repeats:NO];
-                              AudioServicesPlaySystemSound(1051);
-                              [self.alert show];
-                              self.partNumber.text = @"";
-                              
-                          }else{
-                              [self textFieldShouldReturn:self.firstResponder];
-//                              [self.quatity becomeFirstResponder];
-                          }
-                          
-                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                          [AFNet.activeView stopAnimating];
-                          
-                      }];
-            }else{
-                [self textFieldShouldReturn:self.firstResponder];
-                
-            }
+//            if ([self.type isEqualToString:@"ruku"]) {
+//                AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+//                AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
+//                [manager POST: [AFNet part_validate]
+//                   parameters: @{@"id":self.partNumberDeleteP}
+//                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                          [AFNet.activeView stopAnimating];
+//                          if ([responseObject[@"result"] integerValue] == 0) {
+//                              NSString *message = @"零件不存在";
+//                              self.alert= [[UIAlertView alloc]initWithTitle:nil
+//                                                                    message:message
+//                                                                   delegate:self
+//                                                          cancelButtonTitle:@"确定"
+//                                                          otherButtonTitles:nil];
+//                              [NSTimer scheduledTimerWithTimeInterval:1.0f
+//                                                               target:self
+//                                                             selector:@selector(dissmissAlert:)
+//                                                             userInfo:nil
+//                                                              repeats:NO];
+//                              AudioServicesPlaySystemSound(1051);
+//                              [self.alert show];
+//                              self.partNumber.text = @"";
+//                              
+//                          }else{
+//
+////                              [self.quatity becomeFirstResponder];
+//                          }
+//                          
+//                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                          [AFNet.activeView stopAnimating];
+//                          
+//                      }];
+//                      [self textFieldShouldReturn:self.firstResponder];
+//            }else{
+//                [self textFieldShouldReturn:self.firstResponder];
+//                
+//            }
         }
         else{
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
@@ -926,6 +929,7 @@
                       
 
           }else{
+               AudioServicesPlaySystemSound(1051);
               self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
                                                     message:responseObject[@"content"]
                                                    delegate:self
@@ -995,19 +999,9 @@
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               [AFNet.activeView stopAnimating];
               if([responseObject[@"result"] integerValue]==1){
-                  self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
-                                                        message:@"已完成全部入库"
-                                                       delegate:self
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:nil];
-                  [NSTimer scheduledTimerWithTimeInterval:0.8f
-                                                   target:self
-                                                 selector:@selector(dissmissAlert:)
-                                                 userInfo:nil
-                                                  repeats:NO];
                   
-                  AudioServicesPlaySystemSound(1012);
-                  //[self performSegueWithIdentifier:@"finishTuo" sender:self];
+                  
+                  
         NSString *key=self.key.text?self.key.text:@"";
         NSString *partNumber=self.partNumber.text?self.partNumber.text:@"";
         NSString *quantity=self.quatity.text?self.quatity.text:@"";
@@ -1039,41 +1033,11 @@
               success:^(AFHTTPRequestOperation *operation, id responseObject) {
           [AFNet.activeView stopAnimating];
           if([responseObject[@"result"] integerValue]==1){
-
-          self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
-                                                message:responseObject[@"content"]
-                                               delegate:self
-                                      cancelButtonTitle:nil
-                                      otherButtonTitles:nil];
-          [NSTimer scheduledTimerWithTimeInterval:0.8f
-                                           target:self
-                                         selector:@selector(dissmissAlert:)
-                                         userInfo:nil
-                                          repeats:NO];
-        
-          AudioServicesPlaySystemSound(1012);
-          
-          [self.alert show];
-          self.xianglist = [[Xiang alloc] initWith:key partNumber:partNumber key:key count:quantity position:@"" remark:@"" date:date];
+                    self.xianglist = [[Xiang alloc] initWith:key partNumber:partNumber key:key count:quantity position:@"" remark:@"" date:date];
           self.xianglist.moveSourceId=[(responseObject[@"object"][@"id"]) intValue];
           [self.tuo addXiang:self.xianglist];
           [self.xiangTable reloadData];
-          //[self performSegueWithIdentifier:@"backToMain" sender:nil];
-                      
-
           }else{
-              self.alert= [[UIAlertView alloc]initWithTitle:@"失败"
-                                                    message:responseObject[@"content"]
-                                                   delegate:self
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:nil];
-              [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                               target:self
-                                             selector:@selector(dissmissAlert:)
-                                             userInfo:nil
-                                              repeats:NO];
-              
-              [self.alert show];
               self.key.text=@"";
               self.partNumber.text=@"";
               self.quatity.text=@"";
@@ -1091,8 +1055,14 @@
                   self.tuo=[[Tuo alloc] init];
                   [self.xiangdetailist removeAllObjects];
                   [self.xiangTable reloadData];
-                
-                  
+                  self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+                                                        message:responseObject[@"content"]
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+                  AudioServicesPlaySystemSound(1012);
+                  [self.alert show];
+              [self.navigationController popToRootViewControllerAnimated: YES];
               }else{
                   UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
                                                                 message:responseObject[@"content"]
@@ -1117,6 +1087,7 @@
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex==1){
+        
          [self performSegueWithIdentifier:@"scanToPrint" sender:@{@"container":self.tuo}];
     }
 }
