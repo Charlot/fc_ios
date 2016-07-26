@@ -190,8 +190,8 @@
         BOOL isMatch  = [self.scanStandard checkPartNumber:data];
         if(isMatch){
             [self textFieldShouldReturn:self.firstResponder];
-            //检查零件号合法性
-            self.partNumberDeleteP=[self.scanStandard filterPartNumber:self.partNumber.text];
+            //检查零件号合法性,全部扫完或仍会验证，此步多余
+//            self.partNumberDeleteP=[self.scanStandard filterPartNumber:self.partNumber.text];
 //            if ([self.type isEqualToString:@"ruku"]) {
 //                AFNetOperate *AFNet=[[AFNetOperate alloc] init];
 //                AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
