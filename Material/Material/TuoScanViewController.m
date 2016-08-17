@@ -355,6 +355,14 @@
                                                 if([(NSDictionary *)responseObject[@"content"] count]>0){
                                                     Xiang *xiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];
                                                     [self.tuo addXiang:xiang];
+                                                    
+                                                    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
+                                                                                                  message:@"123456"
+                                                                                                 delegate:self
+                                                                                        cancelButtonTitle:nil
+                                                                                        otherButtonTitles:nil];
+                                                    [alert show];
+                                                    
                                                     [self.xiangTable reloadData];
                                                     [self.key becomeFirstResponder];
                                                     self.key.text=@"";
