@@ -956,6 +956,7 @@
     ];
 }
 - (IBAction)finish:(id)sender {
+
     if ([self.type isEqualToString:@"ruku"]) {
         NSLog([NSString stringWithFormat:@"%lu",(unsigned long)self.tuo.xiang.count]);
         if (self.tuo.xiang.count == 0)
@@ -972,12 +973,13 @@
             [self enter_stock];
         }
         
-        }else if([self.type isEqualToString:@"contnruku"])
+        }
+    else if([self.type isEqualToString:@"contnruku"])
         {
             [self enter_stock];
-           
-        }else{
-            if(self.tuo.xiang.count<=0){
+        }
+    else{
+        if(self.tuo.xiang.count<=0){
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
                                                          message:@"没有绑定任何箱，需要继续吗？"
                                                         delegate:self
@@ -999,9 +1001,6 @@
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               [AFNet.activeView stopAnimating];
               if([responseObject[@"result"] integerValue]==1){
-                  
-                  
-                  
         NSString *key=self.key.text?self.key.text:@"";
         NSString *partNumber=self.partNumber.text?self.partNumber.text:@"";
         NSString *quantity=self.quatity.text?self.quatity.text:@"";
@@ -1075,11 +1074,12 @@
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               [AFNet.activeView stopAnimating];
-              UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"
-                                                            message:@"没有绑定任何箱，需要继续吗？"
+              AudioServicesPlaySystemSound(1051);
+              UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"错误"
+                                                            message:@"请检查扫描日期或网络连接"
                                                            delegate:self
-                                                  cancelButtonTitle:@"不继续"
-                                                  otherButtonTitles:@"继续操作", nil];
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil];
               [alert show];
           }];
 }
