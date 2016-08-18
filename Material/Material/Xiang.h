@@ -32,6 +32,7 @@
 @property(nonatomic,strong)NSString *packageId;
 @property(nonatomic,strong)NSString *qty;
 @property(nonatomic,strong)NSString *frposition;
+@property(nonatomic,strong)NSString *fromWh;
 
 
 

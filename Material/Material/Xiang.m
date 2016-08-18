@@ -75,6 +75,7 @@
         self.qty=object[@"qty"]?object[@"qty"]:@"";
         self.partNr=object[@"part_id"]?object[@"part_id"]:@"";
         self.frposition=object[@"fromPosition"]?object[@"fromPosition"]:@"";
+        self.fromWh=object[@"fromWh"]?object[@"fromWh"]:@"";
     }
     return self;
 }
