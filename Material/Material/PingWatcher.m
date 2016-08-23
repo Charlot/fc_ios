@@ -85,8 +85,8 @@
             self.alert=[[UIAlertView alloc] initWithTitle:@"错误"
                                                   message:@"与同步服务器断开连接"
                                                  delegate:self
-                                        cancelButtonTitle:@"确定"
-                                        otherButtonTitles:nil];
+                                        cancelButtonTitle:@"设置"
+                                        otherButtonTitles:@"确定",nil];
             [self.alert show];
         }
 	}
@@ -94,7 +94,11 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex==0){
-        self.alert=nil;
+        NSURL *url = [NSURL URLWithString:@"prefs:root=WIFI"];
+        if ([[UIApplication sharedApplication] canOpenURL:url])
+        {
+            [[UIApplication sharedApplication] openURL:url];
+        }
     }
 }
 -(void)changeSererAddress:(NSString *)newAddress

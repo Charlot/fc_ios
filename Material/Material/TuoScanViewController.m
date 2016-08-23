@@ -72,6 +72,9 @@
     else if([self.type isEqualToString:@"addXiang"]){
         self.navigationItem.rightBarButtonItem=NULL;
         self.xiangListLabel.text=@"已绑定箱数:";
+        self.partNumber.enabled=NO;
+        self.quatity.enabled=NO;
+        self.dateTextField.enabled=NO;
     }
     else if([self.type isEqualToString:@"tuo"]){
         [self.navigationItem setHidesBackButton:YES];
@@ -91,13 +94,12 @@
               success:^(AFHTTPRequestOperation *operation, id responseObject) {
                   [AFNet.activeView stopAnimating];
                   Xiang *xiang=[[Xiang alloc] initWithObject:responseObject[@"content"]];
-                 [self.tuo addXiang:xiang];
-                   self.rukuList=xiang.listid;
+                [self.tuo addXiang:xiang];
+                self.rukuList=xiang.listid;
                 [self.tuo.xiang removeAllObjects];
                   
               } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                   [AFNet.activeView stopAnimating];
-                  
               }
          ];
     }else if([self.type isEqualToString:@"contnruku"]){
@@ -115,7 +117,7 @@
         self.sum_packages_count=[self.tuo.xiang count];
         [self updateXiangCountLabel];
         if(self.enablePop){
-            self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"完成"
+        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"完成"
                                                                                     style:UIBarButtonItemStyleBordered
                                                                                    target:self
                                                                                    action:@selector(popout)];
@@ -132,13 +134,15 @@
         [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
         [self.key becomeFirstResponder];
         [self.xiangTable reloadData];
-            if(self.hideCheckButton){
-                self.checkButton.hidden=YES;
-            }
+        if(self.hideCheckButton)
+        {
+            self.checkButton.hidden=YES;
+        }
 
 }-(void)viewDidAppear:(BOOL)animated
 {
-        if ([self.type isEqualToString:@"ruku"] || [self.type isEqualToString:@"contnruku"]) {
+        if ([self.type isEqualToString:@"ruku"] || [self.type isEqualToString:@"contnruku"])
+        {
              self.tuo=[[Tuo alloc] init];
         }
 }
@@ -1032,12 +1036,15 @@
            parameters:self.parameters
               success:^(AFHTTPRequestOperation *operation, id responseObject) {
           [AFNet.activeView stopAnimating];
-          if([responseObject[@"result"] integerValue]==1){
-                    self.xianglist = [[Xiang alloc] initWith:key partNumber:partNumber key:key count:quantity position:@"" remark:@"" date:date];
-          self.xianglist.moveSourceId=[(responseObject[@"object"][@"id"]) intValue];
-          [self.tuo addXiang:self.xianglist];
-          [self.xiangTable reloadData];
-          }else{
+          if([responseObject[@"result"] integerValue]==1)
+          {
+              
+              self.xianglist = [[Xiang alloc] initWith:key partNumber:partNumber key:key count:quantity position:@"" remark:@"" date:date];
+              self.xianglist.moveSourceId=[(responseObject[@"object"][@"id"]) intValue];
+              [self.tuo addXiang:self.xianglist];
+              [self.xiangTable reloadData];
+          }
+          else{
               self.key.text=@"";
               self.partNumber.text=@"";
               self.quatity.text=@"";

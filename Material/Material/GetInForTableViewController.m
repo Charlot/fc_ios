@@ -126,7 +126,6 @@
                  for (int i = 0; i < resultArray.count; i++) {
                      MovementList *ml =[[MovementList alloc] initWithObject:resultArray[i]];
                      [self.dataArray addObject:ml];
-                     
                  }
                  [self.tableView reloadData];
                  

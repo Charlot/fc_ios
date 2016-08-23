@@ -130,8 +130,13 @@
               [UserPreference
                   generateUserPreference:responseObject[@"content"]];
               [ScanStandard sharedScanStandard];
-            } else {
-              [AFNet alert:responseObject[@"content"]];
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                                message:responseObject[@"content"]
+                                                               delegate:self
+                                                      cancelButtonTitle:@"确定"
+                                                      otherButtonTitles:nil];
+                [alert show];
             }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -139,7 +144,8 @@
             NSLog(@"login error %@", [error description]);
             //[AFNet alert:[NSString stringWithFormat:@"%@", [error
             // localizedDescription]]];
-            [AFNet alert:[NSString stringWithFormat:@"端口设置错误"]];
+            [AFNet alert:[NSString stringWithFormat:@"请检查网络与端口"]];
+            
 
           }];
     } else {
