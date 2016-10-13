@@ -144,51 +144,53 @@
     }
     else if(targetTextField.tag==2){
         //part number
-        NSString *alertString = @"请扫描零件号";
-        BOOL isMatch          = [self.scanStandard checkPartNumber:data];
-        if(isMatch){
-            [self textFieldShouldReturn:self.firstResponder];
-        }
-        else{
-            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
-                                                          message:alertString
-                                                         delegate:self
-                                                cancelButtonTitle:@"确定"
-                                                otherButtonTitles:nil];
-            [alert show];
-            [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                             target:self
-                                           selector:@selector(removeAlert:)
-                                           userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert,@"alert", nil]
-                                            repeats:NO];
-            AudioServicesPlaySystemSound(1051);
-            targetTextField.text=@"";
-            [targetTextField becomeFirstResponder];
-        }
+       // NSString *alertString = @"请扫描零件号";
+        [self textFieldShouldReturn:self.firstResponder];
+//        BOOL isMatch          = [self.scanStandard checkPartNumber:data];
+//        if(isMatch){
+//            [self textFieldShouldReturn:self.firstResponder];
+//        }
+//        else{
+//            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
+//                                                          message:alertString
+//                                                         delegate:self
+//                                                cancelButtonTitle:@"确定"
+//                                                otherButtonTitles:nil];
+//            [alert show];
+//            [NSTimer scheduledTimerWithTimeInterval:2.0f
+//                                             target:self
+//                                           selector:@selector(removeAlert:)
+//                                           userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert,@"alert", nil]
+//                                            repeats:NO];
+//            AudioServicesPlaySystemSound(1051);
+//            targetTextField.text=@"";
+//            [targetTextField becomeFirstResponder];
+//        }
     }
     else if(targetTextField.tag==3){
         //count
-        NSString *alertString = @"请扫描数量";
-        BOOL isMatch          = [self.scanStandard checkQuantity:data];
-        if(isMatch){
-            [self textFieldShouldReturn:self.firstResponder];
-        }
-        else{
-            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
-                                                          message:alertString
-                                                         delegate:self
-                                                cancelButtonTitle:@"确定"
-                                                otherButtonTitles:nil];
-            [alert show];
-            [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                             target:self
-                                           selector:@selector(removeAlert:)
-                                           userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert,@"alert", nil]
-                                            repeats:NO];
-            AudioServicesPlaySystemSound(1051);
-            targetTextField.text = @"";
-            [targetTextField becomeFirstResponder];
-        }
+        [self textFieldShouldReturn:self.firstResponder];
+//        NSString *alertString = @"请扫描数量";
+//        BOOL isMatch          = [self.scanStandard checkQuantity:data];
+//        if(isMatch){
+//            [self textFieldShouldReturn:self.firstResponder];
+//        }
+//        else{
+//            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
+//                                                          message:alertString
+//                                                         delegate:self
+//                                                cancelButtonTitle:@"确定"
+//                                                otherButtonTitles:nil];
+//            [alert show];
+//            [NSTimer scheduledTimerWithTimeInterval:2.0f
+//                                             target:self
+//                                           selector:@selector(removeAlert:)
+//                                           userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert,@"alert", nil]
+//                                            repeats:NO];
+//            AudioServicesPlaySystemSound(1051);
+//            targetTextField.text = @"";
+//            [targetTextField becomeFirstResponder];
+//        }
         
     }
     else if(targetTextField.tag==1){
@@ -360,11 +362,13 @@
 -(void)validateKey:(NSString *)data{
     //唯一码
     UITextField *targetTextField=self.firstResponder;
+    
 
     NSString *alertString=@"请扫描唯一码";
     BOOL isMatch  = [self.scanStandard checkKey:data];
     if(isMatch){
-       // [self textFieldShouldReturn:self.firstResponder];
+
+       //[self textFieldShouldReturn:self.firstResponder];
         //验证数据的合法性
         AFNetOperate *AFNet=[[AFNetOperate alloc] init];
         AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
@@ -374,11 +378,14 @@
         dispatch_async(validate, ^{
             NSString *myData= [self.scanStandard filterKey: data];
             if(self.tuo.ID.length>0 ){
+                
                 [manager POST:address
                    parameters:@{@"id":myData}
                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+       
                           [AFNet.activeView stopAnimating];
                           if([responseObject[@"result"] integerValue]==1){
+                              
                                [self.partNumber becomeFirstResponder];
                           }
                           else if([responseObject[@"result"] integerValue]==0){
@@ -482,7 +489,7 @@
                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
                           [AFNet.activeView stopAnimating];
                           if([responseObject[@"result"] integerValue]==1){
-                              
+                              [self.partNumber becomeFirstResponder];
                           }
                           else{
                               [AFNet alert:responseObject[@"content"]];

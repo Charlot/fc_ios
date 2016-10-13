@@ -37,6 +37,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *positionNow;
 @property (weak, nonatomic) IBOutlet UILabel *positionScan;
+@property (strong, nonatomic) UITextField    *firstResponder;
 
 @end
 
@@ -57,13 +58,14 @@
 
   [self.packageTextField becomeFirstResponder];
     self.qtyTextField.keyboardType= UIKeyboardTypeDecimalPad;
-  //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-  //      initWithTarget:self
-  //              action:@selector(dismissKeyboard)];
-  //  UIView *tapView =
-  //      [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, 200)];
-  //  [self.view addSubview:tapView];
-  //  [tapView addGestureRecognizer:tap];
+   
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+//        initWithTarget:self
+//                action:@selector(dismissKeyboard)];
+//    UIView *tapView =
+//        [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, 200)];
+//    [self.view addSubview:tapView];
+//    [tapView addGestureRecognizer:tap];
 }
 
 - (void)dismissKeyboard {
@@ -73,9 +75,20 @@
       UITextField *theTextField = objInput;
       if ([objInput isFirstResponder]) {
         [theTextField resignFirstResponder];
+          
       }
     }
   }
+
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if ([self.packageTextField isFirstResponder]) {
+        UIView* dummyView   = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
+        self.packageTextField.inputView = dummyView;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,6 +103,7 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
+
   [self loadData];
 }
 - (void)viewWillDisappear:(BOOL)animated {
@@ -190,8 +204,10 @@
 
 - (void)loadData {
   //  [self getPackageInfo:@"WI311501116894"];
+    
 
   [self getPositionInfo];
+    //[self dismissKeyboard];
 }
 
 - (void)getPositionInfo {
@@ -229,7 +245,7 @@
                                                         self.positionCount =
                                                             inventoryList.count;
                                                          // self.positionNow.text= inventoryList.positionNr;
-                                                                                                        [self.positionTable reloadData];
+                                                        [self.positionTable reloadData];
                                                       }
                                                     }];
                          }
@@ -369,4 +385,5 @@ preparation before navigation
 - (IBAction)tapViewAction:(id)sender {
   [self dismissKeyboard];
 }
+
 @end

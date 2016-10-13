@@ -1724,7 +1724,7 @@
 					"$(PROJECT_DIR)/Material",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wms.vmi;
+				PRODUCT_BUNDLE_IDENTIFIER = wms.shvmi;
 				PRODUCT_NAME = VMI;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1750,7 +1750,7 @@
 					"$(PROJECT_DIR)/Material",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wms.vmi;
+				PRODUCT_BUNDLE_IDENTIFIER = wms.shvmi;
 				PRODUCT_NAME = VMI;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

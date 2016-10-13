@@ -12,7 +12,7 @@
 #import "UserPreference.h"
 #import <AudioToolbox/AudioToolbox.h>
 
-@interface RukuViewController ()
+@interface RukuViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic  ) IBOutlet UITextField    *warehouseTF;
 @property (weak, nonatomic  ) IBOutlet UITextField    *positionTF;
 @property (weak, nonatomic  ) IBOutlet UITextField    *containerTF;
@@ -198,11 +198,11 @@
         textField.inputView = dummyView;
         [self hideKeyboard];
         self.firstResponder = textField;
-    
 }
 
 
 - (IBAction)touchScreen:(id)sender {
+    
     [self hideKeyboard];
     if(self.firstResponder){
         [self.view endEditing:YES];
