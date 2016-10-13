@@ -197,9 +197,7 @@
         UIView* dummyView   = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
         textField.inputView = dummyView;
         [self hideKeyboard];
-     
-    
-    self.firstResponder=textField;
+        self.firstResponder = textField;
     
 }
 
@@ -236,7 +234,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
- curl -fsSL https://raw.github.com/alcatraz/Alcatraz/master/Scripts/install.sh | sh
+
 }
 */
 
