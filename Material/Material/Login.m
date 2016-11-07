@@ -17,6 +17,7 @@
 @property(weak, nonatomic) IBOutlet UITextField *email;
 @property(weak, nonatomic) IBOutlet UITextField *password;
 @property(weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *pointSetButton;
 @property(weak, nonatomic) IBOutlet UILabel *versionLabel;
 - (IBAction)touchScreen:(id)sender;
 - (IBAction)login:(id)sender;
@@ -57,6 +58,8 @@
   }
   [[Captuvo sharedCaptuvoDevice] addCaptuvoDelegate:self];
   //    [self.email becomeFirstResponder];
+    _loginButton.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.4];
+    _pointSetButton.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.4];
 }
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];

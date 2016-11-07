@@ -25,6 +25,15 @@ SCNetworkReachabilityRef reachability;
     [[Captuvo sharedCaptuvoDevice] setDecoderGoodReadBeeperVolume:BeeperVolumeLow persistSetting:YES];
     [UIDevice currentDevice].batteryMonitoringEnabled = YES;
 
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    //    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:207.0/255.0 green:52.0/255.0 blue:67.0/255.0 alpha:1.0]];
+    
+    //    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+    //[[UINavigationBar appearance] setTranslucent:YES];
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:10.0F],  NSForegroundColorAttributeName:[UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:1.0]} forState:UIControlStateSelected];
      //监测网络情况
 //    Reachability *reachability = [Reachability reachabilityWithHostname:@"www.google.com"];
 //    reachability.reachableBlock = ^(Reachability *reachability) {

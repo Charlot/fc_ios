@@ -11,6 +11,10 @@
 
 @interface MenuPanelViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UIButton *receiveButton;
+@property (weak, nonatomic) IBOutlet UIButton *countButton;
+@property (weak, nonatomic) IBOutlet UIButton *NeedButton;
 
 @end
 
@@ -19,6 +23,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _logoutBtn.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
+    
+    _sendButton.backgroundColor =[UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.8];
+    _receiveButton.backgroundColor =[UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.8];
+    _countButton.backgroundColor =[UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.8];
+    _NeedButton.backgroundColor =[UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.8];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {

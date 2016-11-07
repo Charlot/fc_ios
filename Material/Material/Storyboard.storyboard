@@ -13,60 +13,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="供应商管理库存系统" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6mO-gi-mQf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="Zcl-Ss-mce">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生产物流控制系统" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6mO-gi-mQf">
                                 <rect key="frame" x="48" y="77" width="224" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" red="0.26510686770000003" green="0.45393018460000001" blue="0.84185666449999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海佳轩" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PDj-hI-nHw">
-                                <rect key="frame" x="190" y="112" width="80" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="0.81960784313725488" green="0.16470588235294117" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="工号" minimumFontSize="17" id="XgB-3h-hMO">
-                                <rect key="frame" x="57" y="210" width="207" height="30"/>
+                                <rect key="frame" x="57" y="229" width="207" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" minimumFontSize="17" id="ocO-9l-iEw">
-                                <rect key="frame" x="57" y="257" width="207" height="30"/>
+                                <rect key="frame" x="57" y="265" width="207" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Q8-ZK-RKS">
-                                <rect key="frame" x="57" y="328" width="207" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.25870028410000001" green="0.472406143" blue="0.81305803570000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="登录">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="login:" destination="yPq-V2-PBO" eventType="touchUpInside" id="2JQ-ZW-fzQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ruJ-LT-LpB">
-                                <rect key="frame" x="57" y="377" width="207" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.34018288000000002" green="0.73630819520000002" blue="0.37557483359999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="端口设置">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="DiH-IC-XVX" kind="modal" id="RsU-Ad-ilI"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aog-bs-Neq">
                                 <rect key="frame" x="139" y="534" width="25" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -81,6 +50,34 @@
                                 <color key="textColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Q8-ZK-RKS">
+                                <rect key="frame" x="84" y="345" width="152" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25870028410000001" green="0.472406143" blue="0.81305803570000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="登录">
+                                    <color key="titleColor" red="0.81960784310000001" green="0.1647058824" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="login:" destination="yPq-V2-PBO" eventType="touchUpInside" id="2JQ-ZW-fzQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ruJ-LT-LpB">
+                                <rect key="frame" x="84" y="388" width="152" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.34018288000000002" green="0.73630819520000002" blue="0.37557483359999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="端口设置">
+                                    <color key="titleColor" red="0.81960784310000001" green="0.1647058824" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="DiH-IC-XVX" kind="modal" id="RsU-Ad-ilI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <connections>
@@ -92,6 +89,7 @@
                         <outlet property="email" destination="XgB-3h-hMO" id="XwO-Id-UcG"/>
                         <outlet property="loginButton" destination="0Q8-ZK-RKS" id="SUd-VT-0Zo"/>
                         <outlet property="password" destination="ocO-9l-iEw" id="uxi-rA-IjB"/>
+                        <outlet property="pointSetButton" destination="ruJ-LT-LpB" id="m7g-e5-KTV"/>
                         <outlet property="versionLabel" destination="slh-oT-qTr" id="OW6-ic-fpQ"/>
                     </connections>
                 </viewController>
@@ -107,12 +105,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="csr-bu-bX1">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lDS-aw-fPh">
                                 <rect key="frame" x="184" y="83" width="84" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="发货">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="xSJ-hE-r1L" kind="modal" id="4hs-kw-z9h"/>
@@ -122,8 +126,10 @@
                                 <rect key="frame" x="52" y="181" width="84" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="库存">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="ivc-P1-lwe" kind="modal" id="tXn-Tj-jM0"/>
@@ -133,8 +139,10 @@
                                 <rect key="frame" x="184" y="181" width="84" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="需求">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="BNf-hk-UVZ" kind="modal" id="O7w-yg-Osh"/>
@@ -147,7 +155,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="退出账户">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.81960784310000001" green="0.1647058824" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -158,8 +166,10 @@
                                 <rect key="frame" x="52" y="83" width="84" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="收货">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="oc5-Jc-dZn" kind="modal" id="1D5-0a-czk"/>
@@ -170,7 +180,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="mDz-Bv-EhL"/>
                     <connections>
+                        <outlet property="NeedButton" destination="Md5-fW-sgt" id="4gv-Cf-sSS"/>
+                        <outlet property="countButton" destination="sew-T2-e3Y" id="Bx3-Pw-Mea"/>
                         <outlet property="logoutBtn" destination="HLw-uM-1tm" id="nlG-5U-asi"/>
+                        <outlet property="receiveButton" destination="luD-yk-6j8" id="yMp-mq-P0P"/>
+                        <outlet property="sendButton" destination="lDS-aw-fPh" id="urw-cY-hxy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="du1-nv-uEC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -220,7 +234,7 @@
                                 <segue destination="yPq-V2-PBO" kind="modal" id="Dtg-Ls-yzU"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="保存更改" id="9Fm-C7-Stv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="9Fm-C7-Stv">
                             <connections>
                                 <action selector="saveChange:" destination="E1U-g6-xhq" id="lxp-ag-Jfo"/>
                             </connections>
@@ -5893,6 +5907,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="background" width="750" height="1335"/>
         <image name="check" width="30" height="30"/>
         <image name="find" width="30" height="30"/>
         <image name="move" width="30" height="30"/>
@@ -5907,26 +5922,26 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="pF9-mf-As5"/>
         <segue reference="If0-NA-MAK"/>
-        <segue reference="PPk-8F-ZrK"/>
-        <segue reference="veK-WU-skj"/>
-        <segue reference="UAK-rn-23P"/>
-        <segue reference="Hyz-uv-cpc"/>
-        <segue reference="Xpt-zp-Oio"/>
-        <segue reference="U3W-2k-BOU"/>
-        <segue reference="zbp-Dd-2O5"/>
+        <segue reference="mEd-et-lyR"/>
+        <segue reference="FcC-pN-TYA"/>
+        <segue reference="SkA-08-PWt"/>
+        <segue reference="hQ5-Fe-tiF"/>
         <segue reference="4O1-OE-ag4"/>
         <segue reference="PmR-41-F4t"/>
         <segue reference="Do4-uK-Dun"/>
         <segue reference="hy6-vM-msP"/>
-        <segue reference="mEd-et-lyR"/>
-        <segue reference="SkA-08-PWt"/>
-        <segue reference="FcC-pN-TYA"/>
-        <segue reference="hQ5-Fe-tiF"/>
-        <segue reference="pF9-mf-As5"/>
-        <segue reference="EZu-KH-oca"/>
+        <segue reference="PPk-8F-ZrK"/>
+        <segue reference="UAK-rn-23P"/>
+        <segue reference="veK-WU-skj"/>
+        <segue reference="U3W-2k-BOU"/>
+        <segue reference="zbp-Dd-2O5"/>
+        <segue reference="Hyz-uv-cpc"/>
+        <segue reference="Xpt-zp-Oio"/>
         <segue reference="Hg3-N0-v7Z"/>
         <segue reference="QU2-zR-Ew2"/>
+        <segue reference="EZu-KH-oca"/>
         <segue reference="yJ1-Ae-Eed"/>
         <segue reference="Dtg-Ls-yzU"/>
     </inferredMetricsTieBreakers>

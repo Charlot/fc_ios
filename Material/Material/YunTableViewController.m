@@ -40,6 +40,7 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:@"yunCell"];
     
     self.userPreference=[UserPreference sharedUserPreference];
+    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:1.0];
     
 //    self.yunStore=[YunStore sharedYunStore:self.tableView];
     // Uncomment the following line to preserve selection between presentations.

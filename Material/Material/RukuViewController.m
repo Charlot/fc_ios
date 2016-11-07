@@ -29,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:1.0];
     // Do any additional setup after loading the view.
 }
 
