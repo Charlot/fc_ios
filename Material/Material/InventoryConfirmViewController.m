@@ -24,6 +24,7 @@
 
 @property (strong,nonatomic)ScanStandard *scanStandard;
 - (IBAction)confirm:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *Cinfirm;
 
 @end
 
@@ -73,6 +74,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    _Cinfirm.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:1.0];
   [self initController];
     
     self.scanStandard=[ScanStandard sharedScanStandard];

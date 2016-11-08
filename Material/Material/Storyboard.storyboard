@@ -230,11 +230,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="端口设置" id="O1h-B7-mqD">
                         <barButtonItem key="leftBarButtonItem" title="&lt;Back" id="tan-ZR-gBR">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="yPq-V2-PBO" kind="modal" id="Dtg-Ls-yzU"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="organize" id="9Fm-C7-Stv">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveChange:" destination="E1U-g6-xhq" id="lxp-ag-Jfo"/>
                             </connections>
@@ -287,6 +289,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="已绑定箱" id="nrS-LD-R5N">
                         <barButtonItem key="rightBarButtonItem" title="绑定箱" id="uYg-eG-uug">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Zq0-sm-J8a" kind="push" identifier="bundleXiang" id="8RY-QF-ZAw"/>
                             </connections>
@@ -622,6 +625,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="已有托清单" id="3l5-qh-ElP">
                         <barButtonItem key="rightBarButtonItem" title="生成托清单" id="ssi-ye-4sh">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="yoi-dG-8Cf" kind="push" id="WnN-tu-fqg"/>
                             </connections>
@@ -1002,13 +1006,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="imF-w6-Ng6">
-                                <rect key="frame" x="52" y="423" width="216" height="31"/>
+                                <rect key="frame" x="77" y="406" width="165" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="返回菜单">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1051,22 +1055,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rfn-GD-uod">
-                                <rect key="frame" x="166" y="204" width="100" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.25870028410000001" green="0.472406143" blue="0.81305803570000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="重置打印机型号">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="resetPrint:" destination="FJr-dh-3oV" eventType="touchUpInside" id="FbN-1Z-QR6"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9Yl-nr-zPs">
-                                <rect key="frame" x="52" y="286" width="217" height="30"/>
+                                <rect key="frame" x="77" y="342" width="165" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.34018288000000002" green="0.73630819520000002" blue="0.37557483359999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1077,6 +1067,20 @@
                                 </state>
                                 <connections>
                                     <action selector="saveChange:" destination="FJr-dh-3oV" eventType="touchUpInside" id="Q0i-fx-fgT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rfn-GD-uod">
+                                <rect key="frame" x="189" y="212" width="100" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25870028410000001" green="0.472406143" blue="0.81305803570000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="10"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="重置">
+                                    <color key="titleColor" red="0.81960784310000001" green="0.1647058824" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetPrint:" destination="FJr-dh-3oV" eventType="touchUpInside" id="FbN-1Z-QR6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1093,6 +1097,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="BackButton" destination="imF-w6-Ng6" id="Ze3-XL-W8c"/>
+                        <outlet property="ResertPrint" destination="rfn-GD-uod" id="uGW-BN-f99"/>
+                        <outlet property="SaveChange" destination="9Yl-nr-zPs" id="CmW-8R-yWm"/>
                         <outlet property="addressTextField" destination="iGd-jd-tFW" id="Wgm-94-FPb"/>
                         <outlet property="portTextField" destination="eML-9b-zhp" id="t4b-Vu-TAu"/>
                         <outlet property="typeTextField" destination="tcA-a6-Frd" id="2SK-3H-dgD"/>
@@ -1193,6 +1200,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="已有运单" id="Mfr-OQ-Ag0">
                         <barButtonItem key="rightBarButtonItem" title="生成运单" id="sHd-el-xbt">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="createDelivery:" destination="1kM-we-q0g" id="nbY-l6-dvd"/>
                             </connections>
@@ -1233,6 +1241,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="选择需求单" id="YwL-5d-8Rn">
                         <barButtonItem key="rightBarButtonItem" title="下一步" id="tey-tz-VLt">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="toSelectForkLift:" destination="o4A-UV-gwo" id="jdI-tv-PB1"/>
                             </connections>
@@ -1513,6 +1522,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="运单信息" id="yuq-H7-qJU"/>
                     <connections>
+                        <outlet property="NextButton" destination="9zn-qo-3Db" id="ePd-v1-MFB"/>
                         <outlet property="remark" destination="hif-m5-U20" id="FHY-vR-Xgq"/>
                         <outlet property="tuoCountLabel" destination="UMd-mv-RMi" id="Kcy-ic-bRx"/>
                         <segue destination="W31-QG-1bE" kind="push" identifier="printYun" id="ZfA-pO-UHe"/>
@@ -2142,6 +2152,7 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="移库清单" id="2lz-TS-lpx">
                         <barButtonItem key="rightBarButtonItem" title="生成移库单" id="GyV-l0-l1n">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="createMovementList:" destination="m6S-u8-rjw" id="Vqz-Gh-iDr"/>
                             </connections>
@@ -2336,6 +2347,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="确认信息" id="WUq-1A-jQR"/>
                     <connections>
+                        <outlet property="Cinfirm" destination="zY7-JN-Xon" id="jgW-OC-9zO"/>
                         <outlet property="currentPositionTF" destination="16W-aY-5za" id="TMy-fd-ZXi"/>
                         <outlet property="partTextField" destination="y71-K8-mhG" id="A4H-6D-rFv"/>
                         <outlet property="positionTextField" destination="xw9-Hx-WhB" id="YMc-bd-UtS"/>
@@ -2410,13 +2422,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mwr-DQ-rbr">
-                                <rect key="frame" x="36" y="257" width="248" height="32"/>
+                                <rect key="frame" x="73" y="314" width="175" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.26510686770000003" green="0.45393018460000001" blue="0.84185666449999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="查询">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2431,6 +2443,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="收货历史" id="FMi-td-c7i"/>
                     <connections>
+                        <outlet property="CheckYun" destination="mwr-DQ-rbr" id="vYl-7q-X9U"/>
                         <outlet property="dateTextField" destination="ubt-nK-fwn" id="O7f-2L-H9O"/>
                         <segue destination="evL-8r-xTd" kind="push" identifier="choose" id="nMZ-Ou-Hn5"/>
                     </connections>
@@ -2492,6 +2505,9 @@
                     <navigationItem key="navigationItem" id="vlk-7p-Ekh"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="TuoClick" destination="9Ho-tp-vBo" id="3dZ-Nb-DFz"/>
+                        <outlet property="XiangClick" destination="Ml7-f5-yUY" id="BYi-Ze-XMc"/>
+                        <outlet property="YunClick" destination="j18-Nc-FIy" id="Caw-62-HY0"/>
                         <segue destination="tyh-UH-ebK" kind="push" identifier="yun" id="3nl-XH-NXE"/>
                         <segue destination="fRa-Tx-5rH" kind="push" identifier="tuo" id="joq-VG-3De"/>
                         <segue destination="CJg-nd-Jwa" kind="push" identifier="xiang" id="222-NY-YhT"/>
@@ -3365,6 +3381,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="今日已发送需求" id="Act-ZG-u24"/>
                     <connections>
+                        <outlet property="RequireGenerate" destination="ymC-cB-72o" id="wJb-Gp-0SW"/>
                         <outlet property="billTable" destination="Jp8-Vt-Zcd" id="aDa-ca-jUG"/>
                         <segue destination="d9m-In-y9s" kind="push" identifier="generateRequire" id="Zco-A8-z7q"/>
                         <segue destination="i8u-Mw-b1s" kind="push" identifier="requireDetail" id="PPk-8F-ZrK"/>
@@ -3519,6 +3536,8 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="Check" destination="daC-E7-DTD" id="FaN-XH-OGh"/>
+                        <outlet property="Finish" destination="1Wy-rQ-spV" id="U6t-lk-7q9"/>
                         <outlet property="countLabel" destination="48o-Rt-pAn" id="Yv7-PI-XOX"/>
                         <outlet property="departmentTextField" destination="pHE-gu-7vh" id="5Fn-g1-8ua"/>
                         <outlet property="firstTabButton" destination="H7R-hJ-MIE" id="S96-Ys-gD2"/>
@@ -3894,6 +3913,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="打印" id="jdC-SU-NBr"/>
                     <connections>
+                        <outlet property="PrintButton" destination="jVG-lc-JMZ" id="lwT-sN-Ueg"/>
                         <outlet property="successLabel" destination="tvO-tL-Og1" id="blc-BG-AtQ"/>
                         <outlet property="successView" destination="tco-Nk-SZI" id="8Sl-QQ-3Wj"/>
                         <segue destination="XyM-dM-cNi" kind="unwind" identifier="unwindToRequireList" unwindAction="unwindToRequireList:" id="tyf-qQ-eFR"/>
@@ -3966,6 +3986,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="查看已发送需求单" id="WXn-Sj-PLh"/>
                     <connections>
+                        <outlet property="SearchButton" destination="nKu-iy-nS3" id="Xgo-ji-BZf"/>
                         <outlet property="dateTextField" destination="4Ko-bo-nLa" id="ltL-3w-48P"/>
                         <segue destination="Man-f2-2bq" kind="push" identifier="queryRequire" id="57W-Vm-1Ct"/>
                     </connections>
@@ -4706,6 +4727,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="库位详情" id="dlA-P1-m36">
                         <barButtonItem key="rightBarButtonItem" title="确定" id="cQQ-Rs-INB">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="createButtonClick:" destination="RgY-9t-SPx" id="ibq-gj-Cpo"/>
                             </connections>
@@ -4916,8 +4938,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择盘点单：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ttx-FR-qMs">
+                                <rect key="frame" x="55" y="149" width="103" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" id="uW9-of-nta">
+                                <rect key="frame" x="0.0" y="183" width="320" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5ak-bI-aIE">
-                                <rect key="frame" x="35" y="449" width="250" height="30"/>
+                                <rect key="frame" x="56" y="410" width="208" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.27450981740000002" green="0.46274513010000001" blue="0.81960791349999995" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -4930,22 +4963,12 @@
                                     <segue destination="f5D-QB-TRU" kind="push" identifier="toHistoryVC" id="ksf-EC-vHd"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择盘点单：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ttx-FR-qMs">
-                                <rect key="frame" x="55" y="149" width="103" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" id="uW9-of-nta">
-                                <rect key="frame" x="0.0" y="183" width="320" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="盘点" id="YiO-vL-ij6"/>
                     <connections>
+                        <outlet property="NextButton" destination="5ak-bI-aIE" id="CLM-fN-QZS"/>
                         <outlet property="processingPicker" destination="uW9-of-nta" id="ud7-dK-55u"/>
                     </connections>
                 </viewController>
@@ -5072,6 +5095,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="移库" id="ER3-WZ-hSH">
                         <barButtonItem key="rightBarButtonItem" title="查看移库单并打印" id="iNA-cV-FEM">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="MovementListReviewAction:" destination="aEA-U9-cO0" id="1fm-8z-VpL"/>
                             </connections>
@@ -5090,7 +5114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odj-BW-xEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2572" y="7112"/>
+            <point key="canvasLocation" x="2653" y="7127"/>
         </scene>
         <!--移库单详情-->
         <scene sceneID="2rs-HU-tvw">
@@ -5232,6 +5256,7 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="移库单信息" id="tNG-UU-2hE">
                         <barButtonItem key="rightBarButtonItem" title="完成并打印" id="2D8-hk-nDE">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="MovementAction:" destination="1b3-7w-ZEG" id="Dhf-ft-grj"/>
                             </connections>
@@ -5342,7 +5367,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q3g-Rj-ZKJ">
-                                <rect key="frame" x="53" y="460" width="217" height="38"/>
+                                <rect key="frame" x="53" y="462" width="217" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.34018288000000002" green="0.73630819520000002" blue="0.37557483359999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -5368,6 +5393,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="SGE-qq-b5q"/>
                     <connections>
+                        <outlet property="CreateButtonClick" destination="Q3g-Rj-ZKJ" id="7Mx-iF-9Vk"/>
                         <outlet property="fromPositionTextField" destination="fah-xd-spO" id="Lat-DY-cSg"/>
                         <outlet property="fromWhouseTextField" destination="bw5-3T-Aeg" id="oSx-au-Gud"/>
                         <outlet property="packageTextField" destination="Shw-3S-0UR" id="TaE-g6-w2W"/>
@@ -5617,7 +5643,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mNz-NV-qGZ">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mNz-NV-qGZ" id="tB6-Cg-T0m">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -5653,7 +5679,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFy-Ce-cwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="8309"/>
+            <point key="canvasLocation" x="1291" y="8330"/>
         </scene>
         <!--查库-->
         <scene sceneID="c3T-ac-Oni">
@@ -5721,21 +5747,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="v4U-fa-Tlq">
-                                <rect key="frame" x="47" y="461" width="217" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.34018288000000002" green="0.73630819520000002" blue="0.37557483359999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="入库">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="enterActon:" destination="0IF-gE-rut" eventType="touchUpInside" id="ptZ-Iw-oYg"/>
-                                    <action selector="enterStock:" destination="0IF-gE-rut" eventType="touchUpInside" id="hKX-Vr-Eeh"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="ip7-Fg-CMu">
                                 <rect key="frame" x="30" y="155" width="244" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -5769,6 +5780,21 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="v4U-fa-Tlq">
+                                <rect key="frame" x="46" y="382" width="217" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.34018288000000002" green="0.73630819520000002" blue="0.37557483359999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="入库">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="enterActon:" destination="0IF-gE-rut" eventType="touchUpInside" id="ptZ-Iw-oYg"/>
+                                    <action selector="enterStock:" destination="0IF-gE-rut" eventType="touchUpInside" id="hKX-Vr-Eeh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
@@ -5777,6 +5803,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="入库" id="Obl-BQ-mww"/>
                     <connections>
+                        <outlet property="RukuButton" destination="v4U-fa-Tlq" id="ptD-re-gqC"/>
                         <outlet property="containerTF" destination="NOh-7I-ZEx" id="iKL-kD-Mr0"/>
                         <outlet property="positionTF" destination="mFC-Cu-o9K" id="JEr-Nf-ZdV"/>
                         <outlet property="unfilledLocation" destination="dIN-Ef-yCx" id="A0V-0B-3px"/>
@@ -5922,27 +5949,27 @@
         <image name="yun-tarbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pF9-mf-As5"/>
-        <segue reference="If0-NA-MAK"/>
-        <segue reference="mEd-et-lyR"/>
-        <segue reference="FcC-pN-TYA"/>
-        <segue reference="SkA-08-PWt"/>
-        <segue reference="hQ5-Fe-tiF"/>
+        <segue reference="SI0-aO-vpZ"/>
+        <segue reference="joq-VG-3De"/>
+        <segue reference="222-NY-YhT"/>
+        <segue reference="tP9-hz-80H"/>
+        <segue reference="fTA-Xe-KDm"/>
+        <segue reference="4Mm-GY-xPO"/>
+        <segue reference="8RY-QF-ZAw"/>
         <segue reference="4O1-OE-ag4"/>
         <segue reference="PmR-41-F4t"/>
+        <segue reference="ZfA-pO-UHe"/>
         <segue reference="Do4-uK-Dun"/>
-        <segue reference="hy6-vM-msP"/>
+        <segue reference="hQ5-Fe-tiF"/>
+        <segue reference="2nV-DT-24h"/>
         <segue reference="PPk-8F-ZrK"/>
         <segue reference="UAK-rn-23P"/>
-        <segue reference="veK-WU-skj"/>
-        <segue reference="U3W-2k-BOU"/>
-        <segue reference="zbp-Dd-2O5"/>
-        <segue reference="Hyz-uv-cpc"/>
-        <segue reference="Xpt-zp-Oio"/>
-        <segue reference="Hg3-N0-v7Z"/>
-        <segue reference="QU2-zR-Ew2"/>
-        <segue reference="EZu-KH-oca"/>
+        <segue reference="aya-mQ-TZi"/>
         <segue reference="yJ1-Ae-Eed"/>
+        <segue reference="JT4-AV-Rjg"/>
+        <segue reference="EZu-KH-oca"/>
+        <segue reference="UnZ-wN-WXV"/>
+        <segue reference="zjP-oP-VXq"/>
         <segue reference="Dtg-Ls-yzU"/>
     </inferredMetricsTieBreakers>
 </document>

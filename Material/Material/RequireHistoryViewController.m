@@ -13,6 +13,7 @@
 
 @interface RequireHistoryViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *dateTextField;
+@property (weak, nonatomic) IBOutlet UIButton *SearchButton;
 @property (strong,nonatomic)NSDate *postDate;
 - (IBAction)query:(id)sender;
 - (IBAction)touchScreen:(id)sender;
@@ -32,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _SearchButton.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.9];;
     // Do any additional setup after loading the view.
     self.dateTextField.delegate=self;
     UIDatePicker *datePicker=[[UIDatePicker alloc] init];

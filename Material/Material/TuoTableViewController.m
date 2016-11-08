@@ -34,6 +34,7 @@
     UINib *nib=[UINib nibWithNibName:@"TuoTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"tuoCell"];
     self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:1.0];
+    
 }
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -58,6 +59,7 @@
                                                                            style:UIBarButtonItemStyleBordered
                                                                           target:self
                                                                           action:@selector(allState)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
     TuoStore *tuoStore=[[TuoStore alloc] init];
     tuoStore.listArray=[[NSMutableArray alloc] init];
     [self.tableView reloadData];

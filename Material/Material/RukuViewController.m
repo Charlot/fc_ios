@@ -12,7 +12,7 @@
 #import "UserPreference.h"
 #import <AudioToolbox/AudioToolbox.h>
 
-@interface RukuViewController ()
+@interface RukuViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic  ) IBOutlet UITextField    *warehouseTF;
 @property (weak, nonatomic  ) IBOutlet UITextField    *positionTF;
 @property (weak, nonatomic  ) IBOutlet UITextField    *containerTF;
@@ -20,6 +20,7 @@
 @property (strong, nonatomic) UITextField    *firstResponder;
 @property (strong,nonatomic ) ScanStandard   *scanStandard;
 @property (strong,nonatomic ) UserPreference *userPreference;
+@property (weak, nonatomic) IBOutlet UIButton *RukuButton;
 
 //@property int *lable;
 
@@ -30,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:1.0];
+    _RukuButton.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.9];
     // Do any additional setup after loading the view.
 }
 

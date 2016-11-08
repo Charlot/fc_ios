@@ -12,6 +12,7 @@
 - (IBAction)unPrint:(id)sender;
 - (IBAction)print:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *successView;
+@property (weak, nonatomic) IBOutlet UIButton *PrintButton;
 @property (weak, nonatomic) IBOutlet UILabel *successLabel;
 @end
 
@@ -37,6 +38,7 @@
         self.successView.hidden=NO;
         self.successLabel.text=@"需求单生成成功";
     }
+    _PrintButton.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.9];
 }
 
 - (void)didReceiveMemoryWarning

@@ -28,6 +28,7 @@
 @property(nonatomic,strong)ScanStandard *scanStandard;
 
 @property (strong,nonatomic)UserPreference *userPreference;
+@property (weak, nonatomic) IBOutlet UIButton *CreateButtonClick;
 
 - (IBAction)createButtonClick:(id)sender;
 @end
@@ -36,6 +37,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    _CreateButtonClick.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.9];
   UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
       initWithTarget:self
               action:@selector(dismissKeyboard)];

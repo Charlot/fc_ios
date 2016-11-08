@@ -22,6 +22,11 @@
 - (IBAction)saveChange:(id)sender;
 - (IBAction)touchScreen:(id)sender;
 - (IBAction)resetPrint:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *SaveChange;
+
+@property (weak, nonatomic) IBOutlet UIButton *ResertPrint;
+@property (weak, nonatomic) IBOutlet UIButton *BackButton;
+
 @end
 
 @implementation SettingViewController
@@ -38,6 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title=@"账户设置";
     self.addressTextField.delegate=self;
@@ -48,6 +54,9 @@
     self.typePicker.showsSelectionIndicator = YES;
     self.typeTextField.inputView=self.typePicker;
     self.printerSetting=[PrinterSetting sharedPrinterSetting];
+    _SaveChange.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.9];
+    _ResertPrint.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:0.0];
+    _BackButton.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.9];
     
 }
 

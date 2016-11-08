@@ -59,6 +59,7 @@
     [super viewWillAppear:animated];
     //得到数据
     [self selfState];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
 }
 - (void)didReceiveMemoryWarning
 {

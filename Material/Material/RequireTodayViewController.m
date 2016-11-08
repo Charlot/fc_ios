@@ -16,6 +16,7 @@
 
 @interface RequireTodayViewController ()<UITableViewDataSource,UITableViewDelegate>
 - (IBAction)requireGenerate:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *RequireGenerate;
 @property (weak, nonatomic) IBOutlet UITableView *billTable;
 @property (strong ,  nonatomic)NSArray *billListArray;
 @end
@@ -34,6 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _RequireGenerate.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:1.0];
     // Do any additional setup after loading the view.
     UINib *nib=[UINib nibWithNibName:@"RequireListTableViewCell" bundle:nil];
     self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:1.0];

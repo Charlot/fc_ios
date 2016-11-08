@@ -18,6 +18,11 @@
 - (IBAction)yunClick:(id)sender;
 - (IBAction)tuoClick:(id)sender;
 - (IBAction)xiangClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *YunClick;
+@property (weak, nonatomic) IBOutlet UIButton *TuoClick;
+@property (weak, nonatomic) IBOutlet UIButton *XiangClick;
+
+
 @end
 
 @implementation HistoryChooseViewController
@@ -26,6 +31,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title=self.vc_title;
+    _YunClick.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.9];
+    _TuoClick.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.9];
+    _XiangClick.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.9];
 }
 
 - (void)didReceiveMemoryWarning {

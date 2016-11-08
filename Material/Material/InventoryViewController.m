@@ -19,6 +19,7 @@
   NSString *_inventoryId;
 }
 @property(strong, nonatomic) IBOutlet UIPickerView *processingPicker;
+@property (weak, nonatomic) IBOutlet UIButton *NextButton;
 
 @end
 
@@ -35,7 +36,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-
+    _NextButton.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:0.9];
   _pickerData = @[ @"Item1", @"Item2", @"Item3" ];
   
     //[self getProcessingData];

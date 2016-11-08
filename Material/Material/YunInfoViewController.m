@@ -17,6 +17,7 @@
 @property (strong,nonatomic) UIAlertView *printAlert;
 - (IBAction)touchScreen:(id)sender;
 - (IBAction)generateYun:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *NextButton;
 @end
 
 @implementation YunInfoViewController
@@ -33,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _NextButton.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:1.0];
     // Do any additional setup after loading the view.
 //    self.name.delegate=self;
     self.remark.delegate=self;

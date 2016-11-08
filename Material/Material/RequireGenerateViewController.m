@@ -52,6 +52,10 @@
 @property (strong,nonatomic) NSMutableDictionary *isExistDictionary;
 - (IBAction)check:(id)sender;
 - (IBAction)clickScreen:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *Check;
+
+@property (weak, nonatomic) IBOutlet UIButton *Finish;
+
 @end
 
 @implementation RequireGenerateViewController
@@ -68,12 +72,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+    _firstTabButton.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:1.0];
+    _Check.backgroundColor= [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:1.0];
+    _Finish.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:42.0/255.0 blue:26.0/255.0 alpha:1.0];
     // Do any additional setup after loading the view.
     self.partTextField.delegate=self;
     self.departmentTextField.delegate=self;
     self.quantityTextField.delegate=self;
-    
-    
     self.xiangTable.delegate=self;
     self.secondDepartmentTextField.delegate=self;
     self.secondPartNumberTextField.delegate=self;
