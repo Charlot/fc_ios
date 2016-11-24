@@ -12,7 +12,7 @@
 #import "UserPreference.h"
 #import <AudioToolbox/AudioToolbox.h>
 
-@interface RukuViewController ()
+@interface RukuViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic  ) IBOutlet UITextField    *warehouseTF;
 @property (weak, nonatomic  ) IBOutlet UITextField    *positionTF;
 @property (weak, nonatomic  ) IBOutlet UITextField    *containerTF;
@@ -89,7 +89,6 @@
 //        [self.containerTF becomeFirstResponder];
     }else if(textField == self.containerTF){
         [self validate];
-        [self capacity_lable];
     }
     return YES;
 }
@@ -154,6 +153,7 @@
                  //[self clearAllTextFields];
                  self.containerTF.text=@"";
                  [self.containerTF becomeFirstResponder];
+                 [self capacity_lable];
              } else {
                  [AFNet alert:responseObject[@"content"]];
              }
