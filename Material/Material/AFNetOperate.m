@@ -46,16 +46,16 @@
                                       stringWithFormat:@" %@", content[i]]];
     }
   }
-  self.alert = [[UIAlertView alloc] initWithTitle:@"错误"
+  self.alert = [[UIAlertView alloc] initWithTitle:@""
                                           message:string
                                          delegate:self
-                                cancelButtonTitle:@"设置"
-                                otherButtonTitles:@"取消", nil];
-  [NSTimer scheduledTimerWithTimeInterval:5.0f
-                                   target:self
-                                 selector:@selector(dissmissAlert:)
-                                 userInfo:nil
-                                  repeats:NO];
+                                cancelButtonTitle:@"确定"
+                                otherButtonTitles:nil];
+//  [NSTimer scheduledTimerWithTimeInterval:5.0f
+//                                   target:self
+//                                 selector:@selector(dissmissAlert:)
+//                                 userInfo:nil
+//                                  repeats:NO];
   AudioServicesPlaySystemSound(1051);
   [self.alert show];
 }
@@ -76,17 +76,17 @@
 - (void)dissmissAlert:(NSTimer *)timer {
   [self.alert dismissWithClickedButtonIndex:0 animated:YES];
 }
--(void)alertView:(UIAlertView *)alertView
- clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0) {
-        NSURL *url = [NSURL URLWithString:@"prefs:root=WIFI"];
-        if ([[UIApplication sharedApplication] canOpenURL:url])
-        {
-            [[UIApplication sharedApplication] openURL:url];
-        }        
-    }
-}
+//-(void)alertView:(UIAlertView *)alertView
+// clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (buttonIndex == 0) {
+//        NSURL *url = [NSURL URLWithString:@"prefs:root=WIFI"];
+//        if ([[UIApplication sharedApplication] canOpenURL:url])
+//        {
+//            [[UIApplication sharedApplication] openURL:url];
+//        }        
+//    }
+//}
 #pragma keyarchive relative method
 - (void)setKeyArchive:(NSString *)path
              keyArray:(NSArray *)keyArray
