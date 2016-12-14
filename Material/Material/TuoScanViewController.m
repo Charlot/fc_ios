@@ -541,6 +541,11 @@
             NSString *datePost=[self.scanStandard filterDate:date];
             //拖下面的绑定，不仅绑定，而且会为拖加入新的箱
             NSDictionary *parameters=[NSDictionary dictionary];
+            
+       
+            
+            
+            
         if(self.tuo.ID.length>0){
             
             if([self.userPref.location_id isEqualToString:@"FG"]){
@@ -891,13 +896,15 @@
         NSString *quantityPost=[self.scanStandard filterQuantity:quantity];
         //after regex date
         NSString *datePost=[self.scanStandard filterDate:date];
+    
+    
         self.parameters=[NSDictionary dictionary];
         self.parameters=@{
                           @"movement_list_id":self.rukuList,
                           @"toWh":@"WE87",
                           @"toPosition":@"WE87-1",
                           @"packageId":key,
-                          @"partNr":partNumberPost,
+                          @"partNr":partNumber,
                           @"qty":quantityPost,
                           @"fifo":datePost,
                           @"type":@"ENTRY",
