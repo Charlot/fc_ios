@@ -75,7 +75,7 @@
         [self.navigationItem setHidesBackButton:YES];
         self.navigationItem.title=self.tuo.department;
         self.partNumber.enabled=NO;
-        self.quatity.enabled=NO;
+        self.quatity.enabled=YES;
         self.dateTextField.enabled=NO;
     }else if([self.type isEqualToString:@"ruku"]){
         self.tuo=[[Tuo alloc] init];
