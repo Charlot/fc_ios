@@ -10,11 +10,13 @@
 #import "Movement.h"
 #import "DBManager.h"
 #import "AFNetOperate.h"
+#import "PrinterSetting.h"
 #define kPageSzieKey 30
 
 @interface MovementAPI ()
 @property(nonatomic, strong) DBManager *db;
 @property(nonatomic, strong) AFNetOperate *afnet;
+@property (strong,nonatomic) PrinterSetting *printerSetting;
 @end
 
 @implementation MovementAPI
@@ -24,6 +26,7 @@
   if (self) {
     _afnet = [[AFNetOperate alloc] init];
     _db = [[DBManager alloc] initWithDatabaseFilename:@"wmsdb.sql"];
+    _printerSetting=[PrinterSetting sharedPrinterSetting];
   }
   return self;
 }
@@ -375,12 +378,15 @@
               block:(void (^)(NSString *, NSError *))block {
   NSLog(@"the request is %@",
         [[self.afnet print_movenment_list_receive:movement_list_id
-                                     printer_name:@"P010/"
+                                     printer_name:[self.printerSetting getPrinterModelWithAlternative:@"P010"]
                                            copies:@""]
             stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
   AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
+    AFNetOperate *AFNet=[[AFNetOperate alloc] init];
+    
+    
   [manager
-      GET:[[self.afnet print_movenment_list_receive:movement_list_id
+      GET:[[AFNet print_movenment_list_receive:movement_list_id
                                        printer_name:@"P010/"
                                              copies:@""]
               stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]

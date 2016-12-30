@@ -249,7 +249,6 @@ preparation before navigation
             [self clearData];
           } else {
             [AFNet alert:responseObject[@"content"]];
-            NSLog(@"%@", responseObject[@"content"]);
           }
 
         }

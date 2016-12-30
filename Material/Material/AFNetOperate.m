@@ -916,6 +916,7 @@
 //  }
 //  return [NSString stringWithFormat:@"%@%@", joint, after];
 //}
+
 - (NSString *)print_movenment_list_receive:(NSString *)ID
                               printer_name:(NSString *)printer
                                     copies:(NSString *)copies {

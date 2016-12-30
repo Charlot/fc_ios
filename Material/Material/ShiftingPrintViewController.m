@@ -70,6 +70,7 @@ preparation before navigation
 }
 
 - (void)verifyText {
+    
   if (self.numberTextField.text.length > 0) {
     MovementAPI *api = [[MovementAPI alloc] init];
     [api printAction:self.movement_list_id

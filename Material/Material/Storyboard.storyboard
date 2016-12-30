@@ -2960,7 +2960,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVc-aT-0np" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="C1M-4n-Ssg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3893" y="2180"/>
+            <point key="canvasLocation" x="3960" y="2202"/>
         </scene>
         <!--包装箱-->
         <scene sceneID="9Ah-jl-QC5">
@@ -5566,7 +5566,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVS-os-dGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2444" y="7360"/>
+            <point key="canvasLocation" x="2449" y="7437"/>
         </scene>
         <!--移库-->
         <scene sceneID="X9p-3Q-Rd1">
@@ -5739,7 +5739,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xy9-db-jNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3022" y="7043"/>
+            <point key="canvasLocation" x="3128" y="7033"/>
         </scene>
         <!--移库详情-->
         <scene sceneID="hge-kT-dgr">
@@ -6113,24 +6113,24 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Kxl-Rh-nWd"/>
-        <segue reference="veK-WU-skj"/>
-        <segue reference="Get-Zr-2fp"/>
-        <segue reference="tP9-hz-80H"/>
-        <segue reference="fTA-Xe-KDm"/>
-        <segue reference="U3W-2k-BOU"/>
-        <segue reference="zbp-Dd-2O5"/>
+        <segue reference="yJ1-Ae-Eed"/>
+        <segue reference="WHI-RS-rUG"/>
+        <segue reference="FcC-pN-TYA"/>
+        <segue reference="oOw-in-AQO"/>
+        <segue reference="Neh-iJ-Fpe"/>
+        <segue reference="Dng-DQ-LOk"/>
+        <segue reference="SyV-YF-bxb"/>
+        <segue reference="2nV-DT-24h"/>
         <segue reference="xUu-VW-Prs"/>
         <segue reference="UnZ-wN-WXV"/>
         <segue reference="EZu-KH-oca"/>
         <segue reference="zjP-oP-VXq"/>
-        <segue reference="Neh-iJ-Fpe"/>
-        <segue reference="Dng-DQ-LOk"/>
-        <segue reference="2nV-DT-24h"/>
-        <segue reference="yJ1-Ae-Eed"/>
-        <segue reference="SkA-08-PWt"/>
-        <segue reference="8RY-QF-ZAw"/>
-        <segue reference="FcC-pN-TYA"/>
-        <segue reference="WHI-RS-rUG"/>
+        <segue reference="Kxl-Rh-nWd"/>
+        <segue reference="Get-Zr-2fp"/>
+        <segue reference="veK-WU-skj"/>
+        <segue reference="tP9-hz-80H"/>
+        <segue reference="fTA-Xe-KDm"/>
+        <segue reference="U3W-2k-BOU"/>
+        <segue reference="zbp-Dd-2O5"/>
     </inferredMetricsTieBreakers>
 </document>
