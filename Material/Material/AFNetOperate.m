@@ -772,6 +772,26 @@
   return [base stringByAppendingString:_inventory_list_item];
 }
 
+//selected_cargo url
+
+- (NSString *)select_undone_list {
+    NSString *base = [self baseURL];
+    NSString *select_undone_list = [[self URLDictionary] objectForKey:@"select_undone_list"];
+    return [base stringByAppendingString:select_undone_list];
+}
+- (NSString *)select_pick_items {
+    NSString *base = [self baseURL];
+    NSString *select_pick_items = [[self URLDictionary] objectForKey:@"select_pick_items"];
+    return [base stringByAppendingString:select_pick_items];
+}
+- (NSString *)select_pick_info {
+    NSString *base = [self baseURL];
+    NSString *select_pick_info = [[self URLDictionary] objectForKey:@"select_pick_info"];
+    return [base stringByAppendingString:select_pick_info];
+}
+
+
+
 /*
  *
  * url：/v3/whouse/move

@@ -68,6 +68,12 @@
 	<string>/api/v1/packages/nstorage_package</string>
 	<key>search_position</key>
 	<string>/api/v3/inventory_list/search_position</string>
+	<key>select_undone_list</key>
+	<string>/api/v3/picks/undone_list</string>
+	<key>select_pick_items</key>
+	<string>/api/v3/picks/pick_items</string>
+	<key>select_pick_info</key>
+	<string>/api/v3/pick_items/pick_info</string>
 	<key>order_led</key>
 	<dict>
 		<key>state_list</key>

@@ -146,6 +146,16 @@
 
 
 
+/**
+ *  择货单
+ *
+ */
+
+- (NSString *)select_undone_list;
+- (NSString *)select_pick_items;
+- (NSString *)select_pick_info;
+
+
 
 /**
  *  创建移库清单id

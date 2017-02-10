@@ -62,6 +62,18 @@
 		B01011BA1A2ABA0D00F1E6EB /* StoragesMoveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B01011B91A2ABA0D00F1E6EB /* StoragesMoveViewController.m */; };
 		B01011BD1A2AC7A800F1E6EB /* SettingRemarkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B01011BC1A2AC7A800F1E6EB /* SettingRemarkTableViewController.m */; };
 		B01604771CC6480C00B94CDF /* XiangDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B01604761CC6480C00B94CDF /* XiangDetailModel.m */; };
+		B021B0B21E4D5DAC00308F13 /* SelectedCargoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B021B0B11E4D5DAC00308F13 /* SelectedCargoTableViewController.m */; };
+		B021B0B51E4D5DE600308F13 /* ScanCargoItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B021B0B41E4D5DE600308F13 /* ScanCargoItemViewController.m */; };
+		B021B0B81E4D7BF500308F13 /* CargoItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B021B0B71E4D7BF500308F13 /* CargoItemTableViewController.m */; };
+		B021B0BD1E4D8D4000308F13 /* SelectCargoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B021B0BB1E4D8D4000308F13 /* SelectCargoListTableViewCell.m */; };
+		B021B0BE1E4D8D4000308F13 /* SelectCargoListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B021B0BC1E4D8D4000308F13 /* SelectCargoListTableViewCell.xib */; };
+		B021B0C21E4D975000308F13 /* SelectCargoListItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B021B0C01E4D975000308F13 /* SelectCargoListItemTableViewCell.m */; };
+		B021B0C31E4D975000308F13 /* SelectCargoListItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B021B0C11E4D975000308F13 /* SelectCargoListItemTableViewCell.xib */; };
+		B021B0C71E4D976B00308F13 /* SelectCargoListItemInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B021B0C51E4D976B00308F13 /* SelectCargoListItemInfoTableViewCell.m */; };
+		B021B0C81E4D976B00308F13 /* SelectCargoListItemInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B021B0C61E4D976B00308F13 /* SelectCargoListItemInfoTableViewCell.xib */; };
+		B021B0CC1E4DB75100308F13 /* SelectCargoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B021B0CB1E4DB75100308F13 /* SelectCargoListModel.m */; };
+		B021B0CF1E4DBCF300308F13 /* SelectCargoItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B021B0CE1E4DBCF300308F13 /* SelectCargoItemModel.m */; };
+		B021B0D31E4DC07D00308F13 /* SelectedCargoItemInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B021B0D21E4DC07D00308F13 /* SelectedCargoItemInfoModel.m */; };
 		B0275FD8197E443A00E579C5 /* RequireHistoryListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0275FD7197E443A00E579C5 /* RequireHistoryListTableViewController.m */; };
 		B036ECFF1CC6137600AEE701 /* XiangDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B036ECFE1CC6137600AEE701 /* XiangDetailViewController.m */; };
 		B037ECFA194BDC50008C456E /* YunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B037ECF8194BDC50008C456E /* YunTableViewCell.m */; };
@@ -318,6 +330,27 @@
 		B01011BC1A2AC7A800F1E6EB /* SettingRemarkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingRemarkTableViewController.m; sourceTree = "<group>"; };
 		B01604751CC6480C00B94CDF /* XiangDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XiangDetailModel.h; sourceTree = "<group>"; };
 		B01604761CC6480C00B94CDF /* XiangDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XiangDetailModel.m; sourceTree = "<group>"; };
+		B021B0B01E4D5DAC00308F13 /* SelectedCargoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedCargoTableViewController.h; sourceTree = "<group>"; };
+		B021B0B11E4D5DAC00308F13 /* SelectedCargoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedCargoTableViewController.m; sourceTree = "<group>"; };
+		B021B0B31E4D5DE600308F13 /* ScanCargoItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanCargoItemViewController.h; sourceTree = "<group>"; };
+		B021B0B41E4D5DE600308F13 /* ScanCargoItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanCargoItemViewController.m; sourceTree = "<group>"; };
+		B021B0B61E4D7BF500308F13 /* CargoItemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargoItemTableViewController.h; sourceTree = "<group>"; };
+		B021B0B71E4D7BF500308F13 /* CargoItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoItemTableViewController.m; sourceTree = "<group>"; };
+		B021B0BA1E4D8D4000308F13 /* SelectCargoListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCargoListTableViewCell.h; sourceTree = "<group>"; };
+		B021B0BB1E4D8D4000308F13 /* SelectCargoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCargoListTableViewCell.m; sourceTree = "<group>"; };
+		B021B0BC1E4D8D4000308F13 /* SelectCargoListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectCargoListTableViewCell.xib; sourceTree = "<group>"; };
+		B021B0BF1E4D975000308F13 /* SelectCargoListItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCargoListItemTableViewCell.h; sourceTree = "<group>"; };
+		B021B0C01E4D975000308F13 /* SelectCargoListItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCargoListItemTableViewCell.m; sourceTree = "<group>"; };
+		B021B0C11E4D975000308F13 /* SelectCargoListItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectCargoListItemTableViewCell.xib; sourceTree = "<group>"; };
+		B021B0C41E4D976B00308F13 /* SelectCargoListItemInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCargoListItemInfoTableViewCell.h; sourceTree = "<group>"; };
+		B021B0C51E4D976B00308F13 /* SelectCargoListItemInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCargoListItemInfoTableViewCell.m; sourceTree = "<group>"; };
+		B021B0C61E4D976B00308F13 /* SelectCargoListItemInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectCargoListItemInfoTableViewCell.xib; sourceTree = "<group>"; };
+		B021B0CA1E4DB75100308F13 /* SelectCargoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCargoListModel.h; sourceTree = "<group>"; };
+		B021B0CB1E4DB75100308F13 /* SelectCargoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCargoListModel.m; sourceTree = "<group>"; };
+		B021B0CD1E4DBCF300308F13 /* SelectCargoItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCargoItemModel.h; sourceTree = "<group>"; };
+		B021B0CE1E4DBCF300308F13 /* SelectCargoItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCargoItemModel.m; sourceTree = "<group>"; };
+		B021B0D11E4DC07D00308F13 /* SelectedCargoItemInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedCargoItemInfoModel.h; sourceTree = "<group>"; };
+		B021B0D21E4DC07D00308F13 /* SelectedCargoItemInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedCargoItemInfoModel.m; sourceTree = "<group>"; };
 		B0275FD6197E443A00E579C5 /* RequireHistoryListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireHistoryListTableViewController.h; sourceTree = "<group>"; };
 		B0275FD7197E443A00E579C5 /* RequireHistoryListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireHistoryListTableViewController.m; sourceTree = "<group>"; };
 		B036ECFD1CC6137600AEE701 /* XiangDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XiangDetailViewController.h; sourceTree = "<group>"; };
@@ -600,6 +633,8 @@
 		219671961B2C294400779491 /* SHIFTING */ = {
 			isa = PBXGroup;
 			children = (
+				B021B0C91E4DB72300308F13 /* SelectModel */,
+				B021B0B91E4D8D0B00308F13 /* SelectDelivery */,
 				219671971B2C2AEB00779491 /* InventoryViewController.h */,
 				219671981B2C2AEB00779491 /* InventoryViewController.m */,
 				2196719A1B2C2BAD00779491 /* InventorySettingViewController.h */,
@@ -628,6 +663,12 @@
 				9492B76A1C054209007DD8A0 /* MovementListFinishViewController.m */,
 				945E34201C0B398600C6D1E0 /* CreateMovementListItemViewController.h */,
 				945E34211C0B398600C6D1E0 /* CreateMovementListItemViewController.m */,
+				B021B0B01E4D5DAC00308F13 /* SelectedCargoTableViewController.h */,
+				B021B0B11E4D5DAC00308F13 /* SelectedCargoTableViewController.m */,
+				B021B0B31E4D5DE600308F13 /* ScanCargoItemViewController.h */,
+				B021B0B41E4D5DE600308F13 /* ScanCargoItemViewController.m */,
+				B021B0B61E4D7BF500308F13 /* CargoItemTableViewController.h */,
+				B021B0B71E4D7BF500308F13 /* CargoItemTableViewController.m */,
 			);
 			name = SHIFTING;
 			sourceTree = "<group>";
@@ -734,6 +775,35 @@
 				B001BF0119A58A97000800AD /* RequireTraceDetailViewController.m */,
 			);
 			name = trace;
+			sourceTree = "<group>";
+		};
+		B021B0B91E4D8D0B00308F13 /* SelectDelivery */ = {
+			isa = PBXGroup;
+			children = (
+				B021B0BA1E4D8D4000308F13 /* SelectCargoListTableViewCell.h */,
+				B021B0BB1E4D8D4000308F13 /* SelectCargoListTableViewCell.m */,
+				B021B0BC1E4D8D4000308F13 /* SelectCargoListTableViewCell.xib */,
+				B021B0BF1E4D975000308F13 /* SelectCargoListItemTableViewCell.h */,
+				B021B0C01E4D975000308F13 /* SelectCargoListItemTableViewCell.m */,
+				B021B0C11E4D975000308F13 /* SelectCargoListItemTableViewCell.xib */,
+				B021B0C41E4D976B00308F13 /* SelectCargoListItemInfoTableViewCell.h */,
+				B021B0C51E4D976B00308F13 /* SelectCargoListItemInfoTableViewCell.m */,
+				B021B0C61E4D976B00308F13 /* SelectCargoListItemInfoTableViewCell.xib */,
+			);
+			name = SelectDelivery;
+			sourceTree = "<group>";
+		};
+		B021B0C91E4DB72300308F13 /* SelectModel */ = {
+			isa = PBXGroup;
+			children = (
+				B021B0CA1E4DB75100308F13 /* SelectCargoListModel.h */,
+				B021B0CB1E4DB75100308F13 /* SelectCargoListModel.m */,
+				B021B0CD1E4DBCF300308F13 /* SelectCargoItemModel.h */,
+				B021B0CE1E4DBCF300308F13 /* SelectCargoItemModel.m */,
+				B021B0D11E4DC07D00308F13 /* SelectedCargoItemInfoModel.h */,
+				B021B0D21E4DC07D00308F13 /* SelectedCargoItemInfoModel.m */,
+			);
+			name = SelectModel;
 			sourceTree = "<group>";
 		};
 		B04244CD1A1EDEA900AAFD24 /* PRODUCT */ = {
@@ -1366,6 +1436,7 @@
 			files = (
 				B0BE29311949921900061E67 /* XiangTableViewCell.xib in Resources */,
 				B085F61A194004CC001F01F3 /* InfoPlist.strings in Resources */,
+				B021B0BE1E4D8D4000308F13 /* SelectCargoListTableViewCell.xib in Resources */,
 				B04EF2171946E89400A95D7A /* URL.plist in Resources */,
 				B0CC6AEB1A4D12020047FF7F /* RequireCheckGeneralTableViewCell.xib in Resources */,
 				949359D61C04A993003D2B25 /* MJRefresh.bundle in Resources */,
@@ -1377,6 +1448,8 @@
 				B0D858191CC73CF500FBE736 /* XiangDetailTableViewCell.xib in Resources */,
 				B058550419A2F800000C85E5 /* TuoCheckTableViewCell.xib in Resources */,
 				B04EF1D51946888900A95D7A /* ShopTuoTableViewCell.xib in Resources */,
+				B021B0C31E4D975000308F13 /* SelectCargoListItemTableViewCell.xib in Resources */,
+				B021B0C81E4D976B00308F13 /* SelectCargoListItemInfoTableViewCell.xib in Resources */,
 				B04244E71A1F3ABA00AAFD24 /* ProductXiangTableViewCell.xib in Resources */,
 				B0BB1D8C1A2DBB5E0036AF61 /* Images.xcassets in Resources */,
 				B07CE56E198B8890000FD578 /* RequireCheckXiangTableViewCell.xib in Resources */,
@@ -1404,6 +1477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				949359D81C04A993003D2B25 /* UIScrollView+MJExtension.m in Sources */,
+				B021B0CF1E4DBCF300308F13 /* SelectCargoItemModel.m in Sources */,
 				B0E8C6A4197F603500F0A030 /* RequireSettingViewController.m in Sources */,
 				B04EF20A1946E60D00A95D7A /* AFHTTPRequestOperation.m in Sources */,
 				B04EF20D1946E60D00A95D7A /* AFNetworkReachabilityManager.m in Sources */,
@@ -1485,6 +1559,7 @@
 				B04244E11A1F289800AAFD24 /* ProductReceiveTuoViewController.m in Sources */,
 				B04EF20F1946E60D00A95D7A /* AFURLConnectionOperation.m in Sources */,
 				B001BEFF19A58A88000800AD /* RequireTraceViewController.m in Sources */,
+				B021B0CC1E4DB75100308F13 /* SelectCargoListModel.m in Sources */,
 				B04EF1EC1946DE1000A95D7A /* HistoryYunTableViewController.m in Sources */,
 				B00D3D591CDD874800EAE1D0 /* RuKuTableTableViewController.m in Sources */,
 				B03D524F194D458D00696E4E /* YunCheckXiangTableViewController.m in Sources */,
@@ -1496,11 +1571,15 @@
 				B0DF644819448B75002D044B /* YunStore.m in Sources */,
 				949359CA1C04A993003D2B25 /* MJRefreshComponent.m in Sources */,
 				B0B304121A23138500D8CF8E /* SendAddress.m in Sources */,
+				B021B0C21E4D975000308F13 /* SelectCargoListItemTableViewCell.m in Sources */,
+				B021B0B81E4D7BF500308F13 /* CargoItemTableViewController.m in Sources */,
 				B085F6421940071A001F01F3 /* Login.m in Sources */,
+				B021B0B21E4D5DAC00308F13 /* SelectedCargoTableViewController.m in Sources */,
 				B04244DE1A1F288C00AAFD24 /* ProductReceiveXiangViewController.m in Sources */,
 				949359CE1C04A993003D2B25 /* MJRefreshAutoNormalFooter.m in Sources */,
 				B058550319A2F800000C85E5 /* TuoCheckTableViewCell.m in Sources */,
 				B0643D6A197E041B0036AADA /* RequireHistoryViewController.m in Sources */,
+				B021B0B51E4D5DE600308F13 /* ScanCargoItemViewController.m in Sources */,
 				B04244DB1A1F286B00AAFD24 /* ProductReceiveViewController.m in Sources */,
 				9420D5251C031C2000AA1CB5 /* MovementDetailViewController.m in Sources */,
 				B08B8F0D1953D39E009739DB /* TuoTableViewCell.m in Sources */,
@@ -1509,6 +1588,7 @@
 				B036ECFF1CC6137600AEE701 /* XiangDetailViewController.m in Sources */,
 				B099FD1A199C90C30049586E /* SimplePingHelper.m in Sources */,
 				B085F620194004CC001F01F3 /* MAppDelegate.m in Sources */,
+				B021B0D31E4DC07D00308F13 /* SelectedCargoItemInfoModel.m in Sources */,
 				B06139901941BD1300A0CF62 /* TuoScanViewController.m in Sources */,
 				B0BE29301949921900061E67 /* XiangTableViewCell.m in Sources */,
 				B085F6571940184E001F01F3 /* SettingViewController.m in Sources */,
@@ -1532,6 +1612,7 @@
 				2196719C1B2C2BAD00779491 /* InventorySettingViewController.m in Sources */,
 				B04244D71A1F0E7F00AAFD24 /* ProductCheckViewController.m in Sources */,
 				B04EF20B1946E60D00A95D7A /* AFHTTPRequestOperationManager.m in Sources */,
+				B021B0BD1E4D8D4000308F13 /* SelectCargoListTableViewCell.m in Sources */,
 				B001BF0219A58A97000800AD /* RequireTraceDetailViewController.m in Sources */,
 				949359C81C04A993003D2B25 /* MJRefreshAutoFooter.m in Sources */,
 				94134DD01C05EF6800F5C0BD /* InventoryAPI.m in Sources */,
@@ -1547,6 +1628,7 @@
 				B0CC6AEA1A4D12020047FF7F /* RequireCheckGeneralTableViewCell.m in Sources */,
 				182905691B5F936B0092386A /* ChaKuViewController.m in Sources */,
 				B04EF20E1946E60D00A95D7A /* AFSecurityPolicy.m in Sources */,
+				B021B0C71E4D976B00308F13 /* SelectCargoListItemInfoTableViewCell.m in Sources */,
 				949359CB1C04A993003D2B25 /* MJRefreshFooter.m in Sources */,
 				B07292181A25AE4C009483D8 /* ReceiveYunViewController.m in Sources */,
 				B04244E61A1F3ABA00AAFD24 /* ProductXiangTableViewCell.m in Sources */,
