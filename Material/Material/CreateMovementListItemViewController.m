@@ -173,13 +173,7 @@ preparation before navigation
     if (self.toPositionTextField.text.length > 0) {
       if (self.fromWhouseTextField.text.length > 0) {
 
-        UIAlertView *alert =
-            [[UIAlertView alloc] initWithTitle:@""
-                                       message:@"确认提交？"
-                                      delegate:self
-                             cancelButtonTitle:@"取消"
-                             otherButtonTitles:@"确定", nil];
-        [alert show];
+          [self confirmToMove];
       } else {
         UIAlertView *alert =
             [[UIAlertView alloc] initWithTitle:@""
@@ -210,8 +204,7 @@ preparation before navigation
   }
 }
 
-- (void)alertView:(UIAlertView *)alertView
-    clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)confirmToMove {
   NSString *strToWh = self.toWhouseTextField.text;
   NSString *strToPosition = self.toPositionTextField.text;
   NSString *strPackage = self.packageTextField.text;
@@ -226,7 +219,7 @@ preparation before navigation
   //  strFromWh = @"3EX";
   //  strPartNr = @"411000895";
 
-  if (buttonIndex == 1) {
+
 
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]
         initWithObjectsAndKeys:self.movementListID, @"movement_list_id",
@@ -258,8 +251,8 @@ preparation before navigation
               alert:[NSString
                         stringWithFormat:@"%@", [error localizedDescription]]];
         }];
-  }
 }
+
 
 - (void)clearData {
   NSArray *subviews = [self.view subviews];

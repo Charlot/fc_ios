@@ -65,7 +65,7 @@
                                          delegate:self
                                 cancelButtonTitle:@"确定"
                                 otherButtonTitles:nil];
-  [NSTimer scheduledTimerWithTimeInterval:1.8f
+  [NSTimer scheduledTimerWithTimeInterval:0.5f
                                    target:self
                                  selector:@selector(dissmissAlert:)
                                  userInfo:nil
