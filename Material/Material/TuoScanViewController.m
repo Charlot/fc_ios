@@ -880,7 +880,7 @@
             tuoCheck.xiangArray=[sender objectForKey:@"xiangArray"];
         }
 //        else if([self.type isEqualToString:@"ruku"] || [self.type isEqualToString:@"contnruku"]){
-//            RuKuTableTableViewController *RuKuTableTableViewController = segue.destinationViewController;
+//            RuKuTableTableViewController *RuKuTableTableViewController = segue.destinationViewCon troller;
 //       
 //        }
 }
