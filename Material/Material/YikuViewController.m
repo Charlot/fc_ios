@@ -22,6 +22,7 @@
 @property(weak, nonatomic) IBOutlet UITextField *packageTextField;
 @property(weak, nonatomic) IBOutlet UITextField *toPositionTextField;
 @property(weak, nonatomic) IBOutlet UITextField *toWhTextField;
+@property(nonatomic,strong)NSString *movementFIFO;
 @property(nonatomic, strong) UIAlertView *backAlertView;
 
 @property(nonatomic, strong) Movement *movement;
@@ -237,6 +238,9 @@
                              self.fromPositionTextField.text = [NSString
                                                        stringWithFormat:@"%@",
                                                        [dictData objectForKey:@"fromPosition"]];
+                             self.movementFIFO = [NSString
+                                                  stringWithFormat:@"%@",
+                                                  [dictData objectForKey:@"fifo"]];
                              
                            [self.partNrTextField resignFirstResponder];
 //                           [self.fromWhTextField becomeFirstResponder];
@@ -320,6 +324,7 @@
     NSString *strPartNr = self.partNrTextField.text;
     NSString *strFromWh = self.fromWhTextField.text;
     NSString *strFromPosition = self.fromPositionTextField.text;
+    NSString *fifo = self.movementFIFO;
     //    strToWh = @"3EX";
     //    strToPosition = @"SCT 28 03 01";
     //    strPackage = @"rwwe";
@@ -332,7 +337,7 @@
                                      strToWh, @"toWh", strToPosition, @"toPosition",
                                      strFromWh, @"fromWh", strFromPosition,
                                      @"fromPosition", strQty, @"qty", strPartNr,
-                                     @"partNr", strPackage, @"packageId", nil];
+                                     @"partNr", strPackage, @"packageId", fifo, @"fifo", nil];
         AFNetOperate *AFNet = [[AFNetOperate alloc] init];
         AFHTTPRequestOperationManager *manager =
         [AFNet generateManager:self.view];

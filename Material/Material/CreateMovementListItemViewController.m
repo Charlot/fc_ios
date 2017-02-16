@@ -22,6 +22,7 @@
 @property(strong, nonatomic) IBOutlet UITextField *qtyTextField;
 @property(strong, nonatomic) IBOutlet UITextField *fromWhouseTextField;
 @property(strong, nonatomic) IBOutlet UITextField *fromPositionTextField;
+@property(strong, nonatomic)NSString *movementFIFO;
 
 - (IBAction)createButtonClick:(id)sender;
 @end
@@ -151,6 +152,9 @@
                            self.qtyTextField.text = [NSString
                                stringWithFormat:@"%@",
                                                 [dictData objectForKey:@"qty"]];
+                             self.movementFIFO = [NSString
+                                                  stringWithFormat:@"%@",
+                                                  [dictData objectForKey:@"fifo"]];
                            [self.partIDTextField resignFirstResponder];
                            [self.fromWhouseTextField becomeFirstResponder];
                          }
@@ -212,6 +216,7 @@ preparation before navigation
   NSString *strPartNr = self.partIDTextField.text;
   NSString *strFromWh = self.fromWhouseTextField.text;
   NSString *strFromPosition = self.fromPositionTextField.text;
+    NSString *fifo = self.movementFIFO;
 
   //  strToWh = @"3EX";
   //  strToPosition = @"SCT 28 03 01";
@@ -226,7 +231,7 @@ preparation before navigation
                                strToWh, @"toWh", strToPosition, @"toPosition",
                                strFromWh, @"fromWh", strFromPosition,
                                @"fromPosition", strQty, @"qty", strPartNr,
-                               @"partNr", strPackage, @"packageId", nil];
+                               @"partNr", strPackage, @"packageId", fifo, @"fifo" ,nil];
     AFNetOperate *AFNet = [[AFNetOperate alloc] init];
     AFHTTPRequestOperationManager *manager = [AFNet generateManager:self.view];
     [manager POST:[AFNet ValidateMovement]
