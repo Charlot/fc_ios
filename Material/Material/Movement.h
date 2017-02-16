@@ -21,6 +21,8 @@
 @property(nonatomic, strong) NSString *qty;
 @property(nonatomic, strong) NSString *user;
 @property(nonatomic, strong) NSString *movement_list_id;
+@property(nonatomic, strong) NSString *fifo;
+
 - (instancetype)initWithObject:(NSDictionary *)dictionary;
 - (instancetype)initWithID:(NSString *)movementID
               withSourceID:(NSString *)sourceID
@@ -33,7 +35,8 @@
                 withPartNr:(NSString *)partNr
                    withQty:(NSString *)qty
                   withUser:(NSString *)user
-        withMovementListID:(NSString *)movement_list_id;
+        withMovementListID:(NSString *)movement_list_id
+                  withfifo:(NSString *)fifo;
 //- (void)createMovement:(Movement *)m;
 
 @end

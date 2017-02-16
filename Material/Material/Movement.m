@@ -28,7 +28,7 @@
 - (instancetype)initWithObject:(NSDictionary *)dictionary {
   self = [super init];
   if (self) {
-    self.SourceID = dictionary[@"id"] ? dictionary[@"id"] : @"";
+      self.SourceID = [dictionary valueForKey:@"id"] ? [dictionary valueForKey:@"id"] : @"";
     self.toWh = dictionary[@"toWh"] ? dictionary[@"toWh"] : @"";
     self.toPosition =
         dictionary[@"toPosition"] ? dictionary[@"toPosition"] : @"";
@@ -39,13 +39,14 @@
         ZGNotNull(dictionary[@"packageId"]) ? dictionary[@"packageId"] : @"";
 
     self.partNr = dictionary[@"partNr"] ? dictionary[@"partNr"] : @"";
-    self.qty = dictionary[@"qty"] ? dictionary[@"qty"] : @"";
+    self.qty = [dictionary valueForKey:@"qty"] ? [dictionary valueForKey:@"qty"] : @"";
     self.user = dictionary[@"user"] ? dictionary[@"user"] : @"";
     self.movement_list_id = dictionary[@"movement_list_id"]
                                 ? dictionary[@"movement_list_id"]
                                 : @"";
     self.created_at =
         dictionary[@"created_at"] ? dictionary[@"created_at"] : @"";
+    self.fifo = dictionary[@"fifo"] ? dictionary[@"fifo"] : @"";
   }
   return self;
 }
@@ -61,7 +62,8 @@
                 withPartNr:(NSString *)partNr
                    withQty:(NSString *)qty
                   withUser:(NSString *)user
-        withMovementListID:(NSString *)movement_list_id {
+        withMovementListID:(NSString *)movement_list_id
+                  withfifo:(NSString *)fifo {
   self = [super init];
   if (self) {
     self.ID = movementID;
@@ -76,6 +78,7 @@
     self.qty = qty;
     self.user = user;
     self.movement_list_id = movement_list_id;
+      self.fifo = fifo;
   }
   return self;
 }

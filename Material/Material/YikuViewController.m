@@ -349,7 +349,7 @@
                       [AFNet alertSuccess:responseObject[@"content"]];
                       [dict setValue:self.userName forKey:@"user"];
                       self.movement = [[Movement alloc] initWithObject:dict];
-                      //              [self createMovement:self.movement];
+//                      [self createMovement:self.movement];
                       [self clearData];
                   } else {
                       [AFNet alert:responseObject[@"content"]];
@@ -469,12 +469,12 @@
 
   query = [NSString
       stringWithFormat:
-          @"insert into movements (toWh, "
+          @"insert into movements (toWh, fifo, "
           @"toPosition, fromWh, fromPosition, packageId, partNr, "
           @"qty, movement_list_id, user, "
-          @"created_at) values('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', "
+          @"created_at) values('%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', "
           @"'%@', '%@')",
-          m.toWh, m.toPosition, m.fromWh, m.fromPosition, m.packageId, m.partNr,
+          m.toWh, m.fifo, m.toPosition, m.fromWh, m.fromPosition, m.packageId, m.partNr,
           m.qty, m.movement_list_id, m.user, created_at];
   NSLog(@"===== query is %@", query);
   DBManager *db = [[DBManager alloc] initWithDatabaseFilename:@"wmsdb.sql"];
@@ -489,6 +489,7 @@
   if ([segue.identifier isEqualToString:@"toMovementListDetailVC"]) {
     //        for push
     ShiftingDetailViewController *detail = segue.destinationViewController;
+      //
     detail.movement_list_id = self.movementListID;
     detail.delegate = self;
     detail.fromState = @"local";

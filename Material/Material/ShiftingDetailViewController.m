@@ -82,6 +82,9 @@ preparation before navigation
                         block:^(NSMutableArray *reqeustData, NSError *error) {
                           if (error == nil) {
                             if ([reqeustData count] > 0) {
+                                
+                                
+                                
                               /**
                                *  删除本地纪录
                                */
@@ -98,13 +101,22 @@ preparation before navigation
                                     self.movement_list_id;
                                 [self.api createMovement:movement];
                               }
+                                
+                                
                               /**
                                *  查询本地数据
                                */
                               self.dataArray = [self.api
                                   queryByMovementListID:self.movement_list_id
                                        ObjectDictionary:0];
+                                
+                                
+                                
                               [self.detailTableView reloadData];
+                            }else
+                            {
+                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:self.movement_list_id message:@"该移库单没有数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                                [alert show];
                             }
                           }
                         }];

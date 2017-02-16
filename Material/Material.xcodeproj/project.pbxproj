@@ -17,7 +17,6 @@
 		2196719F1B2C79C100779491 /* Inventory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2196719E1B2C79C100779491 /* Inventory.m */; };
 		940E8C631C00B218000CCA71 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 940E8C621C00B218000CCA71 /* DBManager.m */; };
 		940E8C651C00B57E000CCA71 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 940E8C641C00B57E000CCA71 /* libsqlite3.dylib */; };
-		940E8C671C00B879000CCA71 /* wmsdb.sql in Resources */ = {isa = PBXBuildFile; fileRef = 940E8C661C00B879000CCA71 /* wmsdb.sql */; };
 		940E8C6A1C00B930000CCA71 /* Movement.m in Sources */ = {isa = PBXBuildFile; fileRef = 940E8C691C00B930000CCA71 /* Movement.m */; };
 		94134DD01C05EF6800F5C0BD /* InventoryAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 94134DCF1C05EF6800F5C0BD /* InventoryAPI.m */; };
 		94134DD31C05FE4D00F5C0BD /* InventoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 94134DD21C05FE4D00F5C0BD /* InventoryList.m */; };
@@ -202,6 +201,7 @@
 		B0DF644519448B67002D044B /* Yun.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF644419448B67002D044B /* Yun.m */; };
 		B0DF644819448B75002D044B /* YunStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF644719448B75002D044B /* YunStore.m */; };
 		B0E1D4F21952CD3500105D4D /* ReceivePrintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E1D4F11952CD3500105D4D /* ReceivePrintViewController.m */; };
+		B0E7073B1E55C4A70044E04D /* wmsdb.sql in Resources */ = {isa = PBXBuildFile; fileRef = B0E7073A1E55C4A70044E04D /* wmsdb.sql */; };
 		B0E8C6A4197F603500F0A030 /* RequireSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E8C6A3197F603500F0A030 /* RequireSettingViewController.m */; };
 		B0EDB1DC19A2ECA400917D54 /* SortArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B0EDB1DB19A2ECA400917D54 /* SortArray.m */; };
 		B0F9AB101A78AEDE0084F998 /* libCaptuvoSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F9AB0F1A78AEDE0084F998 /* libCaptuvoSDK.a */; };
@@ -242,7 +242,6 @@
 		940E8C611C00B218000CCA71 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		940E8C621C00B218000CCA71 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		940E8C641C00B57E000CCA71 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
-		940E8C661C00B879000CCA71 /* wmsdb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = wmsdb.sql; sourceTree = "<group>"; };
 		940E8C681C00B930000CCA71 /* Movement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movement.h; sourceTree = "<group>"; };
 		940E8C691C00B930000CCA71 /* Movement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movement.m; sourceTree = "<group>"; };
 		94134DCE1C05EF6800F5C0BD /* InventoryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryAPI.h; sourceTree = "<group>"; };
@@ -583,6 +582,7 @@
 		B0DF644719448B75002D044B /* YunStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YunStore.m; sourceTree = "<group>"; };
 		B0E1D4F01952CD3500105D4D /* ReceivePrintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceivePrintViewController.h; sourceTree = "<group>"; };
 		B0E1D4F11952CD3500105D4D /* ReceivePrintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceivePrintViewController.m; sourceTree = "<group>"; };
+		B0E7073A1E55C4A70044E04D /* wmsdb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = wmsdb.sql; sourceTree = "<group>"; };
 		B0E8C6A2197F603500F0A030 /* RequireSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireSettingViewController.h; sourceTree = "<group>"; };
 		B0E8C6A3197F603500F0A030 /* RequireSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireSettingViewController.m; sourceTree = "<group>"; };
 		B0EDB1DA19A2ECA400917D54 /* SortArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortArray.h; sourceTree = "<group>"; };
@@ -1226,7 +1226,7 @@
 		B085F616194004CC001F01F3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				940E8C661C00B879000CCA71 /* wmsdb.sql */,
+				B0E7073A1E55C4A70044E04D /* wmsdb.sql */,
 				B04EF2161946E89400A95D7A /* URL.plist */,
 				B085F617194004CC001F01F3 /* Material-Info.plist */,
 				B085F618194004CC001F01F3 /* InfoPlist.strings */,
@@ -1438,9 +1438,9 @@
 				B085F61A194004CC001F01F3 /* InfoPlist.strings in Resources */,
 				B021B0BE1E4D8D4000308F13 /* SelectCargoListTableViewCell.xib in Resources */,
 				B04EF2171946E89400A95D7A /* URL.plist in Resources */,
+				B0E7073B1E55C4A70044E04D /* wmsdb.sql in Resources */,
 				B0CC6AEB1A4D12020047FF7F /* RequireCheckGeneralTableViewCell.xib in Resources */,
 				949359D61C04A993003D2B25 /* MJRefresh.bundle in Resources */,
-				940E8C671C00B879000CCA71 /* wmsdb.sql in Resources */,
 				B037ECFB194BDC50008C456E /* YunTableViewCell.xib in Resources */,
 				B08B8F0E1953D39E009739DB /* TuoTableViewCell.xib in Resources */,
 				B04EF1E01946A49500A95D7A /* ShopXiangTableViewCell.xib in Resources */,

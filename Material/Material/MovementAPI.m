@@ -110,12 +110,14 @@
         @"movement_list_id" : movement_list_id
       }
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"the request data is %@", responseObject);
         [self.afnet.activeView stopAnimating];
         NSMutableArray *dataArray = [[NSMutableArray alloc] init];
 
         if ([responseObject[@"result"] intValue] == 1) {
           NSArray *tmpArray = responseObject[@"content"];
+            
+            
+            
           for (int i = 0; i < [tmpArray count]; i++) {
             Movement *movement = [[Movement alloc] initWithObject:tmpArray[i]];
 
@@ -181,18 +183,21 @@
 
   query = [NSString
       stringWithFormat:
-          @"insert into movements (source_id, toWh, "
+          @"insert into movements (source_id, toWh, fifo, "
           @"toPosition, fromWh, fromPosition, packageId, partNr, "
           @"qty, movement_list_id, user, "
-          @"created_at) values('%@', '%@', '%@', '%@', '%@', '%@', "
+          @"created_at) values('%@','%@', '%@', '%@', '%@', '%@', '%@', "
           @"'%@', '%@', '%@', " @"'%@', '%@')",
-          m.SourceID, m.toWh, m.toPosition, m.fromWh, m.fromPosition,
+          m.SourceID,  m.toWh, m.fifo, m.toPosition, m.fromWh, m.fromPosition,
           m.packageId, m.partNr, m.qty, m.movement_list_id, m.user, created_at];
   NSLog(@"===== query is %@", query);
   DBManager *db = [[DBManager alloc] initWithDatabaseFilename:@"wmsdb.sql"];
   [db executeQuery:query];
   if (db.affectedRows != 0) {
     NSLog(@"操作成功");
+  }
+  else{
+      NSLog(@"操作失败");
   }
 }
 
@@ -498,6 +503,8 @@
 
     NSString *moveMentId = [[arrayData objectAtIndex:i]
         objectAtIndex:[self.db.arrColumnNames indexOfObject:@"id"]];
+      NSString *fifo = [[arrayData objectAtIndex:i]
+                              objectAtIndex:[self.db.arrColumnNames indexOfObject:@"fifo"]];
     NSString *movementSourceID = [[arrayData objectAtIndex:i]
         objectAtIndex:[self.db.arrColumnNames indexOfObject:@"source_id"]];
     NSString *toWh = [[arrayData objectAtIndex:i]
@@ -541,7 +548,8 @@
                                              withPartNr:partNr
                                                 withQty:qty
                                                withUser:user
-                                     withMovementListID:movement_list_id];
+                                     withMovementListID:movement_list_id
+                                               withfifo:fifo];
       NSLog(@"local movement id %@", movement.ID);
       [dataArray addObject:movement];
 
