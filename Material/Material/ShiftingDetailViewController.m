@@ -115,8 +115,8 @@ preparation before navigation
                               [self.detailTableView reloadData];
                             }else
                             {
-                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:self.movement_list_id message:@"该移库单没有数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                                [alert show];
+//                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:self.movement_list_id message:@"该移库单没有数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//                                [alert show];
                             }
                           }
                         }];

@@ -430,6 +430,7 @@
                  block:(void (^)(NSString *, NSError *))block {
   NSMutableArray *movementArray =
       [self queryByMovementListID:movement_list_id ObjectDictionary:1];
+    
 
   AFHTTPRequestOperationManager *manager = [self.afnet generateManager:optView];
   [manager POST:[self.afnet SaveMovement]
@@ -503,8 +504,10 @@
 
     NSString *moveMentId = [[arrayData objectAtIndex:i]
         objectAtIndex:[self.db.arrColumnNames indexOfObject:@"id"]];
+      
       NSString *fifo = [[arrayData objectAtIndex:i]
                               objectAtIndex:[self.db.arrColumnNames indexOfObject:@"fifo"]];
+      
     NSString *movementSourceID = [[arrayData objectAtIndex:i]
         objectAtIndex:[self.db.arrColumnNames indexOfObject:@"source_id"]];
     NSString *toWh = [[arrayData objectAtIndex:i]
@@ -550,9 +553,8 @@
                                                withUser:user
                                      withMovementListID:movement_list_id
                                                withfifo:fifo];
-      NSLog(@"local movement id %@", movement.ID);
+//      NSLog(@"local movement id %@", movement.ID);
       [dataArray addObject:movement];
-
     } else {
       NSDictionary *dict = [[NSDictionary alloc] init];
       dict = @{
@@ -562,7 +564,8 @@
         @"fromPosition" : fromPosition,
         @"packageId" : packageId,
         @"partNr" : partNr,
-        @"qty" : qty
+        @"qty" : qty,
+        @"fifo" : fifo
       };
       [dataArray addObject:dict];
     }
