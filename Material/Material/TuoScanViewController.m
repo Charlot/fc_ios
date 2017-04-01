@@ -85,8 +85,7 @@
     }else if([self.type isEqualToString:@"ruku"]){
         self.tuo=[[Tuo alloc] init];
         self.navigationItem.rightBarButtonItem.title=@"确定入库";
-        [self.xiangListLabel setHidden:true];
-        [self.xiangCountLabel setHidden:true];
+
         AFNetOperate *AFNet=[[AFNetOperate alloc] init];
         AFHTTPRequestOperationManager *manager=[AFNet generateManager:self.view];
         [manager POST:[AFNet CreateMovementList]
@@ -103,8 +102,6 @@
               }
          ];
     }else if([self.type isEqualToString:@"contnruku"]){
-        [self.xiangListLabel setHidden:true];
-        [self.xiangCountLabel setHidden:true];
         self.navigationItem.rightBarButtonItem.title=@"确定入库";
         self.rukuList=self.listID;
         
@@ -920,24 +917,25 @@
           [AFNet.activeView stopAnimating];
           if([responseObject[@"result"] integerValue]==1){
 
-          self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
-                                                message:responseObject[@"content"]
-                                               delegate:self
-                                      cancelButtonTitle:nil
-                                      otherButtonTitles:nil];
-          [NSTimer scheduledTimerWithTimeInterval:0.8f
-                                           target:self
-                                         selector:@selector(dissmissAlert:)
-                                         userInfo:nil
-                                          repeats:NO];
-          
-          AudioServicesPlaySystemSound(1012);
-          
-          [self.alert show];
-          self.xianglist = [[Xiang alloc] initWith:key partNumber:partNumber key:key count:quantity position:@"" remark:@"" date:date];
-          self.xianglist.moveSourceId=[(responseObject[@"object"][@"id"]) intValue];
-          [self.tuo addXiang:self.xianglist];
-          [self.xiangTable reloadData];
+              [self updateAddXiangCount];
+              self.alert= [[UIAlertView alloc]initWithTitle:@"成功"
+                                                    message:responseObject[@"content"]
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:nil];
+              [NSTimer scheduledTimerWithTimeInterval:0.8f
+                                               target:self
+                                             selector:@selector(dissmissAlert:)
+                                             userInfo:nil
+                                              repeats:NO];
+              
+              AudioServicesPlaySystemSound(1012);
+              
+              [self.alert show];
+              self.xianglist = [[Xiang alloc] initWith:key partNumber:partNumber key:key count:quantity position:@"" remark:@"" date:date];
+              self.xianglist.moveSourceId=[(responseObject[@"object"][@"id"]) intValue];
+              [self.tuo addXiang:self.xianglist];
+              [self.xiangTable reloadData];
                       
 
           }else{
@@ -970,7 +968,7 @@
 - (IBAction)finish:(id)sender {
 
     if ([self.type isEqualToString:@"ruku"]) {
-        NSLog([NSString stringWithFormat:@"%lu",(unsigned long)self.tuo.xiang.count]);
+//        NSLog([NSString stringWithFormat:@"%lu",(unsigned long)self.tuo.xiang.count]);
         if (self.tuo.xiang.count == 0)
         {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"警告"

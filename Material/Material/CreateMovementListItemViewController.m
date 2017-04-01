@@ -24,7 +24,7 @@
 @property(strong, nonatomic) IBOutlet UITextField *fromPositionTextField;
 @property(strong, nonatomic)NSString *movementFIFO;
 
-- (IBAction)createButtonClick:(id)sender;
+
 @end
 
 @implementation CreateMovementListItemViewController
@@ -156,7 +156,8 @@
                                                   stringWithFormat:@"%@",
                                                   [dictData objectForKey:@"fifo"]];
                            [self.partIDTextField resignFirstResponder];
-                           [self.fromWhouseTextField becomeFirstResponder];
+//                           [self.fromWhouseTextField becomeFirstResponder];
+                             [self performSelector:@selector(createButtonClick:) withObject:nil afterDelay:0.8];
                          }
                        }];
 }
@@ -172,7 +173,7 @@ preparation before navigation
 }
 */
 
-- (IBAction)createButtonClick:(id)sender {
+- (void)createButtonClick:(id)sender {
   if (self.toWhouseTextField.text.length > 0) {
     if (self.toPositionTextField.text.length > 0) {
       if (self.fromWhouseTextField.text.length > 0) {

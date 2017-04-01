@@ -27,7 +27,6 @@
 
 @property(nonatomic, strong) Movement *movement;
 @property NSString *userName;
-- (IBAction)confirmAction:(id)sender;
 
 @end
 
@@ -244,6 +243,8 @@
                              
                            [self.partNrTextField resignFirstResponder];
 //                           [self.fromWhTextField becomeFirstResponder];
+                             //
+                             [self performSelector:@selector(confirmAction:) withObject:nil afterDelay:0.8];
                          }
                        }];
 }
@@ -253,7 +254,9 @@
   // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)confirmAction:(id)sender {
+
+#pragma mark - button action
+- (void)confirmAction:(id)sender {
   if (self.toWhTextField.text.length > 0) {
     if (self.toPositionTextField.text.length > 0) {
       if (self.fromWhTextField.text.length > 0) {

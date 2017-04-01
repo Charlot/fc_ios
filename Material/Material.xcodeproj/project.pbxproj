@@ -1403,7 +1403,7 @@
 				TargetAttributes = {
 					B085F60B194004CC001F01F3 = {
 						DevelopmentTeam = 58FSFGRL4P;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					B085F626194004CC001F01F3 = {
 						TestTargetID = B085F60B194004CC001F01F3;
@@ -1760,7 +1760,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 58FSFGRL4P;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1773,7 +1773,8 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = WMS;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b07e32d8-2081-4c49-af89-153e5ce01b26";
+				PROVISIONING_PROFILE_SPECIFIER = ClearInsight;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1786,7 +1787,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Shanghai Cai Zhuo Information Technology Co., Ltd";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 58FSFGRL4P;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1799,7 +1800,8 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = WMS;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b07e32d8-2081-4c49-af89-153e5ce01b26";
+				PROVISIONING_PROFILE_SPECIFIER = ClearInsight;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
