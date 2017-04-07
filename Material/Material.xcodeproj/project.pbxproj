@@ -1333,6 +1333,7 @@
 				TargetAttributes = {
 					B085F60B194004CC001F01F3 = {
 						DevelopmentTeam = 58FSFGRL4P;
+						ProvisioningStyle = Automatic;
 					};
 					B085F626194004CC001F01F3 = {
 						TestTargetID = B085F60B194004CC001F01F3;
@@ -1691,6 +1692,7 @@
 				);
 				PRODUCT_NAME = WMS;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1717,6 +1719,7 @@
 				);
 				PRODUCT_NAME = WMS;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
