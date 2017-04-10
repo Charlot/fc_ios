@@ -253,14 +253,14 @@
   if (self.toWhTextField.text.length > 0) {
     if (self.toPositionTextField.text.length > 0) {
       if (self.fromWhTextField.text.length > 0) {
-
-        UIAlertView *alert =
-            [[UIAlertView alloc] initWithTitle:@""
-                                       message:@"确认提交？"
-                                      delegate:self
-                             cancelButtonTitle:@"取消"
-                             otherButtonTitles:@"确定", nil];
-        [alert show];
+          [self sureButtonToCommitData];
+//        UIAlertView *alert =
+//            [[UIAlertView alloc] initWithTitle:@""
+//                                       message:@"确认提交？"
+//                                      delegate:self
+//                             cancelButtonTitle:@"取消"
+//                             otherButtonTitles:@"确定", nil];
+//        [alert show];
       } else {
         UIAlertView *alert =
             [[UIAlertView alloc] initWithTitle:@""
@@ -394,6 +394,50 @@
       //          }];
     }
   }
+}
+
+- (void)sureButtonToCommitData{
+    NSString *strToWh = self.toWhTextField.text;
+    NSString *strToPosition = self.toPositionTextField.text;
+    NSString *strPackage = self.packageTextField.text;
+    NSString *strQty = self.qtyTextField.text;
+    NSString *strPartNr = self.partNrTextField.text;
+    NSString *strFromWh = self.fromWhTextField.text;
+    NSString *strFromPosition = self.fromPositionTextField.text;
+
+        
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]
+                                 initWithObjectsAndKeys:self.movementListID, @"movement_list_id",
+                                 strToWh, @"toWh", strToPosition, @"toPosition",
+                                 strFromWh, @"fromWh", strFromPosition,
+                                 @"fromPosition", strQty, @"qty", strPartNr,
+                                 @"partNr", strPackage, @"packageId", nil];
+    AFNetOperate *AFNet = [[AFNetOperate alloc] init];
+    AFHTTPRequestOperationManager *manager =
+    [AFNet generateManager:self.view];
+    [manager POST:[AFNet ValidateMovement]
+       parameters:dict
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              [AFNet.activeView stopAnimating];
+              if ([responseObject[@"result"] integerValue] == 1) {
+                  [AFNet alertSuccess:responseObject[@"content"]];
+                  [dict setValue:self.userName forKey:@"user"];
+                  self.movement = [[Movement alloc] initWithObject:dict];
+                  //              [self createMovement:self.movement];
+                  [self clearData];
+              } else {
+                  [AFNet alert:responseObject[@"content"]];
+                  NSLog(@"%@", responseObject[@"content"]);
+              }
+              
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              [AFNet.activeView stopAnimating];
+              [AFNet
+               alert:[NSString stringWithFormat:@"%@",
+                      [error localizedDescription]]];
+          }];
+
 }
 
 - (void)clearData {
