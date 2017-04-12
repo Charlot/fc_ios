@@ -186,7 +186,12 @@
         NSString *alertString=@"请扫描零件号";
         BOOL isMatch  = [self.scanStandard checkPartNumber:data];
         if(isMatch){
-            //检查零件号合法性
+            [self textFieldShouldReturn:self.firstResponder];
+
+            
+            
+            
+/* v1.1 老版本，去掉P
             self.partNumberDeleteP=[self.scanStandard filterPartNumber:self.partNumber.text];
             if ([self.type isEqualToString:@"ruku"]) {
                 AFNetOperate *AFNet=[[AFNetOperate alloc] init];
@@ -224,6 +229,7 @@
                 [self textFieldShouldReturn:self.firstResponder];
                 
             }
+ */
         }
         else{
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@""
@@ -883,7 +889,7 @@
                           @"toWh":@"WE87",
                           @"toPosition":@"WE87-1",
                           @"packageId":key,
-                          @"partNr":partNumberPost,
+                          @"partNr":partNumber,
                           @"qty":quantityPost,
                           @"fifo":datePost,
                           @"type":@"ENTRY",
