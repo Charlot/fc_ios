@@ -16,7 +16,7 @@
             startingLineNumber = "99"
             endingLineNumber = "99"
             landmarkName = "-capacity_lable"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -32,7 +32,7 @@
             startingLineNumber = "101"
             endingLineNumber = "101"
             landmarkName = "-capacity_lable"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

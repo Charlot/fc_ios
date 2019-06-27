@@ -1366,7 +1366,8 @@
 				ORGANIZATIONNAME = brilliantech;
 				TargetAttributes = {
 					B085F60B194004CC001F01F3 = {
-						DevelopmentTeam = 58FSFGRL4P;
+						DevelopmentTeam = J2PKZ5W2YD;
+						ProvisioningStyle = Manual;
 					};
 					B085F626194004CC001F01F3 = {
 						TestTargetID = B085F60B194004CC001F01F3;
@@ -1712,8 +1713,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: tianyi shen (J2PKZ5W2YD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: tianyi shen (J2PKZ5W2YD)";
+				DEVELOPMENT_TEAM = J2PKZ5W2YD;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Material/Material-Prefix.pch";
@@ -1724,9 +1726,10 @@
 					"$(PROJECT_DIR)/Material",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wms.vmi;
+				PRODUCT_BUNDLE_IDENTIFIER = caizhuo.vmi;
 				PRODUCT_NAME = VMI;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3764a843-a61c-490a-bcd5-e39cee9bed9a";
+				PROVISIONING_PROFILE_SPECIFIER = caizhuovmi_profile;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1737,9 +1740,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Shanghai Cai Zhuo Information Technology Co., Ltd";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: tianyi shen (J2PKZ5W2YD)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: tianyi shen (J2PKZ5W2YD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: tianyi shen (J2PKZ5W2YD)";
+				DEVELOPMENT_TEAM = J2PKZ5W2YD;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Material/Material-Prefix.pch";
@@ -1750,9 +1754,10 @@
 					"$(PROJECT_DIR)/Material",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wms.vmi;
+				PRODUCT_BUNDLE_IDENTIFIER = caizhuo.vmi;
 				PRODUCT_NAME = VMI;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3764a843-a61c-490a-bcd5-e39cee9bed9a";
+				PROVISIONING_PROFILE_SPECIFIER = caizhuovmi_profile;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
