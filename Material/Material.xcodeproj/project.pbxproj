@@ -1286,7 +1286,8 @@
 				ORGANIZATIONNAME = brilliantech;
 				TargetAttributes = {
 					B085F60B194004CC001F01F3 = {
-						DevelopmentTeam = 58FSFGRL4P;
+						DevelopmentTeam = J2PKZ5W2YD;
+						ProvisioningStyle = Automatic;
 					};
 					B085F626194004CC001F01F3 = {
 						TestTargetID = B085F60B194004CC001F01F3;
@@ -1622,7 +1623,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 58FSFGRL4P;
+				DEVELOPMENT_TEAM = J2PKZ5W2YD;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Material/Material-Prefix.pch";
@@ -1633,8 +1634,10 @@
 					"$(PROJECT_DIR)/Material",
 					"$(PROJECT_DIR)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = caizhuo.wms;
 				PRODUCT_NAME = WMS;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1646,9 +1649,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Shanghai Cai Zhuo Information Technology Co., Ltd";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 58FSFGRL4P;
+				DEVELOPMENT_TEAM = J2PKZ5W2YD;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Material/Material-Prefix.pch";
@@ -1659,8 +1662,10 @@
 					"$(PROJECT_DIR)/Material",
 					"$(PROJECT_DIR)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = caizhuo.wms;
 				PRODUCT_NAME = WMS;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
